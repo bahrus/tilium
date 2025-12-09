@@ -1,6 +1,6 @@
 {
   "name": "lit-material-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Material Design components built with Lit Element",
   "type": "module",
   "main": "dist/index.js",
@@ -14,7 +14,12 @@
     "safari": "npx playwright wk http://localhost:8000",
     "update": "ncu -u && npm install"
   },
-  "keywords": ["lit", "web-components", "material-design", "mui"],
+  "keywords": [
+    "lit",
+    "web-components",
+    "material-design",
+    "mui"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
