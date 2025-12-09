@@ -1,5 +1,7 @@
 # Lit Material Components
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/lit-material-components)
+
 A Material Design component library built with Lit Element, implementing components matching the MUI React library API.
 
 ## Features
