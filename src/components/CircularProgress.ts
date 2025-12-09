@@ -1,4 +1,4 @@
-import { LitElement, html, css, svg } from 'lit';
+import { LitElement, html, unsafeCSS, svg } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -9,7 +9,7 @@ export class CircularProgress extends LitElement {
   @property({ type: String }) variant: 'determinate' | 'indeterminate' = 'indeterminate';
   @property({ type: Number }) value: number = 0;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

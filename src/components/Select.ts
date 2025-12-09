@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -11,7 +11,7 @@ export class Select extends LitElement {
   @property({ type: Boolean }) fullWidth = false;
   @state() private focused = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
       font-family: "Roboto", "Helvetica", "Arial", sans-serif;

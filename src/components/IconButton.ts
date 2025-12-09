@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -7,7 +7,7 @@ export class IconButton extends LitElement {
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
   @property({ type: Boolean }) disabled = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

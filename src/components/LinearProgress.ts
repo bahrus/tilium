@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -8,7 +8,7 @@ export class LinearProgress extends LitElement {
   @property({ type: Number }) value: number = 0;
   @property({ type: Number }) valueBuffer: number = 0;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       width: 100%;

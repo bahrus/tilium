@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -8,7 +8,7 @@ export class Switch extends LitElement {
   @property({ type: String }) color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' = 'primary';
   @property({ type: String }) size: 'small' | 'medium' = 'medium';
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

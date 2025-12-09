@@ -1,11 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
 export class Card extends LitElement {
   @property({ type: Boolean }) raised = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
     }
@@ -33,7 +33,7 @@ export class Card extends LitElement {
 }
 
 export class CardContent extends LitElement {
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       padding: 16px;
@@ -46,7 +46,7 @@ export class CardContent extends LitElement {
 }
 
 export class CardActions extends LitElement {
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: flex;
       align-items: center;

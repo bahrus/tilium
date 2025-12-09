@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -11,7 +11,7 @@ export class Chip extends LitElement {
   @property({ type: Boolean }) deletable = false;
   @property({ type: Boolean }) disabled = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

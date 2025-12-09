@@ -1,4 +1,4 @@
-import { LitElement, html, css, svg } from 'lit';
+import { LitElement, html, unsafeCSS, svg } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -9,7 +9,7 @@ export class Checkbox extends LitElement {
   @property({ type: String }) color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' = 'primary';
   @property({ type: String }) size: 'small' | 'medium' = 'medium';
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

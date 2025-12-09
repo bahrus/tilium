@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -10,7 +10,7 @@ export class Button extends LitElement {
   @property({ type: Boolean }) fullWidth = false;
   @property({ type: String }) href?: string;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: inline-block;
     }

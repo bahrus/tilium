@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export class Typography extends LitElement {
@@ -8,7 +8,7 @@ export class Typography extends LitElement {
   @property({ type: Boolean }) gutterBottom = false;
   @property({ type: Boolean }) noWrap = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       font-family: "Roboto", "Helvetica", "Arial", sans-serif;

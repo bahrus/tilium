@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -7,7 +7,7 @@ export class Alert extends LitElement {
   @property({ type: String }) variant: 'standard' | 'filled' | 'outlined' = 'standard';
   @property({ type: Boolean }) closable = false;
 
-  static styles = css`
+  static styles = unsafeCSS `
     :host {
       display: block;
     }

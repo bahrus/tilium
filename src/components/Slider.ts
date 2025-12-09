@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -10,7 +10,7 @@ export class Slider extends LitElement {
   @property({ type: Boolean }) disabled = false;
   @property({ type: String }) color: 'primary' | 'secondary' = 'primary';
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       padding: 13px 0;

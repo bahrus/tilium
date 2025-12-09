@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -8,7 +8,7 @@ export class Dialog extends LitElement {
   @property({ type: Boolean }) fullWidth = false;
   @property({ type: Boolean }) fullScreen = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: none;
     }
@@ -89,7 +89,7 @@ export class Dialog extends LitElement {
 }
 
 export class DialogTitle extends LitElement {
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       padding: 16px 24px;
@@ -105,7 +105,7 @@ export class DialogTitle extends LitElement {
 }
 
 export class DialogContent extends LitElement {
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
       padding: 8px 24px;
@@ -120,7 +120,7 @@ export class DialogContent extends LitElement {
 }
 
 export class DialogActions extends LitElement {
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: flex;
       align-items: center;

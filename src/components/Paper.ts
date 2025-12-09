@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -6,7 +6,7 @@ export class Paper extends LitElement {
   @property({ type: Number }) elevation: number = 1;
   @property({ type: Boolean }) square = false;
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
     }

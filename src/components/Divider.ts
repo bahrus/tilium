@@ -1,11 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export class Divider extends LitElement {
   @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'horizontal';
   @property({ type: String }) variant: 'fullWidth' | 'inset' | 'middle' = 'fullWidth';
 
-  static styles = css`
+  static styles = unsafeCSS`
     :host {
       display: block;
     }
