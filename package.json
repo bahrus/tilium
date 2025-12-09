@@ -24,5 +24,9 @@
     "typescript": "^5.9.3",
     "@playwright/test": "1.57.0",
     "spa-ssi": "0.0.25"
+  },
+  "homepage": "https://github.com/bahrus/tilium#readme",
+  "bugs": {
+    "url": "https://github.com/bahrus/tilium/issues"
   }
 }
