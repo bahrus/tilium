@@ -11,6 +11,7 @@ export { Chip } from './components/Chip.js';
 export { CircularProgress } from './components/CircularProgress.js';
 export { Dialog, DialogTitle, DialogContent, DialogActions } from './components/Dialog.js';
 export { Divider } from './components/Divider.js';
+export { Fab } from './components/Fab.js';
 export { IconButton } from './components/IconButton.js';
 export { LinearProgress } from './components/LinearProgress.js';
 export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './components/List.js';

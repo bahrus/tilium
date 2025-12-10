@@ -48,6 +48,7 @@ Then use them in your HTML:
 - **Button** - Material button with variants (text, contained, outlined)
 - **ButtonGroup** - Group of buttons with shared styling and layout
 - **Checkbox** - Checkbox with indeterminate state support
+- **Fab** - Floating Action Button for primary actions
 - **Radio** - Radio button
 - **Switch** - Toggle switch
 - **TextField** - Text input with variants (outlined, filled, standard)
@@ -241,6 +242,31 @@ Properties:
 - **ListItemIcon** - Container for icons with proper spacing
 - **ListItemAvatar** - Container for avatars with proper spacing
 - **ListItemSecondaryAction** - Right-aligned action area
+
+### Fab (Floating Action Button)
+```html
+<my-fab color="primary">
+  <svg slot="icon"><!-- icon --></svg>
+</my-fab>
+
+<my-fab variant="extended" color="secondary">
+  <svg slot="icon"><!-- icon --></svg>
+  Add Item
+</my-fab>
+```
+
+Properties:
+- `color`: 'default' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' - Button color
+- `size`: 'small' | 'medium' | 'large' - Button size
+- `variant`: 'circular' | 'extended' - Shape (circular for icon-only, extended for icon + text)
+- `disabled`: boolean - Disable the button
+- `href`: string - Make FAB act as a link
+
+**Usage Notes:**
+- Use `slot="icon"` for the icon content
+- Extended FABs can contain both icon and text
+- Typically positioned fixed in the bottom-right corner of the screen
+- Primary action should use `color="primary"`
 
 ### Table
 ```html
