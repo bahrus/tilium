@@ -51,6 +51,7 @@ Then use them in your HTML:
 - **Fab** - Floating Action Button for primary actions
 - **Radio** - Radio button
 - **Switch** - Toggle switch
+- **NumberField** - Numeric input with increment/decrement controls
 - **TextField** - Text input with variants (outlined, filled, standard)
 - **Select** - Dropdown select
 - **Slider** - Range slider
@@ -267,6 +268,42 @@ Properties:
 - Extended FABs can contain both icon and text
 - Typically positioned fixed in the bottom-right corner of the screen
 - Primary action should use `color="primary"`
+
+### NumberField
+```html
+<my-number-field 
+  label="Quantity" 
+  variant="outlined"
+  value="5"
+  min="1"
+  max="100"
+  step="1"
+></my-number-field>
+```
+
+Properties:
+- `label`: string - Input label
+- `value`: number - Current numeric value
+- `variant`: 'outlined' | 'filled' | 'standard' - Input style
+- `min`: number - Minimum allowed value
+- `max`: number - Maximum allowed value
+- `step`: number - Increment/decrement step size (default: 1)
+- `hideSteppers`: boolean - Hide increment/decrement buttons
+- `inputMode`: 'numeric' | 'decimal' - Mobile keyboard type
+- `placeholder`: string - Placeholder text
+- `disabled`: boolean - Disable the input
+- `required`: boolean - Mark as required field
+- `error`: boolean - Show error state
+- `helperText`: string - Helper or error text
+- `fullWidth`: boolean - Fill container width
+- `size`: 'small' | 'medium' - Input size
+
+**Features:**
+- Automatic value clamping to min/max bounds
+- Keyboard navigation (Arrow Up/Down)
+- Custom step increments (integers or decimals)
+- Mobile-optimized numeric keyboards
+- Validation and error states
 
 ### Table
 ```html

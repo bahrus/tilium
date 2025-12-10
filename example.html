@@ -796,6 +796,147 @@
   </div>
 
   <div class="section">
+    <h2>Number Fields</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Number Fields</h3>
+        <div class="demo-row">
+          <mui-number-field label="Quantity" variant="outlined" value="5"></mui-number-field>
+          <mui-number-field label="Price" variant="filled" value="29.99" step="0.01"></mui-number-field>
+          <mui-number-field label="Age" variant="standard" value="25"></mui-number-field>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Min/Max Constraints</h3>
+        <div class="demo-row">
+          <mui-number-field 
+            label="Rating (1-5)" 
+            variant="outlined" 
+            value="3" 
+            min="1" 
+            max="5"
+            helperText="Rate from 1 to 5 stars"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Percentage" 
+            variant="outlined" 
+            value="75" 
+            min="0" 
+            max="100"
+            helperText="Enter value between 0-100"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Temperature (°C)" 
+            variant="outlined" 
+            value="20" 
+            min="-50" 
+            max="50"
+            step="0.5"
+          ></mui-number-field>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Different Step Values</h3>
+        <div class="demo-row">
+          <mui-number-field 
+            label="Integer" 
+            variant="outlined" 
+            value="10" 
+            step="1"
+            helperText="Step: 1"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Decimal" 
+            variant="outlined" 
+            value="2.5" 
+            step="0.1"
+            helperText="Step: 0.1"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="By Fives" 
+            variant="outlined" 
+            value="25" 
+            step="5"
+            helperText="Step: 5"
+          ></mui-number-field>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Without Steppers</h3>
+        <div class="demo-row">
+          <mui-number-field 
+            label="Clean Input" 
+            variant="outlined" 
+            value="42" 
+            hideSteppers
+            helperText="No increment/decrement buttons"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Mobile Optimized" 
+            variant="outlined" 
+            inputMode="numeric"
+            hideSteppers
+            helperText="Numeric keypad on mobile"
+          ></mui-number-field>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Sizes and States</h3>
+        <div class="demo-row">
+          <mui-number-field 
+            label="Small Size" 
+            variant="outlined" 
+            size="small"
+            value="123"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Required Field" 
+            variant="outlined" 
+            required
+            helperText="This field is required"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Error State" 
+            variant="outlined" 
+            value="-5"
+            error
+            helperText="Value must be positive"
+          ></mui-number-field>
+          
+          <mui-number-field 
+            label="Disabled" 
+            variant="outlined" 
+            value="100"
+            disabled
+          ></mui-number-field>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Full Width</h3>
+        <mui-number-field 
+          label="Full Width Number Field" 
+          variant="outlined" 
+          value="1000"
+          fullWidth
+          helperText="This field spans the full width of its container"
+        ></mui-number-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Checkboxes & Switches</h2>
     <div class="demo-row">
       <mui-checkbox checked color="primary"></mui-checkbox>
@@ -969,7 +1110,7 @@
       Alert, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel,
       TextField, Typography
     } from './dist/index.js';
@@ -1002,6 +1143,7 @@
     customElements.define('mui-list-item-icon', ListItemIcon);
     customElements.define('mui-list-item-avatar', ListItemAvatar);
     customElements.define('mui-list-item-secondary-action', ListItemSecondaryAction);
+    customElements.define('mui-number-field', NumberField);
     customElements.define('mui-paper', Paper);
     customElements.define('mui-radio', Radio);
     customElements.define('mui-select', Select);
@@ -1104,6 +1246,17 @@
     document.querySelectorAll('mui-fab').forEach(fab => {
       fab.addEventListener('click', (e) => {
         console.log('FAB clicked:', fab.color, fab.variant);
+      });
+    });
+
+    // Number field event listeners
+    document.querySelectorAll('mui-number-field').forEach(field => {
+      field.addEventListener('change', (e) => {
+        console.log('Number field changed:', e.detail.value);
+      });
+      
+      field.addEventListener('input', (e) => {
+        console.log('Number field input:', e.detail.value);
       });
     });
   </script>
