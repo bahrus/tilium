@@ -46,6 +46,7 @@ Then use them in your HTML:
 ### Form Controls
 - **Autocomplete** - Searchable dropdown with single/multiple selection
 - **Button** - Material button with variants (text, contained, outlined)
+- **ButtonGroup** - Group of buttons with shared styling and layout
 - **Checkbox** - Checkbox with indeterminate state support
 - **Radio** - Radio button
 - **Switch** - Toggle switch
@@ -140,6 +141,24 @@ Properties:
 - `getOptionLabel`: (option: any) => string - Custom option label function
 - `isOptionEqualToValue`: (option: any, value: any) => boolean - Custom equality check
 - `filterOptions`: (options: any[], state: any) => any[] - Custom filtering function
+
+### ButtonGroup
+```html
+<my-button-group variant="outlined" color="primary" orientation="horizontal">
+  <my-button>One</my-button>
+  <my-button>Two</my-button>
+  <my-button>Three</my-button>
+</my-button-group>
+```
+
+Properties:
+- `variant`: 'text' | 'contained' | 'outlined' - Button style variant
+- `color`: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' - Color theme
+- `size`: 'small' | 'medium' | 'large' - Button size
+- `orientation`: 'horizontal' | 'vertical' - Layout direction
+- `disabled`: boolean - Disable all buttons in group
+- `disableElevation`: boolean - Remove shadow from contained buttons
+- `fullWidth`: boolean - Make buttons fill container width
 
 ### Table
 ```html

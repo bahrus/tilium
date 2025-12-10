@@ -2,6 +2,7 @@
 export { Alert } from './components/Alert.js';
 export { Autocomplete } from './components/Autocomplete.js';
 export { Button } from './components/Button.js';
+export { ButtonGroup } from './components/ButtonGroup.js';
 export { Card, CardContent, CardActions } from './components/Card.js';
 export { Checkbox } from './components/Checkbox.js';
 export { Chip } from './components/Chip.js';

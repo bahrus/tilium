@@ -84,6 +84,122 @@
   </div>
 
   <div class="section">
+    <h2>Button Groups</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Outlined (Horizontal)</h3>
+        <mui-button-group variant="outlined" color="primary">
+          <mui-button>One</mui-button>
+          <mui-button>Two</mui-button>
+          <mui-button>Three</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Contained (Horizontal)</h3>
+        <mui-button-group variant="contained" color="secondary">
+          <mui-button>Left</mui-button>
+          <mui-button>Center</mui-button>
+          <mui-button>Right</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Text (Horizontal)</h3>
+        <mui-button-group variant="text" color="primary">
+          <mui-button>First</mui-button>
+          <mui-button>Second</mui-button>
+          <mui-button>Third</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Vertical</h3>
+        <mui-button-group variant="outlined" color="primary" orientation="vertical">
+          <mui-button>Top</mui-button>
+          <mui-button>Middle</mui-button>
+          <mui-button>Bottom</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Small Size</h3>
+        <mui-button-group variant="contained" color="success" size="small">
+          <mui-button>Small</mui-button>
+          <mui-button>Buttons</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Full Width</h3>
+        <mui-button-group variant="outlined" color="info" fullWidth>
+          <mui-button>Full</mui-button>
+          <mui-button>Width</mui-button>
+          <mui-button>Group</mui-button>
+        </mui-button-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Button Groups</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Outlined (Horizontal)</h3>
+        <mui-button-group variant="outlined" color="primary">
+          <mui-button>One</mui-button>
+          <mui-button>Two</mui-button>
+          <mui-button>Three</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Contained (Horizontal)</h3>
+        <mui-button-group variant="contained" color="secondary">
+          <mui-button>Left</mui-button>
+          <mui-button>Center</mui-button>
+          <mui-button>Right</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Text (Horizontal)</h3>
+        <mui-button-group variant="text" color="primary">
+          <mui-button>First</mui-button>
+          <mui-button>Second</mui-button>
+          <mui-button>Third</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Vertical</h3>
+        <mui-button-group variant="outlined" color="primary" orientation="vertical">
+          <mui-button>Top</mui-button>
+          <mui-button>Middle</mui-button>
+          <mui-button>Bottom</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Small Size</h3>
+        <mui-button-group variant="contained" color="success" size="small">
+          <mui-button>Small</mui-button>
+          <mui-button>Buttons</mui-button>
+        </mui-button-group>
+      </div>
+      
+      <div>
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem;">Full Width</h3>
+        <mui-button-group variant="outlined" color="info" fullWidth>
+          <mui-button>Full</mui-button>
+          <mui-button>Width</mui-button>
+          <mui-button>Group</mui-button>
+        </mui-button-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Text Fields</h2>
     <div class="demo-row">
       <mui-text-field label="Outlined" variant="outlined"></mui-text-field>
@@ -264,7 +380,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, Autocomplete, Button, Card, CardContent, CardActions, Checkbox, Chip,
+      Alert, Autocomplete, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, IconButton, LinearProgress, Paper, Radio, Select,
       Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -276,6 +392,7 @@
     customElements.define('mui-alert', Alert);
     customElements.define('mui-autocomplete', Autocomplete);
     customElements.define('mui-button', Button);
+    customElements.define('mui-button-group', ButtonGroup);
     customElements.define('mui-card', Card);
     customElements.define('mui-card-content', CardContent);
     customElements.define('mui-card-actions', CardActions);
