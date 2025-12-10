@@ -6,7 +6,7 @@ export { Avatar } from './components/Avatar.js';
 export { Badge } from './components/Badge.js';
 export { Button } from './components/Button.js';
 export { ButtonGroup } from './components/ButtonGroup.js';
-export { Card, CardContent, CardActions } from './components/Card.js';
+export { Card, CardHeader, CardMedia, CardContent, CardActions } from './components/Card.js';
 export { Checkbox } from './components/Checkbox.js';
 export { Chip } from './components/Chip.js';
 export { CircularProgress } from './components/CircularProgress.js';

@@ -76,7 +76,7 @@ Then use them in your HTML:
 - **LinearProgress** - Linear loading indicator
 
 ### Surfaces
-- **Card** - Card container with CardContent and CardActions
+- **Card** - Flexible card container with CardHeader, CardMedia, CardContent, and CardActions
 - **Paper** - Elevated surface container
 
 ### Utils

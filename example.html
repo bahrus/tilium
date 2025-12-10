@@ -1301,19 +1301,173 @@
   </div>
 
   <div class="section">
-    <h2>Card</h2>
-    <mui-card style="max-width: 400px;">
-      <mui-card-content>
-        <mui-typography variant="h5" gutterBottom>Card Title</mui-typography>
-        <mui-typography variant="body2" color="textSecondary">
-          This is a card component with content and actions.
-        </mui-typography>
-      </mui-card-content>
-      <mui-card-actions>
-        <mui-button size="small">Learn More</mui-button>
-        <mui-button size="small" color="primary">Action</mui-button>
-      </mui-card-actions>
-    </mui-card>
+    <h2>Cards</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Card</h3>
+        <mui-card style="max-width: 400px;">
+          <mui-card-content>
+            <mui-typography variant="h5" gutterBottom>Card Title</mui-typography>
+            <mui-typography variant="body2" color="textSecondary">
+              This is a basic card component with content and actions. Cards contain content and actions about a single subject.
+            </mui-typography>
+          </mui-card-content>
+          <mui-card-actions>
+            <mui-button size="small">Learn More</mui-button>
+            <mui-button size="small" color="primary">Action</mui-button>
+          </mui-card-actions>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Card with Media</h3>
+        <mui-card style="max-width: 400px;">
+          <mui-card-media 
+            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=400&h=200&fit=crop"
+            alt="Beautiful landscape"
+            height="200px">
+          </mui-card-media>
+          <mui-card-content>
+            <mui-typography variant="h5" gutterBottom>Beautiful Landscape</mui-typography>
+            <mui-typography variant="body2" color="textSecondary">
+              This impressive paella is a perfect party dish and a fun meal to cook together with your guests.
+            </mui-typography>
+          </mui-card-content>
+          <mui-card-actions>
+            <mui-button size="small" color="primary">Share</mui-button>
+            <mui-button size="small" color="primary">Learn More</mui-button>
+          </mui-card-actions>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Card with Header and Avatar</h3>
+        <mui-card style="max-width: 400px;">
+          <mui-card-header title="John Doe" subheader="September 14, 2023">
+            <mui-avatar slot="avatar" alt="John Doe" color="primary">JD</mui-avatar>
+            <mui-icon-button slot="action">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-card-header>
+          <mui-card-media 
+            src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400&h=200&fit=crop"
+            alt="Cat"
+            height="200px">
+          </mui-card-media>
+          <mui-card-content>
+            <mui-typography variant="body2" color="textSecondary">
+              This adorable cat is looking for a new home. She's very friendly and loves to play.
+            </mui-typography>
+          </mui-card-content>
+          <mui-card-actions disableSpacing>
+            <mui-icon-button>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </mui-icon-button>
+            <mui-icon-button>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+              </svg>
+            </mui-icon-button>
+            <mui-button slot="right" size="small" color="primary">Learn More</mui-button>
+          </mui-card-actions>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Outlined Card</h3>
+        <mui-card variant="outlined" style="max-width: 400px;">
+          <mui-card-content>
+            <mui-typography variant="h5" gutterBottom>Outlined Card</mui-typography>
+            <mui-typography variant="body2" color="textSecondary">
+              This card uses the outlined variant instead of elevation for a different visual style.
+            </mui-typography>
+          </mui-card-content>
+          <mui-card-actions>
+            <mui-button size="small" variant="outlined">Action</mui-button>
+          </mui-card-actions>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Elevation Variants</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-card elevation="0" style="width: 180px;">
+            <mui-card-content>
+              <mui-typography variant="h6">Elevation 0</mui-typography>
+              <mui-typography variant="body2" color="textSecondary">No shadow</mui-typography>
+            </mui-card-content>
+          </mui-card>
+          
+          <mui-card elevation="1" style="width: 180px;">
+            <mui-card-content>
+              <mui-typography variant="h6">Elevation 1</mui-typography>
+              <mui-typography variant="body2" color="textSecondary">Light shadow</mui-typography>
+            </mui-card-content>
+          </mui-card>
+          
+          <mui-card elevation="3" style="width: 180px;">
+            <mui-card-content>
+              <mui-typography variant="h6">Elevation 3</mui-typography>
+              <mui-typography variant="body2" color="textSecondary">Medium shadow</mui-typography>
+            </mui-card-content>
+          </mui-card>
+          
+          <mui-card elevation="4" style="width: 180px;">
+            <mui-card-content>
+              <mui-typography variant="h6">Elevation 4</mui-typography>
+              <mui-typography variant="body2" color="textSecondary">High shadow</mui-typography>
+            </mui-card-content>
+          </mui-card>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Interactive Card</h3>
+        <mui-card clickable style="max-width: 400px; cursor: pointer;">
+          <mui-card-content>
+            <mui-typography variant="h5" gutterBottom>Interactive Card</mui-typography>
+            <mui-typography variant="body2" color="textSecondary">
+              This card has hover effects and can be clicked. Try hovering over it to see the elevation change.
+            </mui-typography>
+          </mui-card-content>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Complex Card Layout</h3>
+        <mui-card style="max-width: 400px;">
+          <mui-card-header title="Recipe Collection" subheader="Updated 2 hours ago">
+            <mui-avatar slot="avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Chef"></mui-avatar>
+          </mui-card-header>
+          <mui-card-media 
+            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=200&fit=crop"
+            alt="Pizza"
+            height="200px">
+            <div style="position: absolute; bottom: 16px; left: 16px; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.7);">
+              <mui-typography variant="h4" style="color: inherit;">Delicious Pizza</mui-typography>
+            </div>
+          </mui-card-media>
+          <mui-card-content>
+            <mui-typography variant="body2" color="textSecondary">
+              A perfect combination of crispy crust, rich tomato sauce, and melted cheese. This recipe has been passed down through generations.
+            </mui-typography>
+          </mui-card-content>
+          <mui-card-actions>
+            <mui-button size="small" color="primary">View Recipe</mui-button>
+            <mui-button size="small">Save</mui-button>
+            <mui-icon-button slot="right">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-card-actions>
+        </mui-card>
+      </div>
+    </div>
   </div>
 
   <div class="section">
@@ -1418,7 +1572,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, AppBar, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
+      Alert, AppBar, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -1435,6 +1589,8 @@
     customElements.define('mui-button', Button);
     customElements.define('mui-button-group', ButtonGroup);
     customElements.define('mui-card', Card);
+    customElements.define('mui-card-header', CardHeader);
+    customElements.define('mui-card-media', CardMedia);
     customElements.define('mui-card-content', CardContent);
     customElements.define('mui-card-actions', CardActions);
     customElements.define('mui-checkbox', Checkbox);
