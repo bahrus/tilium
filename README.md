@@ -55,6 +55,7 @@ Then use them in your HTML:
 - **Slider** - Range slider
 
 ### Data Display
+- **Badge** - Small status indicator that appears on top of content
 - **Typography** - Text with Material Design typography styles
 - **Chip** - Compact elements for tags, filters, etc.
 - **Divider** - Horizontal or vertical divider
@@ -159,6 +160,23 @@ Properties:
 - `disabled`: boolean - Disable all buttons in group
 - `disableElevation`: boolean - Remove shadow from contained buttons
 - `fullWidth`: boolean - Make buttons fill container width
+
+### Badge
+```html
+<my-badge badgeContent="4" color="primary">
+  <div>Content with badge</div>
+</my-badge>
+```
+
+Properties:
+- `badgeContent`: string - Text or number to display in badge
+- `color`: 'default' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' - Badge color
+- `variant`: 'standard' | 'dot' - Badge style (content or just a dot)
+- `anchorOrigin`: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' - Badge position
+- `invisible`: boolean - Hide the badge
+- `showZero`: boolean - Show badge when content is "0"
+- `max`: number - Maximum number to display (shows "max+" when exceeded)
+- `overlap`: 'rectangular' | 'circular' - Adjust positioning for circular content
 
 ### Table
 ```html

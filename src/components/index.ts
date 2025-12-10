@@ -1,6 +1,7 @@
 // Export all component classes
 export { Alert } from './Alert.js';
 export { Autocomplete } from './Autocomplete.js';
+export { Badge } from './Badge.js';
 export { Button } from './Button.js';
 export { ButtonGroup } from './ButtonGroup.js';
 export { Card, CardContent, CardActions } from './Card.js';
