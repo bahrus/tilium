@@ -55,6 +55,7 @@ Then use them in your HTML:
 - **Slider** - Range slider
 
 ### Data Display
+- **Avatar** - User profile picture or initials in circular, rounded, or square format
 - **Badge** - Small status indicator that appears on top of content
 - **Typography** - Text with Material Design typography styles
 - **Chip** - Compact elements for tags, filters, etc.
@@ -177,6 +178,28 @@ Properties:
 - `showZero`: boolean - Show badge when content is "0"
 - `max`: number - Maximum number to display (shows "max+" when exceeded)
 - `overlap`: 'rectangular' | 'circular' - Adjust positioning for circular content
+
+### Avatar
+```html
+<my-avatar src="profile.jpg" alt="John Doe"></my-avatar>
+<my-avatar alt="Jane Smith" color="primary"></my-avatar>
+<my-avatar color="secondary">
+  <svg><!-- icon --></svg>
+</my-avatar>
+```
+
+Properties:
+- `src`: string - Image source URL
+- `alt`: string - Alternative text (used for initials if no image)
+- `variant`: 'circular' | 'rounded' | 'square' - Avatar shape
+- `size`: 'small' | 'medium' | 'large' | string - Predefined or custom size
+- `color`: 'default' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' - Background color for text/icon avatars
+
+**Content Priority:**
+1. Image (if `src` provided and loads successfully)
+2. Slotted content (icons, custom elements)
+3. Initials from `alt` text
+4. Default person icon
 
 ### Table
 ```html
