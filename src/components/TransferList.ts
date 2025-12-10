@@ -210,12 +210,14 @@ export class TransferList extends LitElement {
       } else {
         this.leftChecked = [...this.leftChecked, item.id];
       }
+      this.requestUpdate();
     } else {
       if (this.rightChecked.includes(item.id)) {
         this.rightChecked = this.rightChecked.filter(id => id !== item.id);
       } else {
         this.rightChecked = [...this.rightChecked, item.id];
       }
+      this.requestUpdate();
     }
   }
 
@@ -241,6 +243,7 @@ export class TransferList extends LitElement {
         this.rightChecked = availableItems.map(item => item.id);
       }
     }
+    this.requestUpdate();
   }
 
   private moveRight() {
