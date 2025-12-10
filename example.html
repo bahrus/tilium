@@ -1205,6 +1205,258 @@
   </div>
 
   <div class="section">
+    <h2>Drawers</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Temporary Drawer</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" onclick="document.getElementById('drawer-left').open = true">Open Left</mui-button>
+          <mui-button variant="contained" onclick="document.getElementById('drawer-right').open = true">Open Right</mui-button>
+          <mui-button variant="contained" onclick="document.getElementById('drawer-top').open = true">Open Top</mui-button>
+          <mui-button variant="contained" onclick="document.getElementById('drawer-bottom').open = true">Open Bottom</mui-button>
+        </div>
+        
+        <!-- Left Drawer -->
+        <mui-drawer id="drawer-left" anchor="left" variant="temporary">
+          <mui-drawer-header>
+            <mui-typography slot="title" variant="h6">Navigation</mui-typography>
+            <mui-icon-button slot="action" onclick="document.getElementById('drawer-left').open = false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-drawer-header>
+          <mui-list>
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Home"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Starred"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Documents"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-drawer>
+
+        <!-- Right Drawer -->
+        <mui-drawer id="drawer-right" anchor="right" variant="temporary">
+          <mui-drawer-header>
+            <mui-typography slot="title" variant="h6">Settings</mui-typography>
+            <mui-icon-button slot="action" onclick="document.getElementById('drawer-right').open = false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-drawer-header>
+          <div style="padding: 16px;">
+            <mui-typography variant="h6" gutterBottom>Account Settings</mui-typography>
+            <mui-switch checked>
+              <span slot="label">Notifications</span>
+            </mui-switch>
+            <br><br>
+            <mui-switch>
+              <span slot="label">Dark Mode</span>
+            </mui-switch>
+            <br><br>
+            <mui-button variant="contained" color="primary" fullWidth>Save Changes</mui-button>
+          </div>
+        </mui-drawer>
+
+        <!-- Top Drawer -->
+        <mui-drawer id="drawer-top" anchor="top" variant="temporary" height="200">
+          <mui-drawer-header>
+            <mui-typography slot="title" variant="h6">Notifications</mui-typography>
+            <mui-icon-button slot="action" onclick="document.getElementById('drawer-top').open = false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-drawer-header>
+          <div style="padding: 16px;">
+            <mui-typography variant="body1">You have 3 new notifications</mui-typography>
+          </div>
+        </mui-drawer>
+
+        <!-- Bottom Drawer -->
+        <mui-drawer id="drawer-bottom" anchor="bottom" variant="temporary" height="300">
+          <mui-drawer-header>
+            <mui-typography slot="title" variant="h6">Quick Actions</mui-typography>
+            <mui-icon-button slot="action" onclick="document.getElementById('drawer-bottom').open = false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-drawer-header>
+          <div style="padding: 16px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <mui-button variant="outlined">Share</mui-button>
+            <mui-button variant="outlined">Copy</mui-button>
+            <mui-button variant="outlined">Delete</mui-button>
+            <mui-button variant="outlined">Archive</mui-button>
+          </div>
+        </mui-drawer>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Persistent Drawer</h3>
+        <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+          <mui-button variant="contained" onclick="document.getElementById('drawer-persistent').open = !document.getElementById('drawer-persistent').open">
+            Toggle Persistent Drawer
+          </mui-button>
+        </div>
+        
+        <div style="display: flex; border: 1px solid #e0e0e0; height: 400px;">
+          <mui-drawer id="drawer-persistent" anchor="left" variant="persistent" width="280">
+            <mui-drawer-header>
+              <mui-avatar slot="icon" color="primary">A</mui-avatar>
+              <mui-typography slot="title" variant="h6">My App</mui-typography>
+            </mui-drawer-header>
+            <mui-list>
+              <mui-list-item-button selected>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Dashboard"></mui-list-item-text>
+              </mui-list-item-button>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Projects"></mui-list-item-text>
+              </mui-list-item-button>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Tasks"></mui-list-item-text>
+              </mui-list-item-button>
+              <mui-divider></mui-divider>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Settings"></mui-list-item-text>
+              </mui-list-item-button>
+            </mui-list>
+          </mui-drawer>
+          
+          <div style="flex: 1; padding: 24px; background-color: #fafafa;">
+            <mui-typography variant="h4" gutterBottom>Main Content</mui-typography>
+            <mui-typography variant="body1">
+              This is the main content area. The persistent drawer can be toggled to show/hide the navigation.
+              When open, it pushes the content to the right. When closed, the content expands to fill the space.
+            </mui-typography>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Permanent Drawer</h3>
+        <div style="display: flex; border: 1px solid #e0e0e0; height: 400px;">
+          <mui-drawer anchor="left" variant="permanent" width="240">
+            <mui-drawer-header>
+              <mui-typography slot="title" variant="h6">Always Visible</mui-typography>
+            </mui-drawer-header>
+            <mui-list>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Home"></mui-list-item-text>
+              </mui-list-item-button>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Documents"></mui-list-item-text>
+              </mui-list-item-button>
+              <mui-list-item-button>
+                <mui-list-item-icon>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                  </svg>
+                </mui-list-item-icon>
+                <mui-list-item-text primary="Projects"></mui-list-item-text>
+              </mui-list-item-button>
+            </mui-list>
+          </mui-drawer>
+          
+          <div style="flex: 1; padding: 24px; background-color: #fafafa;">
+            <mui-typography variant="h4" gutterBottom>Main Content</mui-typography>
+            <mui-typography variant="body1">
+              This permanent drawer is always visible and cannot be closed. It's useful for primary navigation
+              in desktop applications where screen space is not a concern.
+            </mui-typography>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Custom Width Drawer</h3>
+        <mui-button variant="contained" onclick="document.getElementById('drawer-wide').open = true">
+          Open Wide Drawer
+        </mui-button>
+        
+        <mui-drawer id="drawer-wide" anchor="left" variant="temporary" width="400">
+          <mui-drawer-header>
+            <mui-typography slot="title" variant="h6">Wide Navigation (400px)</mui-typography>
+            <mui-icon-button slot="action" onclick="document.getElementById('drawer-wide').open = false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </mui-icon-button>
+          </mui-drawer-header>
+          <div style="padding: 16px;">
+            <mui-typography variant="body1" gutterBottom>
+              This drawer has a custom width of 400px, making it wider than the default 240px.
+              This is useful when you need more space for content or longer navigation labels.
+            </mui-typography>
+            <mui-card style="margin-top: 16px;">
+              <mui-card-content>
+                <mui-typography variant="h6" gutterBottom>User Profile</mui-typography>
+                <div style="display: flex; align-items: center; gap: 16px;">
+                  <mui-avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=56&h=56&fit=crop&crop=face" alt="User" size="56"></mui-avatar>
+                  <div>
+                    <mui-typography variant="subtitle1">John Doe</mui-typography>
+                    <mui-typography variant="body2" color="textSecondary">john.doe@example.com</mui-typography>
+                  </div>
+                </div>
+              </mui-card-content>
+            </mui-card>
+          </div>
+        </mui-drawer>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Transfer List</h2>
     <div style="display: flex; flex-direction: column; gap: 30px;">
       <div>
@@ -1574,7 +1826,7 @@
     import { 
       Alert, AppBar, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
-      Divider, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
+      Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
@@ -1601,6 +1853,8 @@
     customElements.define('mui-dialog-content', DialogContent);
     customElements.define('mui-dialog-actions', DialogActions);
     customElements.define('mui-divider', Divider);
+    customElements.define('mui-drawer', Drawer);
+    customElements.define('mui-drawer-header', DrawerHeader);
     customElements.define('mui-fab', Fab);
     customElements.define('mui-icon-button', IconButton);
     customElements.define('mui-linear-progress', LinearProgress);

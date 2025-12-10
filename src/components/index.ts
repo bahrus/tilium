@@ -12,6 +12,7 @@ export { Chip } from './Chip.js';
 export { CircularProgress } from './CircularProgress.js';
 export { Dialog, DialogTitle, DialogContent, DialogActions } from './Dialog.js';
 export { Divider } from './Divider.js';
+export { Drawer, DrawerHeader } from './Drawer.js';
 export { Fab } from './Fab.js';
 export { IconButton } from './IconButton.js';
 export { LinearProgress } from './LinearProgress.js';

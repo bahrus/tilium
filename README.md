@@ -45,6 +45,7 @@ Then use them in your HTML:
 
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
+- **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
 
 ### Form Controls
 - **Autocomplete** - Searchable dropdown with single/multiple selection
