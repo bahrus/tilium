@@ -1,5 +1,6 @@
 // Export all component classes
 export { Alert } from './components/Alert.js';
+export { AppBar } from './components/AppBar.js';
 export { Autocomplete } from './components/Autocomplete.js';
 export { Avatar } from './components/Avatar.js';
 export { Badge } from './components/Badge.js';

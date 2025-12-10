@@ -1093,6 +1093,118 @@
   </div>
 
   <div class="section">
+    <h2>App Bars</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic App Bar</h3>
+        <mui-app-bar>
+          <mui-icon-button slot="start" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </mui-icon-button>
+          <mui-typography slot="title" variant="h6" component="h1">My App</mui-typography>
+          <mui-icon-button slot="end" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </mui-icon-button>
+        </mui-app-bar>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Color Variants</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <mui-app-bar color="primary">
+            <mui-typography slot="title" variant="h6">Primary App Bar</mui-typography>
+          </mui-app-bar>
+          
+          <mui-app-bar color="secondary">
+            <mui-typography slot="title" variant="h6">Secondary App Bar</mui-typography>
+          </mui-app-bar>
+          
+          <mui-app-bar color="default">
+            <mui-typography slot="title" variant="h6">Default App Bar</mui-typography>
+          </mui-app-bar>
+          
+          <mui-app-bar color="transparent">
+            <mui-typography slot="title" variant="h6">Transparent App Bar</mui-typography>
+          </mui-app-bar>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Dense Variant</h3>
+        <mui-app-bar variant="dense">
+          <mui-icon-button slot="start" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </mui-icon-button>
+          <mui-typography slot="title" variant="h6">Dense App Bar</mui-typography>
+          <mui-icon-button slot="end" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 7h-8l-1-2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z"/>
+            </svg>
+          </mui-icon-button>
+        </mui-app-bar>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Search</h3>
+        <mui-app-bar>
+          <mui-icon-button slot="start" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </mui-icon-button>
+          <mui-typography slot="title" variant="h6">Search App</mui-typography>
+          <div slot="end" style="display: flex; align-items: center; gap: 8px;">
+            <mui-icon-button color="inherit">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+            </mui-icon-button>
+            <mui-icon-button color="inherit">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+              </svg>
+            </mui-icon-button>
+          </div>
+        </mui-app-bar>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">No Elevation</h3>
+        <mui-app-bar elevation="false">
+          <mui-typography slot="title" variant="h6">Flat App Bar</mui-typography>
+          <mui-button slot="end" variant="outlined" color="inherit">Login</mui-button>
+        </mui-app-bar>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Avatar and Menu</h3>
+        <mui-app-bar>
+          <mui-icon-button slot="start" color="inherit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </mui-icon-button>
+          <mui-typography slot="title" variant="h6">Dashboard</mui-typography>
+          <div slot="end" style="display: flex; align-items: center; gap: 8px;">
+            <mui-icon-button color="inherit">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+              </svg>
+            </mui-icon-button>
+            <mui-avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User" size="32"></mui-avatar>
+          </div>
+        </mui-app-bar>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Transfer List</h2>
     <div style="display: flex; flex-direction: column; gap: 30px;">
       <div>
@@ -1306,7 +1418,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
+      Alert, AppBar, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -1316,6 +1428,7 @@
 
     // Register all components with custom element names
     customElements.define('mui-alert', Alert);
+    customElements.define('mui-app-bar', AppBar);
     customElements.define('mui-autocomplete', Autocomplete);
     customElements.define('mui-avatar', Avatar);
     customElements.define('mui-badge', Badge);

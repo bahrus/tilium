@@ -43,6 +43,9 @@ Then use them in your HTML:
 
 ## Available Components
 
+### Navigation
+- **AppBar** - Top app bar with title, navigation, and action buttons
+
 ### Form Controls
 - **Autocomplete** - Searchable dropdown with single/multiple selection
 - **Button** - Material button with variants (text, contained, outlined)
