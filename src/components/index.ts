@@ -4,6 +4,7 @@ export { AppBar } from './AppBar.js';
 export { Autocomplete } from './Autocomplete.js';
 export { Avatar } from './Avatar.js';
 export { Badge } from './Badge.js';
+export { BottomNavigation, BottomNavigationAction } from './BottomNavigation.js';
 export { Button } from './Button.js';
 export { ButtonGroup } from './ButtonGroup.js';
 export { Card, CardHeader, CardMedia, CardContent, CardActions } from './Card.js';

@@ -45,6 +45,7 @@ Then use them in your HTML:
 
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
+- **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
 
 ### Form Controls
