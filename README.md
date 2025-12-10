@@ -71,6 +71,13 @@ Then use them in your HTML:
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
+### Data Display
+- **Table** - Data table with TableHead, TableBody, TableFooter, TableRow
+- **TableCell** - Table cell with sorting and alignment options
+- **TableContainer** - Scrollable table wrapper
+- **TablePagination** - Table pagination controls
+- **TableSortLabel** - Sortable column header label
+
 ## Component Examples
 
 ### Button
@@ -107,6 +114,58 @@ Properties:
 - `disabled`: boolean
 - `required`: boolean
 
+### Table
+```html
+<my-table-container>
+  <my-table stickyHeader>
+    <my-table-head>
+      <my-table-row>
+        <my-table-cell variant="head">
+          <my-table-sort-label active direction="asc">Name</my-table-sort-label>
+        </my-table-cell>
+        <my-table-cell variant="head" align="right">Age</my-table-cell>
+      </my-table-row>
+    </my-table-head>
+    <my-table-body>
+      <my-table-row hover selected>
+        <my-table-cell>John Doe</my-table-cell>
+        <my-table-cell align="right">28</my-table-cell>
+      </my-table-row>
+    </my-table-body>
+  </my-table>
+  <my-table-pagination 
+    count="100" 
+    page="0" 
+    rowsPerPage="10">
+  </my-table-pagination>
+</my-table-container>
+```
+
+**Table Properties:**
+- `size`: 'small' | 'medium'
+- `stickyHeader`: boolean
+
+**TableCell Properties:**
+- `align`: 'left' | 'center' | 'right' | 'justify'
+- `padding`: 'normal' | 'checkbox' | 'none'
+- `variant`: 'head' | 'body' | 'footer'
+- `size`: 'small' | 'medium'
+
+**TableRow Properties:**
+- `hover`: boolean - Enable hover effect
+- `selected`: boolean - Show selected state
+
+**TablePagination Properties:**
+- `count`: number - Total number of rows
+- `page`: number - Current page (0-indexed)
+- `rowsPerPage`: number - Rows per page
+- `rowsPerPageOptions`: number[] - Available page size options
+
+**TableSortLabel Properties:**
+- `active`: boolean - Whether this column is actively sorted
+- `direction`: 'asc' | 'desc' - Sort direction
+- `hideSortIcon`: boolean - Hide the sort icon
+
 ### Dialog
 ```html
 <my-dialog open maxWidth="sm">
@@ -134,6 +193,16 @@ button.addEventListener('click', (e) => {
 const textField = document.querySelector('my-text-field');
 textField.addEventListener('change', (e) => {
   console.log('Value:', e.detail.value);
+});
+
+const tablePagination = document.querySelector('my-table-pagination');
+tablePagination.addEventListener('page-change', (e) => {
+  console.log('Page:', e.detail.page);
+});
+
+const sortLabel = document.querySelector('my-table-sort-label');
+sortLabel.addEventListener('sort', (e) => {
+  console.log('Sort direction:', e.detail.direction);
 });
 ```
 
