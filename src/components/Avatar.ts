@@ -1,4 +1,4 @@
-import { LitElement, html, unsafeCSS } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { theme } from '../styles/theme.js';
 
@@ -8,10 +8,11 @@ export class Avatar extends LitElement {
   @property({ type: String }) variant: 'circular' | 'rounded' | 'square' = 'circular';
   @property({ type: String }) size: 'small' | 'medium' | 'large' | string = 'medium';
   @property({ type: String }) color: 'default' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' = 'default';
+  
   @state() private imageError = false;
-  @state() private imageLoaded = false;
+  @state() private hasSlottedContent = false;
 
-  static styles = unsafeCSS`
+  static styles = css`
     :host {
       display: inline-flex;
       align-items: center;
@@ -22,96 +23,75 @@ export class Avatar extends LitElement {
       line-height: 1;
       overflow: hidden;
       user-select: none;
-    }
-
-    .avatar {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      background-color: #bdbdbd;
-      font-size: 1.25rem;
-      font-weight: 400;
+      box-sizing: border-box;
     }
 
     /* Size variants */
-    :host(.small) {
+    :host([size="small"]) {
       width: 24px;
       height: 24px;
-    }
-
-    :host(.small) .avatar {
       font-size: 0.875rem;
     }
 
-    :host(.medium) {
+    :host([size="medium"]), :host(:not([size])) {
       width: 40px;
       height: 40px;
-    }
-
-    :host(.medium) .avatar {
       font-size: 1.25rem;
     }
 
-    :host(.large) {
+    :host([size="large"]) {
       width: 56px;
       height: 56px;
-    }
-
-    :host(.large) .avatar {
       font-size: 1.75rem;
     }
 
     /* Shape variants */
-    :host(.circular) {
+    :host([variant="circular"]), :host(:not([variant])) {
       border-radius: 50%;
     }
 
-    :host(.rounded) {
+    :host([variant="rounded"]) {
       border-radius: 8px;
     }
 
-    :host(.square) {
+    :host([variant="square"]) {
       border-radius: 0;
     }
 
     /* Color variants */
-    .avatar.default {
+    :host([color="default"]), :host(:not([color])) {
       background-color: #bdbdbd;
       color: #fff;
     }
 
-    .avatar.primary {
-      background-color: ${theme.palette.primary.main};
-      color: ${theme.palette.primary.contrastText};
+    :host([color="primary"]) {
+      background-color: #1976d2;
+      color: #fff;
     }
 
-    .avatar.secondary {
-      background-color: ${theme.palette.secondary.main};
-      color: ${theme.palette.secondary.contrastText};
+    :host([color="secondary"]) {
+      background-color: #9c27b0;
+      color: #fff;
     }
 
-    .avatar.error {
-      background-color: ${theme.palette.error.main};
-      color: ${theme.palette.error.contrastText};
+    :host([color="error"]) {
+      background-color: #d32f2f;
+      color: #fff;
     }
 
-    .avatar.warning {
-      background-color: ${theme.palette.warning.main};
-      color: ${theme.palette.warning.contrastText};
+    :host([color="warning"]) {
+      background-color: #ed6c02;
+      color: #fff;
     }
 
-    .avatar.info {
-      background-color: ${theme.palette.info.main};
-      color: ${theme.palette.info.contrastText};
+    :host([color="info"]) {
+      background-color: #0288d1;
+      color: #fff;
     }
 
-    .avatar.success {
-      background-color: ${theme.palette.success.main};
-      color: ${theme.palette.success.contrastText};
+    :host([color="success"]) {
+      background-color: #2e7d32;
+      color: #fff;
     }
 
     /* Image */
@@ -119,14 +99,13 @@ export class Avatar extends LitElement {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      text-align: center;
-      color: transparent;
+      border-radius: inherit;
     }
 
     /* Fallback content */
-    .avatar-fallback {
-      width: 75%;
-      height: 75%;
+    .avatar-content {
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -135,84 +114,109 @@ export class Avatar extends LitElement {
     .avatar-text {
       font-weight: 500;
       text-transform: uppercase;
+      font-size: inherit;
     }
 
-    /* Custom size handling */
-    :host([size]) {
-      width: var(--avatar-size);
-      height: var(--avatar-size);
+    .avatar-icon {
+      width: 60%;
+      height: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    /* Default person icon */
+    .default-icon {
+      width: 60%;
+      height: 60%;
     }
   `;
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateHostClasses();
     this.updateCustomSize();
   }
 
   updated(changedProperties: Map<string, any>) {
     super.updated(changedProperties);
-    if (changedProperties.has('variant') || changedProperties.has('size')) {
-      this.updateHostClasses();
+    
+    if (changedProperties.has('size')) {
       this.updateCustomSize();
     }
+    
     if (changedProperties.has('src')) {
       this.imageError = false;
-      this.imageLoaded = false;
     }
   }
 
-  private updateHostClasses() {
-    // Remove existing classes
-    this.classList.remove('small', 'medium', 'large', 'circular', 'rounded', 'square');
-    
-    // Add size class (only for predefined sizes)
-    if (this.size && ['small', 'medium', 'large'].includes(this.size)) {
-      this.classList.add(this.size);
-    }
-    
-    // Add variant class
-    if (this.variant) {
-      this.classList.add(this.variant);
-    }
+  firstUpdated(changedProperties: Map<string, any>) {
+    super.firstUpdated(changedProperties);
+    this.checkSlottedContent();
   }
 
   private updateCustomSize() {
     // Handle custom size (numeric or CSS value)
     if (this.size && !['small', 'medium', 'large'].includes(this.size)) {
-      const sizeValue = (this.size.includes('px') || this.size.includes('rem') || this.size.includes('em')) 
+      const sizeValue = this.size.includes('px') || this.size.includes('rem') || this.size.includes('em') || this.size.includes('%')
         ? this.size 
         : `${this.size}px`;
-      this.style.setProperty('--avatar-size', sizeValue);
-      this.setAttribute('size', '');
+      
+      this.style.width = sizeValue;
+      this.style.height = sizeValue;
+      
+      // Adjust font size for custom sizes
+      const numericSize = parseInt(this.size);
+      if (!isNaN(numericSize)) {
+        this.style.fontSize = `${Math.max(numericSize * 0.4, 12)}px`;
+      }
     } else {
-      this.style.removeProperty('--avatar-size');
-      this.removeAttribute('size');
+      this.style.removeProperty('width');
+      this.style.removeProperty('height');
+      this.style.removeProperty('font-size');
+    }
+  }
+
+  private checkSlottedContent() {
+    const slot = this.shadowRoot?.querySelector('slot');
+    if (slot) {
+      const assignedNodes = slot.assignedNodes();
+      this.hasSlottedContent = assignedNodes.length > 0;
     }
   }
 
   private handleImageLoad() {
-    this.imageLoaded = true;
     this.imageError = false;
   }
 
   private handleImageError() {
     this.imageError = true;
-    this.imageLoaded = false;
+  }
+
+  private handleSlotChange(e: Event) {
+    this.checkSlottedContent();
   }
 
   private getInitials(text: string): string {
     if (!text) return '';
     
-    const words = text.trim().split(/\s+/);
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    if (words.length === 0) return '';
+    
     if (words.length === 1) {
-      return words[0].charAt(0);
+      return words[0].charAt(0).toUpperCase();
     }
-    return words[0].charAt(0) + words[words.length - 1].charAt(0);
+    
+    return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
   }
 
   private renderContent() {
-    // If we have a valid image source and no error, show image
+    // Priority 1: Valid image source without error
     if (this.src && !this.imageError) {
       return html`
         <img
@@ -225,30 +229,29 @@ export class Avatar extends LitElement {
       `;
     }
 
-    // Check if we have slotted content (icons, custom content)
-    const slot = this.shadowRoot?.querySelector('slot');
-    const hasSlottedContent = slot?.assignedNodes().length > 0;
-
-    if (hasSlottedContent) {
+    // Priority 2: Slotted content (icons, custom elements)
+    if (this.hasSlottedContent) {
       return html`
-        <div class="avatar-fallback">
-          <slot></slot>
+        <div class="avatar-icon">
+          <slot @slotchange="${(e: Event) => this.handleSlotChange(e)}"></slot>
         </div>
       `;
     }
 
-    // Fallback to initials from alt text
+    // Priority 3: Initials from alt text
     const initials = this.getInitials(this.alt);
     if (initials) {
       return html`
-        <span class="avatar-text">${initials}</span>
+        <div class="avatar-content">
+          <span class="avatar-text">${initials}</span>
+        </div>
       `;
     }
 
-    // Final fallback - generic person icon
+    // Priority 4: Default person icon
     return html`
-      <div class="avatar-fallback">
-        <svg viewBox="0 0 24 24" fill="currentColor">
+      <div class="avatar-content">
+        <svg class="default-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
         </svg>
       </div>
@@ -257,9 +260,8 @@ export class Avatar extends LitElement {
 
   render() {
     return html`
-      <div class="avatar ${this.color}">
-        ${this.renderContent()}
-      </div>
+      ${this.renderContent()}
+      <slot @slotchange="${(e: Event) => this.handleSlotChange(e)}" style="display: none;"></slot>
     `;
   }
 }
