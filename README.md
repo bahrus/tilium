@@ -57,6 +57,7 @@ Then use them in your HTML:
 ### Data Display
 - **Avatar** - User profile picture or initials in circular, rounded, or square format
 - **Badge** - Small status indicator that appears on top of content
+- **List** - Flexible list component with ListItem, ListItemText, ListItemIcon, etc.
 - **Typography** - Text with Material Design typography styles
 - **Chip** - Compact elements for tags, filters, etc.
 - **Divider** - Horizontal or vertical divider
@@ -200,6 +201,46 @@ Properties:
 2. Slotted content (icons, custom elements)
 3. Initials from `alt` text
 4. Default person icon
+
+### List
+```html
+<my-list>
+  <my-list-item-button>
+    <my-list-item-icon>
+      <svg><!-- icon --></svg>
+    </my-list-item-icon>
+    <my-list-item-text primary="Primary text" secondary="Secondary text"></my-list-item-text>
+    <my-list-item-secondary-action>
+      <my-icon-button>×</my-icon-button>
+    </my-list-item-secondary-action>
+  </my-list-item-button>
+</my-list>
+```
+
+**List Properties:**
+- `dense`: boolean - Compact spacing
+- `disablePadding`: boolean - Remove default padding
+- `subheader`: string - List section header
+
+**ListItem Properties:**
+- `dense`: boolean - Compact spacing
+- `disabled`: boolean - Disable interaction
+- `divider`: boolean - Show bottom border
+- `selected`: boolean - Show selected state
+- `alignItems`: 'flex-start' | 'center' - Vertical alignment
+
+**ListItemButton Properties:**
+- Same as ListItem plus click handling and hover effects
+
+**ListItemText Properties:**
+- `primary`: string - Primary text content
+- `secondary`: string - Secondary text content
+- `inset`: boolean - Add left padding for alignment
+
+**Sub-components:**
+- **ListItemIcon** - Container for icons with proper spacing
+- **ListItemAvatar** - Container for avatars with proper spacing
+- **ListItemSecondaryAction** - Right-aligned action area
 
 ### Table
 ```html

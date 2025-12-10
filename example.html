@@ -325,7 +325,7 @@
           <mui-avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="John Doe"></mui-avatar>
           <mui-avatar src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Jane Smith"></mui-avatar>
           <mui-avatar src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Mike Johnson"></mui-avatar>
-          <mui-avatar src="invalid-url.jpg" alt="Fallback Example"></mui-avatar>
+          <mui-avatar src="https://example.com/nonexistent-image.jpg" alt="Fallback Example"></mui-avatar>
         </div>
       </div>
 
@@ -408,6 +408,193 @@
           <mui-avatar src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="User 3" style="margin-left: -20px; border: 2px solid white; z-index: 1;"></mui-avatar>
           <mui-avatar alt="+2" color="default" style="margin-left: -20px; border: 2px solid white; background-color: #e0e0e0; color: #666; z-index: 0;"></mui-avatar>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Lists</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic List</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list>
+            <mui-list-item>
+              <mui-list-item-text primary="Inbox"></mui-list-item-text>
+            </mui-list-item>
+            <mui-list-item>
+              <mui-list-item-text primary="Drafts"></mui-list-item-text>
+            </mui-list-item>
+            <mui-list-item>
+              <mui-list-item-text primary="Trash"></mui-list-item-text>
+            </mui-list-item>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">List with Icons</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list>
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 6l-2.83-2.83c-.39-.39-1.02-.39-1.41 0L9 10.17l-2.83-2.83c-.39-.39-1.02-.39-1.41 0L4.59 8.59c-.39.39-.39 1.02 0 1.41L10 15.41c.39.39 1.02.39 1.41 0L20 7.41c.39-.39.39-1.02 0-1.41z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Inbox" secondary="New messages"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Drafts" secondary="Recent drafts"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Trash" secondary="Deleted items"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">List with Avatars</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list>
+            <mui-list-item-button>
+              <mui-list-item-avatar>
+                <mui-avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="John Doe"></mui-avatar>
+              </mui-list-item-avatar>
+              <mui-list-item-text primary="John Doe" secondary="Software Engineer"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-avatar>
+                <mui-avatar src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Jane Smith"></mui-avatar>
+              </mui-list-item-avatar>
+              <mui-list-item-text primary="Jane Smith" secondary="Product Manager"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-avatar>
+                <mui-avatar alt="Mike Johnson" color="primary"></mui-avatar>
+              </mui-list-item-avatar>
+              <mui-list-item-text primary="Mike Johnson" secondary="UX Designer"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">List with Secondary Actions</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list>
+            <mui-list-item>
+              <mui-list-item-avatar>
+                <mui-avatar alt="Photos" color="primary">📷</mui-avatar>
+              </mui-list-item-avatar>
+              <mui-list-item-text primary="Photos" secondary="Jan 9, 2024"></mui-list-item-text>
+              <mui-list-item-secondary-action>
+                <mui-icon-button>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                  </svg>
+                </mui-icon-button>
+              </mui-list-item-secondary-action>
+            </mui-list-item>
+            
+            <mui-list-item>
+              <mui-list-item-avatar>
+                <mui-avatar alt="Work" color="secondary">💼</mui-avatar>
+              </mui-list-item-avatar>
+              <mui-list-item-text primary="Work" secondary="Jan 7, 2024"></mui-list-item-text>
+              <mui-list-item-secondary-action>
+                <mui-icon-button>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                  </svg>
+                </mui-icon-button>
+              </mui-list-item-secondary-action>
+            </mui-list-item>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Dense List</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list dense>
+            <mui-list-item-button dense>
+              <mui-list-item-text primary="Single-line item"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button dense>
+              <mui-list-item-text primary="Single-line item"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button dense>
+              <mui-list-item-text primary="Single-line item"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">List with Subheader</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list subheader="Settings">
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="General"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Privacy"></mui-list-item-text>
+            </mui-list-item-button>
+            
+            <mui-list-item-button>
+              <mui-list-item-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M18.36,16.83C16.93,15.09 13.46,14.5 12,14.5C10.54,14.5 7.07,15.09 5.64,16.83C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M12,6C10.06,6 8.5,7.56 8.5,9.5C8.5,11.44 10.06,13 12,13C13.94,13 15.5,11.44 15.5,9.5C15.5,7.56 13.94,6 12,6M12,11A1.5,1.5 0 0,1 10.5,9.5A1.5,1.5 0 0,1 12,8A1.5,1.5 0 0,1 13.5,9.5A1.5,1.5 0 0,1 12,11Z"/>
+                </svg>
+              </mui-list-item-icon>
+              <mui-list-item-text primary="Account"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Selectable List</h3>
+        <mui-paper style="max-width: 360px;">
+          <mui-list>
+            <mui-list-item-button id="list-item-1" selected>
+              <mui-list-item-text primary="Selected Item"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button id="list-item-2">
+              <mui-list-item-text primary="Unselected Item"></mui-list-item-text>
+            </mui-list-item-button>
+            <mui-list-item-button id="list-item-3">
+              <mui-list-item-text primary="Another Item"></mui-list-item-text>
+            </mui-list-item-button>
+          </mui-list>
+        </mui-paper>
       </div>
     </div>
   </div>
@@ -595,8 +782,8 @@
     import { 
       Alert, Autocomplete, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
-      Divider, IconButton, LinearProgress, Paper, Radio, Select,
-      Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      Divider, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
+      Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel,
       TextField, Typography
     } from './dist/index.js';
@@ -621,6 +808,13 @@
     customElements.define('mui-divider', Divider);
     customElements.define('mui-icon-button', IconButton);
     customElements.define('mui-linear-progress', LinearProgress);
+    customElements.define('mui-list', List);
+    customElements.define('mui-list-item', ListItem);
+    customElements.define('mui-list-item-button', ListItemButton);
+    customElements.define('mui-list-item-text', ListItemText);
+    customElements.define('mui-list-item-icon', ListItemIcon);
+    customElements.define('mui-list-item-avatar', ListItemAvatar);
+    customElements.define('mui-list-item-secondary-action', ListItemSecondaryAction);
     customElements.define('mui-paper', Paper);
     customElements.define('mui-radio', Radio);
     customElements.define('mui-select', Select);
@@ -704,6 +898,19 @@
     freeSoloAutocomplete.options = ['Option 1', 'Option 2', 'Option 3'];
     freeSoloAutocomplete.addEventListener('change', (e) => {
       console.log('Free solo value:', e.detail.value);
+    });
+
+    // List item selection handling
+    document.querySelectorAll('mui-list-item-button[id^="list-item-"]').forEach(item => {
+      item.addEventListener('click', (e) => {
+        // Remove selected from all items
+        document.querySelectorAll('mui-list-item-button[id^="list-item-"]').forEach(i => {
+          i.selected = false;
+        });
+        // Select clicked item
+        item.selected = true;
+        console.log('Selected list item:', item.id);
+      });
     });
   </script>
 </body>

@@ -14,6 +14,7 @@ export { Dialog, DialogTitle, DialogContent, DialogActions } from './Dialog.js';
 export { Divider } from './Divider.js';
 export { IconButton } from './IconButton.js';
 export { LinearProgress } from './LinearProgress.js';
+export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './List.js';
 export { Paper } from './Paper.js';
 export { Radio } from './Radio.js';
 export { Select } from './Select.js';
