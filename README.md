@@ -53,6 +53,7 @@ Then use them in your HTML:
 - **Switch** - Toggle switch
 - **NumberField** - Numeric input with increment/decrement controls
 - **TextField** - Text input with variants (outlined, filled, standard)
+- **ToggleButton** - Toggle button for on/off states with grouping support
 - **Select** - Dropdown select
 - **Slider** - Range slider
 
@@ -304,6 +305,49 @@ Properties:
 - Custom step increments (integers or decimals)
 - Mobile-optimized numeric keyboards
 - Validation and error states
+
+### ToggleButton & ToggleButtonGroup
+```html
+<!-- Individual toggle button -->
+<my-toggle-button value="bold" selected>
+  <svg><!-- bold icon --></svg>
+</my-toggle-button>
+
+<!-- Exclusive group (single selection) -->
+<my-toggle-button-group value="left" color="primary">
+  <my-toggle-button value="left">Left</my-toggle-button>
+  <my-toggle-button value="center">Center</my-toggle-button>
+  <my-toggle-button value="right">Right</my-toggle-button>
+</my-toggle-button-group>
+
+<!-- Multiple selection group -->
+<my-toggle-button-group exclusive="false" color="primary">
+  <my-toggle-button value="bold">Bold</my-toggle-button>
+  <my-toggle-button value="italic">Italic</my-toggle-button>
+</my-toggle-button-group>
+```
+
+**ToggleButton Properties:**
+- `selected`: boolean - Toggle state
+- `value`: string - Button value for identification
+- `disabled`: boolean - Disable the button
+- `color`: 'standard' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+- `size`: 'small' | 'medium' | 'large' - Button size
+- `fullWidth`: boolean - Fill container width
+
+**ToggleButtonGroup Properties:**
+- `value`: string - Selected value (exclusive mode)
+- `values`: string[] - Selected values (multiple mode)
+- `exclusive`: boolean - Single vs multiple selection (default: true)
+- `color`: 'standard' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+- `size`: 'small' | 'medium' | 'large' - Size for all buttons
+- `orientation`: 'horizontal' | 'vertical' - Layout direction
+- `disabled`: boolean - Disable all buttons
+- `fullWidth`: boolean - Make buttons fill container width
+
+**Events:**
+- ToggleButton: `toggle` event with `{ value, selected }`
+- ToggleButtonGroup: `change` event with `{ value }` (exclusive) or `{ values }` (multiple)
 
 ### Table
 ```html

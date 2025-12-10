@@ -937,6 +937,162 @@
   </div>
 
   <div class="section">
+    <h2>Toggle Buttons</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Toggle Buttons</h3>
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <mui-toggle-button value="bold">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/>
+            </svg>
+          </mui-toggle-button>
+          
+          <mui-toggle-button value="italic" selected>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/>
+            </svg>
+          </mui-toggle-button>
+          
+          <mui-toggle-button value="underline">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/>
+            </svg>
+          </mui-toggle-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Toggle Button Groups (Exclusive)</h3>
+        <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+          <mui-toggle-button-group id="text-alignment" value="left" color="primary">
+            <mui-toggle-button value="left">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/>
+              </svg>
+            </mui-toggle-button>
+            <mui-toggle-button value="center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/>
+              </svg>
+            </mui-toggle-button>
+            <mui-toggle-button value="right">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/>
+              </svg>
+            </mui-toggle-button>
+            <mui-toggle-button value="justify">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z"/>
+              </svg>
+            </mui-toggle-button>
+          </mui-toggle-button-group>
+
+          <mui-toggle-button-group value="medium" color="secondary" orientation="vertical">
+            <mui-toggle-button value="small">Small</mui-toggle-button>
+            <mui-toggle-button value="medium">Medium</mui-toggle-button>
+            <mui-toggle-button value="large">Large</mui-toggle-button>
+          </mui-toggle-button-group>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Multiple Selection (Non-Exclusive)</h3>
+        <mui-toggle-button-group id="formatting" exclusive="false" color="primary">
+          <mui-toggle-button value="bold">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/>
+            </svg>
+            Bold
+          </mui-toggle-button>
+          <mui-toggle-button value="italic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/>
+            </svg>
+            Italic
+          </mui-toggle-button>
+          <mui-toggle-button value="underline">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/>
+            </svg>
+            Underline
+          </mui-toggle-button>
+        </mui-toggle-button-group>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Sizes</h3>
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <mui-toggle-button-group size="small" color="info">
+            <mui-toggle-button value="1">1</mui-toggle-button>
+            <mui-toggle-button value="2" selected>2</mui-toggle-button>
+            <mui-toggle-button value="3">3</mui-toggle-button>
+          </mui-toggle-button-group>
+
+          <mui-toggle-button-group size="medium" color="warning">
+            <mui-toggle-button value="1">1</mui-toggle-button>
+            <mui-toggle-button value="2" selected>2</mui-toggle-button>
+            <mui-toggle-button value="3">3</mui-toggle-button>
+          </mui-toggle-button-group>
+
+          <mui-toggle-button-group size="large" color="success">
+            <mui-toggle-button value="1">1</mui-toggle-button>
+            <mui-toggle-button value="2" selected>2</mui-toggle-button>
+            <mui-toggle-button value="3">3</mui-toggle-button>
+          </mui-toggle-button-group>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Color Variants</h3>
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+          <mui-toggle-button-group color="standard">
+            <mui-toggle-button value="a" selected>A</mui-toggle-button>
+            <mui-toggle-button value="b">B</mui-toggle-button>
+          </mui-toggle-button-group>
+          
+          <mui-toggle-button-group color="primary">
+            <mui-toggle-button value="a" selected>A</mui-toggle-button>
+            <mui-toggle-button value="b">B</mui-toggle-button>
+          </mui-toggle-button-group>
+          
+          <mui-toggle-button-group color="secondary">
+            <mui-toggle-button value="a" selected>A</mui-toggle-button>
+            <mui-toggle-button value="b">B</mui-toggle-button>
+          </mui-toggle-button-group>
+          
+          <mui-toggle-button-group color="error">
+            <mui-toggle-button value="a" selected>A</mui-toggle-button>
+            <mui-toggle-button value="b">B</mui-toggle-button>
+          </mui-toggle-button-group>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Full Width</h3>
+        <mui-toggle-button-group fullWidth color="primary">
+          <mui-toggle-button value="option1">Option 1</mui-toggle-button>
+          <mui-toggle-button value="option2" selected>Option 2</mui-toggle-button>
+          <mui-toggle-button value="option3">Option 3</mui-toggle-button>
+        </mui-toggle-button-group>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Disabled State</h3>
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <mui-toggle-button disabled value="disabled">Disabled</mui-toggle-button>
+          
+          <mui-toggle-button-group disabled color="primary">
+            <mui-toggle-button value="a">A</mui-toggle-button>
+            <mui-toggle-button value="b" selected>B</mui-toggle-button>
+            <mui-toggle-button value="c">C</mui-toggle-button>
+          </mui-toggle-button-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Checkboxes & Switches</h2>
     <div class="demo-row">
       <mui-checkbox checked color="primary"></mui-checkbox>
@@ -1111,7 +1267,7 @@
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
-      TableCell, TableContainer, TablePagination, TableSortLabel,
+      TableCell, TableContainer, TablePagination, TableSortLabel, ToggleButton, ToggleButtonGroup,
       TextField, Typography
     } from './dist/index.js';
 
@@ -1159,6 +1315,8 @@
     customElements.define('mui-table-pagination', TablePagination);
     customElements.define('mui-table-sort-label', TableSortLabel);
     customElements.define('mui-text-field', TextField);
+    customElements.define('mui-toggle-button', ToggleButton);
+    customElements.define('mui-toggle-button-group', ToggleButtonGroup);
     customElements.define('mui-typography', Typography);
 
     // Add event listeners
@@ -1257,6 +1415,24 @@
       
       field.addEventListener('input', (e) => {
         console.log('Number field input:', e.detail.value);
+      });
+    });
+
+    // Toggle button event listeners
+    document.querySelectorAll('mui-toggle-button-group').forEach(group => {
+      group.addEventListener('change', (e) => {
+        if (group.exclusive) {
+          console.log('Toggle group (exclusive) changed:', e.detail.value);
+        } else {
+          console.log('Toggle group (multiple) changed:', e.detail.values);
+        }
+      });
+    });
+
+    // Individual toggle button listeners
+    document.querySelectorAll('mui-toggle-button:not([data-group])').forEach(button => {
+      button.addEventListener('toggle', (e) => {
+        console.log('Individual toggle button:', e.detail.value, e.detail.selected);
       });
     });
   </script>

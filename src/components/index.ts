@@ -23,6 +23,7 @@ export { Select } from './Select.js';
 export { Slider } from './Slider.js';
 export { Switch } from './Switch.js';
 export { Table, TableHead, TableBody, TableFooter, TableRow } from './Table.js';
+export { ToggleButton, ToggleButtonGroup } from './ToggleButton.js';
 export { TableCell } from './TableCell.js';
 export { TableContainer } from './TableContainer.js';
 export { TablePagination } from './TablePagination.js';
