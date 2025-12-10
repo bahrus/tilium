@@ -172,6 +172,34 @@
   </div>
 
   <div class="section">
+    <h2>Autocomplete</h2>
+    <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+      <mui-autocomplete 
+        id="single-autocomplete"
+        label="Choose a country" 
+        placeholder="Type to search..."
+        variant="outlined"
+      ></mui-autocomplete>
+      
+      <mui-autocomplete 
+        id="multiple-autocomplete"
+        label="Multiple selection" 
+        placeholder="Select multiple options..."
+        variant="outlined"
+        multiple
+      ></mui-autocomplete>
+      
+      <mui-autocomplete 
+        id="freesolo-autocomplete"
+        label="Free solo (allow custom values)" 
+        placeholder="Type anything..."
+        variant="outlined"
+        freeSolo
+      ></mui-autocomplete>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Table</h2>
     <mui-table-container>
       <mui-table stickyHeader>
@@ -236,7 +264,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, Button, Card, CardContent, CardActions, Checkbox, Chip,
+      Alert, Autocomplete, Button, Card, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, IconButton, LinearProgress, Paper, Radio, Select,
       Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -246,6 +274,7 @@
 
     // Register all components with custom element names
     customElements.define('mui-alert', Alert);
+    customElements.define('mui-autocomplete', Autocomplete);
     customElements.define('mui-button', Button);
     customElements.define('mui-card', Card);
     customElements.define('mui-card-content', CardContent);
@@ -304,6 +333,45 @@
         pagination.rowsPerPage = e.detail.rowsPerPage;
         pagination.page = 0; // Reset to first page
       });
+    });
+
+    // Setup Autocomplete data and event listeners
+    const countries = [
+      'Afghanistan', 'Albania', 'Algeria', 'Argentina', 'Australia', 'Austria',
+      'Bangladesh', 'Belgium', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'China',
+      'Colombia', 'Croatia', 'Czech Republic', 'Denmark', 'Egypt', 'Finland',
+      'France', 'Germany', 'Greece', 'Hungary', 'India', 'Indonesia', 'Ireland',
+      'Italy', 'Japan', 'Kenya', 'Malaysia', 'Mexico', 'Netherlands', 'Norway',
+      'Pakistan', 'Philippines', 'Poland', 'Portugal', 'Romania', 'Russia',
+      'South Africa', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Thailand',
+      'Turkey', 'Ukraine', 'United Kingdom', 'United States', 'Vietnam'
+    ];
+
+    const technologies = [
+      'JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Go', 'Rust',
+      'PHP', 'Ruby', 'Swift', 'Kotlin', 'React', 'Vue.js', 'Angular', 'Svelte',
+      'Node.js', 'Express', 'Django', 'Flask', 'Spring', 'Laravel', 'Rails'
+    ];
+
+    // Setup single autocomplete
+    const singleAutocomplete = document.getElementById('single-autocomplete');
+    singleAutocomplete.options = countries;
+    singleAutocomplete.addEventListener('change', (e) => {
+      console.log('Single selection:', e.detail.value);
+    });
+
+    // Setup multiple autocomplete
+    const multipleAutocomplete = document.getElementById('multiple-autocomplete');
+    multipleAutocomplete.options = technologies;
+    multipleAutocomplete.addEventListener('change', (e) => {
+      console.log('Multiple selection:', e.detail.value);
+    });
+
+    // Setup free solo autocomplete
+    const freeSoloAutocomplete = document.getElementById('freesolo-autocomplete');
+    freeSoloAutocomplete.options = ['Option 1', 'Option 2', 'Option 3'];
+    freeSoloAutocomplete.addEventListener('change', (e) => {
+      console.log('Free solo value:', e.detail.value);
     });
   </script>
 </body>

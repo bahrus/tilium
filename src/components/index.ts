@@ -1,5 +1,6 @@
 // Export all component classes
 export { Alert } from './Alert.js';
+export { Autocomplete } from './Autocomplete.js';
 export { Button } from './Button.js';
 export { Card, CardContent, CardActions } from './Card.js';
 export { Checkbox } from './Checkbox.js';

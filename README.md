@@ -44,6 +44,7 @@ Then use them in your HTML:
 ## Available Components
 
 ### Form Controls
+- **Autocomplete** - Searchable dropdown with single/multiple selection
 - **Button** - Material button with variants (text, contained, outlined)
 - **Checkbox** - Checkbox with indeterminate state support
 - **Radio** - Radio button
@@ -113,6 +114,32 @@ Properties:
 - `helperText`: string
 - `disabled`: boolean
 - `required`: boolean
+
+### Autocomplete
+```html
+<my-autocomplete 
+  label="Choose option"
+  placeholder="Type to search..."
+  variant="outlined"
+  multiple
+></my-autocomplete>
+```
+
+Properties:
+- `options`: any[] - Array of options to choose from
+- `label`: string - Input label
+- `placeholder`: string - Input placeholder text
+- `multiple`: boolean - Allow multiple selections
+- `disabled`: boolean - Disable the component
+- `loading`: boolean - Show loading indicator
+- `freeSolo`: boolean - Allow custom values not in options
+- `clearOnEscape`: boolean - Clear input on Escape key
+- `disableClearable`: boolean - Hide clear button
+- `size`: 'small' | 'medium' - Component size
+- `variant`: 'outlined' | 'filled' | 'standard' - Input variant
+- `getOptionLabel`: (option: any) => string - Custom option label function
+- `isOptionEqualToValue`: (option: any, value: any) => boolean - Custom equality check
+- `filterOptions`: (options: any[], state: any) => any[] - Custom filtering function
 
 ### Table
 ```html
@@ -203,6 +230,15 @@ tablePagination.addEventListener('page-change', (e) => {
 const sortLabel = document.querySelector('my-table-sort-label');
 sortLabel.addEventListener('sort', (e) => {
   console.log('Sort direction:', e.detail.direction);
+});
+
+const autocomplete = document.querySelector('my-autocomplete');
+autocomplete.options = ['Option 1', 'Option 2', 'Option 3'];
+autocomplete.addEventListener('change', (e) => {
+  console.log('Selected:', e.detail.value);
+});
+autocomplete.addEventListener('input-change', (e) => {
+  console.log('Input changed:', e.detail.value);
 });
 ```
 
