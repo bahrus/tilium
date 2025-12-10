@@ -28,4 +28,5 @@ export { TableContainer } from './components/TableContainer.js';
 export { TablePagination } from './components/TablePagination.js';
 export { TableSortLabel } from './components/TableSortLabel.js';
 export { TextField } from './components/TextField.js';
+export { TransferList } from './components/TransferList.js';
 export { Typography } from './components/Typography.js';

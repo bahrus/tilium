@@ -1,6 +1,5 @@
 // Export all component classes
 export { Alert } from './Alert.js';
-export { Alert } from './Alert.js';
 export { Autocomplete } from './Autocomplete.js';
 export { Avatar } from './Avatar.js';
 export { Badge } from './Badge.js';
@@ -29,4 +28,5 @@ export { TableContainer } from './TableContainer.js';
 export { TablePagination } from './TablePagination.js';
 export { TableSortLabel } from './TableSortLabel.js';
 export { TextField } from './TextField.js';
+export { TransferList } from './TransferList.js';
 export { Typography } from './Typography.js';

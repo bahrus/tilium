@@ -54,6 +54,7 @@ Then use them in your HTML:
 - **NumberField** - Numeric input with increment/decrement controls
 - **TextField** - Text input with variants (outlined, filled, standard)
 - **ToggleButton** - Toggle button for on/off states with grouping support
+- **TransferList** - Move items between two lists with selection controls
 - **Select** - Dropdown select
 - **Slider** - Range slider
 
@@ -348,6 +349,43 @@ Properties:
 **Events:**
 - ToggleButton: `toggle` event with `{ value, selected }`
 - ToggleButtonGroup: `change` event with `{ value }` (exclusive) or `{ values }` (multiple)
+
+### TransferList
+```html
+<my-transfer-list 
+  leftTitle="Available"
+  rightTitle="Selected"
+></my-transfer-list>
+```
+
+Properties:
+- `left`: TransferListItem[] - Items in the left list
+- `right`: TransferListItem[] - Items in the right list  
+- `leftTitle`: string - Title for left list (default: "Available")
+- `rightTitle`: string - Title for right list (default: "Selected")
+- `disabled`: boolean - Disable all interactions
+- `dense`: boolean - Compact spacing
+
+**TransferListItem Interface:**
+```typescript
+interface TransferListItem {
+  id: string;        // Unique identifier
+  label: string;     // Display text
+  disabled?: boolean; // Individual item disabled state
+}
+```
+
+**Features:**
+- Move selected items between lists
+- Move all items at once
+- Individual item selection with checkboxes
+- Header checkbox for select/deselect all
+- Disabled items support
+- Item count display
+- Keyboard accessible
+
+**Events:**
+- `change` event with `{ left: TransferListItem[], right: TransferListItem[] }`
 
 ### Table
 ```html
