@@ -23,6 +23,7 @@ export { Paper } from './components/Paper.js';
 export { Radio } from './components/Radio.js';
 export { Select } from './components/Select.js';
 export { Slider } from './components/Slider.js';
+export { Stepper, Step, StepLabel, StepContent } from './components/Stepper.js';
 export { Switch } from './components/Switch.js';
 export { Table, TableHead, TableBody, TableFooter, TableRow } from './components/Table.js';
 export { Tabs, Tab, TabPanel } from './components/Tabs.js';

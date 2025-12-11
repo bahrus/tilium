@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stepper Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Stepper Component Test</h1>
+  
+  <div class="section">
+    <h2>Basic Horizontal Stepper</h2>
+    <mui-stepper id="test-stepper" activeStep="0">
+      <mui-step>Select campaign settings</mui-step>
+      <mui-step>Create an ad group</mui-step>
+      <mui-step>Create an ad</mui-step>
+    </mui-stepper>
+    
+    <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+      <div id="step-content-0" style="display: block;">
+        <h3>Step 1: Select campaign settings</h3>
+        <p>For each ad campaign that you create, you can control how much you're willing to spend on clicks and conversions.</p>
+        <button onclick="nextStep()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Next</button>
+      </div>
+      
+      <div id="step-content-1" style="display: none;">
+        <h3>Step 2: Create an ad group</h3>
+        <p>An ad group contains one or more ads which target a shared set of keywords.</p>
+        <button onclick="previousStep()" style="border: 1px solid #1976d2; color: #1976d2; background: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 8px;">Back</button>
+        <button onclick="nextStep()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Next</button>
+      </div>
+      
+      <div id="step-content-2" style="display: none;">
+        <h3>Step 3: Create an ad</h3>
+        <p>Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions.</p>
+        <button onclick="previousStep()" style="border: 1px solid #1976d2; color: #1976d2; background: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 8px;">Back</button>
+        <button onclick="finish()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Finish</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Vertical Stepper</h2>
+    <mui-stepper id="vertical-stepper" activeStep="0" orientation="vertical">
+      <mui-step>
+        Setup project
+        <mui-step-content step="0" activeStep="0">
+          <p>Create a new project and configure the basic settings.</p>
+          <button onclick="nextVerticalStep()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Continue</button>
+        </mui-step-content>
+      </mui-step>
+      
+      <mui-step>
+        Configure environment
+        <mui-step-content step="1" activeStep="0">
+          <p>Set up your development environment and install dependencies.</p>
+          <button onclick="previousVerticalStep()" style="border: 1px solid #1976d2; color: #1976d2; background: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 8px;">Back</button>
+          <button onclick="nextVerticalStep()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Continue</button>
+        </mui-step-content>
+      </mui-step>
+      
+      <mui-step>
+        Deploy application
+        <mui-step-content step="2" activeStep="0">
+          <p>Deploy your application to the production environment.</p>
+          <button onclick="previousVerticalStep()" style="border: 1px solid #1976d2; color: #1976d2; background: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 8px;">Back</button>
+          <button onclick="finishVertical()" style="background: #1976d2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Deploy</button>
+        </mui-step-content>
+      </mui-step>
+    </mui-stepper>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { Stepper, Step, StepLabel, StepContent } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-stepper', Stepper);
+    customElements.define('mui-step', Step);
+    customElements.define('mui-step-label', StepLabel);
+    customElements.define('mui-step-content', StepContent);
+
+    let currentStep = 0;
+    let verticalStep = 0;
+
+    // Horizontal stepper functions
+    window.nextStep = () => {
+      if (currentStep < 2) {
+        currentStep++;
+        updateStepper();
+      }
+    };
+
+    window.previousStep = () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateStepper();
+      }
+    };
+
+    window.finish = () => {
+      alert('Process completed successfully!');
+      const stepper = document.getElementById('test-stepper');
+      const steps = stepper.querySelectorAll('mui-step');
+      steps.forEach(step => step.completed = true);
+    };
+
+    function updateStepper() {
+      const stepper = document.getElementById('test-stepper');
+      stepper.activeStep = currentStep;
+      
+      // Update content visibility
+      for (let i = 0; i < 3; i++) {
+        const content = document.getElementById(`step-content-${i}`);
+        content.style.display = i === currentStep ? 'block' : 'none';
+      }
+    }
+
+    // Vertical stepper functions
+    window.nextVerticalStep = () => {
+      if (verticalStep < 2) {
+        verticalStep++;
+        updateVerticalStepper();
+      }
+    };
+
+    window.previousVerticalStep = () => {
+      if (verticalStep > 0) {
+        verticalStep--;
+        updateVerticalStepper();
+      }
+    };
+
+    window.finishVertical = () => {
+      alert('Deployment completed successfully!');
+      const stepper = document.getElementById('vertical-stepper');
+      const steps = stepper.querySelectorAll('mui-step');
+      steps.forEach(step => step.completed = true);
+    };
+
+    function updateVerticalStepper() {
+      const stepper = document.getElementById('vertical-stepper');
+      stepper.activeStep = verticalStep;
+      
+      // Update step content
+      const stepContents = stepper.querySelectorAll('mui-step-content');
+      stepContents.forEach(content => {
+        content.activeStep = verticalStep;
+      });
+    }
+
+    // Setup event listeners
+    document.getElementById('test-stepper').addEventListener('step-change', (e) => {
+      console.log('Horizontal stepper changed:', e.detail);
+      currentStep = e.detail.activeStep;
+      updateStepper();
+    });
+
+    document.getElementById('vertical-stepper').addEventListener('step-change', (e) => {
+      console.log('Vertical stepper changed:', e.detail);
+      verticalStep = e.detail.activeStep;
+      updateVerticalStepper();
+    });
+
+    console.log('Stepper component test loaded successfully!');
+  </script>
+</body>
+</html>

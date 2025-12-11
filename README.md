@@ -47,6 +47,7 @@ Then use them in your HTML:
 - **AppBar** - Top app bar with title, navigation, and action buttons
 - **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
+- **Stepper** - Step-by-step navigation for multi-step processes with horizontal/vertical layouts
 - **Tabs** - Tab navigation with horizontal/vertical orientation and multiple variants
 
 ### Form Controls
@@ -444,6 +445,96 @@ interface TransferListItem {
 - `active`: boolean - Whether this column is actively sorted
 - `direction`: 'asc' | 'desc' - Sort direction
 - `hideSortIcon`: boolean - Hide the sort icon
+
+### Stepper
+```html
+<!-- Basic Horizontal Stepper -->
+<my-stepper activeStep="0">
+  <my-step>Select campaign settings</my-step>
+  <my-step>Create an ad group</my-step>
+  <my-step>Create an ad</my-step>
+</my-stepper>
+
+<!-- Stepper with Optional Step -->
+<my-stepper activeStep="0">
+  <my-step>Create account</my-step>
+  <my-step optional>Add profile picture</my-step>
+  <my-step>Verify email</my-step>
+</my-stepper>
+
+<!-- Stepper with Error State -->
+<my-stepper activeStep="1">
+  <my-step>Select service</my-step>
+  <my-step error>Payment information</my-step>
+  <my-step>Confirmation</my-step>
+</my-stepper>
+
+<!-- Alternative Label Layout -->
+<my-stepper activeStep="0" alternativeLabel>
+  <my-step>Order placed</my-step>
+  <my-step>Processing</my-step>
+  <my-step>Shipped</my-step>
+  <my-step>Delivered</my-step>
+</my-stepper>
+
+<!-- Vertical Stepper with Content -->
+<my-stepper activeStep="0" orientation="vertical">
+  <my-step>
+    Setup project
+    <my-step-content step="0" activeStep="0">
+      <p>Create a new project and configure the basic settings.</p>
+      <button onclick="nextStep()">Continue</button>
+    </my-step-content>
+  </my-step>
+  
+  <my-step>
+    Configure environment
+    <my-step-content step="1" activeStep="0">
+      <p>Set up your development environment.</p>
+      <button onclick="previousStep()">Back</button>
+      <button onclick="nextStep()">Continue</button>
+    </my-step-content>
+  </my-step>
+</my-stepper>
+
+<!-- Non-Linear Stepper -->
+<my-stepper activeStep="0" nonLinear>
+  <my-step>Personal details</my-step>
+  <my-step>Address information</my-step>
+  <my-step>Review & submit</my-step>
+</my-stepper>
+```
+
+**Stepper Properties:**
+- `activeStep`: number - Currently active step index (0-based)
+- `orientation`: 'horizontal' | 'vertical' - Stepper layout orientation
+- `alternativeLabel`: boolean - Center labels below step icons (horizontal only)
+- `nonLinear`: boolean - Allow jumping to any step
+
+**Step Properties:**
+- `index`: number - Step index (managed automatically)
+- `active`: boolean - Whether step is currently active (managed automatically)
+- `completed`: boolean - Whether step is completed
+- `disabled`: boolean - Disable step interaction
+- `optional`: boolean - Mark step as optional
+- `error`: boolean - Show error state
+- `orientation`: 'horizontal' | 'vertical' - Inherited from parent Stepper
+- `alternativeLabel`: boolean - Inherited from parent Stepper
+- `nonLinear`: boolean - Inherited from parent Stepper
+
+**StepLabel Properties:**
+- `optional`: boolean - Show optional text
+- `error`: boolean - Show error state
+- `optionalText`: string - Custom optional text (default: "Optional")
+
+**StepContent Properties:**
+- `step`: number - Step index this content belongs to
+- `activeStep`: number - Currently active step (update to show/hide content)
+- `transitionDuration`: boolean - Enable transition animations
+
+**Events:**
+- Stepper: `step-change` event with `{ activeStep, previousStep }` when step changes
+- Step: `step-click` event with `{ index }` when step is clicked
 
 ### Tabs
 ```html

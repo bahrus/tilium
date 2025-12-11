@@ -2291,13 +2291,228 @@
     </div>
   </div>
 
+  <div class="section">
+    <h2>Stepper</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Horizontal Stepper</h3>
+        <mui-stepper id="basic-stepper" activeStep="0">
+          <mui-step>Select campaign settings</mui-step>
+          <mui-step>Create an ad group</mui-step>
+          <mui-step>Create an ad</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+          <div id="step-content-0" style="display: block;">
+            <mui-typography variant="h6">Step 1: Select campaign settings</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              For each ad campaign that you create, you can control how much you're willing to spend on clicks and conversions.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button variant="contained" color="primary" onclick="nextStep('basic-stepper', 0)">Next</mui-button>
+            </div>
+          </div>
+          
+          <div id="step-content-1" style="display: none;">
+            <mui-typography variant="h6">Step 2: Create an ad group</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              An ad group contains one or more ads which target a shared set of keywords.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button onclick="previousStep('basic-stepper', 1)">Back</mui-button>
+              <mui-button variant="contained" color="primary" onclick="nextStep('basic-stepper', 1)" style="margin-left: 8px;">Next</mui-button>
+            </div>
+          </div>
+          
+          <div id="step-content-2" style="display: none;">
+            <mui-typography variant="h6">Step 3: Create an ad</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button onclick="previousStep('basic-stepper', 2)">Back</mui-button>
+              <mui-button variant="contained" color="primary" onclick="finishStepper('basic-stepper')" style="margin-left: 8px;">Finish</mui-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stepper with Optional Step</h3>
+        <mui-stepper id="optional-stepper" activeStep="0">
+          <mui-step>Create account</mui-step>
+          <mui-step optional>Add profile picture</mui-step>
+          <mui-step>Verify email</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+          <div id="optional-step-content-0" style="display: block;">
+            <mui-typography variant="h6">Create your account</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              Enter your basic information to get started.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button variant="contained" color="primary" onclick="nextStep('optional-stepper', 0)">Next</mui-button>
+            </div>
+          </div>
+          
+          <div id="optional-step-content-1" style="display: none;">
+            <mui-typography variant="h6">Add profile picture (Optional)</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              Upload a profile picture to personalize your account. You can skip this step and add it later.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button onclick="previousStep('optional-stepper', 1)">Back</mui-button>
+              <mui-button onclick="nextStep('optional-stepper', 1)" style="margin-left: 8px;">Skip</mui-button>
+              <mui-button variant="contained" color="primary" onclick="nextStep('optional-stepper', 1)" style="margin-left: 8px;">Upload & Next</mui-button>
+            </div>
+          </div>
+          
+          <div id="optional-step-content-2" style="display: none;">
+            <mui-typography variant="h6">Verify your email</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              We've sent a verification email to your address. Please check your inbox and click the verification link.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button onclick="previousStep('optional-stepper', 2)">Back</mui-button>
+              <mui-button variant="contained" color="primary" onclick="finishStepper('optional-stepper')" style="margin-left: 8px;">Complete</mui-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stepper with Error State</h3>
+        <mui-stepper id="error-stepper" activeStep="1">
+          <mui-step>Select service</mui-step>
+          <mui-step error>Payment information</mui-step>
+          <mui-step>Confirmation</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+          <div id="error-step-content-1" style="display: block;">
+            <mui-typography variant="h6" style="color: #d32f2f;">Payment Error</mui-typography>
+            <mui-typography variant="body2" style="margin: 16px 0;">
+              There was an error processing your payment information. Please check your details and try again.
+            </mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button onclick="previousStep('error-stepper', 1)">Back</mui-button>
+              <mui-button variant="contained" color="primary" onclick="retryPayment('error-stepper')" style="margin-left: 8px;">Retry Payment</mui-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Alternative Label Stepper</h3>
+        <mui-stepper id="alt-label-stepper" activeStep="0" alternativeLabel>
+          <mui-step>Order placed</mui-step>
+          <mui-step>Processing</mui-step>
+          <mui-step>Shipped</mui-step>
+          <mui-step>Delivered</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+          <mui-typography variant="body1">Alternative label layout centers the labels below each step icon.</mui-typography>
+          <div style="margin-top: 16px;">
+            <mui-button variant="contained" color="primary" onclick="simulateProgress('alt-label-stepper')">Simulate Progress</mui-button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Vertical Stepper</h3>
+        <div style="display: flex; gap: 24px;">
+          <mui-stepper id="vertical-stepper" activeStep="0" orientation="vertical" style="flex: 1;">
+            <mui-step>
+              Setup project
+              <mui-step-content step="0" activeStep="0">
+                <mui-typography variant="body2">
+                  Create a new project and configure the basic settings.
+                </mui-typography>
+                <div style="margin-top: 16px;">
+                  <mui-button variant="contained" color="primary" onclick="nextStep('vertical-stepper', 0)">Continue</mui-button>
+                </div>
+              </mui-step-content>
+            </mui-step>
+            
+            <mui-step>
+              Configure environment
+              <mui-step-content step="1" activeStep="0">
+                <mui-typography variant="body2">
+                  Set up your development environment and install dependencies.
+                </mui-typography>
+                <div style="margin-top: 16px;">
+                  <mui-button onclick="previousStep('vertical-stepper', 1)">Back</mui-button>
+                  <mui-button variant="contained" color="primary" onclick="nextStep('vertical-stepper', 1)" style="margin-left: 8px;">Continue</mui-button>
+                </div>
+              </mui-step-content>
+            </mui-step>
+            
+            <mui-step>
+              Deploy application
+              <mui-step-content step="2" activeStep="0">
+                <mui-typography variant="body2">
+                  Deploy your application to the production environment.
+                </mui-typography>
+                <div style="margin-top: 16px;">
+                  <mui-button onclick="previousStep('vertical-stepper', 2)">Back</mui-button>
+                  <mui-button variant="contained" color="primary" onclick="finishStepper('vertical-stepper')" style="margin-left: 8px;">Deploy</mui-button>
+                </div>
+              </mui-step-content>
+            </mui-step>
+          </mui-stepper>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Non-Linear Stepper</h3>
+        <mui-stepper id="nonlinear-stepper" activeStep="0" nonLinear>
+          <mui-step>Personal details</mui-step>
+          <mui-step>Address information</mui-step>
+          <mui-step>Review & submit</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #f5f5f5; border-radius: 4px;">
+          <mui-typography variant="body1">
+            Non-linear steppers allow users to enter a multi-step flow at any point. Click any step to jump to it.
+          </mui-typography>
+          <div style="margin-top: 16px;">
+            <mui-button variant="outlined" onclick="jumpToStep('nonlinear-stepper', 0)">Personal</mui-button>
+            <mui-button variant="outlined" onclick="jumpToStep('nonlinear-stepper', 1)" style="margin-left: 8px;">Address</mui-button>
+            <mui-button variant="outlined" onclick="jumpToStep('nonlinear-stepper', 2)" style="margin-left: 8px;">Review</mui-button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Completed Stepper</h3>
+        <mui-stepper id="completed-stepper" activeStep="3">
+          <mui-step completed>Account created</mui-step>
+          <mui-step completed>Profile setup</mui-step>
+          <mui-step completed>Email verified</mui-step>
+        </mui-stepper>
+        
+        <div style="margin-top: 24px; padding: 16px; background-color: #e8f5e8; border-radius: 4px;">
+          <mui-typography variant="h6" style="color: #2e7d32;">Setup Complete!</mui-typography>
+          <mui-typography variant="body2" style="margin: 16px 0;">
+            Your account has been successfully set up. You can now start using the application.
+          </mui-typography>
+          <div style="margin-top: 16px;">
+            <mui-button variant="contained" color="primary">Get Started</mui-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
     // Import component classes
     import { 
       Alert, AppBar, Autocomplete, Avatar, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      NumberField, Paper, Radio, Select, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -2342,6 +2557,10 @@
     customElements.define('mui-radio', Radio);
     customElements.define('mui-select', Select);
     customElements.define('mui-slider', Slider);
+    customElements.define('mui-stepper', Stepper);
+    customElements.define('mui-step', Step);
+    customElements.define('mui-step-label', StepLabel);
+    customElements.define('mui-step-content', StepContent);
     customElements.define('mui-switch', Switch);
     customElements.define('mui-table', Table);
     customElements.define('mui-table-head', TableHead);
@@ -2608,6 +2827,116 @@
         if (panel) panel.tabsValue = newValue;
       });
     });
+
+    // Stepper helper functions
+    window.nextStep = (stepperId, currentStep) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper && currentStep < 2) {
+        stepper.activeStep = currentStep + 1;
+        updateStepContent(stepperId, currentStep + 1);
+      }
+    };
+
+    window.previousStep = (stepperId, currentStep) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper && currentStep > 0) {
+        stepper.activeStep = currentStep - 1;
+        updateStepContent(stepperId, currentStep - 1);
+      }
+    };
+
+    window.jumpToStep = (stepperId, step) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper) {
+        stepper.activeStep = step;
+        updateStepContent(stepperId, step);
+      }
+    };
+
+    window.finishStepper = (stepperId) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper) {
+        // Mark all steps as completed
+        const steps = stepper.querySelectorAll('mui-step');
+        steps.forEach(step => step.completed = true);
+        console.log(`${stepperId} completed!`);
+        alert('Process completed successfully!');
+      }
+    };
+
+    window.retryPayment = (stepperId) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper) {
+        // Remove error state and proceed
+        const errorStep = stepper.querySelector('mui-step[error]');
+        if (errorStep) {
+          errorStep.error = false;
+          errorStep.completed = true;
+        }
+        stepper.activeStep = 2;
+        console.log('Payment retry successful');
+        alert('Payment processed successfully!');
+      }
+    };
+
+    window.simulateProgress = (stepperId) => {
+      const stepper = document.getElementById(stepperId);
+      if (stepper) {
+        let currentStep = 0;
+        const interval = setInterval(() => {
+          if (currentStep < 4) {
+            stepper.activeStep = currentStep;
+            currentStep++;
+          } else {
+            clearInterval(interval);
+            // Mark all as completed
+            const steps = stepper.querySelectorAll('mui-step');
+            steps.forEach(step => step.completed = true);
+          }
+        }, 1500);
+      }
+    };
+
+    function updateStepContent(stepperId, activeStep) {
+      // Hide all step content
+      const prefix = stepperId.replace('-stepper', '-step-content-');
+      for (let i = 0; i < 3; i++) {
+        const content = document.getElementById(`${prefix}${i}`);
+        if (content) {
+          content.style.display = 'none';
+        }
+      }
+      
+      // Show active step content
+      const activeContent = document.getElementById(`${prefix}${activeStep}`);
+      if (activeContent) {
+        activeContent.style.display = 'block';
+      }
+    }
+
+    // Setup stepper event listeners
+    document.querySelectorAll('mui-stepper').forEach(stepper => {
+      stepper.addEventListener('step-change', (e) => {
+        console.log(`Stepper ${stepper.id} changed:`, e.detail);
+        
+        // Update vertical stepper content
+        if (stepper.id === 'vertical-stepper') {
+          const stepContents = stepper.querySelectorAll('mui-step-content');
+          stepContents.forEach(content => {
+            content.activeStep = e.detail.activeStep;
+          });
+        }
+      });
+    });
+
+    // Initialize vertical stepper content
+    const verticalStepper = document.getElementById('vertical-stepper');
+    if (verticalStepper) {
+      const stepContents = verticalStepper.querySelectorAll('mui-step-content');
+      stepContents.forEach(content => {
+        content.activeStep = 0;
+      });
+    }
   </script>
 </body>
 </html>
