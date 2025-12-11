@@ -15,6 +15,7 @@ export { Dialog, DialogTitle, DialogContent, DialogActions } from './components/
 export { Divider } from './components/Divider.js';
 export { Drawer, DrawerHeader } from './components/Drawer.js';
 export { Fab } from './components/Fab.js';
+export { Icon } from './components/Icon.js';
 export { IconButton } from './components/IconButton.js';
 export { LinearProgress } from './components/LinearProgress.js';
 export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './components/List.js';

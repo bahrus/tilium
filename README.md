@@ -83,6 +83,7 @@ Then use them in your HTML:
 - **Paper** - Elevated surface container
 
 ### Utils
+- **Icon** - Material Design icon component with 100+ built-in icons
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
