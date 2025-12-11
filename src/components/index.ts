@@ -1,5 +1,4 @@
 // Export all component classes
-export { Accordion, AccordionSummary, AccordionDetails } from './Accordion.js';
 export { Alert } from './Alert.js';
 export { Autocomplete } from './Autocomplete.js';
 export { Avatar } from './Avatar.js';
@@ -13,6 +12,7 @@ export { CircularProgress } from './CircularProgress.js';
 export { Dialog, DialogTitle, DialogContent, DialogActions } from './Dialog.js';
 export { Divider } from './Divider.js';
 export { Fab } from './Fab.js';
+export { Icon } from './Icon.js';
 export { IconButton } from './IconButton.js';
 export { LinearProgress } from './LinearProgress.js';
 export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './List.js';
