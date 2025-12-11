@@ -2030,6 +2030,267 @@
     </mui-table-container>
   </div>
 
+  <div class="section">
+    <h2>Tabs</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Tabs</h3>
+        <mui-tabs id="basic-tabs" value="0">
+          <mui-tab value="0" label="Tab One"></mui-tab>
+          <mui-tab value="1" label="Tab Two"></mui-tab>
+          <mui-tab value="2" label="Tab Three"></mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="panel-0" value="0" tabsValue="0">
+            <mui-typography variant="body1">Content for Tab One</mui-typography>
+            <mui-typography variant="body2" style="margin-top: 16px;">
+              This is the first tab panel. You can put any content here including other components.
+            </mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="panel-1" value="1" tabsValue="0">
+            <mui-typography variant="body1">Content for Tab Two</mui-typography>
+            <mui-card style="margin-top: 16px; max-width: 400px;">
+              <mui-card-content>
+                <mui-typography variant="h6">Card in Tab</mui-typography>
+                <mui-typography variant="body2">You can embed other components in tab panels.</mui-typography>
+              </mui-card-content>
+            </mui-card>
+          </mui-tab-panel>
+          <mui-tab-panel id="panel-2" value="2" tabsValue="0">
+            <mui-typography variant="body1">Content for Tab Three</mui-typography>
+            <div style="margin-top: 16px;">
+              <mui-button variant="contained" color="primary">Action Button</mui-button>
+            </div>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Tabs with Icons</h3>
+        <mui-tabs id="icon-tabs" value="home">
+          <mui-tab value="home" label="Home">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+          </mui-tab>
+          <mui-tab value="favorites" label="Favorites">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </mui-tab>
+          <mui-tab value="nearby" label="Nearby">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="home-panel" value="home" tabsValue="home">
+            <mui-typography variant="h6">Home</mui-typography>
+            <mui-typography variant="body2">Welcome to the home section.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="favorites-panel" value="favorites" tabsValue="home">
+            <mui-typography variant="h6">Favorites</mui-typography>
+            <mui-typography variant="body2">Your favorite items appear here.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="nearby-panel" value="nearby" tabsValue="home">
+            <mui-typography variant="h6">Nearby</mui-typography>
+            <mui-typography variant="body2">Find locations near you.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Icon-Only Tabs</h3>
+        <mui-tabs id="icon-only-tabs" value="phone">
+          <mui-tab value="phone">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </mui-tab>
+          <mui-tab value="favorites">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </mui-tab>
+          <mui-tab value="person">
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="phone-panel" value="phone" tabsValue="phone">
+            <mui-typography variant="body1">Phone contacts and call history.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="fav-panel" value="favorites" tabsValue="phone">
+            <mui-typography variant="body1">Your favorite contacts.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="person-panel" value="person" tabsValue="phone">
+            <mui-typography variant="body1">Personal profile and settings.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Full Width Tabs</h3>
+        <mui-tabs id="fullwidth-tabs" value="item1" variant="fullWidth">
+          <mui-tab value="item1" label="Item One"></mui-tab>
+          <mui-tab value="item2" label="Item Two"></mui-tab>
+          <mui-tab value="item3" label="Item Three"></mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="item1-panel" value="item1" tabsValue="item1">
+            <mui-typography variant="body1">Full width tabs distribute evenly across the container.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="item2-panel" value="item2" tabsValue="item1">
+            <mui-typography variant="body1">Each tab takes equal width regardless of label length.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="item3-panel" value="item3" tabsValue="item1">
+            <mui-typography variant="body1">This is useful for mobile layouts or fixed-width containers.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Centered Tabs</h3>
+        <mui-tabs id="centered-tabs" value="center1" centered>
+          <mui-tab value="center1" label="First"></mui-tab>
+          <mui-tab value="center2" label="Second"></mui-tab>
+          <mui-tab value="center3" label="Third"></mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="center1-panel" value="center1" tabsValue="center1">
+            <mui-typography variant="body1">Centered tabs are aligned to the center of the container.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="center2-panel" value="center2" tabsValue="center1">
+            <mui-typography variant="body1">This is useful when you have fewer tabs and want them centered.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="center3-panel" value="center3" tabsValue="center1">
+            <mui-typography variant="body1">The tabs maintain their natural width but are centered as a group.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Scrollable Tabs</h3>
+        <div style="max-width: 400px; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden;">
+          <mui-tabs id="scrollable-tabs" value="scroll1" variant="scrollable">
+            <mui-tab value="scroll1" label="First Tab"></mui-tab>
+            <mui-tab value="scroll2" label="Second Tab"></mui-tab>
+            <mui-tab value="scroll3" label="Third Tab"></mui-tab>
+            <mui-tab value="scroll4" label="Fourth Tab"></mui-tab>
+            <mui-tab value="scroll5" label="Fifth Tab"></mui-tab>
+            <mui-tab value="scroll6" label="Sixth Tab"></mui-tab>
+            <mui-tab value="scroll7" label="Seventh Tab"></mui-tab>
+          </mui-tabs>
+          
+          <div style="padding: 16px;">
+            <mui-tab-panel id="scroll1-panel" value="scroll1" tabsValue="scroll1">
+              <mui-typography variant="body2">Scrollable tabs allow for many tabs in a limited space.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll2-panel" value="scroll2" tabsValue="scroll1">
+              <mui-typography variant="body2">Use scroll buttons to navigate through all tabs.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll3-panel" value="scroll3" tabsValue="scroll1">
+              <mui-typography variant="body2">This is useful for responsive designs.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll4-panel" value="scroll4" tabsValue="scroll1">
+              <mui-typography variant="body2">Fourth tab content here.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll5-panel" value="scroll5" tabsValue="scroll1">
+              <mui-typography variant="body2">Fifth tab content here.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll6-panel" value="scroll6" tabsValue="scroll1">
+              <mui-typography variant="body2">Sixth tab content here.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="scroll7-panel" value="scroll7" tabsValue="scroll1">
+              <mui-typography variant="body2">Seventh tab content here.</mui-typography>
+            </mui-tab-panel>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Vertical Tabs</h3>
+        <div style="display: flex; height: 300px; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden;">
+          <mui-tabs id="vertical-tabs" value="vert1" orientation="vertical" style="min-width: 200px;">
+            <mui-tab value="vert1" label="Personal Info"></mui-tab>
+            <mui-tab value="vert2" label="Account Settings"></mui-tab>
+            <mui-tab value="vert3" label="Privacy"></mui-tab>
+            <mui-tab value="vert4" label="Notifications"></mui-tab>
+          </mui-tabs>
+          
+          <div style="flex: 1; padding: 16px;">
+            <mui-tab-panel id="vert1-panel" value="vert1" tabsValue="vert1">
+              <mui-typography variant="h6">Personal Information</mui-typography>
+              <mui-typography variant="body2">Manage your personal details and profile information.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="vert2-panel" value="vert2" tabsValue="vert1">
+              <mui-typography variant="h6">Account Settings</mui-typography>
+              <mui-typography variant="body2">Configure your account preferences and security settings.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="vert3-panel" value="vert3" tabsValue="vert1">
+              <mui-typography variant="h6">Privacy</mui-typography>
+              <mui-typography variant="body2">Control your privacy settings and data sharing preferences.</mui-typography>
+            </mui-tab-panel>
+            <mui-tab-panel id="vert4-panel" value="vert4" tabsValue="vert1">
+              <mui-typography variant="h6">Notifications</mui-typography>
+              <mui-typography variant="body2">Manage your notification preferences and alerts.</mui-typography>
+            </mui-tab-panel>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Secondary Color Indicator</h3>
+        <mui-tabs id="secondary-tabs" value="sec1" indicatorColor="secondary">
+          <mui-tab value="sec1" label="Purple Indicator"></mui-tab>
+          <mui-tab value="sec2" label="Tab Two"></mui-tab>
+          <mui-tab value="sec3" label="Tab Three"></mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="sec1-panel" value="sec1" tabsValue="sec1">
+            <mui-typography variant="body1">This tab uses a secondary color indicator (purple).</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="sec2-panel" value="sec2" tabsValue="sec1">
+            <mui-typography variant="body1">Second tab content.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="sec3-panel" value="sec3" tabsValue="sec1">
+            <mui-typography variant="body1">Third tab content.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Disabled Tab</h3>
+        <mui-tabs id="disabled-tabs" value="enabled1">
+          <mui-tab value="enabled1" label="Enabled"></mui-tab>
+          <mui-tab value="disabled" label="Disabled" disabled></mui-tab>
+          <mui-tab value="enabled2" label="Also Enabled"></mui-tab>
+        </mui-tabs>
+        
+        <div style="margin-top: 16px;">
+          <mui-tab-panel id="enabled1-panel" value="enabled1" tabsValue="enabled1">
+            <mui-typography variant="body1">This tab is enabled and clickable.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="disabled-panel" value="disabled" tabsValue="enabled1">
+            <mui-typography variant="body1">This content won't be shown because the tab is disabled.</mui-typography>
+          </mui-tab-panel>
+          <mui-tab-panel id="enabled2-panel" value="enabled2" tabsValue="enabled1">
+            <mui-typography variant="body1">This tab is also enabled.</mui-typography>
+          </mui-tab-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
     // Import component classes
     import { 
@@ -2037,7 +2298,7 @@
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
-      TableCell, TableContainer, TablePagination, TableSortLabel, ToggleButton, ToggleButtonGroup,
+      TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
 
@@ -2091,6 +2352,9 @@
     customElements.define('mui-table-container', TableContainer);
     customElements.define('mui-table-pagination', TablePagination);
     customElements.define('mui-table-sort-label', TableSortLabel);
+    customElements.define('mui-tabs', Tabs);
+    customElements.define('mui-tab', Tab);
+    customElements.define('mui-tab-panel', TabPanel);
     customElements.define('mui-text-field', TextField);
     customElements.define('mui-toggle-button', ToggleButton);
     customElements.define('mui-toggle-button-group', ToggleButtonGroup);
@@ -2300,6 +2564,50 @@
       { id: 'item4', label: 'Selected Item 1' },
       { id: 'item5', label: 'Selected Item 2' }
     ]);
+
+    // Setup Tabs event handlers
+    const setupTabsHandler = (tabsId, panelPrefix) => {
+      const tabs = document.getElementById(tabsId);
+      if (tabs) {
+        tabs.addEventListener('change', (e) => {
+          const newValue = e.detail.value;
+          console.log(`${tabsId} changed to:`, newValue);
+          
+          // Update all related tab panels
+          document.querySelectorAll(`mui-tab-panel[id^="${panelPrefix}"]`).forEach(panel => {
+            panel.tabsValue = newValue;
+          });
+        });
+      }
+    };
+
+    // Setup all tabs
+    setupTabsHandler('basic-tabs', 'panel-');
+    setupTabsHandler('icon-tabs', 'home-panel');
+    setupTabsHandler('icon-only-tabs', 'phone-panel');
+    setupTabsHandler('fullwidth-tabs', 'item');
+    setupTabsHandler('centered-tabs', 'center');
+    setupTabsHandler('scrollable-tabs', 'scroll');
+    setupTabsHandler('vertical-tabs', 'vert');
+    setupTabsHandler('secondary-tabs', 'sec');
+    setupTabsHandler('disabled-tabs', 'enabled');
+
+    // Alternative approach for tabs with different panel naming
+    document.getElementById('icon-tabs')?.addEventListener('change', (e) => {
+      const newValue = e.detail.value;
+      ['home-panel', 'favorites-panel', 'nearby-panel'].forEach(id => {
+        const panel = document.getElementById(id);
+        if (panel) panel.tabsValue = newValue;
+      });
+    });
+
+    document.getElementById('icon-only-tabs')?.addEventListener('change', (e) => {
+      const newValue = e.detail.value;
+      ['phone-panel', 'fav-panel', 'person-panel'].forEach(id => {
+        const panel = document.getElementById(id);
+        if (panel) panel.tabsValue = newValue;
+      });
+    });
   </script>
 </body>
 </html>

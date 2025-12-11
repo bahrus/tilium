@@ -47,6 +47,7 @@ Then use them in your HTML:
 - **AppBar** - Top app bar with title, navigation, and action buttons
 - **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
+- **Tabs** - Tab navigation with horizontal/vertical orientation and multiple variants
 
 ### Form Controls
 - **Autocomplete** - Searchable dropdown with single/multiple selection
@@ -443,6 +444,81 @@ interface TransferListItem {
 - `active`: boolean - Whether this column is actively sorted
 - `direction`: 'asc' | 'desc' - Sort direction
 - `hideSortIcon`: boolean - Hide the sort icon
+
+### Tabs
+```html
+<!-- Basic Tabs -->
+<my-tabs value="0">
+  <my-tab value="0" label="Tab One"></my-tab>
+  <my-tab value="1" label="Tab Two"></my-tab>
+  <my-tab value="2" label="Tab Three"></my-tab>
+</my-tabs>
+
+<!-- Tab Panels -->
+<my-tab-panel value="0" tabsValue="0">
+  Content for Tab One
+</my-tab-panel>
+<my-tab-panel value="1" tabsValue="0">
+  Content for Tab Two
+</my-tab-panel>
+
+<!-- Tabs with Icons -->
+<my-tabs value="home">
+  <my-tab value="home" label="Home">
+    <svg slot="icon" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </my-tab>
+  <my-tab value="settings" label="Settings">
+    <svg slot="icon" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94..."/>
+    </svg>
+  </my-tab>
+</my-tabs>
+
+<!-- Vertical Tabs -->
+<my-tabs value="1" orientation="vertical">
+  <my-tab value="1" label="Personal Info"></my-tab>
+  <my-tab value="2" label="Account Settings"></my-tab>
+</my-tabs>
+
+<!-- Full Width Tabs -->
+<my-tabs value="item1" variant="fullWidth">
+  <my-tab value="item1" label="Item One"></my-tab>
+  <my-tab value="item2" label="Item Two"></my-tab>
+</my-tabs>
+
+<!-- Scrollable Tabs -->
+<my-tabs value="scroll1" variant="scrollable">
+  <my-tab value="scroll1" label="First Tab"></my-tab>
+  <my-tab value="scroll2" label="Second Tab"></my-tab>
+  <!-- More tabs... -->
+</my-tabs>
+```
+
+**Tabs Properties:**
+- `value`: string - Currently selected tab value
+- `orientation`: 'horizontal' | 'vertical' - Tab orientation
+- `variant`: 'standard' | 'scrollable' | 'fullWidth' - Tab layout variant
+- `centered`: boolean - Center tabs in container
+- `indicatorColor`: 'primary' | 'secondary' - Indicator color
+- `textColor`: 'primary' | 'secondary' | 'inherit' - Text color
+
+**Tab Properties:**
+- `value`: string - Unique identifier for the tab
+- `label`: string - Tab label text
+- `selected`: boolean - Whether tab is selected (managed automatically)
+- `disabled`: boolean - Disable the tab
+- `orientation`: 'horizontal' | 'vertical' - Inherited from parent Tabs
+- `textColor`: 'primary' | 'secondary' | 'inherit' - Inherited from parent Tabs
+
+**TabPanel Properties:**
+- `value`: string - Panel identifier (should match corresponding tab value)
+- `tabsValue`: string - Currently selected tab value (update this to show/hide panel)
+- `keepMounted`: boolean - Keep panel in DOM when not visible
+
+**Events:**
+- Tabs: `change` event with `{ value, oldValue }` when tab selection changes
 
 ### Dialog
 ```html

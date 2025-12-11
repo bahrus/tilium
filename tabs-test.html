@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tabs Component Test</h1>
+  
+  <div class="section">
+    <h2>Basic Tabs</h2>
+    <mui-tabs id="test-tabs" value="0">
+      <mui-tab value="0" label="Tab One"></mui-tab>
+      <mui-tab value="1" label="Tab Two"></mui-tab>
+      <mui-tab value="2" label="Tab Three"></mui-tab>
+    </mui-tabs>
+    
+    <div style="margin-top: 16px;">
+      <mui-tab-panel id="panel-0" value="0" tabsValue="0">
+        <p><strong>Content for Tab One</strong></p>
+        <p>This is the first tab panel. The Tabs component is working correctly!</p>
+      </mui-tab-panel>
+      <mui-tab-panel id="panel-1" value="1" tabsValue="0">
+        <p><strong>Content for Tab Two</strong></p>
+        <p>This is the second tab panel. Click between tabs to see the content change.</p>
+      </mui-tab-panel>
+      <mui-tab-panel id="panel-2" value="2" tabsValue="0">
+        <p><strong>Content for Tab Three</strong></p>
+        <p>This is the third tab panel. The indicator should move smoothly between tabs.</p>
+      </mui-tab-panel>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tabs with Icons</h2>
+    <mui-tabs id="icon-tabs" value="home">
+      <mui-tab value="home" label="Home">
+        <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </mui-tab>
+      <mui-tab value="settings" label="Settings">
+        <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+        </svg>
+      </mui-tab>
+    </mui-tabs>
+    
+    <div style="margin-top: 16px;">
+      <mui-tab-panel id="home-panel" value="home" tabsValue="home">
+        <p><strong>Home Panel</strong></p>
+        <p>Welcome to the home section with icon support!</p>
+      </mui-tab-panel>
+      <mui-tab-panel id="settings-panel" value="settings" tabsValue="home">
+        <p><strong>Settings Panel</strong></p>
+        <p>Configure your preferences here.</p>
+      </mui-tab-panel>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Full Width Tabs</h2>
+    <mui-tabs id="fullwidth-tabs" value="item1" variant="fullWidth">
+      <mui-tab value="item1" label="Item One"></mui-tab>
+      <mui-tab value="item2" label="Item Two"></mui-tab>
+      <mui-tab value="item3" label="Item Three"></mui-tab>
+    </mui-tabs>
+    
+    <div style="margin-top: 16px;">
+      <mui-tab-panel id="item1-panel" value="item1" tabsValue="item1">
+        <p>Full width tabs distribute evenly across the container.</p>
+      </mui-tab-panel>
+      <mui-tab-panel id="item2-panel" value="item2" tabsValue="item1">
+        <p>Each tab takes equal width regardless of label length.</p>
+      </mui-tab-panel>
+      <mui-tab-panel id="item3-panel" value="item3" tabsValue="item1">
+        <p>This is useful for mobile layouts or fixed-width containers.</p>
+      </mui-tab-panel>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { Tabs, Tab, TabPanel } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-tabs', Tabs);
+    customElements.define('mui-tab', Tab);
+    customElements.define('mui-tab-panel', TabPanel);
+
+    // Setup event handlers
+    const setupTabsHandler = (tabsId, panelIds) => {
+      const tabs = document.getElementById(tabsId);
+      if (tabs) {
+        tabs.addEventListener('change', (e) => {
+          const newValue = e.detail.value;
+          console.log(`${tabsId} changed to:`, newValue);
+          
+          // Update all related tab panels
+          panelIds.forEach(id => {
+            const panel = document.getElementById(id);
+            if (panel) {
+              panel.tabsValue = newValue;
+            }
+          });
+        });
+      }
+    };
+
+    // Setup all tabs
+    setupTabsHandler('test-tabs', ['panel-0', 'panel-1', 'panel-2']);
+    setupTabsHandler('icon-tabs', ['home-panel', 'settings-panel']);
+    setupTabsHandler('fullwidth-tabs', ['item1-panel', 'item2-panel', 'item3-panel']);
+
+    console.log('Tabs component test loaded successfully!');
+  </script>
+</body>
+</html>
