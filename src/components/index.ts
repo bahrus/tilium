@@ -22,6 +22,7 @@ export { Drawer, DrawerHeader } from './Drawer.js';
 export { Fab } from './Fab.js';
 export { Grid } from './Grid.js';
 export { IconButton } from './IconButton.js';
+export { ImageList, ImageListItem, ImageListItemBar } from './ImageList.js';
 export { LinearProgress } from './LinearProgress.js';
 export { Link } from './Link.js';
 export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './List.js';

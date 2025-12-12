@@ -81,6 +81,7 @@ Then use them in your HTML:
 - **Accordion** - Expandable panels for organizing content with summary and details sections
 - **Avatar** - User profile picture or initials in circular, rounded, or square format
 - **Badge** - Small status indicator that appears on top of content
+- **ImageList** - Grid layout for displaying collections of images with multiple variants and title bars
 - **List** - Flexible list component with ListItem, ListItemText, ListItemIcon, etc.
 - **Typography** - Text with Material Design typography styles
 - **Chip** - Compact elements for tags, filters, etc.
@@ -227,6 +228,156 @@ Properties:
 2. Slotted content (icons, custom elements)
 3. Initials from `alt` text
 4. Default person icon
+
+### ImageList
+```html
+<!-- Standard Image List -->
+<my-image-list variant="standard" cols="4" gap="4" rowHeight="164">
+  <my-image-list-item src="image1.jpg" alt="Image 1">
+    <my-image-list-item-bar title="Image Title" subtitle="by @photographer"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="image2.jpg" alt="Image 2">
+    <my-image-list-item-bar title="Another Image" subtitle="by @artist"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+
+<!-- Quilted Image List -->
+<my-image-list variant="quilted" cols="4" gap="4">
+  <my-image-list-item src="featured.jpg" alt="Featured" featured>
+    <my-image-list-item-bar title="Featured Image" subtitle="Large display"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="regular1.jpg" alt="Regular 1">
+    <my-image-list-item-bar title="Regular Image"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+
+<!-- Masonry Image List -->
+<my-image-list variant="masonry" cols="3" gap="4">
+  <my-image-list-item src="tall-image.jpg" alt="Tall Image">
+    <my-image-list-item-bar title="Tall Image" subtitle="Natural height"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="square-image.jpg" alt="Square Image">
+    <my-image-list-item-bar title="Square Image"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+
+<!-- Woven Image List -->
+<my-image-list variant="woven" cols="3" gap="4">
+  <my-image-list-item src="image1.jpg" alt="Image 1">
+    <my-image-list-item-bar title="Woven Layout"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="image2.jpg" alt="Image 2">
+    <my-image-list-item-bar title="Alternating Sizes"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+
+<!-- Image List with Title Bars -->
+<my-image-list variant="standard" cols="2" gap="4" rowHeight="200">
+  <my-image-list-item src="image1.jpg" alt="Image 1">
+    <my-image-list-item-bar title="Bottom Bar" subtitle="Default position" position="bottom">
+      <my-icon-button slot="action" style="color: rgba(255, 255, 255, 0.54);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </my-icon-button>
+    </my-image-list-item-bar>
+  </my-image-list-item>
+  
+  <my-image-list-item src="image2.jpg" alt="Image 2">
+    <my-image-list-item-bar title="Top Bar" subtitle="Top position" position="top">
+      <my-icon-button slot="action" style="color: rgba(255, 255, 255, 0.54);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z"/>
+        </svg>
+      </my-icon-button>
+    </my-image-list-item-bar>
+  </my-image-list-item>
+  
+  <my-image-list-item src="image3.jpg" alt="Image 3">
+    <my-image-list-item-bar title="Below Image" position="below"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+
+<!-- Custom Grid Sizing -->
+<my-image-list variant="quilted" cols="4" gap="4">
+  <my-image-list-item src="large.jpg" alt="Large Item" cols="2" rows="2">
+    <my-image-list-item-bar title="Large Item" subtitle="2x2 grid"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="wide.jpg" alt="Wide Item" cols="2">
+    <my-image-list-item-bar title="Wide Item" subtitle="2x1 grid"></my-image-list-item-bar>
+  </my-image-list-item>
+  <my-image-list-item src="regular.jpg" alt="Regular Item">
+    <my-image-list-item-bar title="Regular" subtitle="1x1 grid"></my-image-list-item-bar>
+  </my-image-list-item>
+</my-image-list>
+```
+
+**ImageList Properties:**
+- `variant`: 'masonry' | 'quilted' | 'standard' | 'woven' - Layout variant (default: 'standard')
+- `cols`: number - Number of columns (default: 2)
+- `gap`: number - Gap between items using 8px unit system (default: 4)
+- `rowHeight`: number - Row height in pixels for standard/woven variants (default: 164)
+
+**ImageListItem Properties:**
+- `src`: string - Image source URL
+- `alt`: string - Alternative text for the image
+- `featured`: boolean - Make item larger in quilted variant (2x2 grid)
+- `cols`: number - Number of columns to span (default: 1)
+- `rows`: number - Number of rows to span (default: 1)
+
+**ImageListItemBar Properties:**
+- `title`: string - Primary title text
+- `subtitle`: string - Secondary subtitle text
+- `position`: 'bottom' | 'top' | 'below' - Bar position relative to image (default: 'bottom')
+
+**Layout Variants:**
+- **standard**: All items same size in a regular grid
+- **quilted**: Featured items are larger (2x2), others are regular size
+- **masonry**: Items maintain aspect ratio, creating a Pinterest-like layout
+- **woven**: Alternating pattern with different aspect ratios (1:1 and 2:1)
+
+**Title Bar Positions:**
+- **bottom**: Overlay at bottom of image with gradient background (default)
+- **top**: Overlay at top of image with gradient background
+- **below**: Below the image without overlay background
+
+**Features:**
+- **Multiple Layout Variants**: Four different layout patterns for various use cases
+- **Responsive Grid System**: Configurable columns and spacing
+- **Image Loading States**: Built-in loading and error state handling
+- **Title Bars**: Overlay or below-image title and subtitle support
+- **Action Buttons**: Support for action buttons in title bars
+- **Custom Grid Sizing**: Individual items can span multiple columns/rows
+- **Hover Effects**: Subtle image scaling on hover
+- **Accessibility**: Proper alt text and semantic HTML structure
+- **Performance**: Efficient CSS Grid and Flexbox layouts
+- **Error Handling**: Graceful fallback for failed image loads
+
+**Usage Patterns:**
+- **Standard**: Photo galleries, product grids, uniform content
+- **Quilted**: Featured content with supporting images
+- **Masonry**: Pinterest-style layouts, varying image sizes
+- **Woven**: Alternating layouts for visual interest
+- Use appropriate `cols` count based on screen size and content
+- Include descriptive `alt` text for all images
+- Use title bars for image metadata and actions
+- Consider loading performance with large image sets
+- Use `gap` to control visual density
+- Match `rowHeight` to your image aspect ratios
+
+**Responsive Considerations:**
+- Reduce `cols` on smaller screens for better mobile experience
+- Consider touch-friendly sizing for mobile interactions
+- Use CSS media queries to adjust `cols` and `gap` responsively
+- Ensure title bars remain readable on small screens
+- Test image loading performance on slower connections
+
+**Accessibility:**
+- Provide meaningful `alt` text for all images
+- Use semantic HTML structure with proper image elements
+- Ensure sufficient color contrast in title bars
+- Support keyboard navigation for interactive elements
+- Consider screen reader compatibility for image descriptions
 
 ### List
 ```html
