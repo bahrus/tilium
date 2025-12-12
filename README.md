@@ -46,6 +46,7 @@ Then use them in your HTML:
 ### Layout
 - **Box** - Flexible layout component with spacing, alignment, and styling utilities
 - **Container** - Responsive container component with centered content and max-width constraints
+- **Grid** - Flexible 12-column grid system with responsive breakpoints and spacing
 
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
@@ -1318,6 +1319,238 @@ The Container component automatically adjusts its max-width based on screen size
 - No JavaScript required for responsive behavior
 - Minimal DOM overhead with single wrapper element
 - Optimized for different screen sizes and orientations
+
+### Grid
+```html
+<!-- Basic Grid -->
+<my-grid container spacing="2">
+  <my-grid item xs="12" sm="6" md="4">
+    <div>Item 1</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" md="4">
+    <div>Item 2</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" md="4">
+    <div>Item 3</div>
+  </my-grid>
+</my-grid>
+
+<!-- Responsive Grid -->
+<my-grid container spacing="3">
+  <my-grid item xs="12" md="8">
+    <div>Main content (full width on mobile, 2/3 on desktop)</div>
+  </my-grid>
+  <my-grid item xs="12" md="4">
+    <div>Sidebar (full width on mobile, 1/3 on desktop)</div>
+  </my-grid>
+</my-grid>
+
+<!-- Auto-sizing Grid -->
+<my-grid container spacing="2">
+  <my-grid item xs="auto">
+    <div>Auto width</div>
+  </my-grid>
+  <my-grid item xs="6">
+    <div>Fixed 6 columns</div>
+  </my-grid>
+  <my-grid item xs="true">
+    <div>Flexible width (fills remaining space)</div>
+  </my-grid>
+</my-grid>
+
+<!-- Grid with Alignment -->
+<my-grid container spacing="2" justifyContent="center" alignItems="center">
+  <my-grid item xs="4">
+    <div>Centered item</div>
+  </my-grid>
+  <my-grid item xs="4">
+    <div>Another centered item</div>
+  </my-grid>
+</my-grid>
+
+<!-- Grid with Offsets -->
+<my-grid container spacing="2">
+  <my-grid item xs="4">
+    <div>Item 1</div>
+  </my-grid>
+  <my-grid item xs="4" xsOffset="4">
+    <div>Item 2 with offset</div>
+  </my-grid>
+</my-grid>
+
+<!-- Nested Grids -->
+<my-grid container spacing="3">
+  <my-grid item xs="12" md="8">
+    <div>
+      <h3>Main Content</h3>
+      <my-grid container spacing="2">
+        <my-grid item xs="6">
+          <div>Nested item 1</div>
+        </my-grid>
+        <my-grid item xs="6">
+          <div>Nested item 2</div>
+        </my-grid>
+      </my-grid>
+    </div>
+  </my-grid>
+  <my-grid item xs="12" md="4">
+    <div>Sidebar</div>
+  </my-grid>
+</my-grid>
+
+<!-- Different Spacing -->
+<my-grid container spacing="0">No spacing</my-grid>
+<my-grid container spacing="1">Small spacing (8px)</my-grid>
+<my-grid container spacing="2">Medium spacing (16px)</my-grid>
+<my-grid container spacing="3">Large spacing (24px)</my-grid>
+
+<!-- Directional Spacing -->
+<my-grid container rowSpacing="2" columnSpacing="3">
+  <my-grid item xs="6">Item with custom row/column spacing</my-grid>
+  <my-grid item xs="6">Another item</my-grid>
+</my-grid>
+```
+
+**Grid Properties:**
+
+**Container Properties:**
+- `container`: boolean - Makes the element a grid container (default: false)
+- `spacing`: string | number - Spacing between items using 8px unit system (default: '0')
+- `rowSpacing`: string | number - Vertical spacing between items (overrides spacing)
+- `columnSpacing`: string | number - Horizontal spacing between items (overrides spacing)
+- `direction`: 'row' | 'row-reverse' | 'column' | 'column-reverse' - Flex direction (default: 'row')
+- `wrap`: 'nowrap' | 'wrap' | 'wrap-reverse' - Flex wrap behavior (default: 'wrap')
+- `justifyContent`: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' - Main axis alignment (default: 'flex-start')
+- `alignItems`: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline' - Cross axis alignment (default: 'stretch')
+- `alignContent`: 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' - Multi-line alignment (default: 'stretch')
+
+**Item Properties:**
+- `item`: boolean - Makes the element a grid item (default: false)
+- `xs`: string | number - Grid columns for extra small screens (0-12, 'auto', or 'true')
+- `sm`: string | number - Grid columns for small screens (600px+)
+- `md`: string | number - Grid columns for medium screens (900px+)
+- `lg`: string | number - Grid columns for large screens (1200px+)
+- `xl`: string | number - Grid columns for extra large screens (1536px+)
+- `xsOffset`: string | number - Column offset for extra small screens (1-11)
+- `smOffset`: string | number - Column offset for small screens (1-11)
+- `mdOffset`: string | number - Column offset for medium screens (1-11)
+- `lgOffset`: string | number - Column offset for large screens (1-11)
+- `xlOffset`: string | number - Column offset for extra large screens (1-11)
+
+**Breakpoint System:**
+- **xs**: 0px+ (extra small devices, phones)
+- **sm**: 600px+ (small devices, tablets)
+- **md**: 900px+ (medium devices, small laptops)
+- **lg**: 1200px+ (large devices, desktops)
+- **xl**: 1536px+ (extra large devices, large desktops)
+
+**Grid Sizing Options:**
+- **Numbers 1-12**: Fixed column width (1 = 8.33%, 6 = 50%, 12 = 100%)
+- **'auto'**: Size based on content width
+- **'true'**: Flexible sizing that fills available space
+- **No value**: Item takes its natural size
+
+**Spacing System:**
+The Grid component uses Material Design's 8px spacing unit system:
+- `spacing="1"` = 8px gap between items
+- `spacing="2"` = 16px gap between items
+- `spacing="3"` = 24px gap between items
+- Custom values: `spacing="12px"` or `spacing="1rem"`
+
+**Features:**
+- **12-Column System**: Standard grid system with flexible column sizing
+- **Responsive Breakpoints**: Five breakpoints matching Material Design standards
+- **Flexible Sizing**: Auto, fixed, and flexible column options
+- **Spacing Control**: Uniform or directional spacing with 8px unit system
+- **Alignment Options**: Complete flexbox alignment control
+- **Offset Support**: Push items with margin offsets at any breakpoint
+- **Nested Grids**: Full support for nested grid containers
+- **Performance**: Efficient CSS with minimal DOM overhead
+
+**Usage Patterns:**
+- Use `container` for the parent wrapper element
+- Use `item` for each child element that should be positioned in the grid
+- Start with mobile-first design using `xs` prop
+- Add larger breakpoint props (`sm`, `md`, `lg`, `xl`) as needed
+- Use `spacing` for consistent gaps between items
+- Use offsets to create asymmetrical layouts or center content
+- Nest grids for complex layouts within grid items
+
+**Common Layout Patterns:**
+```html
+<!-- Two-column layout -->
+<my-grid container spacing="3">
+  <my-grid item xs="12" md="8">Main content</my-grid>
+  <my-grid item xs="12" md="4">Sidebar</my-grid>
+</my-grid>
+
+<!-- Three-column layout -->
+<my-grid container spacing="2">
+  <my-grid item xs="12" sm="4">Column 1</my-grid>
+  <my-grid item xs="12" sm="4">Column 2</my-grid>
+  <my-grid item xs="12" sm="4">Column 3</my-grid>
+</my-grid>
+
+<!-- Card grid -->
+<my-grid container spacing="3">
+  <my-grid item xs="12" sm="6" md="4" lg="3">
+    <div>Card 1</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" md="4" lg="3">
+    <div>Card 2</div>
+  </my-grid>
+  <!-- More cards... -->
+</my-grid>
+
+<!-- Centered content -->
+<my-grid container justifyContent="center">
+  <my-grid item xs="12" sm="8" md="6">
+    <div>Centered content with max width</div>
+  </my-grid>
+</my-grid>
+
+<!-- Dashboard layout -->
+<my-grid container spacing="3">
+  <!-- Header -->
+  <my-grid item xs="12">
+    <div>Header</div>
+  </my-grid>
+  
+  <!-- Stats cards -->
+  <my-grid item xs="12" sm="6" lg="3">
+    <div>Stat 1</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" lg="3">
+    <div>Stat 2</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" lg="3">
+    <div>Stat 3</div>
+  </my-grid>
+  <my-grid item xs="12" sm="6" lg="3">
+    <div>Stat 4</div>
+  </my-grid>
+  
+  <!-- Main content area -->
+  <my-grid item xs="12" lg="8">
+    <div>Chart area</div>
+  </my-grid>
+  <my-grid item xs="12" lg="4">
+    <div>Activity feed</div>
+  </my-grid>
+</my-grid>
+```
+
+**Accessibility:**
+- Uses semantic HTML structure with proper nesting
+- Maintains logical tab order and focus management
+- Supports screen readers with proper content flow
+- Responsive design ensures usability across devices
+
+**Performance:**
+- Lightweight CSS with efficient media queries
+- Minimal JavaScript overhead (CSS-based layout)
+- Optimized for different screen sizes and orientations
+- Efficient flexbox implementation for modern browsers
 
 ### SpeedDial
 ```html

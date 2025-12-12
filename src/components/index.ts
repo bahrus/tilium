@@ -20,6 +20,7 @@ export { Dialog, DialogTitle, DialogContent, DialogActions } from './Dialog.js';
 export { Divider } from './Divider.js';
 export { Drawer, DrawerHeader } from './Drawer.js';
 export { Fab } from './Fab.js';
+export { Grid } from './Grid.js';
 export { IconButton } from './IconButton.js';
 export { LinearProgress } from './LinearProgress.js';
 export { Link } from './Link.js';

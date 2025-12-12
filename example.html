@@ -3098,6 +3098,313 @@
   </div>
 
   <div class="section">
+    <h2>Grid Layout</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Grid</h3>
+        <mui-grid container spacing="2" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+          <mui-grid item xs="12" sm="6" md="4">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=12 sm=6 md=4
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" sm="6" md="4">
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=12 sm=6 md=4
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" sm="6" md="4">
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=12 sm=6 md=4
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Responsive Breakpoints</h3>
+        <div style="margin-bottom: 16px; padding: 12px; background-color: #e3f2fd; border-radius: 4px; font-size: 0.875rem;">
+          <strong>Resize your browser to see the grid adapt:</strong><br>
+          xs (&lt;600px): All items full width | sm (600px+): 2 columns | md (900px+): 3 columns | lg (1200px+): 4 columns
+        </div>
+        <mui-grid container spacing="2" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+          <mui-grid item xs="12" sm="6" md="4" lg="3">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 1
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" sm="6" md="4" lg="3">
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 2
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" sm="6" md="4" lg="3">
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 3
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" sm="6" md="4" lg="3">
+            <div style="background-color: #ed6c02; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 4
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Grid Spacing</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">No Spacing (spacing="0")</h4>
+            <mui-grid container spacing="0" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+              <mui-grid item xs="4">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center;">1</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center;">2</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center;">3</div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Small Spacing (spacing="1")</h4>
+            <mui-grid container spacing="1" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+              <mui-grid item xs="4">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Large Spacing (spacing="3")</h4>
+            <mui-grid container spacing="3" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+              <mui-grid item xs="4">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Auto-sizing and Flexible Widths</h3>
+        <mui-grid container spacing="2" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+          <mui-grid item xs="auto">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Auto width
+            </div>
+          </mui-grid>
+          <mui-grid item xs="6">
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=6
+            </div>
+          </mui-grid>
+          <mui-grid item xs="true">
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Flexible (xs=true)
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Grid Alignment</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Justify Content Center</h4>
+            <mui-grid container spacing="2" justifyContent="center" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+              <mui-grid item xs="3">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+              </mui-grid>
+              <mui-grid item xs="3">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Space Between</h4>
+            <mui-grid container spacing="2" justifyContent="space-between" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+              <mui-grid item xs="3">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+              </mui-grid>
+              <mui-grid item xs="3">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Align Items Center</h4>
+            <mui-grid container spacing="2" alignItems="center" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px; min-height: 120px;">
+              <mui-grid item xs="4">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+                  Short
+                </div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px; line-height: 1.2;">
+                  Taller content that spans multiple lines
+                </div>
+              </mui-grid>
+              <mui-grid item xs="4">
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+                  Short
+                </div>
+              </mui-grid>
+            </mui-grid>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Grid Offsets</h3>
+        <mui-grid container spacing="2" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+          <mui-grid item xs="4">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=4
+            </div>
+          </mui-grid>
+          <mui-grid item xs="4" xsOffset="4">
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=4 offset=4
+            </div>
+          </mui-grid>
+          <mui-grid item xs="3" xsOffset="2">
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=3 offset=2
+            </div>
+          </mui-grid>
+          <mui-grid item xs="3" xsOffset="4">
+            <div style="background-color: #ed6c02; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              xs=3 offset=4
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Nested Grids</h3>
+        <mui-grid container spacing="2" style="background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+          <mui-grid item xs="12" md="8">
+            <div style="background-color: #1976d2; color: white; padding: 16px; border-radius: 4px;">
+              <div style="margin-bottom: 16px; text-align: center; font-weight: bold;">Main Content (xs=12 md=8)</div>
+              <mui-grid container spacing="1">
+                <mui-grid item xs="6">
+                  <div style="background-color: rgba(255,255,255,0.2); padding: 12px; text-align: center; border-radius: 4px;">
+                    Nested 1
+                  </div>
+                </mui-grid>
+                <mui-grid item xs="6">
+                  <div style="background-color: rgba(255,255,255,0.2); padding: 12px; text-align: center; border-radius: 4px;">
+                    Nested 2
+                  </div>
+                </mui-grid>
+                <mui-grid item xs="12">
+                  <div style="background-color: rgba(255,255,255,0.2); padding: 12px; text-align: center; border-radius: 4px;">
+                    Nested Full Width
+                  </div>
+                </mui-grid>
+              </mui-grid>
+            </div>
+          </mui-grid>
+          <mui-grid item xs="12" md="4">
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              <div style="font-weight: bold; margin-bottom: 8px;">Sidebar (xs=12 md=4)</div>
+              <div style="font-size: 0.875rem;">This sidebar takes full width on mobile and 1/3 width on desktop.</div>
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Real-world Layout Example</h3>
+        <mui-grid container spacing="3" style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 24px;">
+          <!-- Header -->
+          <mui-grid item xs="12">
+            <div style="background-color: #1976d2; color: white; padding: 24px; text-align: center; border-radius: 8px;">
+              <h2 style="margin: 0; font-size: 1.75rem; font-weight: 300;">Dashboard</h2>
+              <p style="margin: 8px 0 0 0; opacity: 0.9;">Grid-based responsive layout</p>
+            </div>
+          </mui-grid>
+          
+          <!-- Stats Cards -->
+          <mui-grid item xs="12" sm="6" lg="3">
+            <div style="background-color: #f5f5f5; padding: 20px; text-align: center; border-radius: 8px; height: 100px; display: flex; flex-direction: column; justify-content: center;">
+              <div style="font-size: 1.5rem; font-weight: bold; color: #1976d2;">1,234</div>
+              <div style="color: #666; font-size: 0.875rem;">Total Users</div>
+            </div>
+          </mui-grid>
+          
+          <mui-grid item xs="12" sm="6" lg="3">
+            <div style="background-color: #f5f5f5; padding: 20px; text-align: center; border-radius: 8px; height: 100px; display: flex; flex-direction: column; justify-content: center;">
+              <div style="font-size: 1.5rem; font-weight: bold; color: #dc004e;">5,678</div>
+              <div style="color: #666; font-size: 0.875rem;">Orders</div>
+            </div>
+          </mui-grid>
+          
+          <mui-grid item xs="12" sm="6" lg="3">
+            <div style="background-color: #f5f5f5; padding: 20px; text-align: center; border-radius: 8px; height: 100px; display: flex; flex-direction: column; justify-content: center;">
+              <div style="font-size: 1.5rem; font-weight: bold; color: #2e7d32;">$12,345</div>
+              <div style="color: #666; font-size: 0.875rem;">Revenue</div>
+            </div>
+          </mui-grid>
+          
+          <mui-grid item xs="12" sm="6" lg="3">
+            <div style="background-color: #f5f5f5; padding: 20px; text-align: center; border-radius: 8px; height: 100px; display: flex; flex-direction: column; justify-content: center;">
+              <div style="font-size: 1.5rem; font-weight: bold; color: #ed6c02;">98.5%</div>
+              <div style="color: #666; font-size: 0.875rem;">Uptime</div>
+            </div>
+          </mui-grid>
+          
+          <!-- Main Content Area -->
+          <mui-grid item xs="12" lg="8">
+            <div style="background-color: #f5f5f5; padding: 24px; border-radius: 8px; min-height: 200px;">
+              <h3 style="margin: 0 0 16px 0; color: #333;">Chart Area</h3>
+              <div style="background-color: white; height: 150px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #666;">
+                Chart placeholder (xs=12 lg=8)
+              </div>
+            </div>
+          </mui-grid>
+          
+          <!-- Sidebar -->
+          <mui-grid item xs="12" lg="4">
+            <div style="background-color: #f5f5f5; padding: 24px; border-radius: 8px; min-height: 200px;">
+              <h3 style="margin: 0 0 16px 0; color: #333;">Recent Activity</h3>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">
+                  User John signed up
+                </div>
+                <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">
+                  Order #1234 completed
+                </div>
+                <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">
+                  Payment received
+                </div>
+              </div>
+            </div>
+          </mui-grid>
+        </mui-grid>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -4025,7 +4332,7 @@
     import { 
       Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, Container,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
-      Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
+      Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
@@ -4065,6 +4372,7 @@
     customElements.define('mui-drawer', Drawer);
     customElements.define('mui-drawer-header', DrawerHeader);
     customElements.define('mui-fab', Fab);
+    customElements.define('mui-grid', Grid);
     customElements.define('mui-icon-button', IconButton);
     customElements.define('mui-linear-progress', LinearProgress);
     customElements.define('mui-link', Link);
