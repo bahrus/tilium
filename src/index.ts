@@ -26,6 +26,7 @@ export { Radio } from './components/Radio.js';
 export { Select } from './components/Select.js';
 export { Skeleton } from './components/Skeleton.js';
 export { Slider } from './components/Slider.js';
+export { Snackbar } from './components/Snackbar.js';
 export { Stepper, Step, StepLabel, StepContent } from './components/Stepper.js';
 export { Switch } from './components/Switch.js';
 export { Table, TableHead, TableBody, TableFooter, TableRow } from './components/Table.js';

@@ -1974,6 +1974,106 @@
   </div>
 
   <div class="section">
+    <h2>Snackbar</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Snackbars</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" onclick="showSnackbar('basic', 'This is a basic snackbar message')">Show Basic</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('action', 'Message sent', 'UNDO')">With Action</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('closable', 'This snackbar can be closed manually', '', true)">Closable</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Severity Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" color="success" onclick="showSnackbar('success', 'Operation completed successfully!', '', false, 'success')">Success</mui-button>
+          <mui-button variant="contained" color="info" onclick="showSnackbar('info', 'Here is some information for you', '', false, 'info')">Info</mui-button>
+          <mui-button variant="contained" color="warning" onclick="showSnackbar('warning', 'Please check your input', '', false, 'warning')">Warning</mui-button>
+          <mui-button variant="contained" color="error" onclick="showSnackbar('error', 'An error occurred while processing', '', false, 'error')">Error</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" onclick="showSnackbar('standard', 'Standard variant (default)', '', false, 'info', 'standard')">Standard</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('filled', 'Filled variant with background', '', false, 'success', 'filled')">Filled</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('outlined', 'Outlined variant with border', '', false, 'warning', 'outlined')">Outlined</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Positioning</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 600px;">
+          <mui-button variant="outlined" onclick="showSnackbar('top-left', 'Top Left Position', '', false, '', 'standard', 'top-left')">Top Left</mui-button>
+          <mui-button variant="outlined" onclick="showSnackbar('top-center', 'Top Center Position', '', false, '', 'standard', 'top-center')">Top Center</mui-button>
+          <mui-button variant="outlined" onclick="showSnackbar('top-right', 'Top Right Position', '', false, '', 'standard', 'top-right')">Top Right</mui-button>
+          <mui-button variant="outlined" onclick="showSnackbar('bottom-left', 'Bottom Left Position', '', false, '', 'standard', 'bottom-left')">Bottom Left</mui-button>
+          <mui-button variant="outlined" onclick="showSnackbar('bottom-center', 'Bottom Center Position', '', false, '', 'standard', 'bottom-center')">Bottom Center</mui-button>
+          <mui-button variant="outlined" onclick="showSnackbar('bottom-right', 'Bottom Right Position', '', false, '', 'standard', 'bottom-right')">Bottom Right</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Auto Hide Duration</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" onclick="showSnackbar('short', 'Short duration (2s)', '', false, '', 'standard', 'bottom-left', 2000)">2 Seconds</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('medium', 'Medium duration (4s)', '', false, '', 'standard', 'bottom-left', 4000)">4 Seconds</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('long', 'Long duration (8s)', '', false, '', 'standard', 'bottom-left', 8000)">8 Seconds</mui-button>
+          <mui-button variant="contained" onclick="showSnackbar('persistent', 'Persistent (no auto-hide)', '', true, '', 'standard', 'bottom-left', 0)">Persistent</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Complex Examples</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" color="success" onclick="showSnackbar('complex1', 'File uploaded successfully!', 'VIEW', true, 'success', 'filled')">Upload Success</mui-button>
+          <mui-button variant="contained" color="error" onclick="showSnackbar('complex2', 'Connection failed. Please try again.', 'RETRY', true, 'error', 'outlined')">Connection Error</mui-button>
+          <mui-button variant="contained" color="info" onclick="showSnackbar('complex3', 'New update available', 'UPDATE', false, 'info', 'standard')">Update Available</mui-button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Multiple Snackbars</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-button variant="contained" onclick="showMultipleSnackbars()">Show Multiple</mui-button>
+          <mui-button variant="outlined" onclick="hideAllSnackbars()">Hide All</mui-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Snackbar containers for different positions -->
+    <mui-snackbar id="snackbar-basic"></mui-snackbar>
+    <mui-snackbar id="snackbar-action"></mui-snackbar>
+    <mui-snackbar id="snackbar-closable"></mui-snackbar>
+    <mui-snackbar id="snackbar-success"></mui-snackbar>
+    <mui-snackbar id="snackbar-info"></mui-snackbar>
+    <mui-snackbar id="snackbar-warning"></mui-snackbar>
+    <mui-snackbar id="snackbar-error"></mui-snackbar>
+    <mui-snackbar id="snackbar-standard"></mui-snackbar>
+    <mui-snackbar id="snackbar-filled"></mui-snackbar>
+    <mui-snackbar id="snackbar-outlined"></mui-snackbar>
+    <mui-snackbar id="snackbar-top-left"></mui-snackbar>
+    <mui-snackbar id="snackbar-top-center"></mui-snackbar>
+    <mui-snackbar id="snackbar-top-right"></mui-snackbar>
+    <mui-snackbar id="snackbar-bottom-left"></mui-snackbar>
+    <mui-snackbar id="snackbar-bottom-center"></mui-snackbar>
+    <mui-snackbar id="snackbar-bottom-right"></mui-snackbar>
+    <mui-snackbar id="snackbar-short"></mui-snackbar>
+    <mui-snackbar id="snackbar-medium"></mui-snackbar>
+    <mui-snackbar id="snackbar-long"></mui-snackbar>
+    <mui-snackbar id="snackbar-persistent"></mui-snackbar>
+    <mui-snackbar id="snackbar-complex1"></mui-snackbar>
+    <mui-snackbar id="snackbar-complex2"></mui-snackbar>
+    <mui-snackbar id="snackbar-complex3"></mui-snackbar>
+    <mui-snackbar id="snackbar-multi1"></mui-snackbar>
+    <mui-snackbar id="snackbar-multi2"></mui-snackbar>
+    <mui-snackbar id="snackbar-multi3"></mui-snackbar>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -2902,7 +3002,7 @@
       Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -2950,6 +3050,7 @@
     customElements.define('mui-select', Select);
     customElements.define('mui-skeleton', Skeleton);
     customElements.define('mui-slider', Slider);
+    customElements.define('mui-snackbar', Snackbar);
     customElements.define('mui-stepper', Stepper);
     customElements.define('mui-step', Step);
     customElements.define('mui-step-label', StepLabel);
@@ -3472,6 +3573,46 @@
     });
 
     console.log('Backdrop examples loaded successfully!');
+
+    // Snackbar functions
+    window.showSnackbar = (id, message, action = '', closable = false, severity = '', variant = 'standard', anchorOrigin = 'bottom-left', autoHideDuration = 6000) => {
+      const snackbar = document.getElementById(`snackbar-${id}`);
+      if (snackbar) {
+        snackbar.message = message;
+        snackbar.action = action;
+        snackbar.closable = closable;
+        snackbar.severity = severity;
+        snackbar.variant = variant;
+        snackbar.anchorOrigin = anchorOrigin;
+        snackbar.autoHideDuration = autoHideDuration;
+        snackbar.open = true;
+
+        // Add event listeners
+        snackbar.addEventListener('action', (e) => {
+          console.log('Snackbar action clicked:', e.detail.action);
+          // Handle action (e.g., undo operation)
+        });
+
+        snackbar.addEventListener('close', (e) => {
+          console.log('Snackbar closed:', e.detail.reason);
+        });
+      }
+    };
+
+    window.showMultipleSnackbars = () => {
+      setTimeout(() => showSnackbar('multi1', 'First notification', '', false, 'info', 'standard', 'top-right'), 0);
+      setTimeout(() => showSnackbar('multi2', 'Second notification', 'ACTION', false, 'success', 'filled', 'bottom-center'), 1000);
+      setTimeout(() => showSnackbar('multi3', 'Third notification', '', true, 'warning', 'outlined', 'top-left'), 2000);
+    };
+
+    window.hideAllSnackbars = () => {
+      const snackbars = document.querySelectorAll('mui-snackbar');
+      snackbars.forEach(snackbar => {
+        snackbar.open = false;
+      });
+    };
+
+    console.log('Snackbar examples loaded successfully!');
   </script>
 </body>
 </html>

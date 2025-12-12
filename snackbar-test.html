@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snackbar Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+  </style>
+  <script type="importmap">
+    {
+        "imports": {
+            "@lit/": "/node_modules/@lit/",
+            "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+            "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/",
+            "lit-element/": "/node_modules/lit-element/",
+            "lit-html/": "/node_modules/lit-html/",
+            "lit-html": "/node_modules/lit-html/lit-html.js",
+            "tslib": "/node_modules/tslib/tslib.es6.js",
+            "tslib/": "/node_modules/tslib/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Snackbar Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Snackbars</h2>
+    <div class="demo-row">
+      <button onclick="showBasic()">Show Basic</button>
+      <button onclick="showWithAction()">With Action</button>
+      <button onclick="showClosable()">Closable</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Severity Variants</h2>
+    <div class="demo-row">
+      <button onclick="showSuccess()">Success</button>
+      <button onclick="showInfo()">Info</button>
+      <button onclick="showWarning()">Warning</button>
+      <button onclick="showError()">Error</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Positioning</h2>
+    <div class="demo-row">
+      <button onclick="showTopLeft()">Top Left</button>
+      <button onclick="showTopCenter()">Top Center</button>
+      <button onclick="showBottomRight()">Bottom Right</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Variants</h2>
+    <div class="demo-row">
+      <button onclick="showStandard()">Standard</button>
+      <button onclick="showFilled()">Filled</button>
+      <button onclick="showOutlined()">Outlined</button>
+    </div>
+  </div>
+
+  <!-- Snackbar instances -->
+  <mui-snackbar id="basic-snackbar"></mui-snackbar>
+  <mui-snackbar id="action-snackbar"></mui-snackbar>
+  <mui-snackbar id="closable-snackbar"></mui-snackbar>
+  <mui-snackbar id="success-snackbar"></mui-snackbar>
+  <mui-snackbar id="info-snackbar"></mui-snackbar>
+  <mui-snackbar id="warning-snackbar"></mui-snackbar>
+  <mui-snackbar id="error-snackbar"></mui-snackbar>
+  <mui-snackbar id="top-left-snackbar"></mui-snackbar>
+  <mui-snackbar id="top-center-snackbar"></mui-snackbar>
+  <mui-snackbar id="bottom-right-snackbar"></mui-snackbar>
+  <mui-snackbar id="standard-snackbar"></mui-snackbar>
+  <mui-snackbar id="filled-snackbar"></mui-snackbar>
+  <mui-snackbar id="outlined-snackbar"></mui-snackbar>
+
+  <script type="module">
+    import { Snackbar } from './dist/index.js';
+
+    // Register the Snackbar component
+    customElements.define('mui-snackbar', Snackbar);
+
+    // Test functions
+    window.showBasic = () => {
+      const snackbar = document.getElementById('basic-snackbar');
+      snackbar.message = 'This is a basic snackbar message';
+      snackbar.open = true;
+    };
+
+    window.showWithAction = () => {
+      const snackbar = document.getElementById('action-snackbar');
+      snackbar.message = 'Message sent';
+      snackbar.action = 'UNDO';
+      snackbar.open = true;
+      
+      snackbar.addEventListener('action', (e) => {
+        console.log('Action clicked:', e.detail.action);
+        snackbar.open = false;
+      });
+    };
+
+    window.showClosable = () => {
+      const snackbar = document.getElementById('closable-snackbar');
+      snackbar.message = 'This snackbar can be closed manually';
+      snackbar.closable = true;
+      snackbar.autoHideDuration = 0; // Don't auto-hide
+      snackbar.open = true;
+    };
+
+    window.showSuccess = () => {
+      const snackbar = document.getElementById('success-snackbar');
+      snackbar.message = 'Operation completed successfully!';
+      snackbar.severity = 'success';
+      snackbar.variant = 'filled';
+      snackbar.open = true;
+    };
+
+    window.showInfo = () => {
+      const snackbar = document.getElementById('info-snackbar');
+      snackbar.message = 'Here is some information for you';
+      snackbar.severity = 'info';
+      snackbar.open = true;
+    };
+
+    window.showWarning = () => {
+      const snackbar = document.getElementById('warning-snackbar');
+      snackbar.message = 'Please check your input';
+      snackbar.severity = 'warning';
+      snackbar.variant = 'outlined';
+      snackbar.open = true;
+    };
+
+    window.showError = () => {
+      const snackbar = document.getElementById('error-snackbar');
+      snackbar.message = 'An error occurred while processing';
+      snackbar.severity = 'error';
+      snackbar.closable = true;
+      snackbar.open = true;
+    };
+
+    window.showTopLeft = () => {
+      const snackbar = document.getElementById('top-left-snackbar');
+      snackbar.message = 'Top Left Position';
+      snackbar.anchorOrigin = 'top-left';
+      snackbar.open = true;
+    };
+
+    window.showTopCenter = () => {
+      const snackbar = document.getElementById('top-center-snackbar');
+      snackbar.message = 'Top Center Position';
+      snackbar.anchorOrigin = 'top-center';
+      snackbar.open = true;
+    };
+
+    window.showBottomRight = () => {
+      const snackbar = document.getElementById('bottom-right-snackbar');
+      snackbar.message = 'Bottom Right Position';
+      snackbar.anchorOrigin = 'bottom-right';
+      snackbar.open = true;
+    };
+
+    window.showStandard = () => {
+      const snackbar = document.getElementById('standard-snackbar');
+      snackbar.message = 'Standard variant (default)';
+      snackbar.variant = 'standard';
+      snackbar.severity = 'info';
+      snackbar.open = true;
+    };
+
+    window.showFilled = () => {
+      const snackbar = document.getElementById('filled-snackbar');
+      snackbar.message = 'Filled variant with background';
+      snackbar.variant = 'filled';
+      snackbar.severity = 'success';
+      snackbar.open = true;
+    };
+
+    window.showOutlined = () => {
+      const snackbar = document.getElementById('outlined-snackbar');
+      snackbar.message = 'Outlined variant with border';
+      snackbar.variant = 'outlined';
+      snackbar.severity = 'warning';
+      snackbar.open = true;
+    };
+
+    console.log('Snackbar component registered successfully!');
+  </script>
+</body>
+</html>

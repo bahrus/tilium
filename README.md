@@ -65,6 +65,7 @@ Then use them in your HTML:
 - **Select** - Dropdown select
 - **Skeleton** - Placeholder loading component with multiple variants and animations
 - **Slider** - Range slider
+- **Snackbar** - Brief messages and notifications with actions and auto-hide
 
 ### Data Display
 - **Avatar** - User profile picture or initials in circular, rounded, or square format
@@ -502,6 +503,96 @@ Properties:
 - Use circular skeletons for avatars and profile pictures
 - Combine multiple skeletons to create complex loading layouts
 - Match skeleton dimensions to actual content for smooth transitions
+
+### Snackbar
+```html
+<!-- Basic Snackbar -->
+<my-snackbar 
+  open 
+  message="This is a basic snackbar message"
+  autoHideDuration="6000">
+</my-snackbar>
+
+<!-- Snackbar with Action -->
+<my-snackbar 
+  open 
+  message="Message sent" 
+  action="UNDO"
+  closable>
+</my-snackbar>
+
+<!-- Severity Variants -->
+<my-snackbar open message="Success message" severity="success" variant="filled"></my-snackbar>
+<my-snackbar open message="Info message" severity="info" variant="standard"></my-snackbar>
+<my-snackbar open message="Warning message" severity="warning" variant="outlined"></my-snackbar>
+<my-snackbar open message="Error message" severity="error" variant="filled"></my-snackbar>
+
+<!-- Positioning -->
+<my-snackbar open message="Top center" anchorOrigin="top-center"></my-snackbar>
+<my-snackbar open message="Bottom right" anchorOrigin="bottom-right"></my-snackbar>
+
+<!-- Persistent Snackbar -->
+<my-snackbar 
+  open 
+  message="This won't auto-hide" 
+  autoHideDuration="0" 
+  closable>
+</my-snackbar>
+```
+
+Properties:
+- `open`: boolean - Whether the snackbar is visible
+- `message`: string - The message to display
+- `autoHideDuration`: number - Auto-hide delay in milliseconds (0 = no auto-hide, default: 6000)
+- `anchorOrigin`: 'bottom-left' | 'bottom-center' | 'bottom-right' | 'top-left' | 'top-center' | 'top-right' - Position
+- `variant`: 'standard' | 'filled' | 'outlined' - Visual style variant
+- `severity`: 'success' | 'info' | 'warning' | 'error' | '' - Severity level with icon and colors
+- `closable`: boolean - Show close button for manual dismissal
+- `action`: string - Action button text
+- `transitionDuration`: string - CSS transition duration (default: '225ms')
+
+**Anchor Origins:**
+- **bottom-left**: Bottom left corner (default)
+- **bottom-center**: Bottom center of screen
+- **bottom-right**: Bottom right corner
+- **top-left**: Top left corner
+- **top-center**: Top center of screen
+- **top-right**: Top right corner
+
+**Variants:**
+- **Standard**: Default dark background with white text
+- **Filled**: Colored background based on severity
+- **Outlined**: White background with colored border and text
+
+**Severity Levels:**
+- **Success**: Green color with checkmark icon
+- **Info**: Blue color with info icon
+- **Warning**: Orange color with warning icon
+- **Error**: Red color with error icon
+
+**Events:**
+- `close`: Fired when snackbar closes (detail: { reason: 'timeout' | 'clickaway' })
+- `action`: Fired when action button is clicked (detail: { action: string })
+
+**Features:**
+- Auto-hide with customizable duration
+- Manual dismissal with close button
+- Action buttons for user interaction
+- Multiple positioning options
+- Severity levels with icons and colors
+- Smooth enter/exit animations
+- Mobile-responsive design
+- Proper accessibility with ARIA attributes
+- Event handling for close and action interactions
+- Support for multiple simultaneous snackbars
+
+**Usage Patterns:**
+- Use for brief confirmations and feedback messages
+- Include actions for undo operations or related tasks
+- Position based on content and user workflow
+- Use severity levels to communicate message importance
+- Keep messages concise and actionable
+- Provide manual close option for important messages
 
 ### Table
 ```html
