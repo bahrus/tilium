@@ -1,6 +1,6 @@
 {
   "name": "lit-material-components",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Material Design components built with Lit Element",
   "type": "module",
   "main": "dist/index.js",
