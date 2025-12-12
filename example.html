@@ -2682,6 +2682,260 @@
   </div>
 
   <div class="section">
+    <h2>Box Layout</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Box</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <mui-box p="2" bgcolor="grey-100" borderRadius="4px">
+            Basic box with padding
+          </mui-box>
+          
+          <mui-box p="3" bgcolor="primary" color="white" borderRadius="8px">
+            Primary colored box
+          </mui-box>
+          
+          <mui-box p="2" border="1px solid #ccc" borderRadius="4px">
+            Box with border
+          </mui-box>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Flexbox Layout</h3>
+        <mui-box display="flex" gap="2" p="2" bgcolor="grey-50" borderRadius="4px">
+          <mui-box flex="1" p="2" bgcolor="primary" color="white" textAlign="center" borderRadius="4px">
+            Flex Item 1
+          </mui-box>
+          <mui-box flex="2" p="2" bgcolor="secondary" color="white" textAlign="center" borderRadius="4px">
+            Flex Item 2 (flex: 2)
+          </mui-box>
+          <mui-box flex="1" p="2" bgcolor="success" color="white" textAlign="center" borderRadius="4px">
+            Flex Item 3
+          </mui-box>
+        </mui-box>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Spacing System</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Margin Examples</h4>
+            <mui-box display="flex" gap="1" bgcolor="grey-100" p="2" borderRadius="4px">
+              <mui-box m="1" p="2" bgcolor="primary" color="white" borderRadius="4px">m="1"</mui-box>
+              <mui-box m="2" p="2" bgcolor="secondary" color="white" borderRadius="4px">m="2"</mui-box>
+              <mui-box m="3" p="2" bgcolor="success" color="white" borderRadius="4px">m="3"</mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Padding Examples</h4>
+            <mui-box display="flex" gap="2" bgcolor="grey-100" p="2" borderRadius="4px">
+              <mui-box p="1" bgcolor="primary" color="white" borderRadius="4px">p="1"</mui-box>
+              <mui-box p="2" bgcolor="secondary" color="white" borderRadius="4px">p="2"</mui-box>
+              <mui-box p="3" bgcolor="success" color="white" borderRadius="4px">p="3"</mui-box>
+              <mui-box p="4" bgcolor="warning" color="white" borderRadius="4px">p="4"</mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Directional Spacing</h4>
+            <mui-box display="flex" gap="2" bgcolor="grey-100" p="2" borderRadius="4px">
+              <mui-box pt="3" pb="1" pl="2" pr="2" bgcolor="info" color="white" borderRadius="4px">
+                pt="3" pb="1"
+              </mui-box>
+              <mui-box px="3" py="1" bgcolor="error" color="white" borderRadius="4px">
+                px="3" py="1"
+              </mui-box>
+            </mui-box>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Alignment & Justification</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Justify Content</h4>
+            <mui-box display="flex" justifyContent="space-between" p="2" bgcolor="grey-100" borderRadius="4px">
+              <mui-box p="2" bgcolor="primary" color="white" borderRadius="4px">Start</mui-box>
+              <mui-box p="2" bgcolor="secondary" color="white" borderRadius="4px">End</mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Center Alignment</h4>
+            <mui-box display="flex" justifyContent="center" alignItems="center" height="100px" bgcolor="grey-100" borderRadius="4px">
+              <mui-box p="2" bgcolor="success" color="white" borderRadius="4px">
+                Centered Content
+              </mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Flex Direction Column</h4>
+            <mui-box display="flex" flexDirection="column" gap="1" p="2" bgcolor="grey-100" borderRadius="4px" width="200px">
+              <mui-box p="2" bgcolor="primary" color="white" textAlign="center" borderRadius="4px">Item 1</mui-box>
+              <mui-box p="2" bgcolor="secondary" color="white" textAlign="center" borderRadius="4px">Item 2</mui-box>
+              <mui-box p="2" bgcolor="success" color="white" textAlign="center" borderRadius="4px">Item 3</mui-box>
+            </mui-box>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Colors & Styling</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Theme Colors</h4>
+            <mui-box display="flex" gap="2" flexWrap="wrap">
+              <mui-box p="2" bgcolor="primary" color="white" borderRadius="4px">Primary</mui-box>
+              <mui-box p="2" bgcolor="secondary" color="white" borderRadius="4px">Secondary</mui-box>
+              <mui-box p="2" bgcolor="success" color="white" borderRadius="4px">Success</mui-box>
+              <mui-box p="2" bgcolor="error" color="white" borderRadius="4px">Error</mui-box>
+              <mui-box p="2" bgcolor="warning" color="white" borderRadius="4px">Warning</mui-box>
+              <mui-box p="2" bgcolor="info" color="white" borderRadius="4px">Info</mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Grey Palette</h4>
+            <mui-box display="flex" gap="1" flexWrap="wrap">
+              <mui-box p="2" bgcolor="grey-50" border="1px solid #ddd" borderRadius="4px">50</mui-box>
+              <mui-box p="2" bgcolor="grey-100" borderRadius="4px">100</mui-box>
+              <mui-box p="2" bgcolor="grey-200" borderRadius="4px">200</mui-box>
+              <mui-box p="2" bgcolor="grey-300" borderRadius="4px">300</mui-box>
+              <mui-box p="2" bgcolor="grey-400" color="white" borderRadius="4px">400</mui-box>
+              <mui-box p="2" bgcolor="grey-500" color="white" borderRadius="4px">500</mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Custom Colors & Borders</h4>
+            <mui-box display="flex" gap="2" flexWrap="wrap">
+              <mui-box p="2" bgcolor="#e3f2fd" color="#1565c0" border="2px solid #1976d2" borderRadius="8px">
+                Custom Blue
+              </mui-box>
+              <mui-box p="2" bgcolor="#f3e5f5" color="#7b1fa2" border="2px dashed #9c27b0" borderRadius="8px">
+                Custom Purple
+              </mui-box>
+              <mui-box p="2" bgcolor="#e8f5e8" color="#2e7d32" boxShadow="0 2px 8px rgba(0,0,0,0.1)" borderRadius="8px">
+                With Shadow
+              </mui-box>
+            </mui-box>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Sizing & Positioning</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Width & Height</h4>
+            <mui-box display="flex" gap="2" alignItems="end">
+              <mui-box width="100px" height="60px" bgcolor="primary" color="white" display="flex" alignItems="center" justifyContent="center" borderRadius="4px">
+                100x60
+              </mui-box>
+              <mui-box width="150px" height="80px" bgcolor="secondary" color="white" display="flex" alignItems="center" justifyContent="center" borderRadius="4px">
+                150x80
+              </mui-box>
+              <mui-box width="200px" height="100px" bgcolor="success" color="white" display="flex" alignItems="center" justifyContent="center" borderRadius="4px">
+                200x100
+              </mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Min/Max Constraints</h4>
+            <mui-box display="flex" gap="2">
+              <mui-box minWidth="150px" maxWidth="200px" p="2" bgcolor="info" color="white" borderRadius="4px">
+                Min 150px, Max 200px width
+              </mui-box>
+              <mui-box minHeight="80px" p="2" bgcolor="warning" color="white" borderRadius="4px" display="flex" alignItems="center">
+                Min 80px height
+              </mui-box>
+            </mui-box>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Positioning</h4>
+            <mui-box position="relative" height="120px" bgcolor="grey-100" borderRadius="4px" p="2">
+              <mui-box position="absolute" top="10px" left="10px" p="2" bgcolor="primary" color="white" borderRadius="4px">
+                Top Left
+              </mui-box>
+              <mui-box position="absolute" top="10px" right="10px" p="2" bgcolor="secondary" color="white" borderRadius="4px">
+                Top Right
+              </mui-box>
+              <mui-box position="absolute" bottom="10px" left="50%" p="2" bgcolor="success" color="white" borderRadius="4px" style="transform: translateX(-50%);">
+                Bottom Center
+              </mui-box>
+            </mui-box>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Typography & Text</h3>
+        <mui-box display="flex" flexDirection="column" gap="2" p="3" bgcolor="grey-50" borderRadius="4px">
+          <mui-box fontSize="24px" fontWeight="bold" color="primary">
+            Large Bold Primary Text
+          </mui-box>
+          <mui-box fontSize="18px" fontWeight="500" color="secondary">
+            Medium Weight Secondary Text
+          </mui-box>
+          <mui-box fontSize="14px" color="text-secondary" textTransform="uppercase" letterSpacing="1px">
+            Small Uppercase Text
+          </mui-box>
+          <mui-box textAlign="center" p="2" bgcolor="info" color="white" borderRadius="4px">
+            Centered Text in Box
+          </mui-box>
+          <mui-box textAlign="right" fontStyle="italic" color="text-secondary">
+            Right-aligned italic text
+          </mui-box>
+        </mui-box>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Complex Layout Example</h3>
+        <mui-box display="flex" flexDirection="column" gap="2" p="3" bgcolor="white" border="1px solid #e0e0e0" borderRadius="8px" boxShadow="0 2px 4px rgba(0,0,0,0.1)">
+          <mui-box display="flex" justifyContent="space-between" alignItems="center" pb="2" borderBottom="1px solid #e0e0e0">
+            <mui-box fontSize="20px" fontWeight="600" color="text-primary">
+              Card Header
+            </mui-box>
+            <mui-box display="flex" gap="1">
+              <mui-box p="1" bgcolor="primary" color="white" borderRadius="4px" fontSize="12px">
+                Tag 1
+              </mui-box>
+              <mui-box p="1" bgcolor="secondary" color="white" borderRadius="4px" fontSize="12px">
+                Tag 2
+              </mui-box>
+            </mui-box>
+          </mui-box>
+          
+          <mui-box py="2" color="text-secondary" lineHeight="1.6">
+            This is a complex layout example using only Box components. It demonstrates how you can build sophisticated layouts using the Box component's flexbox and styling properties.
+          </mui-box>
+          
+          <mui-box display="flex" gap="2" pt="2">
+            <mui-box flex="1" p="2" bgcolor="grey-100" borderRadius="4px" textAlign="center">
+              <mui-box fontWeight="600" color="primary" mb="1">Metric 1</mui-box>
+              <mui-box fontSize="24px" fontWeight="bold">1,234</mui-box>
+            </mui-box>
+            <mui-box flex="1" p="2" bgcolor="grey-100" borderRadius="4px" textAlign="center">
+              <mui-box fontWeight="600" color="secondary" mb="1">Metric 2</mui-box>
+              <mui-box fontSize="24px" fontWeight="bold">5,678</mui-box>
+            </mui-box>
+            <mui-box flex="1" p="2" bgcolor="grey-100" borderRadius="4px" textAlign="center">
+              <mui-box fontWeight="600" color="success" mb="1">Metric 3</mui-box>
+              <mui-box fontSize="24px" fontWeight="bold">9,012</mui-box>
+            </mui-box>
+          </mui-box>
+        </mui-box>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -3607,7 +3861,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
+      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -3628,6 +3882,7 @@
     customElements.define('mui-badge', Badge);
     customElements.define('mui-bottom-navigation', BottomNavigation);
     customElements.define('mui-bottom-navigation-action', BottomNavigationAction);
+    customElements.define('mui-box', Box);
     customElements.define('mui-breadcrumbs', Breadcrumbs);
     customElements.define('mui-button', Button);
     customElements.define('mui-button-group', ButtonGroup);

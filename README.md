@@ -43,6 +43,9 @@ Then use them in your HTML:
 
 ## Available Components
 
+### Layout
+- **Box** - Flexible layout component with spacing, alignment, and styling utilities
+
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
 - **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
@@ -950,6 +953,220 @@ Properties:
 - Focus management and visual focus indicators
 - Screen reader compatible with semantic HTML structure
 - High contrast support for expand/collapse icons
+
+### Box
+```html
+<!-- Basic Box -->
+<my-box p="2" bgcolor="grey-100">
+  Basic box with padding and background
+</my-box>
+
+<!-- Flexbox Layout -->
+<my-box display="flex" gap="2" justifyContent="space-between" alignItems="center">
+  <my-box flex="1" p="2" bgcolor="primary" color="white">Item 1</my-box>
+  <my-box flex="2" p="2" bgcolor="secondary" color="white">Item 2</my-box>
+  <my-box flex="1" p="2" bgcolor="success" color="white">Item 3</my-box>
+</my-box>
+
+<!-- Spacing System -->
+<my-box m="2" p="3" bgcolor="info" color="white">
+  Margin 2, Padding 3
+</my-box>
+
+<!-- Directional Spacing -->
+<my-box pt="3" pb="1" px="2" bgcolor="warning" color="white">
+  Top padding 3, bottom padding 1, horizontal padding 2
+</my-box>
+
+<!-- Colors and Styling -->
+<my-box 
+  p="3" 
+  bgcolor="primary" 
+  color="white" 
+  borderRadius="8px" 
+  boxShadow="0 2px 8px rgba(0,0,0,0.1)">
+  Styled box with shadow and rounded corners
+</my-box>
+
+<!-- Positioning -->
+<my-box position="relative" height="200px" bgcolor="grey-100">
+  <my-box position="absolute" top="10px" left="10px" p="2" bgcolor="error" color="white">
+    Absolutely positioned
+  </my-box>
+</my-box>
+
+<!-- Typography -->
+<my-box 
+  fontSize="24px" 
+  fontWeight="bold" 
+  textAlign="center" 
+  color="primary" 
+  p="2">
+  Large centered text
+</my-box>
+
+<!-- Complex Layout -->
+<my-box 
+  display="flex" 
+  flexDirection="column" 
+  gap="2" 
+  p="3" 
+  bgcolor="white" 
+  border="1px solid #e0e0e0" 
+  borderRadius="8px">
+  
+  <my-box display="flex" justifyContent="space-between" alignItems="center">
+    <my-box fontSize="20px" fontWeight="600">Header</my-box>
+    <my-box p="1" bgcolor="success" color="white" borderRadius="4px">Badge</my-box>
+  </my-box>
+  
+  <my-box color="text-secondary">
+    Content area with flexible layout using Box components.
+  </my-box>
+  
+  <my-box display="flex" gap="2">
+    <my-box flex="1" p="2" bgcolor="grey-100" textAlign="center">Column 1</my-box>
+    <my-box flex="1" p="2" bgcolor="grey-100" textAlign="center">Column 2</my-box>
+  </my-box>
+</my-box>
+```
+
+**Box Properties:**
+
+**Layout & Display:**
+- `component`: 'div' | 'span' | 'section' | etc. - HTML element to render (default: 'div')
+- `display`: 'block' | 'inline' | 'flex' | 'grid' | 'none' | etc. - CSS display property
+- `position`: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky' - CSS position property
+
+**Flexbox Properties:**
+- `flexDirection`: 'row' | 'column' | 'row-reverse' | 'column-reverse' - Flex direction
+- `flexWrap`: 'nowrap' | 'wrap' | 'wrap-reverse' - Flex wrap behavior
+- `justifyContent`: 'flex-start' | 'center' | 'space-between' | 'space-around' | 'space-evenly' - Main axis alignment
+- `alignItems`: 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch' - Cross axis alignment
+- `alignContent`: 'flex-start' | 'center' | 'space-between' | 'space-around' | 'stretch' - Multi-line alignment
+- `alignSelf`: 'auto' | 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch' - Individual item alignment
+- `flex`: string - Shorthand for flex-grow, flex-shrink, and flex-basis
+- `flexGrow`: number - Flex grow factor
+- `flexShrink`: number - Flex shrink factor
+- `flexBasis`: string - Flex basis value
+- `order`: number - Flex order
+- `gap`: string | number - Gap between flex/grid items (uses 8px spacing unit for numbers)
+- `rowGap`: string | number - Row gap for flex/grid layouts
+- `columnGap`: string | number - Column gap for flex/grid layouts
+
+**Spacing Properties (Material Design 8px unit system):**
+- `m`: string | number - Margin (all sides)
+- `mt`: string | number - Margin top
+- `mr`: string | number - Margin right
+- `mb`: string | number - Margin bottom
+- `ml`: string | number - Margin left
+- `mx`: string | number - Margin horizontal (left + right)
+- `my`: string | number - Margin vertical (top + bottom)
+- `p`: string | number - Padding (all sides)
+- `pt`: string | number - Padding top
+- `pr`: string | number - Padding right
+- `pb`: string | number - Padding bottom
+- `pl`: string | number - Padding left
+- `px`: string | number - Padding horizontal (left + right)
+- `py`: string | number - Padding vertical (top + bottom)
+
+**Sizing Properties:**
+- `width`: string - CSS width value
+- `height`: string - CSS height value
+- `minWidth`: string - CSS min-width value
+- `minHeight`: string - CSS min-height value
+- `maxWidth`: string - CSS max-width value
+- `maxHeight`: string - CSS max-height value
+
+**Positioning Properties:**
+- `top`: string - CSS top value
+- `right`: string - CSS right value
+- `bottom`: string - CSS bottom value
+- `left`: string - CSS left value
+- `zIndex`: string | number - CSS z-index value
+
+**Colors & Styling:**
+- `color`: string - Text color (theme colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success', 'text-primary', 'text-secondary', or custom CSS color)
+- `bgcolor`: string - Background color (theme colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success', 'grey-50' to 'grey-500', 'white', 'transparent', or custom CSS color)
+- `border`: string - CSS border value
+- `borderRadius`: string - CSS border-radius value
+- `boxShadow`: string - CSS box-shadow value
+- `overflow`: 'visible' | 'hidden' | 'scroll' | 'auto' - CSS overflow property
+
+**Typography Properties:**
+- `fontSize`: string - CSS font-size value
+- `fontWeight`: string | number - CSS font-weight value
+- `lineHeight`: string | number - CSS line-height value
+- `letterSpacing`: string - CSS letter-spacing value
+- `textAlign`: 'left' | 'center' | 'right' | 'justify' - Text alignment
+- `textTransform`: 'none' | 'capitalize' | 'uppercase' | 'lowercase' - Text transformation
+
+**Spacing System:**
+The Box component uses Material Design's 8px spacing unit system. When you provide a number for spacing properties, it's multiplied by 8px:
+- `p="1"` = `padding: 8px`
+- `m="2"` = `margin: 16px`
+- `gap="3"` = `gap: 24px`
+
+You can also provide string values for custom spacing:
+- `p="12px"` = `padding: 12px`
+- `m="1rem"` = `margin: 1rem`
+
+**Theme Colors:**
+- **Primary Colors**: 'primary', 'secondary', 'error', 'warning', 'info', 'success'
+- **Text Colors**: 'text-primary', 'text-secondary', 'text-disabled'
+- **Grey Palette**: 'grey-50', 'grey-100', 'grey-200', 'grey-300', 'grey-400', 'grey-500'
+- **Special**: 'white', 'transparent'
+
+**Features:**
+- **Flexible Layout**: Complete flexbox support with all properties
+- **Spacing System**: Material Design 8px unit system with directional spacing
+- **Theme Integration**: Built-in theme colors and typography
+- **Responsive Design**: All CSS properties supported for responsive layouts
+- **Performance**: Efficient CSS generation with utility classes and dynamic styles
+- **Accessibility**: Semantic HTML with proper element selection
+- **Customization**: Support for custom CSS values alongside theme values
+- **Layout Utilities**: Position, sizing, overflow, and display utilities
+
+**Usage Patterns:**
+- Use for layout containers and spacing between components
+- Replace div elements with semantic layout structure
+- Create responsive layouts with flexbox properties
+- Apply consistent spacing using the 8px unit system
+- Use theme colors for consistent design system
+- Combine multiple Box components for complex layouts
+- Use positioning properties for overlays and absolute positioning
+- Apply typography properties for text styling within layouts
+
+**Common Layout Patterns:**
+```html
+<!-- Centered Content -->
+<my-box display="flex" justifyContent="center" alignItems="center" height="100vh">
+  <my-box>Centered content</my-box>
+</my-box>
+
+<!-- Sidebar Layout -->
+<my-box display="flex" height="100vh">
+  <my-box width="250px" bgcolor="grey-100" p="2">Sidebar</my-box>
+  <my-box flex="1" p="3">Main content</my-box>
+</my-box>
+
+<!-- Card Layout -->
+<my-box 
+  p="3" 
+  bgcolor="white" 
+  borderRadius="8px" 
+  boxShadow="0 2px 4px rgba(0,0,0,0.1)"
+  border="1px solid #e0e0e0">
+  Card content
+</my-box>
+
+<!-- Grid-like Layout -->
+<my-box display="flex" flexWrap="wrap" gap="2">
+  <my-box flex="1" minWidth="200px" p="2" bgcolor="grey-100">Item 1</my-box>
+  <my-box flex="1" minWidth="200px" p="2" bgcolor="grey-100">Item 2</my-box>
+  <my-box flex="1" minWidth="200px" p="2" bgcolor="grey-100">Item 3</my-box>
+</my-box>
+```
 
 ### SpeedDial
 ```html

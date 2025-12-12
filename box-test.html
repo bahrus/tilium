@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Box Component Test</h1>
+  
+  <h2>Basic Box</h2>
+  <mui-box p="2" bgcolor="grey-100" borderRadius="4px">
+    Basic box with padding and background
+  </mui-box>
+
+  <h2>Flexbox Layout</h2>
+  <mui-box display="flex" gap="2" p="2" bgcolor="white" borderRadius="4px" boxShadow="0 2px 4px rgba(0,0,0,0.1)">
+    <mui-box flex="1" p="2" bgcolor="primary" color="white" textAlign="center" borderRadius="4px">
+      Flex Item 1
+    </mui-box>
+    <mui-box flex="2" p="2" bgcolor="secondary" color="white" textAlign="center" borderRadius="4px">
+      Flex Item 2 (flex: 2)
+    </mui-box>
+    <mui-box flex="1" p="2" bgcolor="success" color="white" textAlign="center" borderRadius="4px">
+      Flex Item 3
+    </mui-box>
+  </mui-box>
+
+  <h2>Spacing System</h2>
+  <mui-box display="flex" gap="2" p="2" bgcolor="white" borderRadius="4px" boxShadow="0 2px 4px rgba(0,0,0,0.1)">
+    <mui-box p="1" bgcolor="primary" color="white" borderRadius="4px">p="1" (8px)</mui-box>
+    <mui-box p="2" bgcolor="secondary" color="white" borderRadius="4px">p="2" (16px)</mui-box>
+    <mui-box p="3" bgcolor="success" color="white" borderRadius="4px">p="3" (24px)</mui-box>
+  </mui-box>
+
+  <h2>Colors</h2>
+  <mui-box display="flex" gap="2" flexWrap="wrap" p="2" bgcolor="white" borderRadius="4px" boxShadow="0 2px 4px rgba(0,0,0,0.1)">
+    <mui-box p="2" bgcolor="primary" color="white" borderRadius="4px">Primary</mui-box>
+    <mui-box p="2" bgcolor="secondary" color="white" borderRadius="4px">Secondary</mui-box>
+    <mui-box p="2" bgcolor="success" color="white" borderRadius="4px">Success</mui-box>
+    <mui-box p="2" bgcolor="error" color="white" borderRadius="4px">Error</mui-box>
+    <mui-box p="2" bgcolor="warning" color="white" borderRadius="4px">Warning</mui-box>
+    <mui-box p="2" bgcolor="info" color="white" borderRadius="4px">Info</mui-box>
+  </mui-box>
+
+  <h2>Complex Layout</h2>
+  <mui-box 
+    display="flex" 
+    flexDirection="column" 
+    gap="2" 
+    p="3" 
+    bgcolor="white" 
+    border="1px solid #e0e0e0" 
+    borderRadius="8px"
+    boxShadow="0 2px 8px rgba(0,0,0,0.1)">
+    
+    <mui-box display="flex" justifyContent="space-between" alignItems="center" pb="2" borderBottom="1px solid #e0e0e0">
+      <mui-box fontSize="20px" fontWeight="600" color="text-primary">
+        Card Header
+      </mui-box>
+      <mui-box p="1" bgcolor="success" color="white" borderRadius="4px" fontSize="12px">
+        Badge
+      </mui-box>
+    </mui-box>
+    
+    <mui-box py="2" color="text-secondary" lineHeight="1.6">
+      This is a complex layout example using only Box components. It demonstrates the flexibility and power of the Box component for creating sophisticated layouts.
+    </mui-box>
+    
+    <mui-box display="flex" gap="2" pt="2">
+      <mui-box flex="1" p="2" bgcolor="grey-100" borderRadius="4px" textAlign="center">
+        <mui-box fontWeight="600" color="primary" mb="1">Metric 1</mui-box>
+        <mui-box fontSize="24px" fontWeight="bold">1,234</mui-box>
+      </mui-box>
+      <mui-box flex="1" p="2" bgcolor="grey-100" borderRadius="4px" textAlign="center">
+        <mui-box fontWeight="600" color="secondary" mb="1">Metric 2</mui-box>
+        <mui-box fontSize="24px" fontWeight="bold">5,678</mui-box>
+      </mui-box>
+    </mui-box>
+  </mui-box>
+
+  <script type="module">
+    import { Box } from './dist/index.js';
+
+    // Register component
+    customElements.define('mui-box', Box);
+
+    console.log('Box component test loaded successfully!');
+  </script>
+</body>
+</html>
