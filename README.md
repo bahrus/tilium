@@ -49,6 +49,7 @@ Then use them in your HTML:
 - **Breadcrumbs** - Navigation aid showing the current location within a hierarchy
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
 - **Link** - Styled links with Material Design principles and multiple variants
+- **Menu** - Dropdown menus with keyboard navigation, submenus, and positioning options
 - **Stepper** - Step-by-step navigation for multi-step processes with horizontal/vertical layouts
 - **Tabs** - Tab navigation with horizontal/vertical orientation and multiple variants
 
@@ -796,6 +797,133 @@ Properties:
 - Use `variant="contained"` for prominent call-to-action links
 - Use `underline="always"` for links within text content
 - Use `disabled` for temporarily unavailable links
+
+### Menu
+```html
+<!-- Basic Menu -->
+<my-menu id="basic-menu" anchorEl="menu-button" open></my-menu>
+
+<!-- Menu with Items (JavaScript) -->
+<my-button id="menu-button">Open Menu</my-button>
+<my-menu id="context-menu" anchorEl="menu-button"></my-menu>
+
+<!-- Selected Menu -->
+<my-menu 
+  id="selected-menu" 
+  anchorEl="select-button" 
+  variant="selectedMenu" 
+  selectedValue="option2">
+</my-menu>
+
+<!-- Positioned Menu -->
+<my-menu 
+  id="positioned-menu" 
+  anchorEl="anchor-element"
+  anchorOrigin="top-right"
+  transformOrigin="top-left"
+  elevation="16">
+</my-menu>
+
+<!-- JavaScript Setup -->
+<script>
+  const menu = document.getElementById('context-menu');
+  const button = document.getElementById('menu-button');
+  
+  // Set menu items
+  menu.items = [
+    { id: 'profile', label: 'Profile', icon: 'settings' },
+    { id: 'account', label: 'My Account', icon: 'settings' },
+    { id: 'divider1', divider: true },
+    { id: 'logout', label: 'Logout', icon: 'settings', disabled: false }
+  ];
+  
+  // Open menu on button click
+  button.addEventListener('click', () => {
+    menu.open = !menu.open;
+  });
+  
+  // Handle menu selection
+  menu.addEventListener('select', (e) => {
+    console.log('Selected:', e.detail.item.label);
+    // Handle the selected item
+  });
+  
+  // Handle menu close
+  menu.addEventListener('close', () => {
+    console.log('Menu closed');
+  });
+</script>
+```
+
+Properties:
+- `open`: boolean - Whether the menu is visible
+- `items`: MenuItemData[] - Array of menu items to display
+- `anchorEl`: string - ID or selector of the anchor element
+- `anchorOrigin`: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' - Anchor position (default: 'bottom-left')
+- `transformOrigin`: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' - Transform origin (default: 'top-left')
+- `elevation`: number - Shadow elevation (1, 4, 8, 16) (default: 8)
+- `variant`: 'menu' | 'selectedMenu' - Menu style variant (default: 'menu')
+- `selectedValue`: string - Selected item ID for selectedMenu variant
+- `disableAutoFocus`: boolean - Disable auto-focus when opened
+- `disableRestoreFocus`: boolean - Disable focus restoration when closed
+
+**MenuItemData Interface:**
+```typescript
+interface MenuItemData {
+  id: string;           // Unique identifier
+  label: string;        // Display text
+  icon?: string;        // Icon name (optional)
+  disabled?: boolean;   // Disable interaction (optional)
+  divider?: boolean;    // Render as divider (optional)
+  children?: MenuItemData[]; // Submenu items (optional)
+}
+```
+
+**Built-in Icons:**
+- `home`: Home icon
+- `settings`: Settings/gear icon
+- `edit`: Edit/pencil icon
+- `delete`: Delete/trash icon
+- `copy`: Copy/duplicate icon
+- `share`: Share icon
+- `check`: Checkmark icon
+
+**Anchor Origins:**
+- **bottom-left**: Menu appears below and to the left of anchor (default)
+- **bottom-right**: Menu appears below and to the right of anchor
+- **top-left**: Menu appears above and to the left of anchor
+- **top-right**: Menu appears above and to the right of anchor
+
+**Menu Variants:**
+- **menu**: Standard menu with hover states (default)
+- **selectedMenu**: Menu with selected item highlighting and checkmarks
+
+**Events:**
+- `select`: Fired when menu item is selected (detail: { item, index })
+- `close`: Fired when menu closes (detail: { reason })
+
+**Features:**
+- **Keyboard Navigation**: Arrow keys, Enter, Escape, Home, End
+- **Auto-positioning**: Automatically positions relative to anchor element
+- **Focus Management**: Manages focus when opening/closing
+- **Submenu Support**: Nested menus with arrow key navigation
+- **Click Outside**: Closes when clicking outside menu area
+- **Elevation Variants**: Multiple shadow depths for layering
+- **Dividers**: Visual separators between menu sections
+- **Disabled Items**: Non-interactive menu items
+- **Icon Support**: Built-in icon system with common icons
+- **Selected State**: Highlight and checkmark for selected items
+- **Smooth Animations**: Enter/exit transitions with Material Design timing
+
+**Usage Patterns:**
+- Use for context menus, dropdown actions, and navigation
+- Include icons for better visual hierarchy and recognition
+- Use dividers to group related menu items
+- Use selectedMenu variant for single-choice selections
+- Position menus based on available space and user workflow
+- Keep menu items concise and action-oriented
+- Use disabled state for temporarily unavailable actions
+- Implement keyboard shortcuts for frequently used menu items
 
 ### Table
 ```html

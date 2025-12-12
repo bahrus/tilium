@@ -21,6 +21,7 @@ export { IconButton } from './components/IconButton.js';
 export { LinearProgress } from './components/LinearProgress.js';
 export { Link } from './components/Link.js';
 export { List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction } from './components/List.js';
+export { Menu, MenuItem, MenuItemData } from './components/Menu.js';
 export { NumberField } from './components/NumberField.js';
 export { Paper } from './components/Paper.js';
 export { Progress } from './components/Progress.js';
