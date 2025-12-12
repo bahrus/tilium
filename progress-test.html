@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  </style>
+  <script type="importmap">
+    {
+        "imports": {
+            "@lit/": "/node_modules/@lit/",
+            "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+            "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/",
+            "lit-element/": "/node_modules/lit-element/",
+            "lit-html/": "/node_modules/lit-html/",
+            "lit-html": "/node_modules/lit-html/lit-html.js",
+            "tslib": "/node_modules/tslib/tslib.es6.js",
+            "tslib/": "/node_modules/tslib/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Progress Component Test</h1>
+
+  <div class="section">
+    <h2>Linear Progress</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <h3>Indeterminate</h3>
+        <mui-progress variant="linear" mode="indeterminate" color="primary"></mui-progress>
+      </div>
+      
+      <div>
+        <h3>Determinate</h3>
+        <mui-progress variant="linear" mode="determinate" value="65" color="secondary"></mui-progress>
+      </div>
+      
+      <div>
+        <h3>Buffer</h3>
+        <mui-progress variant="linear" mode="buffer" value="60" buffer="80" color="primary"></mui-progress>
+      </div>
+      
+      <div>
+        <h3>With Label</h3>
+        <mui-progress variant="linear" mode="determinate" value="75" color="success" showLabel></mui-progress>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Circular Progress</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <h3>Indeterminate</h3>
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <mui-progress variant="circular" mode="indeterminate" color="primary" size="small"></mui-progress>
+          <mui-progress variant="circular" mode="indeterminate" color="secondary" size="medium"></mui-progress>
+          <mui-progress variant="circular" mode="indeterminate" color="error" size="large"></mui-progress>
+        </div>
+      </div>
+      
+      <div>
+        <h3>Determinate</h3>
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <mui-progress variant="circular" mode="determinate" value="25" color="primary" size="small"></mui-progress>
+          <mui-progress variant="circular" mode="determinate" value="50" color="secondary" size="medium"></mui-progress>
+          <mui-progress variant="circular" mode="determinate" value="75" color="success" size="large"></mui-progress>
+        </div>
+      </div>
+      
+      <div>
+        <h3>With Labels</h3>
+        <div style="display: flex; gap: 30px; align-items: center;">
+          <mui-progress variant="circular" mode="determinate" value="30" color="info" showLabel></mui-progress>
+          <mui-progress variant="circular" mode="determinate" value="85" color="warning" showLabel label="85% Done"></mui-progress>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { Progress } from './dist/index.js';
+
+    // Register the Progress component
+    customElements.define('mui-progress', Progress);
+
+    console.log('Progress component registered successfully!');
+  </script>
+</body>
+</html>

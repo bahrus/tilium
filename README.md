@@ -78,6 +78,7 @@ Then use them in your HTML:
 - **Alert** - Alert messages with severity levels
 - **CircularProgress** - Circular loading indicator
 - **LinearProgress** - Linear loading indicator
+- **Progress** - Unified progress component supporting both linear and circular variants
 
 ### Surfaces
 - **Card** - Flexible card container with CardHeader, CardMedia, CardContent, and CardActions
@@ -394,6 +395,47 @@ interface TransferListItem {
 
 **Events:**
 - `change` event with `{ left: TransferListItem[], right: TransferListItem[] }`
+
+### Progress
+```html
+<!-- Linear Progress -->
+<my-progress variant="linear" mode="determinate" value="75" color="primary"></my-progress>
+<my-progress variant="linear" mode="indeterminate" color="secondary"></my-progress>
+<my-progress variant="linear" mode="buffer" value="60" buffer="80" color="primary"></my-progress>
+
+<!-- Circular Progress -->
+<my-progress variant="circular" mode="determinate" value="75" color="primary" size="medium"></my-progress>
+<my-progress variant="circular" mode="indeterminate" color="secondary" size="large"></my-progress>
+
+<!-- With Labels -->
+<my-progress variant="linear" mode="determinate" value="85" showLabel color="success"></my-progress>
+<my-progress variant="circular" mode="determinate" value="65" showLabel label="65% Complete" color="info"></my-progress>
+```
+
+Properties:
+- `variant`: 'linear' | 'circular' - Progress indicator type
+- `mode`: 'determinate' | 'indeterminate' | 'buffer' | 'query' - Progress mode
+- `value`: number - Progress value (0-100) for determinate mode
+- `buffer`: number - Buffer value (0-100) for buffer mode
+- `color`: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' - Color theme
+- `size`: 'small' | 'medium' | 'large' | number - Size (circular only)
+- `thickness`: number - Stroke thickness for circular progress (default: 3.6)
+- `showLabel`: boolean - Display progress label
+- `label`: string - Custom label text (defaults to percentage for determinate mode)
+
+**Progress Modes:**
+- **Determinate**: Shows specific progress value (0-100%)
+- **Indeterminate**: Shows ongoing activity without specific progress
+- **Buffer**: Shows buffering progress with primary and buffer values (linear only)
+- **Query**: Shows query/loading state with reverse animation (linear only)
+
+**Features:**
+- Unified API for both linear and circular progress indicators
+- Multiple progress modes with smooth animations
+- Customizable colors, sizes, and thickness
+- Optional progress labels with custom text
+- Responsive design with proper accessibility
+- Buffer mode for streaming/loading scenarios
 
 ### Table
 ```html

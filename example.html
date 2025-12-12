@@ -1730,12 +1730,108 @@
 
   <div class="section">
     <h2>Progress Indicators</h2>
-    <div class="demo-row" style="flex-direction: column; align-items: flex-start;">
-      <mui-linear-progress variant="indeterminate" color="primary" style="width: 100%;"></mui-linear-progress>
-      <mui-linear-progress variant="determinate" value="75" color="secondary" style="width: 100%;"></mui-linear-progress>
-      <div style="display: flex; gap: 16px;">
-        <mui-circular-progress variant="indeterminate" color="primary"></mui-circular-progress>
-        <mui-circular-progress variant="determinate" value="75" color="secondary"></mui-circular-progress>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Linear Progress (Legacy Components)</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <mui-linear-progress variant="indeterminate" color="primary" style="width: 100%;"></mui-linear-progress>
+          <mui-linear-progress variant="determinate" value="75" color="secondary" style="width: 100%;"></mui-linear-progress>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Circular Progress (Legacy Components)</h3>
+        <div style="display: flex; gap: 16px;">
+          <mui-circular-progress variant="indeterminate" color="primary"></mui-circular-progress>
+          <mui-circular-progress variant="determinate" value="75" color="secondary"></mui-circular-progress>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Unified Progress Component - Linear</h3>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Indeterminate</h4>
+            <mui-progress variant="linear" mode="indeterminate" color="primary"></mui-progress>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Determinate</h4>
+            <mui-progress variant="linear" mode="determinate" value="65" color="secondary"></mui-progress>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Buffer</h4>
+            <mui-progress variant="linear" mode="buffer" value="60" buffer="80" color="primary"></mui-progress>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Query</h4>
+            <mui-progress variant="linear" mode="query" color="info"></mui-progress>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">With Label</h4>
+            <mui-progress variant="linear" mode="determinate" value="75" color="success" showLabel></mui-progress>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Custom Label</h4>
+            <mui-progress variant="linear" mode="determinate" value="45" color="warning" showLabel label="45% Complete"></mui-progress>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Unified Progress Component - Circular</h3>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Indeterminate</h4>
+            <div style="display: flex; gap: 20px; align-items: center;">
+              <mui-progress variant="circular" mode="indeterminate" color="primary" size="small"></mui-progress>
+              <mui-progress variant="circular" mode="indeterminate" color="secondary" size="medium"></mui-progress>
+              <mui-progress variant="circular" mode="indeterminate" color="error" size="large"></mui-progress>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Determinate</h4>
+            <div style="display: flex; gap: 20px; align-items: center;">
+              <mui-progress variant="circular" mode="determinate" value="25" color="primary" size="small"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="50" color="secondary" size="medium"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="75" color="success" size="large"></mui-progress>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">With Labels</h4>
+            <div style="display: flex; gap: 30px; align-items: center;">
+              <mui-progress variant="circular" mode="determinate" value="30" color="info" showLabel></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="85" color="warning" showLabel label="85% Done"></mui-progress>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Custom Thickness</h4>
+            <div style="display: flex; gap: 20px; align-items: center;">
+              <mui-progress variant="circular" mode="determinate" value="60" color="primary" thickness="2"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="60" color="secondary" thickness="6"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="60" color="error" thickness="10"></mui-progress>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Color Variants</h4>
+            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+              <mui-progress variant="circular" mode="determinate" value="70" color="primary"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="70" color="secondary"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="70" color="error"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="70" color="warning"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="70" color="info"></mui-progress>
+              <mui-progress variant="circular" mode="determinate" value="70" color="success"></mui-progress>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2669,7 +2765,7 @@
       Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      NumberField, Paper, Radio, Select, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      NumberField, Paper, Progress, Radio, Select, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -2712,6 +2808,7 @@
     customElements.define('mui-list-item-secondary-action', ListItemSecondaryAction);
     customElements.define('mui-number-field', NumberField);
     customElements.define('mui-paper', Paper);
+    customElements.define('mui-progress', Progress);
     customElements.define('mui-radio', Radio);
     customElements.define('mui-select', Select);
     customElements.define('mui-slider', Slider);
