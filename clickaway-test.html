@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClickAwayListener Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .test-box {
+      background-color: #e3f2fd;
+      border: 2px solid #1976d2;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 300px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .test-box:hover {
+      background-color: #bbdefb;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      min-width: 150px;
+      z-index: 1000;
+    }
+    .dropdown-item {
+      padding: 8px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-item:hover {
+      background-color: #f5f5f5;
+    }
+    .dropdown-item:last-child {
+      border-bottom: none;
+    }
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1300;
+    }
+    .modal {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+    }
+    .button:hover {
+      background: #1565c0;
+    }
+    .button.secondary {
+      background: #dc004e;
+    }
+    .button.secondary:hover {
+      background: #c51162;
+    }
+    .log {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.875rem;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>ClickAwayListener Component Test</h1>
+
+  <div class="section">
+    <h2>Basic ClickAway Detection</h2>
+    <p>Click outside the blue box to trigger the clickaway event.</p>
+    <mui-click-away-listener id="basic-test">
+      <div class="test-box">
+        <h4 style="margin: 0 0 10px 0; color: #1976d2;">Click Away Target</h4>
+        <p style="margin: 0; color: #333;">
+          Clicking inside this box will NOT trigger the clickaway event.
+          Clicking outside will trigger it.
+        </p>
+      </div>
+    </mui-click-away-listener>
+    <div id="basic-log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>Dropdown Menu</h2>
+    <p>Click the button to open the menu, then click outside to close it.</p>
+    <mui-click-away-listener id="dropdown-test" disabled>
+      <div class="dropdown">
+        <button id="dropdown-btn" class="button">Open Menu</button>
+        <div id="dropdown-menu" class="dropdown-menu" style="display: none;">
+          <div class="dropdown-item">Profile</div>
+          <div class="dropdown-item">Settings</div>
+          <div class="dropdown-item">Logout</div>
+        </div>
+      </div>
+    </mui-click-away-listener>
+    <div id="dropdown-log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>Modal Dialog</h2>
+    <p>Open the modal and click outside the white area to close it.</p>
+    <button id="modal-btn" class="button">Open Modal</button>
+    
+    <div id="modal-backdrop" class="modal-backdrop" style="display: none;">
+      <mui-click-away-listener id="modal-test">
+        <div class="modal">
+          <h3 style="margin: 0 0 16px 0;">Modal Dialog</h3>
+          <p style="margin: 0 0 20px 0;">
+            This is a modal dialog. Click outside this white area to close it.
+          </p>
+          <button id="modal-close" class="button">Close</button>
+        </div>
+      </mui-click-away-listener>
+    </div>
+    <div id="modal-log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>Different Event Types</h2>
+    <p>Test different mouse and touch events.</p>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px;">
+      <mui-click-away-listener id="mousedown-test" mouseEvent="onMouseDown">
+        <div style="background: #fff3e0; border: 2px solid #ff9800; padding: 16px; border-radius: 8px; max-width: 200px;">
+          <strong>MouseDown Event</strong>
+          <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+            Triggers on mousedown outside
+          </p>
+        </div>
+      </mui-click-away-listener>
+
+      <mui-click-away-listener id="mouseup-test" mouseEvent="onMouseUp">
+        <div style="background: #f3e5f5; border: 2px solid #9c27b0; padding: 16px; border-radius: 8px; max-width: 200px;">
+          <strong>MouseUp Event</strong>
+          <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+            Triggers on mouseup outside
+          </p>
+        </div>
+      </mui-click-away-listener>
+    </div>
+    <div id="events-log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>Disabled State</h2>
+    <p>Toggle the disabled state to control click away detection.</p>
+    <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 10px;">
+      <mui-click-away-listener id="disabled-test" disabled>
+        <div style="background: #fafafa; border: 2px solid #bdbdbd; padding: 16px; border-radius: 8px; max-width: 250px;">
+          <strong>Disabled Listener</strong>
+          <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+            This listener is disabled and won't trigger clickaway events.
+          </p>
+        </div>
+      </mui-click-away-listener>
+      
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <button id="enable-btn" class="button">Enable</button>
+        <button id="disable-btn" class="button secondary">Disable</button>
+      </div>
+    </div>
+    <div id="disabled-log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>Programmatic API Test</h2>
+    <p>Test the programmatic createClickAwayListener function.</p>
+    <div id="programmatic-target" style="background: #e8f5e8; border: 2px solid #4caf50; padding: 16px; border-radius: 8px; max-width: 300px; margin-bottom: 10px;">
+      <strong>Programmatic Target</strong>
+      <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+        This uses the programmatic API instead of the web component.
+      </p>
+    </div>
+    <button id="start-programmatic" class="button">Start Listening</button>
+    <button id="stop-programmatic" class="button secondary">Stop Listening</button>
+    <div id="programmatic-log" class="log"></div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { ClickAwayListener, createClickAwayListener } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-click-away-listener', ClickAwayListener);
+
+    // Utility function to log messages
+    function log(elementId, message) {
+      const logElement = document.getElementById(elementId);
+      const timestamp = new Date().toLocaleTimeString();
+      logElement.innerHTML += `[${timestamp}] ${message}\n`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+
+    // Basic ClickAway Test
+    const basicTest = document.getElementById('basic-test');
+    basicTest.addEventListener('clickaway', (e) => {
+      log('basic-log', 'Basic ClickAway triggered!');
+      
+      // Visual feedback
+      const target = basicTest.querySelector('.test-box');
+      target.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        target.style.transform = 'scale(1)';
+      }, 100);
+    });
+
+    // Dropdown Test
+    const dropdownTest = document.getElementById('dropdown-test');
+    const dropdownBtn = document.getElementById('dropdown-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    
+    dropdownBtn.addEventListener('click', () => {
+      const isOpen = dropdownMenu.style.display === 'block';
+      if (isOpen) {
+        dropdownMenu.style.display = 'none';
+        dropdownTest.disabled = true;
+        log('dropdown-log', 'Dropdown closed via button');
+      } else {
+        dropdownMenu.style.display = 'block';
+        dropdownTest.disabled = false;
+        log('dropdown-log', 'Dropdown opened');
+      }
+    });
+
+    dropdownTest.addEventListener('clickaway', () => {
+      dropdownMenu.style.display = 'none';
+      dropdownTest.disabled = true;
+      log('dropdown-log', 'Dropdown closed via clickaway');
+    });
+
+    // Modal Test
+    const modalBtn = document.getElementById('modal-btn');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalTest = document.getElementById('modal-test');
+    const modalClose = document.getElementById('modal-close');
+    
+    function openModal() {
+      modalBackdrop.style.display = 'flex';
+      log('modal-log', 'Modal opened');
+    }
+
+    function closeModal() {
+      modalBackdrop.style.display = 'none';
+      log('modal-log', 'Modal closed');
+    }
+
+    modalBtn.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modalTest.addEventListener('clickaway', () => {
+      closeModal();
+      log('modal-log', 'Modal closed via clickaway');
+    });
+
+    // Event Types Test
+    const mousedownTest = document.getElementById('mousedown-test');
+    const mouseupTest = document.getElementById('mouseup-test');
+    
+    mousedownTest.addEventListener('clickaway', (e) => {
+      log('events-log', `MouseDown ClickAway triggered! Event: ${e.detail.originalEvent.type}`);
+      const target = mousedownTest.querySelector('div');
+      target.style.backgroundColor = '#ffcc02';
+      setTimeout(() => {
+        target.style.backgroundColor = '#fff3e0';
+      }, 200);
+    });
+
+    mouseupTest.addEventListener('clickaway', (e) => {
+      log('events-log', `MouseUp ClickAway triggered! Event: ${e.detail.originalEvent.type}`);
+      const target = mouseupTest.querySelector('div');
+      target.style.backgroundColor = '#e1bee7';
+      setTimeout(() => {
+        target.style.backgroundColor = '#f3e5f5';
+      }, 200);
+    });
+
+    // Disabled State Test
+    const disabledTest = document.getElementById('disabled-test');
+    const enableBtn = document.getElementById('enable-btn');
+    const disableBtn = document.getElementById('disable-btn');
+    
+    disabledTest.addEventListener('clickaway', () => {
+      log('disabled-log', 'Disabled listener clickaway triggered!');
+      const target = disabledTest.querySelector('div');
+      target.style.backgroundColor = '#e8f5e8';
+      target.style.borderColor = '#4caf50';
+      setTimeout(() => {
+        target.style.backgroundColor = '#fafafa';
+        target.style.borderColor = '#bdbdbd';
+      }, 300);
+    });
+
+    enableBtn.addEventListener('click', () => {
+      disabledTest.disabled = false;
+      log('disabled-log', 'ClickAwayListener enabled');
+      
+      const target = disabledTest.querySelector('div');
+      target.querySelector('strong').textContent = 'Enabled Listener';
+      target.querySelector('p').textContent = 'This listener is now enabled and will trigger clickaway events.';
+      target.style.backgroundColor = '#e8f5e8';
+      target.style.borderColor = '#4caf50';
+    });
+
+    disableBtn.addEventListener('click', () => {
+      disabledTest.disabled = true;
+      log('disabled-log', 'ClickAwayListener disabled');
+      
+      const target = disabledTest.querySelector('div');
+      target.querySelector('strong').textContent = 'Disabled Listener';
+      target.querySelector('p').textContent = 'This listener is disabled and won\'t trigger clickaway events.';
+      target.style.backgroundColor = '#fafafa';
+      target.style.borderColor = '#bdbdbd';
+    });
+
+    // Programmatic API Test
+    const programmaticTarget = document.getElementById('programmatic-target');
+    const startProgrammaticBtn = document.getElementById('start-programmatic');
+    const stopProgrammaticBtn = document.getElementById('stop-programmatic');
+    let programmaticCleanup = null;
+
+    startProgrammaticBtn.addEventListener('click', () => {
+      if (programmaticCleanup) {
+        programmaticCleanup();
+      }
+      
+      programmaticCleanup = createClickAwayListener(
+        programmaticTarget,
+        (event) => {
+          log('programmatic-log', `Programmatic clickaway triggered! Event: ${event.type}`);
+          programmaticTarget.style.backgroundColor = '#c8e6c9';
+          setTimeout(() => {
+            programmaticTarget.style.backgroundColor = '#e8f5e8';
+          }, 200);
+        },
+        {
+          mouseEvent: 'onClick',
+          touchEvent: 'onTouchEnd'
+        }
+      );
+      
+      log('programmatic-log', 'Programmatic listener started');
+      startProgrammaticBtn.disabled = true;
+      stopProgrammaticBtn.disabled = false;
+    });
+
+    stopProgrammaticBtn.addEventListener('click', () => {
+      if (programmaticCleanup) {
+        programmaticCleanup();
+        programmaticCleanup = null;
+      }
+      
+      log('programmatic-log', 'Programmatic listener stopped');
+      startProgrammaticBtn.disabled = false;
+      stopProgrammaticBtn.disabled = true;
+    });
+
+    // Initialize
+    stopProgrammaticBtn.disabled = true;
+
+    console.log('ClickAwayListener test loaded successfully!');
+  </script>
+</body>
+</html>

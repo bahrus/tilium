@@ -15,6 +15,7 @@ export { Card, CardHeader, CardMedia, CardContent, CardActions } from './compone
 export { Checkbox } from './components/Checkbox.js';
 export { Chip } from './components/Chip.js';
 export { CircularProgress } from './components/CircularProgress.js';
+export { ClickAwayListener } from './components/ClickAwayListener.js';
 export { Container } from './components/Container.js';
 export { Dialog, DialogTitle, DialogContent, DialogActions } from './components/Dialog.js';
 export { Divider } from './components/Divider.js';

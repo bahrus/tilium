@@ -3878,6 +3878,180 @@
   </div>
 
   <div class="section">
+    <h2>ClickAway Listener</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic ClickAway Listener</h3>
+        <p>Click outside the blue box to trigger the clickaway event. Check the console for messages.</p>
+        <mui-click-away-listener id="basic-clickaway">
+          <div style="
+            background-color: #e3f2fd; 
+            border: 2px solid #1976d2; 
+            padding: 20px; 
+            border-radius: 8px; 
+            max-width: 300px;
+            cursor: pointer;
+          ">
+            <h4 style="margin: 0 0 10px 0; color: #1976d2;">Click Away Target</h4>
+            <p style="margin: 0; color: #333;">
+              This content is wrapped by a ClickAwayListener. 
+              Clicking inside this box will NOT trigger the clickaway event.
+              Clicking outside will trigger it.
+            </p>
+          </div>
+        </mui-click-away-listener>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Dropdown Menu Example</h3>
+        <p>A practical example showing how to use ClickAwayListener with a dropdown menu.</p>
+        <div style="position: relative; display: inline-block;">
+          <mui-button id="dropdown-button" variant="contained" color="primary">
+            Open Menu
+          </mui-button>
+          <mui-click-away-listener id="dropdown-clickaway" disabled>
+            <div id="dropdown-menu" style="
+              position: absolute;
+              top: 100%;
+              left: 0;
+              background: white;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+              min-width: 150px;
+              z-index: 1000;
+              display: none;
+            ">
+              <div style="padding: 8px 16px; cursor: pointer; border-bottom: 1px solid #eee;" 
+                   onmouseover="this.style.backgroundColor='#f5f5f5'" 
+                   onmouseout="this.style.backgroundColor='white'">
+                Profile
+              </div>
+              <div style="padding: 8px 16px; cursor: pointer; border-bottom: 1px solid #eee;" 
+                   onmouseover="this.style.backgroundColor='#f5f5f5'" 
+                   onmouseout="this.style.backgroundColor='white'">
+                Settings
+              </div>
+              <div style="padding: 8px 16px; cursor: pointer;" 
+                   onmouseover="this.style.backgroundColor='#f5f5f5'" 
+                   onmouseout="this.style.backgroundColor='white'">
+                Logout
+              </div>
+            </div>
+          </mui-click-away-listener>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Modal Dialog Example</h3>
+        <p>Using ClickAwayListener to close a modal when clicking outside.</p>
+        <mui-button id="modal-button" variant="outlined" color="secondary">
+          Open Modal
+        </mui-button>
+        
+        <div id="modal-backdrop" style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0,0,0,0.5);
+          display: none;
+          align-items: center;
+          justify-content: center;
+          z-index: 1300;
+        ">
+          <mui-click-away-listener id="modal-clickaway">
+            <div style="
+              background: white;
+              padding: 24px;
+              border-radius: 8px;
+              max-width: 400px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            ">
+              <h3 style="margin: 0 0 16px 0;">Modal Dialog</h3>
+              <p style="margin: 0 0 20px 0;">
+                This is a modal dialog. Click outside this white area to close it,
+                or use the close button below.
+              </p>
+              <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                <mui-button id="modal-close" variant="outlined">Close</mui-button>
+                <mui-button variant="contained" color="primary">Save</mui-button>
+              </div>
+            </div>
+          </mui-click-away-listener>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Different Event Types</h3>
+        <p>ClickAwayListener supports different mouse and touch events.</p>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-click-away-listener id="mousedown-listener" mouseEvent="onMouseDown">
+            <div style="
+              background-color: #fff3e0; 
+              border: 2px solid #ff9800; 
+              padding: 16px; 
+              border-radius: 8px; 
+              max-width: 200px;
+            ">
+              <strong>MouseDown Event</strong>
+              <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+                Triggers on mousedown outside
+              </p>
+            </div>
+          </mui-click-away-listener>
+
+          <mui-click-away-listener id="mouseup-listener" mouseEvent="onMouseUp">
+            <div style="
+              background-color: #f3e5f5; 
+              border: 2px solid #9c27b0; 
+              padding: 16px; 
+              border-radius: 8px; 
+              max-width: 200px;
+            ">
+              <strong>MouseUp Event</strong>
+              <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+                Triggers on mouseup outside
+              </p>
+            </div>
+          </mui-click-away-listener>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Disabled State</h3>
+        <p>ClickAwayListener can be disabled to temporarily stop listening for clicks.</p>
+        <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+          <mui-click-away-listener id="disabled-listener" disabled>
+            <div style="
+              background-color: #fafafa; 
+              border: 2px solid #bdbdbd; 
+              padding: 16px; 
+              border-radius: 8px; 
+              max-width: 250px;
+            ">
+              <strong>Disabled Listener</strong>
+              <p style="margin: 8px 0 0 0; font-size: 0.875rem;">
+                This listener is disabled and won't trigger clickaway events.
+              </p>
+            </div>
+          </mui-click-away-listener>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <mui-button id="enable-button" variant="outlined" size="small">
+              Enable Listener
+            </mui-button>
+            <mui-button id="disable-button" variant="outlined" size="small">
+              Disable Listener
+            </mui-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -4803,7 +4977,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, Container,
+      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, ClickAwayListener, Container,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -4836,6 +5010,7 @@
     customElements.define('mui-checkbox', Checkbox);
     customElements.define('mui-chip', Chip);
     customElements.define('mui-circular-progress', CircularProgress);
+    customElements.define('mui-click-away-listener', ClickAwayListener);
     customElements.define('mui-container', Container);
     customElements.define('mui-dialog', Dialog);
     customElements.define('mui-dialog-title', DialogTitle);
@@ -5994,6 +6169,183 @@
     }
 
     console.log('Link examples loaded successfully!');
+
+    // ClickAwayListener examples
+    const setupClickAwayListeners = () => {
+      // Basic ClickAway Listener
+      const basicClickAway = document.getElementById('basic-clickaway');
+      if (basicClickAway) {
+        basicClickAway.addEventListener('clickaway', (e) => {
+          console.log('Basic ClickAway triggered!', e.detail);
+          
+          // Visual feedback
+          const target = basicClickAway.querySelector('div');
+          if (target) {
+            target.style.transform = 'scale(0.95)';
+            target.style.transition = 'transform 0.1s ease';
+            setTimeout(() => {
+              target.style.transform = 'scale(1)';
+            }, 100);
+          }
+        });
+      }
+
+      // Dropdown Menu Example
+      const dropdownButton = document.getElementById('dropdown-button');
+      const dropdownClickAway = document.getElementById('dropdown-clickaway');
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      
+      if (dropdownButton && dropdownClickAway && dropdownMenu) {
+        dropdownButton.addEventListener('click', () => {
+          const isOpen = dropdownMenu.style.display === 'block';
+          if (isOpen) {
+            dropdownMenu.style.display = 'none';
+            dropdownClickAway.disabled = true;
+          } else {
+            dropdownMenu.style.display = 'block';
+            dropdownClickAway.disabled = false;
+          }
+        });
+
+        dropdownClickAway.addEventListener('clickaway', () => {
+          console.log('Dropdown clickaway triggered - closing menu');
+          dropdownMenu.style.display = 'none';
+          dropdownClickAway.disabled = true;
+        });
+
+        // Menu item clicks
+        dropdownMenu.querySelectorAll('div').forEach((item, index) => {
+          item.addEventListener('click', () => {
+            console.log(`Menu item ${index + 1} clicked:`, item.textContent);
+            dropdownMenu.style.display = 'none';
+            dropdownClickAway.disabled = true;
+          });
+        });
+      }
+
+      // Modal Dialog Example
+      const modalButton = document.getElementById('modal-button');
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      const modalClickAway = document.getElementById('modal-clickaway');
+      const modalClose = document.getElementById('modal-close');
+      
+      if (modalButton && modalBackdrop && modalClickAway && modalClose) {
+        const openModal = () => {
+          modalBackdrop.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent background scroll
+        };
+
+        const closeModal = () => {
+          modalBackdrop.style.display = 'none';
+          document.body.style.overflow = ''; // Restore scroll
+        };
+
+        modalButton.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+
+        modalClickAway.addEventListener('clickaway', (e) => {
+          console.log('Modal clickaway triggered - closing modal');
+          closeModal();
+        });
+      }
+
+      // Different Event Types
+      const mousedownListener = document.getElementById('mousedown-listener');
+      const mouseupListener = document.getElementById('mouseup-listener');
+      
+      if (mousedownListener) {
+        mousedownListener.addEventListener('clickaway', (e) => {
+          console.log('MouseDown ClickAway triggered!', e.detail);
+          const target = mousedownListener.querySelector('div');
+          if (target) {
+            target.style.backgroundColor = '#ffcc02';
+            setTimeout(() => {
+              target.style.backgroundColor = '#fff3e0';
+            }, 200);
+          }
+        });
+      }
+
+      if (mouseupListener) {
+        mouseupListener.addEventListener('clickaway', (e) => {
+          console.log('MouseUp ClickAway triggered!', e.detail);
+          const target = mouseupListener.querySelector('div');
+          if (target) {
+            target.style.backgroundColor = '#e1bee7';
+            setTimeout(() => {
+              target.style.backgroundColor = '#f3e5f5';
+            }, 200);
+          }
+        });
+      }
+
+      // Disabled State Example
+      const disabledListener = document.getElementById('disabled-listener');
+      const enableButton = document.getElementById('enable-button');
+      const disableButton = document.getElementById('disable-button');
+      
+      if (disabledListener && enableButton && disableButton) {
+        disabledListener.addEventListener('clickaway', (e) => {
+          console.log('Disabled listener clickaway triggered!', e.detail);
+          const target = disabledListener.querySelector('div');
+          if (target) {
+            target.style.backgroundColor = '#e8f5e8';
+            target.style.borderColor = '#4caf50';
+            setTimeout(() => {
+              target.style.backgroundColor = '#fafafa';
+              target.style.borderColor = '#bdbdbd';
+            }, 300);
+          }
+        });
+
+        enableButton.addEventListener('click', () => {
+          disabledListener.disabled = false;
+          console.log('ClickAwayListener enabled');
+          
+          const target = disabledListener.querySelector('div');
+          if (target) {
+            target.querySelector('strong').textContent = 'Enabled Listener';
+            target.querySelector('p').textContent = 'This listener is now enabled and will trigger clickaway events.';
+            target.style.backgroundColor = '#e8f5e8';
+            target.style.borderColor = '#4caf50';
+          }
+        });
+
+        disableButton.addEventListener('click', () => {
+          disabledListener.disabled = true;
+          console.log('ClickAwayListener disabled');
+          
+          const target = disabledListener.querySelector('div');
+          if (target) {
+            target.querySelector('strong').textContent = 'Disabled Listener';
+            target.querySelector('p').textContent = 'This listener is disabled and won\'t trigger clickaway events.';
+            target.style.backgroundColor = '#fafafa';
+            target.style.borderColor = '#bdbdbd';
+          }
+        });
+      }
+    };
+
+    // Initialize ClickAwayListener handlers
+    const initClickAwayListeners = () => {
+      setTimeout(setupClickAwayListeners, 100);
+    };
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initMenus();
+        initAccordions();
+        initSpeedDials();
+        initClickAwayListeners();
+      });
+    } else {
+      initMenus();
+      initAccordions();
+      initSpeedDials();
+      initClickAwayListeners();
+    }
+
+    console.log('ClickAwayListener examples loaded successfully!');
   </script>
 </body>
 </html>

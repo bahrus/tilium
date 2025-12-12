@@ -100,6 +100,7 @@ Then use them in your HTML:
 
 ### Utils
 - **Backdrop** - Semi-transparent overlay for modals and loading states
+- **ClickAwayListener** - Utility component for detecting clicks outside of elements
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
@@ -2495,6 +2496,184 @@ interface MenuItemData {
 - **Click Outside**: Detects clicks outside of slotted content
 - **Layering**: Supports multiple backdrop layers with different z-indexes
 - **Accessibility**: Proper ARIA attributes and focus management
+
+### ClickAwayListener
+```html
+<!-- Basic ClickAway Listener -->
+<my-click-away-listener>
+  <div>Content that detects clicks outside</div>
+</my-click-away-listener>
+
+<!-- Dropdown Menu Example -->
+<my-click-away-listener id="dropdown-listener">
+  <div class="dropdown">
+    <button>Menu Button</button>
+    <div class="dropdown-menu">
+      <div>Menu Item 1</div>
+      <div>Menu Item 2</div>
+    </div>
+  </div>
+</my-click-away-listener>
+
+<!-- Modal Dialog Example -->
+<div class="modal-backdrop">
+  <my-click-away-listener>
+    <div class="modal-content">
+      <h3>Modal Title</h3>
+      <p>Click outside this modal to close it.</p>
+      <button>Close</button>
+    </div>
+  </my-click-away-listener>
+</div>
+
+<!-- Different Event Types -->
+<my-click-away-listener mouseEvent="onMouseDown" touchEvent="onTouchStart">
+  <div>Triggers on mousedown/touchstart outside</div>
+</my-click-away-listener>
+
+<!-- Disabled State -->
+<my-click-away-listener disabled>
+  <div>ClickAway detection is disabled</div>
+</my-click-away-listener>
+
+<!-- Programmatic Usage -->
+<div id="target-element">Content to protect</div>
+
+<script>
+  import { createClickAwayListener } from 'lit-material-components';
+  
+  const element = document.getElementById('target-element');
+  
+  // Create click away listener
+  const cleanup = createClickAwayListener(element, (event) => {
+    console.log('Clicked outside!', event);
+    // Handle click away
+  }, {
+    mouseEvent: 'onClick',
+    touchEvent: 'onTouchEnd',
+    disabled: false
+  });
+  
+  // Clean up when done
+  // cleanup();
+  
+  // Component usage
+  const listener = document.querySelector('my-click-away-listener');
+  
+  listener.addEventListener('clickaway', (e) => {
+    console.log('ClickAway event:', e.detail);
+    // e.detail.originalEvent - the original DOM event
+    // e.detail.mouseEvent - configured mouse event type
+    // e.detail.touchEvent - configured touch event type
+  });
+</script>
+```
+
+**ClickAwayListener Properties:**
+- `disabled`: boolean - Disable click away detection (default: false)
+- `mouseEvent`: 'onClick' | 'onMouseDown' | 'onMouseUp' | false - Mouse event to listen for (default: 'onClick')
+- `touchEvent`: 'onTouchStart' | 'onTouchEnd' | false - Touch event to listen for (default: 'onTouchEnd')
+
+**Event Types:**
+- **onClick**: Standard click event (default for mouse)
+- **onMouseDown**: Mouse button press event
+- **onMouseUp**: Mouse button release event
+- **onTouchStart**: Touch start event
+- **onTouchEnd**: Touch end event (default for touch)
+- **false**: Disable that event type
+
+**Events:**
+- `clickaway`: Fired when a click occurs outside the wrapped content
+  - `detail.originalEvent`: The original DOM event (click, mousedown, etc.)
+  - `detail.mouseEvent`: The configured mouse event type
+  - `detail.touchEvent`: The configured touch event type
+
+**Programmatic API:**
+The `createClickAwayListener` function provides a programmatic way to add click away detection:
+
+```typescript
+function createClickAwayListener(
+  element: Element,
+  callback: (event: Event) => void,
+  options?: {
+    disabled?: boolean;
+    mouseEvent?: 'onClick' | 'onMouseDown' | 'onMouseUp' | false;
+    touchEvent?: 'onTouchStart' | 'onTouchEnd' | false;
+  }
+): () => void
+```
+
+**Features:**
+- **Multiple Event Types**: Support for different mouse and touch events
+- **Flexible Detection**: Works with any content wrapped inside the component
+- **Performance Optimized**: Uses event delegation and efficient event handling
+- **Touch Support**: Full support for touch devices with configurable touch events
+- **Programmatic API**: Can be used without the web component wrapper
+- **Disabled State**: Can be temporarily disabled without removing event listeners
+- **Event Bubbling**: Properly handles event bubbling and prevents false triggers
+- **Memory Management**: Automatic cleanup of event listeners when component is removed
+
+**Usage Patterns:**
+- **Dropdown Menus**: Close menus when clicking outside
+- **Modal Dialogs**: Close modals when clicking on backdrop
+- **Tooltips**: Hide tooltips when clicking elsewhere
+- **Popover Menus**: Dismiss context menus and popovers
+- **Form Validation**: Trigger validation when focus leaves form area
+- **Sidebar Navigation**: Collapse mobile sidebars when clicking main content
+
+**Common Implementation Patterns:**
+```html
+<!-- Dropdown Pattern -->
+<my-click-away-listener>
+  <div class="dropdown">
+    <button onclick="toggleDropdown()">Menu</button>
+    <div class="dropdown-menu" style="display: none;">
+      <!-- Menu items -->
+    </div>
+  </div>
+</my-click-away-listener>
+
+<!-- Modal Pattern -->
+<div class="modal-backdrop" style="display: none;">
+  <my-click-away-listener>
+    <div class="modal" onclick="event.stopPropagation()">
+      <!-- Modal content -->
+    </div>
+  </my-click-away-listener>
+</div>
+
+<!-- Tooltip Pattern -->
+<my-click-away-listener>
+  <div class="tooltip-container">
+    <button>Hover me</button>
+    <div class="tooltip">Tooltip content</div>
+  </div>
+</my-click-away-listener>
+```
+
+**Best Practices:**
+- Use `disabled` property to temporarily disable detection instead of removing listeners
+- Choose appropriate event types based on your use case (onClick for most cases)
+- Use `onMouseDown` for immediate response, `onMouseUp` for delayed response
+- Always provide a way to close/dismiss via keyboard (Escape key)
+- Consider touch devices when choosing touch event types
+- Use `event.stopPropagation()` on inner content to prevent unwanted triggers
+- Clean up programmatic listeners when components are destroyed
+- Test on both desktop and mobile devices for proper touch handling
+
+**Accessibility:**
+- Ensure keyboard alternatives for all click-away interactions
+- Provide Escape key handling for modal dialogs and menus
+- Use proper ARIA attributes for dynamic content visibility
+- Maintain focus management when closing overlays
+- Consider screen reader users when implementing click-away behavior
+
+**Performance:**
+- Uses efficient event delegation with document-level listeners
+- Minimal DOM queries and event handler overhead
+- Automatic cleanup prevents memory leaks
+- Optimized for frequent enable/disable operations
+- Supports multiple simultaneous click-away listeners
 
 ### Dialog
 ```html
