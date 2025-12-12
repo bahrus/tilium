@@ -103,6 +103,7 @@ Then use them in your HTML:
 - **ClickAwayListener** - Utility component for detecting clicks outside of elements
 - **CssBaseline** - Global CSS reset and normalization for consistent styling
 - **ScopedCssBaseline** - Scoped CSS reset and normalization for specific content areas
+- **Modal** - Foundation component for creating modal dialogs and overlays
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
@@ -2890,6 +2891,339 @@ When `enableColorScheme` is true:
 - Graceful degradation for older browsers
 - Progressive enhancement for color scheme detection
 - Consistent behavior across desktop and mobile platforms
+
+### Modal
+```html
+<!-- Basic Modal -->
+<my-modal open>
+  <div class="modal-content">
+    <h2>Modal Title</h2>
+    <p>Modal content goes here.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Modal with Custom Backdrop -->
+<my-modal open disableBackdropClick>
+  <div class="modal-content">
+    <h2>No Backdrop Click</h2>
+    <p>This modal cannot be closed by clicking the backdrop.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Modal without Escape Key -->
+<my-modal open disableEscapeKeyDown>
+  <div class="modal-content">
+    <h2>No Escape Key</h2>
+    <p>This modal cannot be closed with the Escape key.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Invisible Backdrop Modal -->
+<my-modal open hideBackdrop>
+  <div class="modal-content">
+    <h2>Invisible Backdrop</h2>
+    <p>This modal has no visible backdrop.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Keep Mounted Modal -->
+<my-modal keepMounted>
+  <div class="modal-content">
+    <h2>Keep Mounted</h2>
+    <p>This modal stays in the DOM when closed.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Nested Modals -->
+<my-modal id="first-modal" open zIndex="1400">
+  <div class="modal-content">
+    <h2>First Modal</h2>
+    <button onclick="openSecondModal()">Open Second Modal</button>
+  </div>
+</my-modal>
+
+<my-modal id="second-modal" zIndex="1500">
+  <div class="modal-content">
+    <h2>Second Modal</h2>
+    <p>This modal is stacked on top of the first one.</p>
+    <button onclick="closeSecondModal()">Close</button>
+  </div>
+</my-modal>
+
+<!-- Form Modal with Focus Management -->
+<my-modal open>
+  <form class="modal-content">
+    <h2>Contact Form</h2>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" required></textarea>
+    <div class="actions">
+      <button type="button" onclick="closeModal()">Cancel</button>
+      <button type="submit">Send</button>
+    </div>
+  </form>
+</my-modal>
+
+<!-- Programmatic Usage -->
+<script>
+  import { createModal } from 'lit-material-components';
+  
+  // Create modal programmatically
+  const modal = createModal({
+    content: '<div class="modal-content"><h2>Dynamic Modal</h2><p>Created with JavaScript</p></div>',
+    open: true,
+    disableBackdropClick: false,
+    zIndex: 1400,
+    onClose: () => console.log('Modal closed'),
+    onOpen: () => console.log('Modal opened')
+  });
+  
+  // Control modal
+  modal.open = true;  // Open
+  modal.open = false; // Close
+  
+  // Remove modal
+  modal.remove();
+  
+  // Event handling
+  const modalElement = document.querySelector('my-modal');
+  
+  modalElement.addEventListener('open', () => {
+    console.log('Modal opened');
+  });
+  
+  modalElement.addEventListener('close', () => {
+    console.log('Modal closed');
+  });
+  
+  modalElement.addEventListener('backdrop-click', (e) => {
+    console.log('Backdrop clicked', e.detail.originalEvent);
+  });
+  
+  modalElement.addEventListener('exited', () => {
+    console.log('Modal exit animation completed');
+  });
+</script>
+```
+
+**Modal Properties:**
+- `open`: boolean - Whether the modal is visible (default: false)
+- `disableBackdropClick`: boolean - Prevent closing on backdrop click (default: false)
+- `disableEscapeKeyDown`: boolean - Prevent closing with Escape key (default: false)
+- `hideBackdrop`: boolean - Hide the backdrop overlay (default: false)
+- `disableAutoFocus`: boolean - Disable automatic focus on open (default: false)
+- `disableEnforceFocus`: boolean - Disable focus trapping (default: false)
+- `disableRestoreFocus`: boolean - Disable focus restoration on close (default: false)
+- `keepMounted`: boolean - Keep modal in DOM when closed (default: false)
+- `closeAfterTransition`: string - CSS transition property to wait for (default: '')
+- `zIndex`: number - CSS z-index value (default: 1300)
+
+**Events:**
+- `open`: Fired when modal opens
+- `close`: Fired when modal closes
+- `exited`: Fired when close animation completes
+- `backdrop-click`: Fired when backdrop is clicked (detail: { originalEvent })
+
+**Programmatic API:**
+The `createModal` function provides a programmatic way to create modals:
+
+```typescript
+function createModal(options: {
+  content?: HTMLElement | string;
+  open?: boolean;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  hideBackdrop?: boolean;
+  zIndex?: number;
+  onClose?: () => void;
+  onOpen?: () => void;
+}): Modal
+```
+
+**Features:**
+
+**Focus Management:**
+- Automatic focus on first focusable element when opened
+- Focus trapping within modal content
+- Focus restoration to trigger element when closed
+- Proper tab order and keyboard navigation
+- Support for disabling focus management features
+
+**Accessibility:**
+- Proper ARIA attributes (role="dialog", aria-modal="true")
+- Screen reader compatible structure
+- Keyboard navigation support (Tab, Shift+Tab, Escape)
+- Focus indicators and high contrast support
+- Semantic HTML structure preservation
+
+**Backdrop & Overlay:**
+- Semi-transparent backdrop with smooth transitions
+- Configurable backdrop click behavior
+- Option to hide backdrop completely
+- Proper z-index stacking for nested modals
+- Mobile-optimized touch handling
+
+**Body Scroll Management:**
+- Prevents background scrolling when modal is open
+- Maintains scroll position when modal closes
+- Handles fixed positioning for iOS Safari
+- Restores original scroll state properly
+
+**Animation & Transitions:**
+- Smooth fade-in/fade-out animations
+- Scale transition for modal content
+- Configurable transition timing
+- Reduced motion support for accessibility
+- Custom transition support via closeAfterTransition
+
+**Nested Modal Support:**
+- Multiple modals can be stacked
+- Proper z-index management
+- Independent focus management for each modal
+- Correct event handling for nested scenarios
+
+**Usage Patterns:**
+
+**Basic Modal:**
+```html
+<my-modal id="basic-modal">
+  <div class="modal-content">
+    <h2>Modal Title</h2>
+    <p>Content goes here</p>
+    <button onclick="document.getElementById('basic-modal').open = false">Close</button>
+  </div>
+</my-modal>
+```
+
+**Form Modal:**
+```html
+<my-modal id="form-modal">
+  <form class="modal-content" onsubmit="handleSubmit(event)">
+    <h2>Contact Form</h2>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" required></textarea>
+    <div class="actions">
+      <button type="button" onclick="closeModal()">Cancel</button>
+      <button type="submit">Send</button>
+    </div>
+  </form>
+</my-modal>
+```
+
+**Confirmation Dialog:**
+```html
+<my-modal id="confirm-modal" disableBackdropClick>
+  <div class="modal-content">
+    <h2>Confirm Action</h2>
+    <p>Are you sure you want to delete this item?</p>
+    <div class="actions">
+      <button onclick="closeModal()">Cancel</button>
+      <button onclick="confirmDelete()" class="danger">Delete</button>
+    </div>
+  </div>
+</my-modal>
+```
+
+**Image Gallery Modal:**
+```html
+<my-modal id="gallery-modal" hideBackdrop>
+  <div class="gallery-content">
+    <img src="large-image.jpg" alt="Gallery image">
+    <button class="close-btn" onclick="closeModal()">×</button>
+  </div>
+</my-modal>
+```
+
+**Loading Modal:**
+```html
+<my-modal open disableBackdropClick disableEscapeKeyDown>
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+</my-modal>
+```
+
+**CSS Styling:**
+The Modal component provides minimal styling and expects you to style the content:
+
+```css
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+  margin: 0 0 16px 0;
+}
+
+.modal-content .actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .modal-content {
+    margin: 16px;
+    max-width: calc(100vw - 32px);
+  }
+}
+```
+
+**Best Practices:**
+
+**Accessibility:**
+- Always provide proper heading structure (h1, h2, etc.)
+- Include aria-labelledby and aria-describedby when appropriate
+- Ensure sufficient color contrast for text and backgrounds
+- Test with keyboard navigation and screen readers
+- Provide alternative ways to close the modal
+
+**Performance:**
+- Use keepMounted sparingly (only for frequently opened modals)
+- Avoid complex animations on mobile devices
+- Lazy load modal content when possible
+- Clean up event listeners and resources when removing modals
+
+**User Experience:**
+- Keep modal content focused and concise
+- Provide clear close actions (button, backdrop, escape)
+- Use appropriate z-index values for stacking
+- Consider mobile viewport constraints
+- Provide loading states for async operations
+
+**Focus Management:**
+- Ensure first focusable element receives focus
+- Implement proper tab order within modal
+- Return focus to trigger element when closed
+- Handle focus for dynamically added content
+
+**Mobile Considerations:**
+- Test on various screen sizes and orientations
+- Ensure touch targets are adequately sized
+- Consider virtual keyboard behavior
+- Optimize for touch interactions
+
+**Error Handling:**
+- Gracefully handle missing content
+- Provide fallback for failed async operations
+- Validate form data before closing
+- Show appropriate error messages
 
 ### Dialog
 ```html

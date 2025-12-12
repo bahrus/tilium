@@ -4230,6 +4230,327 @@ console.log(greet('World'));
   </div>
 
   <div class="section">
+    <h2>Modal</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Modal</h3>
+        <p>Click the button to open a basic modal dialog.</p>
+        <mui-button id="basic-modal-btn" variant="contained" color="primary">
+          Open Basic Modal
+        </mui-button>
+        
+        <mui-modal id="basic-modal">
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 16px 0;">Basic Modal</h3>
+            <p style="margin: 0 0 20px 0;">
+              This is a basic modal dialog. You can close it by clicking the backdrop,
+              pressing the Escape key, or using the close button.
+            </p>
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+              <mui-button id="basic-modal-close" variant="outlined">Close</mui-button>
+              <mui-button variant="contained" color="primary">Save</mui-button>
+            </div>
+          </div>
+        </mui-modal>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Modal with Form</h3>
+        <p>Modal containing a form with proper focus management.</p>
+        <mui-button id="form-modal-btn" variant="contained" color="secondary">
+          Open Form Modal
+        </mui-button>
+        
+        <mui-modal id="form-modal">
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 20px 0;">Contact Form</h3>
+            <form id="modal-form" style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Name:</label>
+                <input 
+                  type="text" 
+                  placeholder="Enter your name" 
+                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;"
+                  required
+                >
+              </div>
+              
+              <div>
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Email:</label>
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;"
+                  required
+                >
+              </div>
+              
+              <div>
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Message:</label>
+                <textarea 
+                  placeholder="Enter your message" 
+                  rows="4"
+                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; resize: vertical;"
+                  required
+                ></textarea>
+              </div>
+              
+              <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px;">
+                <mui-button id="form-modal-cancel" type="button" variant="outlined">Cancel</mui-button>
+                <mui-button type="submit" variant="contained" color="primary">Send Message</mui-button>
+              </div>
+            </form>
+          </div>
+        </mui-modal>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Modal Options</h3>
+        <p>Test different modal configuration options.</p>
+        
+        <div style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+          <mui-button id="no-backdrop-btn" variant="outlined" color="primary">
+            No Backdrop Click
+          </mui-button>
+          <mui-button id="no-escape-btn" variant="outlined" color="secondary">
+            No Escape Key
+          </mui-button>
+          <mui-button id="invisible-backdrop-btn" variant="outlined" color="info">
+            Invisible Backdrop
+          </mui-button>
+          <mui-button id="keep-mounted-btn" variant="outlined" color="warning">
+            Keep Mounted
+          </mui-button>
+        </div>
+        
+        <!-- No Backdrop Click Modal -->
+        <mui-modal id="no-backdrop-modal" disableBackdropClick>
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 16px 0;">No Backdrop Click</h3>
+            <p style="margin: 0 0 20px 0;">
+              This modal cannot be closed by clicking the backdrop. 
+              You must use the close button or press Escape.
+            </p>
+            <mui-button id="no-backdrop-close" variant="contained" color="primary">
+              Close
+            </mui-button>
+          </div>
+        </mui-modal>
+        
+        <!-- No Escape Key Modal -->
+        <mui-modal id="no-escape-modal" disableEscapeKeyDown>
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 16px 0;">No Escape Key</h3>
+            <p style="margin: 0 0 20px 0;">
+              This modal cannot be closed with the Escape key. 
+              You must click the backdrop or use the close button.
+            </p>
+            <mui-button id="no-escape-close" variant="contained" color="secondary">
+              Close
+            </mui-button>
+          </div>
+        </mui-modal>
+        
+        <!-- Invisible Backdrop Modal -->
+        <mui-modal id="invisible-backdrop-modal" hideBackdrop>
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+            border: 2px solid #1976d2;
+          ">
+            <h3 style="margin: 0 0 16px 0;">Invisible Backdrop</h3>
+            <p style="margin: 0 0 20px 0;">
+              This modal has no visible backdrop, but you can still click 
+              outside to close it or press Escape.
+            </p>
+            <mui-button id="invisible-backdrop-close" variant="contained" color="info">
+              Close
+            </mui-button>
+          </div>
+        </mui-modal>
+        
+        <!-- Keep Mounted Modal -->
+        <mui-modal id="keep-mounted-modal" keepMounted>
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 16px 0;">Keep Mounted</h3>
+            <p style="margin: 0 0 20px 0;">
+              This modal stays in the DOM even when closed, which can be 
+              useful for performance or maintaining state.
+            </p>
+            <mui-button id="keep-mounted-close" variant="contained" color="warning">
+              Close
+            </mui-button>
+          </div>
+        </mui-modal>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Nested Modals</h3>
+        <p>Test modals that open other modals (stacking).</p>
+        <mui-button id="nested-modal-btn" variant="contained" color="success">
+          Open First Modal
+        </mui-button>
+        
+        <!-- First Modal -->
+        <mui-modal id="nested-modal-1" zIndex="1400">
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+          ">
+            <h3 style="margin: 0 0 16px 0;">First Modal</h3>
+            <p style="margin: 0 0 20px 0;">
+              This is the first modal. You can open another modal on top of this one.
+            </p>
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+              <mui-button id="nested-modal-1-close" variant="outlined">Close</mui-button>
+              <mui-button id="nested-modal-2-btn" variant="contained" color="success">
+                Open Second Modal
+              </mui-button>
+            </div>
+          </div>
+        </mui-modal>
+        
+        <!-- Second Modal -->
+        <mui-modal id="nested-modal-2" zIndex="1500">
+          <div style="
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 350px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            outline: none;
+            border: 2px solid #2e7d32;
+          ">
+            <h3 style="margin: 0 0 16px 0;">Second Modal</h3>
+            <p style="margin: 0 0 20px 0;">
+              This is the second modal, stacked on top of the first one.
+            </p>
+            <mui-button id="nested-modal-2-close" variant="contained" color="success">
+              Close Second Modal
+            </mui-button>
+          </div>
+        </mui-modal>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Accessibility Features</h3>
+        <p>Modal with comprehensive accessibility features and focus management.</p>
+        <mui-button id="a11y-modal-btn" variant="contained" color="info">
+          Open Accessible Modal
+        </mui-button>
+        
+        <mui-modal id="a11y-modal">
+          <div 
+            style="
+              background: white;
+              padding: 24px;
+              border-radius: 8px;
+              max-width: 500px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+              outline: none;
+            "
+            role="dialog"
+            aria-labelledby="a11y-modal-title"
+            aria-describedby="a11y-modal-description"
+          >
+            <h3 id="a11y-modal-title" style="margin: 0 0 16px 0;">Accessible Modal</h3>
+            <p id="a11y-modal-description" style="margin: 0 0 20px 0;">
+              This modal demonstrates accessibility features including proper ARIA attributes,
+              focus management, and keyboard navigation.
+            </p>
+            
+            <div style="margin-bottom: 20px;">
+              <p style="margin: 0 0 12px 0; font-weight: 500;">Try these accessibility features:</p>
+              <ul style="margin: 0; padding-left: 20px;">
+                <li>Tab through the focusable elements</li>
+                <li>Press Escape to close</li>
+                <li>Focus is trapped within the modal</li>
+                <li>Focus returns to the trigger button when closed</li>
+              </ul>
+            </div>
+            
+            <div style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+              <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+                Focusable Button 1
+              </button>
+              <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+                Focusable Button 2
+              </button>
+              <input 
+                type="text" 
+                placeholder="Focusable input" 
+                style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+              >
+            </div>
+            
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+              <mui-button id="a11y-modal-close" variant="contained" color="info">
+                Close Modal
+              </mui-button>
+            </div>
+          </div>
+        </mui-modal>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Programmatic API</h3>
+        <p>Create and control modals programmatically using JavaScript.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <mui-button id="create-modal-btn" variant="outlined" color="primary">
+            Create Modal
+          </mui-button>
+          <mui-button id="create-custom-modal-btn" variant="outlined" color="secondary">
+            Create Custom Modal
+          </mui-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -5158,7 +5479,7 @@ console.log(greet('World'));
       Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, ClickAwayListener, Container,
       CircularProgress, CssBaseline, ScopedCssBaseline, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      Menu, MenuItem, Modal, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -5216,6 +5537,7 @@ console.log(greet('World'));
     customElements.define('mui-list-item-secondary-action', ListItemSecondaryAction);
     customElements.define('mui-menu', Menu);
     customElements.define('mui-menu-item', MenuItem);
+    customElements.define('mui-modal', Modal);
     customElements.define('mui-number-field', NumberField);
     customElements.define('mui-paper', Paper);
     customElements.define('mui-progress', Progress);
@@ -6526,6 +6848,255 @@ console.log(greet('World'));
     }
 
     console.log('ClickAwayListener examples loaded successfully!');
+
+    // Modal examples
+    const setupModals = () => {
+      // Basic Modal
+      const basicModalBtn = document.getElementById('basic-modal-btn');
+      const basicModal = document.getElementById('basic-modal');
+      const basicModalClose = document.getElementById('basic-modal-close');
+      
+      if (basicModalBtn && basicModal && basicModalClose) {
+        basicModalBtn.addEventListener('click', () => {
+          basicModal.open = true;
+        });
+        
+        basicModalClose.addEventListener('click', () => {
+          basicModal.open = false;
+        });
+        
+        basicModal.addEventListener('backdrop-click', () => {
+          console.log('Basic modal backdrop clicked');
+        });
+      }
+
+      // Form Modal
+      const formModalBtn = document.getElementById('form-modal-btn');
+      const formModal = document.getElementById('form-modal');
+      const formModalCancel = document.getElementById('form-modal-cancel');
+      const modalForm = document.getElementById('modal-form');
+      
+      if (formModalBtn && formModal && formModalCancel && modalForm) {
+        formModalBtn.addEventListener('click', () => {
+          formModal.open = true;
+        });
+        
+        formModalCancel.addEventListener('click', () => {
+          formModal.open = false;
+        });
+        
+        modalForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          console.log('Form submitted');
+          formModal.open = false;
+          // Here you would normally process the form data
+        });
+      }
+
+      // Modal Options
+      const setupModalOption = (btnId, modalId, closeId) => {
+        const btn = document.getElementById(btnId);
+        const modal = document.getElementById(modalId);
+        const closeBtn = document.getElementById(closeId);
+        
+        if (btn && modal) {
+          btn.addEventListener('click', () => {
+            modal.open = true;
+          });
+        }
+        
+        if (closeBtn && modal) {
+          closeBtn.addEventListener('click', () => {
+            modal.open = false;
+          });
+        }
+      };
+
+      setupModalOption('no-backdrop-btn', 'no-backdrop-modal', 'no-backdrop-close');
+      setupModalOption('no-escape-btn', 'no-escape-modal', 'no-escape-close');
+      setupModalOption('invisible-backdrop-btn', 'invisible-backdrop-modal', 'invisible-backdrop-close');
+      setupModalOption('keep-mounted-btn', 'keep-mounted-modal', 'keep-mounted-close');
+
+      // Nested Modals
+      const nestedModal1Btn = document.getElementById('nested-modal-btn');
+      const nestedModal1 = document.getElementById('nested-modal-1');
+      const nestedModal1Close = document.getElementById('nested-modal-1-close');
+      const nestedModal2Btn = document.getElementById('nested-modal-2-btn');
+      const nestedModal2 = document.getElementById('nested-modal-2');
+      const nestedModal2Close = document.getElementById('nested-modal-2-close');
+      
+      if (nestedModal1Btn && nestedModal1) {
+        nestedModal1Btn.addEventListener('click', () => {
+          nestedModal1.open = true;
+        });
+      }
+      
+      if (nestedModal1Close && nestedModal1) {
+        nestedModal1Close.addEventListener('click', () => {
+          nestedModal1.open = false;
+        });
+      }
+      
+      if (nestedModal2Btn && nestedModal2) {
+        nestedModal2Btn.addEventListener('click', () => {
+          nestedModal2.open = true;
+        });
+      }
+      
+      if (nestedModal2Close && nestedModal2) {
+        nestedModal2Close.addEventListener('click', () => {
+          nestedModal2.open = false;
+        });
+      }
+
+      // Accessibility Modal
+      const a11yModalBtn = document.getElementById('a11y-modal-btn');
+      const a11yModal = document.getElementById('a11y-modal');
+      const a11yModalClose = document.getElementById('a11y-modal-close');
+      
+      if (a11yModalBtn && a11yModal && a11yModalClose) {
+        a11yModalBtn.addEventListener('click', () => {
+          a11yModal.open = true;
+        });
+        
+        a11yModalClose.addEventListener('click', () => {
+          a11yModal.open = false;
+        });
+      }
+
+      // Programmatic API
+      const createModalBtn = document.getElementById('create-modal-btn');
+      const createCustomModalBtn = document.getElementById('create-custom-modal-btn');
+      
+      if (createModalBtn) {
+        createModalBtn.addEventListener('click', () => {
+          const modal = document.createElement('mui-modal');
+          modal.innerHTML = `
+            <div style="
+              background: white;
+              padding: 24px;
+              border-radius: 8px;
+              max-width: 400px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+              outline: none;
+            ">
+              <h3 style="margin: 0 0 16px 0;">Programmatically Created Modal</h3>
+              <p style="margin: 0 0 20px 0;">
+                This modal was created using JavaScript and will be removed when closed.
+              </p>
+              <button id="programmatic-close" style="
+                padding: 8px 16px;
+                background: #1976d2;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              ">Close and Remove</button>
+            </div>
+          `;
+          
+          document.body.appendChild(modal);
+          modal.open = true;
+          
+          // Add close handler
+          const closeBtn = modal.querySelector('#programmatic-close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+              modal.open = false;
+              setTimeout(() => {
+                document.body.removeChild(modal);
+              }, 300); // Wait for close animation
+            });
+          }
+          
+          // Auto-remove on backdrop click
+          modal.addEventListener('backdrop-click', () => {
+            setTimeout(() => {
+              if (document.body.contains(modal)) {
+                document.body.removeChild(modal);
+              }
+            }, 300);
+          });
+        });
+      }
+      
+      if (createCustomModalBtn) {
+        createCustomModalBtn.addEventListener('click', () => {
+          const modal = document.createElement('mui-modal');
+          modal.disableBackdropClick = true;
+          modal.zIndex = 1600;
+          modal.innerHTML = `
+            <div style="
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              padding: 32px;
+              border-radius: 16px;
+              max-width: 450px;
+              box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+              outline: none;
+              text-align: center;
+            ">
+              <h3 style="margin: 0 0 16px 0; font-size: 1.5rem;">Custom Styled Modal</h3>
+              <p style="margin: 0 0 24px 0; opacity: 0.9;">
+                This modal has custom styling, disabled backdrop click, and higher z-index.
+                You must use the close button or press Escape to close it.
+              </p>
+              <button id="custom-close" style="
+                padding: 12px 24px;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 2px solid rgba(255,255,255,0.3);
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: all 0.2s ease;
+              " onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
+                 onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                Close Modal
+              </button>
+            </div>
+          `;
+          
+          document.body.appendChild(modal);
+          modal.open = true;
+          
+          const closeBtn = modal.querySelector('#custom-close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+              modal.open = false;
+              setTimeout(() => {
+                if (document.body.contains(modal)) {
+                  document.body.removeChild(modal);
+                }
+              }, 300);
+            });
+          }
+        });
+      }
+    };
+
+    // Initialize Modal handlers
+    const initModals = () => {
+      setTimeout(setupModals, 100);
+    };
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initMenus();
+        initAccordions();
+        initSpeedDials();
+        initClickAwayListeners();
+        initModals();
+      });
+    } else {
+      initMenus();
+      initAccordions();
+      initSpeedDials();
+      initClickAwayListeners();
+      initModals();
+    }
+
+    console.log('Modal examples loaded successfully!');
   </script>
 </body>
 </html>
