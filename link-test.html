@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  </style>
+  <script type="importmap">
+    {
+        "imports": {
+            "@lit/": "/node_modules/@lit/",
+            "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+            "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/",
+            "lit-element/": "/node_modules/lit-element/",
+            "lit-html/": "/node_modules/lit-html/",
+            "lit-html": "/node_modules/lit-html/lit-html.js",
+            "tslib": "/node_modules/tslib/tslib.es6.js",
+            "tslib/": "/node_modules/tslib/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Link Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Links</h2>
+    <div class="demo-row">
+      <mui-link href="#basic">Basic Link</mui-link>
+      <mui-link href="#primary" color="primary">Primary Link</mui-link>
+      <mui-link href="#secondary" color="secondary">Secondary Link</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Color Variants</h2>
+    <div class="demo-row">
+      <mui-link href="#error" color="error">Error Link</mui-link>
+      <mui-link href="#warning" color="warning">Warning Link</mui-link>
+      <mui-link href="#info" color="info">Info Link</mui-link>
+      <mui-link href="#success" color="success">Success Link</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Underline Options</h2>
+    <div class="demo-row">
+      <mui-link href="#none" underline="none">No Underline</mui-link>
+      <mui-link href="#hover" underline="hover">Hover Underline</mui-link>
+      <mui-link href="#always" underline="always">Always Underline</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Variants</h2>
+    <div class="demo-row">
+      <mui-link href="#text" variant="text" color="primary">Text Variant</mui-link>
+      <mui-link href="#outlined" variant="outlined" color="primary">Outlined Variant</mui-link>
+      <mui-link href="#contained" variant="contained" color="primary">Contained Variant</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>External Links</h2>
+    <div class="demo-row">
+      <mui-link href="https://material-ui.com" target="_blank">External Link</mui-link>
+      <mui-link href="https://github.com" target="_blank" color="secondary">GitHub</mui-link>
+    </div>
+    <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">
+      External links automatically show an icon
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Button Component</h2>
+    <div class="demo-row">
+      <mui-link component="button" color="primary" id="button-link">Button Link</mui-link>
+      <mui-link component="button" variant="outlined" color="secondary" id="outlined-button">Outlined Button</mui-link>
+      <mui-link component="button" variant="contained" color="success" id="contained-button">Contained Button</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Disabled Links</h2>
+    <div class="demo-row">
+      <mui-link href="#disabled" disabled>Disabled Link</mui-link>
+      <mui-link href="#disabled" variant="outlined" color="primary" disabled>Disabled Outlined</mui-link>
+      <mui-link href="#disabled" variant="contained" color="secondary" disabled>Disabled Contained</mui-link>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>In Text Context</h2>
+    <div style="background: #f5f5f5; padding: 16px; border-radius: 4px;">
+      <p style="margin: 0; line-height: 1.6;">
+        This is a paragraph with <mui-link href="#inline" color="primary">inline links</mui-link> that 
+        demonstrate how links work within text content. You can also have 
+        <mui-link href="https://example.com" target="_blank" color="secondary">external links</mui-link> and 
+        <mui-link component="button" color="error" underline="always">action links</mui-link> mixed 
+        in with regular text content.
+      </p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { Link } from './dist/index.js';
+
+    // Register the Link component
+    customElements.define('mui-link', Link);
+
+    // Add event listeners for button components
+    document.getElementById('button-link').addEventListener('click', (e) => {
+      console.log('Button link clicked:', e.detail);
+      alert('Button Link clicked!');
+    });
+
+    document.getElementById('outlined-button').addEventListener('click', (e) => {
+      console.log('Outlined button clicked:', e.detail);
+      alert('Outlined Button clicked!');
+    });
+
+    document.getElementById('contained-button').addEventListener('click', (e) => {
+      console.log('Contained button clicked:', e.detail);
+      alert('Contained Button clicked!');
+    });
+
+    // Add click handlers to all other links for demonstration
+    const allLinks = document.querySelectorAll('mui-link');
+    allLinks.forEach(link => {
+      if (!link.id) {
+        link.addEventListener('click', (e) => {
+          if (link.href && !link.href.startsWith('http')) {
+            e.preventDefault();
+          }
+          console.log('Link clicked:', {
+            href: link.href,
+            color: link.color,
+            variant: link.variant,
+            underline: link.underline,
+            disabled: link.disabled,
+            component: link.component
+          });
+        });
+      }
+    });
+
+    console.log('Link component registered successfully!');
+  </script>
+</body>
+</html>

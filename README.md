@@ -48,6 +48,7 @@ Then use them in your HTML:
 - **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
 - **Breadcrumbs** - Navigation aid showing the current location within a hierarchy
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
+- **Link** - Styled links with Material Design principles and multiple variants
 - **Stepper** - Step-by-step navigation for multi-step processes with horizontal/vertical layouts
 - **Tabs** - Tab navigation with horizontal/vertical orientation and multiple variants
 
@@ -696,6 +697,105 @@ interface BreadcrumbItem {
 - Keep labels concise but descriptive
 - Use href for navigable items, omit for current page
 - Consider collapsing for deep hierarchies (>5 levels)
+
+### Link
+```html
+<!-- Basic Links -->
+<my-link href="/home">Home</my-link>
+<my-link href="/about" color="primary">About</my-link>
+<my-link href="/contact" color="secondary">Contact</my-link>
+
+<!-- Color Variants -->
+<my-link href="/error" color="error">Error Link</my-link>
+<my-link href="/warning" color="warning">Warning Link</my-link>
+<my-link href="/info" color="info">Info Link</my-link>
+<my-link href="/success" color="success">Success Link</my-link>
+
+<!-- Underline Options -->
+<my-link href="/none" underline="none">No Underline</my-link>
+<my-link href="/hover" underline="hover">Hover Underline</my-link>
+<my-link href="/always" underline="always">Always Underline</my-link>
+
+<!-- Variants -->
+<my-link href="/text" variant="text" color="primary">Text Variant</my-link>
+<my-link href="/outlined" variant="outlined" color="primary">Outlined Variant</my-link>
+<my-link href="/contained" variant="contained" color="primary">Contained Variant</my-link>
+
+<!-- External Links -->
+<my-link href="https://example.com" target="_blank">External Link</my-link>
+<my-link href="https://github.com" target="_blank" color="secondary">GitHub</my-link>
+
+<!-- Button Component -->
+<my-link component="button" color="primary">Button Link</my-link>
+<my-link component="button" variant="outlined" color="secondary">Action Button</my-link>
+
+<!-- Disabled Links -->
+<my-link href="/disabled" disabled>Disabled Link</my-link>
+<my-link href="/disabled" variant="contained" color="primary" disabled>Disabled Button</my-link>
+
+<!-- Event Handling -->
+<my-link id="action-link" component="button" color="success">Click Me</my-link>
+
+<script>
+  document.getElementById('action-link').addEventListener('click', (e) => {
+    console.log('Link clicked:', e.detail);
+    // Handle action
+  });
+</script>
+```
+
+Properties:
+- `href`: string - Link URL (not used when component="button")
+- `target`: string - Link target (_blank, _self, etc.)
+- `rel`: string - Link relationship (auto-set for external links)
+- `color`: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'inherit' | 'textPrimary' | 'textSecondary' - Link color
+- `variant`: 'text' | 'outlined' | 'contained' - Visual style variant
+- `underline`: 'none' | 'hover' | 'always' - Underline behavior
+- `disabled`: boolean - Disable the link
+- `component`: 'a' | 'button' - HTML element to render
+
+**Color Options:**
+- **primary**: Primary theme color (default)
+- **secondary**: Secondary theme color
+- **error**: Error/danger color (red)
+- **warning**: Warning color (orange)
+- **info**: Information color (blue)
+- **success**: Success color (green)
+- **inherit**: Inherit parent color
+- **textPrimary**: Primary text color
+- **textSecondary**: Secondary text color
+
+**Variants:**
+- **text**: Simple colored text link (default)
+- **outlined**: Link with border and background on hover
+- **contained**: Button-like link with filled background
+
+**Underline Behavior:**
+- **none**: No underline
+- **hover**: Underline on hover (default)
+- **always**: Always underlined
+
+**Events:**
+- `click`: Fired when link is clicked (detail: { originalEvent })
+
+**Features:**
+- Automatic external link detection with icon
+- Proper rel attributes for external links (noopener noreferrer)
+- Button component option for action links
+- Disabled state support
+- Focus management and keyboard navigation
+- Material Design color system
+- Hover and active states
+- Accessibility attributes
+
+**Usage Patterns:**
+- Use `href` for navigation links
+- Use `component="button"` for action links that don't navigate
+- Use `target="_blank"` for external links (icon added automatically)
+- Use appropriate colors to indicate link purpose
+- Use `variant="contained"` for prominent call-to-action links
+- Use `underline="always"` for links within text content
+- Use `disabled` for temporarily unavailable links
 
 ### Table
 ```html

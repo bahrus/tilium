@@ -2151,6 +2151,148 @@
   </div>
 
   <div class="section">
+    <h2>Links</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Links</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#basic">Basic Link</mui-link>
+          <mui-link href="#primary" color="primary">Primary Link</mui-link>
+          <mui-link href="#secondary" color="secondary">Secondary Link</mui-link>
+          <mui-link href="#inherit" color="inherit">Inherit Color</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Color Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#error" color="error">Error Link</mui-link>
+          <mui-link href="#warning" color="warning">Warning Link</mui-link>
+          <mui-link href="#info" color="info">Info Link</mui-link>
+          <mui-link href="#success" color="success">Success Link</mui-link>
+          <mui-link href="#textPrimary" color="textPrimary">Text Primary</mui-link>
+          <mui-link href="#textSecondary" color="textSecondary">Text Secondary</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Underline Options</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#none" underline="none">No Underline</mui-link>
+          <mui-link href="#hover" underline="hover">Hover Underline</mui-link>
+          <mui-link href="#always" underline="always">Always Underline</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#text" variant="text" color="primary">Text Variant</mui-link>
+          <mui-link href="#outlined" variant="outlined" color="primary">Outlined Variant</mui-link>
+          <mui-link href="#contained" variant="contained" color="primary">Contained Variant</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Outlined Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#outlined-primary" variant="outlined" color="primary">Primary</mui-link>
+          <mui-link href="#outlined-secondary" variant="outlined" color="secondary">Secondary</mui-link>
+          <mui-link href="#outlined-error" variant="outlined" color="error">Error</mui-link>
+          <mui-link href="#outlined-warning" variant="outlined" color="warning">Warning</mui-link>
+          <mui-link href="#outlined-info" variant="outlined" color="info">Info</mui-link>
+          <mui-link href="#outlined-success" variant="outlined" color="success">Success</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Contained Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#contained-primary" variant="contained" color="primary">Primary</mui-link>
+          <mui-link href="#contained-secondary" variant="contained" color="secondary">Secondary</mui-link>
+          <mui-link href="#contained-error" variant="contained" color="error">Error</mui-link>
+          <mui-link href="#contained-warning" variant="contained" color="warning">Warning</mui-link>
+          <mui-link href="#contained-info" variant="contained" color="info">Info</mui-link>
+          <mui-link href="#contained-success" variant="contained" color="success">Success</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">External Links</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="https://material-ui.com" target="_blank">External Link</mui-link>
+          <mui-link href="https://github.com" target="_blank" color="secondary">GitHub</mui-link>
+          <mui-link href="https://developer.mozilla.org" target="_blank" variant="outlined" color="info">MDN Docs</mui-link>
+        </div>
+        <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+          External links automatically show an icon and include proper rel attributes
+        </p>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Button Component</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link component="button" color="primary">Button Link</mui-link>
+          <mui-link component="button" variant="outlined" color="secondary">Outlined Button</mui-link>
+          <mui-link component="button" variant="contained" color="success">Contained Button</mui-link>
+        </div>
+        <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+          Use component="button" for links that trigger actions instead of navigation
+        </p>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Disabled Links</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <mui-link href="#disabled" disabled>Disabled Link</mui-link>
+          <mui-link href="#disabled" variant="outlined" color="primary" disabled>Disabled Outlined</mui-link>
+          <mui-link href="#disabled" variant="contained" color="secondary" disabled>Disabled Contained</mui-link>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Interactive Examples</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Navigation Links</h4>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <mui-link href="#home" id="nav-home">Home</mui-link>
+              <mui-link href="#about" id="nav-about">About</mui-link>
+              <mui-link href="#services" id="nav-services">Services</mui-link>
+              <mui-link href="#contact" id="nav-contact">Contact</mui-link>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Action Links</h4>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <mui-link component="button" color="primary" id="action-save">Save Changes</mui-link>
+              <mui-link component="button" variant="outlined" color="error" id="action-delete">Delete Item</mui-link>
+              <mui-link component="button" variant="contained" color="success" id="action-submit">Submit Form</mui-link>
+            </div>
+          </div>
+        </div>
+        <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+          Click any link to see the event in console
+        </p>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">In Text Context</h3>
+        <div style="background: #f5f5f5; padding: 16px; border-radius: 4px;">
+          <p style="margin: 0; line-height: 1.6;">
+            This is a paragraph with <mui-link href="#inline" color="primary">inline links</mui-link> that 
+            demonstrate how links work within text content. You can also have 
+            <mui-link href="#external" target="_blank" color="secondary">external links</mui-link> and 
+            <mui-link component="button" color="error" underline="always">action links</mui-link> mixed 
+            in with regular text content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -3078,7 +3220,7 @@
     import { 
       Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
-      Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
+      Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
@@ -3114,6 +3256,7 @@
     customElements.define('mui-fab', Fab);
     customElements.define('mui-icon-button', IconButton);
     customElements.define('mui-linear-progress', LinearProgress);
+    customElements.define('mui-link', Link);
     customElements.define('mui-list', List);
     customElements.define('mui-list-item', ListItem);
     customElements.define('mui-list-item-button', ListItemButton);
@@ -3877,6 +4020,68 @@
     }
 
     console.log('Breadcrumbs examples loaded successfully!');
+
+    // Link event handlers
+    const setupLinkHandlers = () => {
+      // Navigation links
+      const navLinks = ['nav-home', 'nav-about', 'nav-services', 'nav-contact'];
+      navLinks.forEach(id => {
+        const link = document.getElementById(id);
+        if (link) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(`Navigation: ${id.replace('nav-', '')}`);
+            alert(`Navigating to ${id.replace('nav-', '')} page`);
+          });
+        }
+      });
+
+      // Action links
+      const actionLinks = [
+        { id: 'action-save', action: 'Save Changes' },
+        { id: 'action-delete', action: 'Delete Item' },
+        { id: 'action-submit', action: 'Submit Form' }
+      ];
+      
+      actionLinks.forEach(({ id, action }) => {
+        const link = document.getElementById(id);
+        if (link) {
+          link.addEventListener('click', (e) => {
+            console.log(`Action: ${action}`);
+            alert(`Action triggered: ${action}`);
+          });
+        }
+      });
+
+      // Add click handlers to all other links for demonstration
+      const allLinks = document.querySelectorAll('mui-link');
+      allLinks.forEach(link => {
+        if (!link.id || (!link.id.startsWith('nav-') && !link.id.startsWith('action-'))) {
+          link.addEventListener('click', (e) => {
+            if (link.href && !link.href.startsWith('http')) {
+              e.preventDefault();
+            }
+            console.log('Link clicked:', {
+              href: link.href,
+              color: link.color,
+              variant: link.variant,
+              underline: link.underline,
+              disabled: link.disabled,
+              component: link.component
+            });
+          });
+        }
+      });
+    };
+
+    // Initialize link handlers when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupLinkHandlers);
+    } else {
+      setupLinkHandlers();
+    }
+
+    console.log('Link examples loaded successfully!');
   </script>
 </body>
 </html>
