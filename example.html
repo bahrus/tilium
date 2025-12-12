@@ -3350,8 +3350,8 @@
     customElements.define('mui-transfer-list', TransferList);
     customElements.define('mui-typography', Typography);
 
-    // Add event listeners
-    document.querySelectorAll('mui-button').forEach(btn => {
+    // Add event listeners (exclude menu buttons)
+    document.querySelectorAll('mui-button:not([id*="menu-button"])').forEach(btn => {
       btn.addEventListener('click', () => console.log('Button clicked'));
     });
 
@@ -4141,14 +4141,16 @@
       // Basic menu
       const basicMenuButton = document.getElementById('basic-menu-button');
       const basicMenu = document.getElementById('basic-menu');
-      if (basicMenu) {
+      
+      if (basicMenu && basicMenuButton) {
         basicMenu.items = [
           { id: 'profile', label: 'Profile', icon: 'settings' },
           { id: 'account', label: 'My Account', icon: 'settings' },
           { id: 'logout', label: 'Logout', icon: 'settings' }
         ];
         
-        basicMenuButton?.addEventListener('click', () => {
+        basicMenuButton.addEventListener('click', (e) => {
+          e.stopPropagation();
           basicMenu.open = !basicMenu.open;
         });
         
@@ -4280,11 +4282,16 @@
       });
     };
 
-    // Initialize menu handlers when DOM is ready
+    // Initialize menu handlers when DOM is ready and components are defined
+    const initMenus = () => {
+      // Wait a bit for components to be fully initialized
+      setTimeout(setupMenus, 100);
+    };
+    
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupMenus);
+      document.addEventListener('DOMContentLoaded', initMenus);
     } else {
-      setupMenus();
+      initMenus();
     }
 
     console.log('Link examples loaded successfully!');

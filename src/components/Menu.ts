@@ -288,27 +288,31 @@ export class Menu extends LitElement {
     const anchorRect = anchor.getBoundingClientRect();
     const menuRect = this.getBoundingClientRect();
 
-    // Set CSS custom properties for positioning
+    // Set positioning directly with inline styles
     switch (this.anchorOrigin) {
       case 'top-left':
-        this.style.setProperty('--anchor-top', `${anchorRect.top}px`);
-        this.style.setProperty('--anchor-left', `${anchorRect.left}px`);
-        this.className = 'anchor-top-left';
+        this.style.top = `${anchorRect.top}px`;
+        this.style.left = `${anchorRect.left}px`;
+        this.style.right = 'auto';
+        this.style.bottom = 'auto';
         break;
       case 'top-right':
-        this.style.setProperty('--anchor-top', `${anchorRect.top}px`);
-        this.style.setProperty('--anchor-right', `${window.innerWidth - anchorRect.right}px`);
-        this.className = 'anchor-top-right';
+        this.style.top = `${anchorRect.top}px`;
+        this.style.right = `${window.innerWidth - anchorRect.right}px`;
+        this.style.left = 'auto';
+        this.style.bottom = 'auto';
         break;
       case 'bottom-left':
-        this.style.setProperty('--anchor-top', `${anchorRect.bottom}px`);
-        this.style.setProperty('--anchor-left', `${anchorRect.left}px`);
-        this.className = 'anchor-bottom-left';
+        this.style.top = `${anchorRect.bottom}px`;
+        this.style.left = `${anchorRect.left}px`;
+        this.style.right = 'auto';
+        this.style.bottom = 'auto';
         break;
       case 'bottom-right':
-        this.style.setProperty('--anchor-top', `${anchorRect.bottom}px`);
-        this.style.setProperty('--anchor-right', `${window.innerWidth - anchorRect.right}px`);
-        this.className = 'anchor-bottom-right';
+        this.style.top = `${anchorRect.bottom}px`;
+        this.style.right = `${window.innerWidth - anchorRect.right}px`;
+        this.style.left = 'auto';
+        this.style.bottom = 'auto';
         break;
     }
   }
@@ -525,10 +529,6 @@ export class Menu extends LitElement {
   }
 
   render() {
-    if (!this.open) {
-      return html``;
-    }
-
     const classes = [
       'menu',
       this.open ? 'open' : '',
@@ -537,11 +537,12 @@ export class Menu extends LitElement {
     ].filter(Boolean).join(' ');
 
     return html`
-      <div class="backdrop"></div>
+      <div class="backdrop" style="display: ${this.open ? 'block' : 'none'}"></div>
       <div 
         class="${classes}"
         role="menu"
         tabindex="-1"
+        style="display: ${this.open ? 'block' : 'none'}"
         @keydown=${this._handleDocumentKeydown}
       >
         ${this.items.map((item, index) => this._renderMenuItem(item, index))}

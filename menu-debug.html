@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Debug Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    .test-container {
+      padding: 50px;
+      border: 2px solid #ccc;
+      margin: 20px 0;
+    }
+  </style>
+  <script type=importmap >
+    {
+        "imports": {
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Menu Debug Test</h1>
+
+  <div class="test-container">
+    <h2>Simple Menu Test</h2>
+    <mui-button id="test-button" variant="contained" color="primary">Click Me</mui-button>
+    <mui-menu id="test-menu" anchorEl="test-button"></mui-menu>
+  </div>
+
+  <div id="debug-info">
+    <h3>Debug Info:</h3>
+    <div id="debug-output"></div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { Menu, Button } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-menu', Menu);
+    customElements.define('mui-button', Button);
+
+    const debugOutput = document.getElementById('debug-output');
+    
+    function log(message) {
+      console.log(message);
+      debugOutput.innerHTML += `<div>${message}</div>`;
+    }
+
+    // Wait for components to be ready
+    setTimeout(() => {
+      log('Setting up test...');
+      
+      const button = document.getElementById('test-button');
+      const menu = document.getElementById('test-menu');
+      
+      log(`Button found: ${!!button}`);
+      log(`Menu found: ${!!menu}`);
+      
+      if (menu && button) {
+        // Set menu items
+        menu.items = [
+          { id: 'item1', label: 'Item 1' },
+          { id: 'item2', label: 'Item 2' },
+          { id: 'item3', label: 'Item 3' }
+        ];
+        
+        log(`Menu items set: ${menu.items.length} items`);
+        log(`Menu open state: ${menu.open}`);
+        
+        // Add button click handler
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          log(`Button clicked! Current menu open: ${menu.open}`);
+          menu.open = !menu.open;
+          log(`Menu open set to: ${menu.open}`);
+          
+          // Force update
+          menu.requestUpdate();
+          
+          setTimeout(() => {
+            log(`Menu open after update: ${menu.open}`);
+            const menuElement = menu.shadowRoot?.querySelector('.menu');
+            log(`Menu element found in shadow: ${!!menuElement}`);
+            if (menuElement) {
+              log(`Menu element display: ${getComputedStyle(menuElement).display}`);
+              log(`Menu element opacity: ${getComputedStyle(menuElement).opacity}`);
+            }
+          }, 50);
+        });
+        
+        // Add menu event handlers
+        menu.addEventListener('select', (e) => {
+          log(`Menu item selected: ${e.detail.item.label}`);
+        });
+        
+        menu.addEventListener('close', (e) => {
+          log('Menu closed');
+        });
+        
+        log('Event handlers added');
+      } else {
+        log('ERROR: Could not find menu or button elements');
+      }
+    }, 200);
+  </script>
+</body>
+</html>
