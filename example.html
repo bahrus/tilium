@@ -940,6 +940,213 @@
   </div>
 
   <div class="section">
+    <h2>Textarea Autosize</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Textarea Autosize</h3>
+        <p>Textarea that automatically adjusts height based on content.</p>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="Outlined Textarea" 
+            variant="outlined" 
+            placeholder="Type your message here..."
+            minRows="2"
+            maxRows="6"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Filled Textarea" 
+            variant="filled" 
+            placeholder="Type your message here..."
+            minRows="3"
+            maxRows="8"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Standard Textarea" 
+            variant="standard" 
+            placeholder="Type your message here..."
+            minRows="2"
+            maxRows="5"
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Helper Text and Validation</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="Comments" 
+            variant="outlined" 
+            placeholder="Enter your comments..."
+            helperText="Maximum 500 characters"
+            minRows="3"
+            maxRows="6"
+            fullWidth
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Feedback" 
+            variant="outlined" 
+            placeholder="Please provide your feedback..."
+            helperText="This field is required"
+            error
+            minRows="2"
+            maxRows="4"
+            required
+            fullWidth
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Different Sizes</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="Small Size" 
+            variant="outlined" 
+            placeholder="Small textarea..."
+            size="small"
+            minRows="2"
+            maxRows="4"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Medium Size" 
+            variant="outlined" 
+            placeholder="Medium textarea..."
+            size="medium"
+            minRows="2"
+            maxRows="4"
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Row Constraints</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="Min 1 Row, Max 3 Rows" 
+            variant="outlined" 
+            placeholder="This textarea has a maximum of 3 rows..."
+            minRows="1"
+            maxRows="3"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Min 4 Rows, No Max" 
+            variant="outlined" 
+            placeholder="This textarea starts with 4 rows and can grow indefinitely..."
+            minRows="4"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Fixed at 5 Rows" 
+            variant="outlined" 
+            placeholder="This textarea is fixed at exactly 5 rows..."
+            minRows="5"
+            maxRows="5"
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Resize Options</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="No Resize (Default)" 
+            variant="outlined" 
+            placeholder="Cannot be manually resized..."
+            resize="none"
+            minRows="3"
+            maxRows="6"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Vertical Resize" 
+            variant="outlined" 
+            placeholder="Can be resized vertically..."
+            resize="vertical"
+            minRows="3"
+            maxRows="8"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Both Directions" 
+            variant="outlined" 
+            placeholder="Can be resized in both directions..."
+            resize="both"
+            minRows="3"
+            maxRows="6"
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">States</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-textarea-autosize 
+            label="Disabled" 
+            variant="outlined" 
+            value="This textarea is disabled and cannot be edited."
+            disabled
+            minRows="2"
+            maxRows="4"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Read Only" 
+            variant="outlined" 
+            value="This textarea is read-only and cannot be edited."
+            readonly
+            minRows="2"
+            maxRows="4"
+          ></mui-textarea-autosize>
+          
+          <mui-textarea-autosize 
+            label="Required Field" 
+            variant="outlined" 
+            placeholder="This field is required..."
+            required
+            minRows="2"
+            maxRows="4"
+          ></mui-textarea-autosize>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Full Width Example</h3>
+        <mui-textarea-autosize 
+          label="Full Width Message" 
+          variant="outlined" 
+          placeholder="This textarea takes the full width of its container. Type a long message to see how it automatically adjusts its height as you type more content..."
+          helperText="This textarea will grow as you type more content"
+          minRows="3"
+          maxRows="10"
+          fullWidth
+        ></mui-textarea-autosize>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Pre-filled Content</h3>
+        <mui-textarea-autosize 
+          label="Article Content" 
+          variant="outlined" 
+          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+          helperText="This textarea automatically sized to fit the pre-filled content"
+          minRows="2"
+          maxRows="12"
+          fullWidth
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Toggle Buttons</h2>
     <div style="display: flex; flex-direction: column; gap: 30px;">
       <div>
@@ -5481,7 +5688,7 @@ console.log(greet('World'));
       Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, Modal, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
-      TransferList, TextField, Typography
+      TransferList, TextField, TextareaAutosize, Typography
     } from './dist/index.js';
 
     // Register all components with custom element names
@@ -5567,6 +5774,7 @@ console.log(greet('World'));
     customElements.define('mui-tab', Tab);
     customElements.define('mui-tab-panel', TabPanel);
     customElements.define('mui-text-field', TextField);
+    customElements.define('mui-textarea-autosize', TextareaAutosize);
     customElements.define('mui-toggle-button', ToggleButton);
     customElements.define('mui-toggle-button-group', ToggleButtonGroup);
     customElements.define('mui-transfer-list', TransferList);

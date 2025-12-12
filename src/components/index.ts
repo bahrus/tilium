@@ -50,5 +50,6 @@ export { TableContainer } from './TableContainer.js';
 export { TablePagination } from './TablePagination.js';
 export { TableSortLabel } from './TableSortLabel.js';
 export { TextField } from './TextField.js';
+export { TextareaAutosize } from './TextareaAutosize.js';
 export { TransferList } from './TransferList.js';
 export { Typography } from './Typography.js';

@@ -25,11 +25,12 @@ npm run build
 The components export only the class definitions. You need to register them with custom element names in your application:
 
 ```typescript
-import { Button, TextField, Checkbox } from 'lit-material-components';
+import { Button, TextField, TextareaAutosize, Checkbox } from 'lit-material-components';
 
 // Register components with your preferred names
 customElements.define('my-button', Button);
 customElements.define('my-text-field', TextField);
+customElements.define('my-textarea-autosize', TextareaAutosize);
 customElements.define('my-checkbox', Checkbox);
 ```
 
@@ -38,6 +39,7 @@ Then use them in your HTML:
 ```html
 <my-button variant="contained" color="primary">Click Me</my-button>
 <my-text-field label="Email" type="email"></my-text-field>
+<my-textarea-autosize label="Comments" placeholder="Enter your comments..." minRows="3"></my-textarea-autosize>
 <my-checkbox checked color="primary"></my-checkbox>
 ```
 
@@ -69,6 +71,7 @@ Then use them in your HTML:
 - **Switch** - Toggle switch
 - **NumberField** - Numeric input with increment/decrement controls
 - **TextField** - Text input with variants (outlined, filled, standard)
+- **TextareaAutosize** - Multi-line text input that automatically adjusts height based on content
 - **ToggleButton** - Toggle button for on/off states with grouping support
 - **TransferList** - Move items between two lists with selection controls
 - **Select** - Dropdown select
@@ -149,6 +152,118 @@ Properties:
 - `helperText`: string
 - `disabled`: boolean
 - `required`: boolean
+
+### TextareaAutosize
+```html
+<!-- Basic Textarea Autosize -->
+<my-textarea-autosize 
+  label="Comments" 
+  variant="outlined"
+  placeholder="Enter your comments..."
+  minRows="3"
+  maxRows="8"
+></my-textarea-autosize>
+
+<!-- With Helper Text -->
+<my-textarea-autosize 
+  label="Feedback" 
+  variant="filled"
+  placeholder="Please provide feedback..."
+  helperText="Maximum 500 characters"
+  minRows="2"
+  maxRows="6"
+  fullWidth
+></my-textarea-autosize>
+
+<!-- With Validation -->
+<my-textarea-autosize 
+  label="Required Field" 
+  variant="outlined"
+  placeholder="This field is required..."
+  error
+  helperText="This field cannot be empty"
+  required
+></my-textarea-autosize>
+
+<!-- Different Resize Options -->
+<my-textarea-autosize 
+  label="Resizable Textarea" 
+  variant="outlined"
+  placeholder="Can be resized manually..."
+  resize="vertical"
+  minRows="3"
+  maxRows="10"
+></my-textarea-autosize>
+
+<!-- Pre-filled Content -->
+<my-textarea-autosize 
+  label="Article Content" 
+  variant="outlined"
+  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+  minRows="4"
+  maxRows="12"
+  fullWidth
+></my-textarea-autosize>
+```
+
+Properties:
+- `value`: string - Current text content
+- `label`: string - Input label text
+- `placeholder`: string - Placeholder text when empty
+- `variant`: 'outlined' | 'filled' | 'standard' - Visual style variant (default: 'outlined')
+- `minRows`: number - Minimum number of rows to display (default: 1)
+- `maxRows`: number - Maximum number of rows before scrolling (default: Infinity)
+- `resize`: 'none' | 'both' | 'horizontal' | 'vertical' - Manual resize options (default: 'none')
+- `size`: 'small' | 'medium' - Component size (default: 'medium')
+- `disabled`: boolean - Disable the textarea
+- `readonly`: boolean - Make textarea read-only
+- `required`: boolean - Mark as required field
+- `error`: boolean - Show error state styling
+- `helperText`: string - Helper or error text below the textarea
+- `fullWidth`: boolean - Make textarea fill container width
+- `name`: string - Form field name attribute
+- `id`: string - Element ID attribute
+
+**Auto-sizing Behavior:**
+- **Automatic Height**: Textarea height adjusts automatically as content changes
+- **Row Constraints**: Use `minRows` and `maxRows` to control size limits
+- **Smooth Transitions**: Height changes are animated for better UX
+- **Scroll Handling**: Shows scrollbar when content exceeds `maxRows`
+- **Performance**: Uses shadow DOM technique for efficient height calculation
+
+**Events:**
+- `input`: Fired on every character input (detail: { value, originalEvent })
+- `change`: Fired when value changes and focus is lost (detail: { value, originalEvent })
+- `focus`: Fired when textarea gains focus (detail: { originalEvent })
+- `blur`: Fired when textarea loses focus (detail: { originalEvent })
+- `keydown`: Fired on key press (detail: { key, code, originalEvent })
+- `keyup`: Fired on key release (detail: { key, code, originalEvent })
+
+**Methods:**
+- `focus()`: Programmatically focus the textarea
+- `blur()`: Programmatically blur the textarea
+- `select()`: Select all text in the textarea
+- `setSelectionRange(start, end, direction?)`: Set text selection range
+
+**Usage Patterns:**
+- **Comments & Reviews**: Multi-line text input with automatic sizing
+- **Form Fields**: Long text inputs that grow with content
+- **Message Composition**: Chat or email message input areas
+- **Content Editing**: Article or blog post content areas
+- **Feedback Forms**: User feedback and survey responses
+
+**Accessibility:**
+- Proper label association with `for` attribute
+- ARIA attributes for error states and descriptions
+- Keyboard navigation support (Tab, Shift+Tab)
+- Screen reader compatibility with helper text
+- Focus management and visual indicators
+
+**Responsive Design:**
+- Mobile-optimized touch targets and font sizes
+- Prevents zoom on iOS devices with appropriate font size
+- Responsive width with `fullWidth` property
+- Adapts to container constraints
 
 ### Autocomplete
 ```html

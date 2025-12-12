@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextareaAutosize Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .demo-item label {
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+    .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+      font-size: 14px;
+    }
+    .button:hover {
+      background: #1565c0;
+    }
+    .button.secondary {
+      background: #dc004e;
+    }
+    .button.secondary:hover {
+      background: #c51162;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .status.success {
+      background: #e8f5e8;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+    }
+    .status.info {
+      background: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #2196f3;
+    }
+    .full-width-demo {
+      width: 100%;
+    }
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 8px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>TextareaAutosize Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Variants</h2>
+    <p>Test the three main visual variants of the TextareaAutosize component.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Outlined Variant (Default)</label>
+        <mui-textarea-autosize 
+          id="outlined-basic"
+          label="Outlined Textarea" 
+          variant="outlined" 
+          placeholder="Type your message here..."
+          minRows="2"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Filled Variant</label>
+        <mui-textarea-autosize 
+          id="filled-basic"
+          label="Filled Textarea" 
+          variant="filled" 
+          placeholder="Type your message here..."
+          minRows="2"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Standard Variant</label>
+        <mui-textarea-autosize 
+          id="standard-basic"
+          label="Standard Textarea" 
+          variant="standard" 
+          placeholder="Type your message here..."
+          minRows="2"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="basic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Row Constraints</h2>
+    <p>Test different minimum and maximum row configurations.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Min 1 Row, Max 3 Rows</label>
+        <mui-textarea-autosize 
+          id="rows-1-3"
+          label="Limited Height" 
+          variant="outlined" 
+          placeholder="This textarea has a maximum of 3 rows. Try typing a lot of text to see scrolling..."
+          minRows="1"
+          maxRows="3"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Min 4 Rows, No Maximum</label>
+        <mui-textarea-autosize 
+          id="rows-4-inf"
+          label="Unlimited Growth" 
+          variant="outlined" 
+          placeholder="This textarea starts with 4 rows and can grow indefinitely..."
+          minRows="4"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Fixed at 5 Rows</label>
+        <mui-textarea-autosize 
+          id="rows-5-5"
+          label="Fixed Height" 
+          variant="outlined" 
+          placeholder="This textarea is fixed at exactly 5 rows..."
+          minRows="5"
+          maxRows="5"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="rows-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Resize Options</h2>
+    <p>Test different manual resize capabilities.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>No Resize (Default)</label>
+        <mui-textarea-autosize 
+          id="resize-none"
+          label="No Manual Resize" 
+          variant="outlined" 
+          placeholder="Cannot be manually resized, only auto-resizes..."
+          resize="none"
+          minRows="3"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Vertical Resize</label>
+        <mui-textarea-autosize 
+          id="resize-vertical"
+          label="Vertical Resize" 
+          variant="outlined" 
+          placeholder="Can be resized vertically by dragging the bottom-right corner..."
+          resize="vertical"
+          minRows="3"
+          maxRows="8"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Both Directions</label>
+        <mui-textarea-autosize 
+          id="resize-both"
+          label="Both Directions" 
+          variant="outlined" 
+          placeholder="Can be resized in both directions..."
+          resize="both"
+          minRows="3"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="resize-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Sizes</h2>
+    <p>Test different component sizes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Small Size</label>
+        <mui-textarea-autosize 
+          id="size-small"
+          label="Small Textarea" 
+          variant="outlined" 
+          placeholder="Small size textarea..."
+          size="small"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Medium Size (Default)</label>
+        <mui-textarea-autosize 
+          id="size-medium"
+          label="Medium Textarea" 
+          variant="outlined" 
+          placeholder="Medium size textarea..."
+          size="medium"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="size-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>States and Validation</h2>
+    <p>Test different component states including error, disabled, and required.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Error State</label>
+        <mui-textarea-autosize 
+          id="state-error"
+          label="Error Field" 
+          variant="outlined" 
+          placeholder="This field has an error..."
+          error
+          helperText="This field is required and cannot be empty"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Disabled State</label>
+        <mui-textarea-autosize 
+          id="state-disabled"
+          label="Disabled Field" 
+          variant="outlined" 
+          value="This textarea is disabled and cannot be edited."
+          disabled
+          helperText="This field is disabled"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Read Only State</label>
+        <mui-textarea-autosize 
+          id="state-readonly"
+          label="Read Only Field" 
+          variant="outlined" 
+          value="This textarea is read-only and cannot be edited."
+          readonly
+          helperText="This field is read-only"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+      
+      <div class="demo-item">
+        <label>Required Field</label>
+        <mui-textarea-autosize 
+          id="state-required"
+          label="Required Field" 
+          variant="outlined" 
+          placeholder="This field is required..."
+          required
+          helperText="Please fill out this field"
+          minRows="2"
+          maxRows="4"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="states-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Full Width</h2>
+    <p>Test full-width textarea that spans the entire container.</p>
+    <div class="full-width-demo">
+      <mui-textarea-autosize 
+        id="fullwidth-demo"
+        label="Full Width Message" 
+        variant="outlined" 
+        placeholder="This textarea takes the full width of its container. Type a long message to see how it automatically adjusts its height as you type more content. The textarea will grow vertically while maintaining full width..."
+        helperText="This textarea will grow as you type more content"
+        minRows="3"
+        maxRows="10"
+        fullWidth
+      ></mui-textarea-autosize>
+    </div>
+    <div id="fullwidth-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Pre-filled Content</h2>
+    <p>Test textarea with pre-filled content that auto-sizes to fit.</p>
+    <mui-textarea-autosize 
+      id="prefilled-demo"
+      label="Article Content" 
+      variant="outlined" 
+      value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
+      helperText="This textarea automatically sized to fit the pre-filled content"
+      minRows="2"
+      maxRows="12"
+      fullWidth
+    ></mui-textarea-autosize>
+    <div id="prefilled-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Event Testing</h2>
+    <p>Test various events fired by the TextareaAutosize component.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Event Logger</label>
+        <mui-textarea-autosize 
+          id="event-logger"
+          label="Event Test" 
+          variant="outlined" 
+          placeholder="Type, focus, blur, or press keys to see events..."
+          helperText="Check the console and event log below"
+          minRows="3"
+          maxRows="6"
+        ></mui-textarea-autosize>
+      </div>
+    </div>
+    <div id="event-log" class="code-block">Event log will appear here...</div>
+  </div>
+
+  <div class="section">
+    <h2>Programmatic Control</h2>
+    <p>Test programmatic methods and property changes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Programmatic Control</label>
+        <mui-textarea-autosize 
+          id="programmatic-demo"
+          label="Controlled Textarea" 
+          variant="outlined" 
+          placeholder="Use the buttons below to control this textarea..."
+          minRows="3"
+          maxRows="8"
+        ></mui-textarea-autosize>
+        <div style="margin-top: 12px;">
+          <button class="button" onclick="focusTextarea()">Focus</button>
+          <button class="button" onclick="blurTextarea()">Blur</button>
+          <button class="button" onclick="selectAllText()">Select All</button>
+          <button class="button" onclick="clearText()">Clear</button>
+          <button class="button" onclick="setLongText()">Set Long Text</button>
+          <button class="button secondary" onclick="toggleError()">Toggle Error</button>
+          <button class="button secondary" onclick="toggleDisabled()">Toggle Disabled</button>
+        </div>
+      </div>
+    </div>
+    <div id="programmatic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Performance Test</h2>
+    <p>Test performance with rapid content changes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Performance Test</label>
+        <mui-textarea-autosize 
+          id="performance-demo"
+          label="Performance Test" 
+          variant="outlined" 
+          placeholder="Click the buttons to test performance..."
+          minRows="2"
+          maxRows="15"
+        ></mui-textarea-autosize>
+        <div style="margin-top: 12px;">
+          <button class="button" onclick="addRandomText()">Add Random Text</button>
+          <button class="button" onclick="addManyLines()">Add Many Lines</button>
+          <button class="button" onclick="simulateTyping()">Simulate Typing</button>
+          <button class="button secondary" onclick="clearPerformanceTest()">Clear</button>
+        </div>
+      </div>
+    </div>
+    <div id="performance-status" class="status" style="display: none;"></div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { TextareaAutosize } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-textarea-autosize', TextareaAutosize);
+
+    // Event logging
+    const eventLog = document.getElementById('event-log');
+    const eventLogger = document.getElementById('event-logger');
+    let eventCount = 0;
+
+    function logEvent(eventType, detail) {
+      eventCount++;
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = `[${eventCount}] ${timestamp} - ${eventType}: ${JSON.stringify(detail, null, 2)}`;
+      eventLog.textContent = logEntry + '\n' + eventLog.textContent;
+      
+      // Keep only last 10 events
+      const lines = eventLog.textContent.split('\n');
+      if (lines.length > 20) {
+        eventLog.textContent = lines.slice(0, 20).join('\n');
+      }
+    }
+
+    // Add event listeners to event logger textarea
+    ['input', 'change', 'focus', 'blur', 'keydown', 'keyup'].forEach(eventType => {
+      eventLogger.addEventListener(eventType, (e) => {
+        const detail = e.detail || { value: e.target?.value };
+        logEvent(eventType, detail);
+      });
+    });
+
+    // Programmatic control functions
+    window.focusTextarea = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.focus();
+      showStatus('programmatic-status', 'Textarea focused', 'info');
+    };
+
+    window.blurTextarea = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.blur();
+      showStatus('programmatic-status', 'Textarea blurred', 'info');
+    };
+
+    window.selectAllText = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.select();
+      showStatus('programmatic-status', 'All text selected', 'info');
+    };
+
+    window.clearText = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.value = '';
+      showStatus('programmatic-status', 'Text cleared', 'info');
+    };
+
+    window.setLongText = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.value = `This is a long text that will cause the textarea to grow in height automatically.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.`;
+      showStatus('programmatic-status', 'Long text set', 'success');
+    };
+
+    window.toggleError = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.error = !textarea.error;
+      textarea.helperText = textarea.error ? 'This field has an error' : 'Use the buttons below to control this textarea...';
+      showStatus('programmatic-status', `Error state: ${textarea.error}`, 'info');
+    };
+
+    window.toggleDisabled = function() {
+      const textarea = document.getElementById('programmatic-demo');
+      textarea.disabled = !textarea.disabled;
+      showStatus('programmatic-status', `Disabled state: ${textarea.disabled}`, 'info');
+    };
+
+    // Performance test functions
+    window.addRandomText = function() {
+      const textarea = document.getElementById('performance-demo');
+      const randomWords = ['Lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt'];
+      const randomText = Array.from({length: 20}, () => randomWords[Math.floor(Math.random() * randomWords.length)]).join(' ');
+      textarea.value += (textarea.value ? '\n' : '') + randomText + '.';
+      showStatus('performance-status', 'Random text added', 'info');
+    };
+
+    window.addManyLines = function() {
+      const textarea = document.getElementById('performance-demo');
+      const lines = Array.from({length: 10}, (_, i) => `Line ${i + 1}: This is a test line with some content.`);
+      textarea.value += (textarea.value ? '\n' : '') + lines.join('\n');
+      showStatus('performance-status', '10 lines added', 'info');
+    };
+
+    window.simulateTyping = function() {
+      const textarea = document.getElementById('performance-demo');
+      const text = "This text is being typed character by character to test the auto-resize performance...";
+      let i = 0;
+      
+      const typeChar = () => {
+        if (i < text.length) {
+          textarea.value += text[i];
+          i++;
+          setTimeout(typeChar, 50);
+        } else {
+          showStatus('performance-status', 'Typing simulation completed', 'success');
+        }
+      };
+      
+      textarea.value += (textarea.value ? '\n' : '');
+      typeChar();
+    };
+
+    window.clearPerformanceTest = function() {
+      const textarea = document.getElementById('performance-demo');
+      textarea.value = '';
+      showStatus('performance-status', 'Performance test cleared', 'info');
+    };
+
+    // Utility function to show status messages
+    function showStatus(elementId, message, type) {
+      const statusEl = document.getElementById(elementId);
+      if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.className = `status ${type}`;
+        statusEl.style.display = 'block';
+        
+        setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    // Add general event listeners for testing
+    document.addEventListener('DOMContentLoaded', () => {
+      const textareas = document.querySelectorAll('mui-textarea-autosize');
+      textareas.forEach((textarea, index) => {
+        // Skip the event logger textarea to avoid duplicate logging
+        if (textarea.id === 'event-logger') return;
+        
+        textarea.addEventListener('input', (e) => {
+          console.log(`Textarea ${textarea.id || index} input:`, e.detail);
+        });
+        
+        textarea.addEventListener('change', (e) => {
+          console.log(`Textarea ${textarea.id || index} change:`, e.detail);
+        });
+        
+        textarea.addEventListener('focus', (e) => {
+          console.log(`Textarea ${textarea.id || index} focused`);
+        });
+        
+        textarea.addEventListener('blur', (e) => {
+          console.log(`Textarea ${textarea.id || index} blurred`);
+        });
+      });
+    });
+
+    console.log('TextareaAutosize test loaded successfully!');
+    console.log('Try typing in different textareas to test auto-resize functionality');
+    console.log('Check the console for event logs and use the programmatic controls');
+  </script>
+</body>
+</html>
