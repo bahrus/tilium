@@ -71,6 +71,7 @@ Then use them in your HTML:
 - **Snackbar** - Brief messages and notifications with actions and auto-hide
 
 ### Data Display
+- **Accordion** - Expandable panels for organizing content with summary and details sections
 - **Avatar** - User profile picture or initials in circular, rounded, or square format
 - **Badge** - Small status indicator that appears on top of content
 - **List** - Flexible list component with ListItem, ListItemText, ListItemIcon, etc.
@@ -797,6 +798,157 @@ Properties:
 - Use `variant="contained"` for prominent call-to-action links
 - Use `underline="always"` for links within text content
 - Use `disabled` for temporarily unavailable links
+
+### Accordion
+```html
+<!-- Basic Accordion -->
+<my-accordion>
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Panel Title</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <my-typography>
+      Panel content goes here. This can include any HTML content.
+    </my-typography>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- Outlined Variant -->
+<my-accordion variant="outlined">
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Outlined Panel</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <my-typography>Content for outlined accordion.</my-typography>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- With Actions -->
+<my-accordion>
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Panel with Actions</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <my-typography>Panel content with action buttons.</my-typography>
+    <my-accordion-actions>
+      <my-button variant="outlined">Cancel</my-button>
+      <my-button variant="contained" color="primary">Save</my-button>
+    </my-accordion-actions>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- Controlled Accordion -->
+<my-accordion id="panel1" expanded>
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Controlled Panel</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <my-typography>This panel's state is controlled by JavaScript.</my-typography>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- Disabled Accordion -->
+<my-accordion disabled>
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Disabled Panel</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <my-typography>This panel cannot be expanded.</my-typography>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- Complex Content -->
+<my-accordion>
+  <my-accordion-summary slot="summary">
+    <my-typography variant="h6">Form Panel</my-typography>
+  </my-accordion-summary>
+  <my-accordion-details slot="details">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <my-text-field label="Name" variant="outlined"></my-text-field>
+      <my-text-field label="Email" variant="outlined" type="email"></my-text-field>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <my-checkbox></my-checkbox>
+        <my-typography>Subscribe to newsletter</my-typography>
+      </div>
+    </div>
+  </my-accordion-details>
+</my-accordion>
+
+<!-- JavaScript Event Handling -->
+<script>
+  const accordion = document.getElementById('panel1');
+  
+  // Handle accordion state changes
+  accordion.addEventListener('change', (e) => {
+    console.log('Accordion changed:', {
+      expanded: e.detail.expanded,
+      previousExpanded: e.detail.previousExpanded
+    });
+  });
+  
+  // Programmatically control accordion
+  accordion.expanded = true; // Expand
+  accordion.expanded = false; // Collapse
+</script>
+```
+
+**Accordion Properties:**
+- `expanded`: boolean - Whether the accordion is expanded (default: false)
+- `disabled`: boolean - Disable the accordion interaction
+- `disableGutters`: boolean - Remove default margins and shadows
+- `variant`: 'elevation' | 'outlined' - Visual style variant (default: 'elevation')
+- `square`: boolean - Remove border radius for square corners
+- `TransitionComponent`: string - Transition component name (default: 'collapse')
+- `TransitionProps`: string - Additional transition properties
+
+**AccordionSummary Properties:**
+- `expandIcon`: string - Icon name for expand/collapse indicator (default: 'expand_more')
+- `disabled`: boolean - Disable the summary interaction
+- `iconButtonProps`: string - Additional props for the icon button
+
+**AccordionDetails Properties:**
+- `disablePadding`: boolean - Remove default padding from details content
+
+**AccordionActions Properties:**
+- `disableSpacing`: boolean - Remove default padding from actions container
+
+**Accordion Variants:**
+- **elevation**: Default variant with shadow and margins (Material Design standard)
+- **outlined**: Bordered variant without shadows, suitable for grouped accordions
+
+**Events:**
+- `change`: Fired when accordion expands/collapses (detail: { expanded, previousExpanded })
+- `summary-click`: Fired when summary is clicked (detail: { originalEvent })
+
+**Features:**
+- **Smooth Animations**: Expand/collapse transitions with Material Design timing
+- **Keyboard Navigation**: Full keyboard support with Enter/Space to toggle
+- **Accessibility**: Proper ARIA attributes and focus management
+- **Flexible Content**: Support for any HTML content in details section
+- **Action Buttons**: Built-in support for action buttons in accordion footer
+- **Controlled State**: Programmatic control of expanded state
+- **Visual Variants**: Elevation and outlined styles for different use cases
+- **Responsive Design**: Adapts to container width and mobile devices
+- **Nested Support**: Accordions can contain other complex components
+- **Event System**: Comprehensive event handling for state changes
+
+**Usage Patterns:**
+- Use for FAQ sections, settings panels, and content organization
+- Group related accordions with the outlined variant
+- Include action buttons for forms and interactive content
+- Use controlled state for exclusive accordion behavior (only one open)
+- Disable accordions for read-only or unavailable content
+- Combine with other components like forms, lists, and cards
+- Use appropriate typography hierarchy in summary titles
+- Keep summary text concise and descriptive
+- Consider mobile users when designing accordion content
+
+**Accessibility:**
+- Proper ARIA attributes (aria-expanded, role="button")
+- Keyboard navigation support (Enter, Space)
+- Focus management and visual focus indicators
+- Screen reader compatible with semantic HTML structure
+- High contrast support for expand/collapse icons
 
 ### Menu
 ```html

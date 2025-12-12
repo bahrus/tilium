@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+  <script type=importmap >
+    {
+        "imports": {
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Accordion Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Accordion</h2>
+    <mui-accordion>
+      <mui-accordion-summary slot="summary">
+        <h3>Panel 1</h3>
+      </mui-accordion-summary>
+      <mui-accordion-details slot="details">
+        <p>This is the content of panel 1. It can contain any HTML content.</p>
+      </mui-accordion-details>
+    </mui-accordion>
+
+    <mui-accordion>
+      <mui-accordion-summary slot="summary">
+        <h3>Panel 2</h3>
+      </mui-accordion-summary>
+      <mui-accordion-details slot="details">
+        <p>This is the content of panel 2. Click the header to expand/collapse.</p>
+      </mui-accordion-details>
+    </mui-accordion>
+  </div>
+
+  <div class="section">
+    <h2>Outlined Accordion</h2>
+    <mui-accordion variant="outlined">
+      <mui-accordion-summary slot="summary">
+        <h3>Outlined Panel</h3>
+      </mui-accordion-summary>
+      <mui-accordion-details slot="details">
+        <p>This accordion uses the outlined variant.</p>
+      </mui-accordion-details>
+    </mui-accordion>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { Accordion, AccordionSummary, AccordionDetails, Typography } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-accordion', Accordion);
+    customElements.define('mui-accordion-summary', AccordionSummary);
+    customElements.define('mui-accordion-details', AccordionDetails);
+    customElements.define('mui-typography', Typography);
+
+    // Add event listeners
+    document.querySelectorAll('mui-accordion').forEach((accordion, index) => {
+      accordion.addEventListener('change', (e) => {
+        console.log(`Accordion ${index + 1} changed:`, {
+          expanded: e.detail.expanded,
+          previousExpanded: e.detail.previousExpanded
+        });
+      });
+    });
+
+    console.log('Accordion component test loaded successfully!');
+  </script>
+</body>
+</html>

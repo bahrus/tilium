@@ -1,4 +1,5 @@
 // Export all component classes
+export { Accordion, AccordionSummary, AccordionDetails, AccordionActions } from './components/Accordion.js';
 export { Alert } from './components/Alert.js';
 export { AppBar } from './components/AppBar.js';
 export { Autocomplete } from './components/Autocomplete.js';

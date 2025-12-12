@@ -2346,6 +2346,202 @@
   </div>
 
   <div class="section">
+    <h2>Accordions</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Accordions</h3>
+        <div style="max-width: 600px;">
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Accordion 1</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse 
+                malesuada lacus ex, sit amet blandit leo lobortis eget.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Accordion 2</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse 
+                malesuada lacus ex, sit amet blandit leo lobortis eget.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion disabled>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Disabled Accordion</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                This accordion is disabled and cannot be expanded.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Outlined Variant</h3>
+        <div style="max-width: 600px;">
+          <mui-accordion variant="outlined">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">General Settings</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                Configure general application settings and preferences.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion variant="outlined">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Privacy Settings</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                Manage your privacy settings and data sharing preferences.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion variant="outlined">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Notification Settings</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                Control how and when you receive notifications.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Actions</h3>
+        <div style="max-width: 600px;">
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">User Profile</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography style="margin-bottom: 16px;">
+                Update your profile information and account settings.
+              </mui-typography>
+              <mui-accordion-actions>
+                <mui-button variant="outlined" size="small">Cancel</mui-button>
+                <mui-button variant="contained" size="small" color="primary">Save</mui-button>
+              </mui-accordion-actions>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Security Settings</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography style="margin-bottom: 16px;">
+                Configure two-factor authentication and password settings.
+              </mui-typography>
+              <mui-accordion-actions>
+                <mui-button variant="text" size="small">Reset</mui-button>
+                <mui-button variant="contained" size="small" color="primary">Update</mui-button>
+              </mui-accordion-actions>
+            </mui-accordion-details>
+          </mui-accordion>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Controlled Accordion</h3>
+        <div style="max-width: 600px;">
+          <mui-accordion id="controlled-accordion-1">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Controlled Panel 1</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                This accordion's state is controlled by JavaScript. Only one can be open at a time.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion id="controlled-accordion-2">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Controlled Panel 2</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                When you open this panel, the other one will automatically close.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion id="controlled-accordion-3">
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Controlled Panel 3</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <mui-typography>
+                This demonstrates exclusive accordion behavior.
+              </mui-typography>
+            </mui-accordion-details>
+          </mui-accordion>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Complex Content</h3>
+        <div style="max-width: 600px;">
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">Form Example</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <mui-text-field label="Name" variant="outlined" fullWidth></mui-text-field>
+                <mui-text-field label="Email" variant="outlined" type="email" fullWidth></mui-text-field>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <mui-checkbox></mui-checkbox>
+                  <mui-typography>Subscribe to newsletter</mui-typography>
+                </div>
+              </div>
+            </mui-accordion-details>
+          </mui-accordion>
+
+          <mui-accordion>
+            <mui-accordion-summary slot="summary">
+              <mui-typography variant="h6">List Example</mui-typography>
+            </mui-accordion-summary>
+            <mui-accordion-details slot="details" disablePadding>
+              <mui-list>
+                <mui-list-item-button>
+                  <mui-list-item-text primary="Item 1" secondary="Description 1"></mui-list-item-text>
+                </mui-list-item-button>
+                <mui-list-item-button>
+                  <mui-list-item-text primary="Item 2" secondary="Description 2"></mui-list-item-text>
+                </mui-list-item-button>
+                <mui-list-item-button>
+                  <mui-list-item-text primary="Item 3" secondary="Description 3"></mui-list-item-text>
+                </mui-list-item-button>
+              </mui-list>
+            </mui-accordion-details>
+          </mui-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -3271,7 +3467,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
+      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -3280,6 +3476,10 @@
     } from './dist/index.js';
 
     // Register all components with custom element names
+    customElements.define('mui-accordion', Accordion);
+    customElements.define('mui-accordion-summary', AccordionSummary);
+    customElements.define('mui-accordion-details', AccordionDetails);
+    customElements.define('mui-accordion-actions', AccordionActions);
     customElements.define('mui-alert', Alert);
     customElements.define('mui-app-bar', AppBar);
     customElements.define('mui-autocomplete', Autocomplete);
@@ -4282,16 +4482,59 @@
       });
     };
 
+    // Setup Accordion examples
+    const setupAccordions = () => {
+      // Controlled accordion behavior (only one open at a time)
+      const controlledAccordions = [
+        document.getElementById('controlled-accordion-1'),
+        document.getElementById('controlled-accordion-2'),
+        document.getElementById('controlled-accordion-3')
+      ].filter(Boolean);
+
+      controlledAccordions.forEach((accordion, index) => {
+        accordion.addEventListener('change', (e) => {
+          if (e.detail.expanded) {
+            // Close all other accordions
+            controlledAccordions.forEach((otherAccordion, otherIndex) => {
+              if (otherIndex !== index && otherAccordion.expanded) {
+                otherAccordion.expanded = false;
+              }
+            });
+          }
+          console.log(`Controlled accordion ${index + 1} ${e.detail.expanded ? 'expanded' : 'collapsed'}`);
+        });
+      });
+
+      // Add event listeners to all accordions for demo purposes
+      document.querySelectorAll('mui-accordion').forEach((accordion, index) => {
+        accordion.addEventListener('change', (e) => {
+          console.log(`Accordion ${index + 1} changed:`, {
+            expanded: e.detail.expanded,
+            previousExpanded: e.detail.previousExpanded
+          });
+        });
+      });
+    };
+
     // Initialize menu handlers when DOM is ready and components are defined
     const initMenus = () => {
       // Wait a bit for components to be fully initialized
       setTimeout(setupMenus, 100);
     };
+
+    // Initialize accordion handlers
+    const initAccordions = () => {
+      setTimeout(setupAccordions, 100);
+    };
     
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMenus);
+      document.addEventListener('DOMContentLoaded', () => {
+        initMenus();
+        initAccordions();
+      });
     } else {
       initMenus();
+      initAccordions();
     }
 
     console.log('Link examples loaded successfully!');
