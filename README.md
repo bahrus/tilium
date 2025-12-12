@@ -47,6 +47,7 @@ Then use them in your HTML:
 - **Box** - Flexible layout component with spacing, alignment, and styling utilities
 - **Container** - Responsive container component with centered content and max-width constraints
 - **Grid** - Flexible 12-column grid system with responsive breakpoints and spacing
+- **Stack** - One-dimensional layout component for arranging elements with consistent spacing
 
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
@@ -1551,6 +1552,232 @@ The Grid component uses Material Design's 8px spacing unit system:
 - Minimal JavaScript overhead (CSS-based layout)
 - Optimized for different screen sizes and orientations
 - Efficient flexbox implementation for modern browsers
+
+### Stack
+```html
+<!-- Basic Vertical Stack -->
+<my-stack spacing="2">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</my-stack>
+
+<!-- Horizontal Stack -->
+<my-stack direction="row" spacing="2">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</my-stack>
+
+<!-- Stack with Different Spacing -->
+<my-stack spacing="0">No spacing</my-stack>
+<my-stack spacing="1">Small spacing (8px)</my-stack>
+<my-stack spacing="3">Large spacing (24px)</my-stack>
+<my-stack spacing="12px">Custom spacing</my-stack>
+
+<!-- Stack with Alignment -->
+<my-stack direction="row" spacing="2" justifyContent="center" alignItems="center">
+  <div>Centered item 1</div>
+  <div>Centered item 2</div>
+</my-stack>
+
+<!-- Stack with Dividers -->
+<my-stack spacing="2" divider="line">
+  <div>Section 1</div>
+  <div>Section 2</div>
+  <div>Section 3</div>
+</my-stack>
+
+<!-- Stack with Custom Dividers -->
+<my-stack direction="row" spacing="2" divider="•">
+  <div>Home</div>
+  <div>Products</div>
+  <div>Contact</div>
+</my-stack>
+
+<!-- Nested Stacks -->
+<my-stack spacing="3">
+  <div>Header</div>
+  
+  <my-stack direction="row" spacing="2">
+    <div>Left content</div>
+    <div>Right content</div>
+  </my-stack>
+  
+  <div>Footer</div>
+</my-stack>
+
+<!-- Navigation Example -->
+<my-stack direction="row" spacing="2" justifyContent="space-between" alignItems="center">
+  <div>Logo</div>
+  
+  <my-stack direction="row" spacing="2">
+    <div>Home</div>
+    <div>About</div>
+    <div>Contact</div>
+  </my-stack>
+  
+  <div>Login</div>
+</my-stack>
+
+<!-- Form Layout -->
+<my-stack spacing="3">
+  <h2>Contact Form</h2>
+  
+  <my-stack spacing="2">
+    <div>
+      <label>Name</label>
+      <input type="text" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" />
+    </div>
+    <div>
+      <label>Message</label>
+      <textarea></textarea>
+    </div>
+  </my-stack>
+  
+  <my-stack direction="row" spacing="2" justifyContent="flex-end">
+    <button>Cancel</button>
+    <button>Send</button>
+  </my-stack>
+</my-stack>
+```
+
+**Stack Properties:**
+- `direction`: 'row' | 'row-reverse' | 'column' | 'column-reverse' - Layout direction (default: 'column')
+- `spacing`: string | number - Spacing between items using 8px unit system (default: '1')
+- `divider`: string - Divider content between items ('line' for default line, or custom text/symbols)
+- `justifyContent`: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' - Main axis alignment (default: 'flex-start')
+- `alignItems`: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline' - Cross axis alignment (default: 'stretch')
+- `useFlexGap`: boolean - Use modern CSS gap property vs margin fallback (default: true)
+- `component`: string - HTML element to render (default: 'div')
+
+**Direction Options:**
+- **column**: Vertical stack (default) - items arranged top to bottom
+- **column-reverse**: Vertical stack reversed - items arranged bottom to top
+- **row**: Horizontal stack - items arranged left to right
+- **row-reverse**: Horizontal stack reversed - items arranged right to left
+
+**Spacing System:**
+The Stack component uses Material Design's 8px spacing unit system:
+- `spacing="1"` = 8px gap between items
+- `spacing="2"` = 16px gap between items
+- `spacing="3"` = 24px gap between items
+- Custom values: `spacing="12px"` or `spacing="1rem"`
+
+**Divider Options:**
+- **'line'**: Default horizontal or vertical line divider
+- **Custom text**: Any string like '•', '|', '→', etc.
+- **Empty string**: No dividers (default)
+
+**Alignment Options:**
+- **justifyContent**: Controls alignment along the main axis (direction of stack)
+- **alignItems**: Controls alignment along the cross axis (perpendicular to stack direction)
+
+**Features:**
+- **One-dimensional Layout**: Simplified layout for linear arrangements
+- **Consistent Spacing**: Automatic spacing between all items
+- **Flexible Direction**: Support for all four flex directions
+- **Built-in Dividers**: Optional dividers between items
+- **Modern CSS**: Uses CSS gap property with fallback support
+- **Alignment Control**: Complete flexbox alignment options
+- **Nested Support**: Stacks can be nested for complex layouts
+- **Performance**: Lightweight with minimal DOM overhead
+
+**Usage Patterns:**
+- Use for linear layouts where items should be evenly spaced
+- Perfect for navigation bars, form layouts, and content lists
+- Use horizontal stacks for toolbars and button groups
+- Use vertical stacks for content sections and form fields
+- Combine with dividers for visual separation
+- Nest stacks for complex multi-directional layouts
+
+**Common Layout Patterns:**
+```html
+<!-- Navigation Bar -->
+<my-stack direction="row" spacing="2" justifyContent="space-between" alignItems="center">
+  <div>Logo</div>
+  <my-stack direction="row" spacing="2">
+    <div>Home</div>
+    <div>About</div>
+    <div>Contact</div>
+  </my-stack>
+  <div>Login</div>
+</my-stack>
+
+<!-- Button Group -->
+<my-stack direction="row" spacing="2">
+  <button>Cancel</button>
+  <button>Save Draft</button>
+  <button>Publish</button>
+</my-stack>
+
+<!-- Form Section -->
+<my-stack spacing="2">
+  <h3>Personal Information</h3>
+  <input placeholder="First Name" />
+  <input placeholder="Last Name" />
+  <input placeholder="Email" />
+</my-stack>
+
+<!-- Content List -->
+<my-stack spacing="3" divider="line">
+  <div>Article 1</div>
+  <div>Article 2</div>
+  <div>Article 3</div>
+</my-stack>
+
+<!-- Breadcrumb Navigation -->
+<my-stack direction="row" spacing="1" divider="›">
+  <div>Home</div>
+  <div>Products</div>
+  <div>Laptops</div>
+  <div>MacBook Pro</div>
+</my-stack>
+
+<!-- Sidebar Layout -->
+<my-stack spacing="4">
+  <div>Widget 1</div>
+  <div>Widget 2</div>
+  <div>Widget 3</div>
+</my-stack>
+
+<!-- Toolbar -->
+<my-stack direction="row" spacing="1" alignItems="center">
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
+  <div>|</div>
+  <button>Align Left</button>
+  <button>Align Center</button>
+  <button>Align Right</button>
+</my-stack>
+```
+
+**When to Use Stack vs Grid vs Box:**
+- **Stack**: Linear layouts with consistent spacing (navigation, forms, lists)
+- **Grid**: Two-dimensional layouts with rows and columns (dashboards, card grids)
+- **Box**: Single element styling and simple flexbox layouts (containers, wrappers)
+
+**Accessibility:**
+- Uses semantic HTML structure with proper element selection
+- Maintains logical tab order and focus management
+- Supports screen readers with proper content flow
+- Dividers are properly marked up for accessibility
+
+**Performance:**
+- Lightweight CSS with efficient flexbox implementation
+- Uses modern CSS gap property with automatic fallback
+- Minimal JavaScript overhead for divider management
+- Optimized for different screen sizes and orientations
+
+**Browser Support:**
+- Modern browsers: Uses CSS gap property for optimal performance
+- Legacy browsers: Automatic fallback to margin-based spacing
+- Graceful degradation ensures consistent behavior across browsers
 
 ### SpeedDial
 ```html

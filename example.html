@@ -3405,6 +3405,324 @@
   </div>
 
   <div class="section">
+    <h2>Stack Layout</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Stack (Vertical)</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-stack spacing="2">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 1
+            </div>
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 2
+            </div>
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">
+              Item 3
+            </div>
+          </mui-stack>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Horizontal Stack</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-stack direction="row" spacing="2">
+            <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px; flex: 1;">
+              Item 1
+            </div>
+            <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px; flex: 1;">
+              Item 2
+            </div>
+            <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px; flex: 1;">
+              Item 3
+            </div>
+          </mui-stack>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stack Spacing</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">No Spacing (spacing="0")</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="0">
+                <div style="background-color: #1976d2; color: white; padding: 12px; text-align: center;">Item 1</div>
+                <div style="background-color: #dc004e; color: white; padding: 12px; text-align: center;">Item 2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 12px; text-align: center;">Item 3</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Small Spacing (spacing="1")</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="1">
+                <div style="background-color: #1976d2; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 1</div>
+                <div style="background-color: #dc004e; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 3</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Large Spacing (spacing="4")</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="4">
+                <div style="background-color: #1976d2; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 1</div>
+                <div style="background-color: #dc004e; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 12px; text-align: center; border-radius: 4px;">Item 3</div>
+              </mui-stack>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stack Direction</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Row (Horizontal)</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="row" spacing="2">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Row Reverse</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="row-reverse" spacing="2">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Column (Vertical)</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="column" spacing="2">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Column Reverse</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="column-reverse" spacing="2">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">1</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">2</div>
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">3</div>
+              </mui-stack>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stack Alignment</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Justify Content Center</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px; height: 120px;">
+              <mui-stack direction="row" spacing="2" justifyContent="center" style="height: 100%;">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">Item 1</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">Item 2</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Align Items Center</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px; height: 120px;">
+              <mui-stack direction="row" spacing="2" alignItems="center" style="height: 100%;">
+                <div style="background-color: #1976d2; color: white; padding: 8px 16px; text-align: center; border-radius: 4px;">Short</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px; line-height: 1.2;">Taller content that spans multiple lines</div>
+                <div style="background-color: #2e7d32; color: white; padding: 8px 16px; text-align: center; border-radius: 4px;">Short</div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Space Between</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="row" spacing="0" justifyContent="space-between">
+                <div style="background-color: #1976d2; color: white; padding: 16px; text-align: center; border-radius: 4px;">Left</div>
+                <div style="background-color: #dc004e; color: white; padding: 16px; text-align: center; border-radius: 4px;">Center</div>
+                <div style="background-color: #2e7d32; color: white; padding: 16px; text-align: center; border-radius: 4px;">Right</div>
+              </mui-stack>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Stack with Dividers</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Vertical Stack with Line Dividers</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="2" divider="line">
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Item 1
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Item 2
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Item 3
+                </div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Horizontal Stack with Line Dividers</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack direction="row" spacing="2" divider="line">
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1;">
+                  Item 1
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1;">
+                  Item 2
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1;">
+                  Item 3
+                </div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Custom Text Dividers</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="2" divider="•">
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Home
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Products
+                </div>
+                <div style="background-color: white; padding: 16px; text-align: center; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  Contact
+                </div>
+              </mui-stack>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Real-world Examples</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Navigation Bar</h4>
+            <div style="background-color: #1976d2; color: white; padding: 16px; border-radius: 4px;">
+              <mui-stack direction="row" spacing="3" alignItems="center" justifyContent="space-between">
+                <div style="font-size: 1.25rem; font-weight: bold;">My App</div>
+                <mui-stack direction="row" spacing="2">
+                  <div style="padding: 8px 16px; cursor: pointer;">Home</div>
+                  <div style="padding: 8px 16px; cursor: pointer;">About</div>
+                  <div style="padding: 8px 16px; cursor: pointer;">Contact</div>
+                </mui-stack>
+                <div style="background-color: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                  Login
+                </div>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Form Layout</h4>
+            <div style="background-color: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <mui-stack spacing="3">
+                <div>
+                  <h3 style="margin: 0 0 16px 0; color: #333;">Contact Form</h3>
+                </div>
+                
+                <mui-stack spacing="2">
+                  <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Name</label>
+                    <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" placeholder="Enter your name">
+                  </div>
+                  
+                  <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Email</label>
+                    <input type="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" placeholder="Enter your email">
+                  </div>
+                  
+                  <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Message</label>
+                    <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; min-height: 100px; resize: vertical;" placeholder="Enter your message"></textarea>
+                  </div>
+                </mui-stack>
+                
+                <mui-stack direction="row" spacing="2" justifyContent="flex-end">
+                  <button style="padding: 12px 24px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+                    Cancel
+                  </button>
+                  <button style="padding: 12px 24px; border: none; background: #1976d2; color: white; border-radius: 4px; cursor: pointer;">
+                    Send Message
+                  </button>
+                </mui-stack>
+              </mui-stack>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Card List</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-stack spacing="2">
+                <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <mui-stack spacing="2">
+                    <div style="font-size: 1.125rem; font-weight: 600; color: #333;">Article Title 1</div>
+                    <div style="color: #666; line-height: 1.5;">This is a preview of the article content. It gives readers a quick overview of what to expect...</div>
+                    <mui-stack direction="row" spacing="2" alignItems="center" justifyContent="space-between">
+                      <div style="font-size: 0.875rem; color: #888;">March 15, 2024</div>
+                      <div style="color: #1976d2; cursor: pointer; font-weight: 500;">Read More</div>
+                    </mui-stack>
+                  </mui-stack>
+                </div>
+                
+                <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <mui-stack spacing="2">
+                    <div style="font-size: 1.125rem; font-weight: 600; color: #333;">Article Title 2</div>
+                    <div style="color: #666; line-height: 1.5;">Another interesting article with valuable insights and information for our readers...</div>
+                    <mui-stack direction="row" spacing="2" alignItems="center" justifyContent="space-between">
+                      <div style="font-size: 0.875rem; color: #888;">March 12, 2024</div>
+                      <div style="color: #1976d2; cursor: pointer; font-weight: 500;">Read More</div>
+                    </mui-stack>
+                  </mui-stack>
+                </div>
+                
+                <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <mui-stack spacing="2">
+                    <div style="font-size: 1.125rem; font-weight: 600; color: #333;">Article Title 3</div>
+                    <div style="color: #666; line-height: 1.5;">The third article in our series, covering advanced topics and best practices...</div>
+                    <mui-stack direction="row" spacing="2" alignItems="center" justifyContent="space-between">
+                      <div style="font-size: 0.875rem; color: #888;">March 10, 2024</div>
+                      <div style="color: #1976d2; cursor: pointer; font-weight: 500;">Read More</div>
+                    </mui-stack>
+                  </mui-stack>
+                </div>
+              </mui-stack>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -4333,7 +4651,7 @@
       Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, Container,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -4395,6 +4713,7 @@
     customElements.define('mui-snackbar', Snackbar);
     customElements.define('mui-speed-dial', SpeedDial);
     customElements.define('mui-speed-dial-action', SpeedDialAction);
+    customElements.define('mui-stack', Stack);
     customElements.define('mui-stepper', Stepper);
     customElements.define('mui-step', Step);
     customElements.define('mui-step-label', StepLabel);

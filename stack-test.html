@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .demo-section {
+      margin-bottom: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .stack-item {
+      background-color: #1976d2;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .stack-item.secondary {
+      background-color: #dc004e;
+    }
+    .stack-item.success {
+      background-color: #2e7d32;
+    }
+    .stack-item.warning {
+      background-color: #ed6c02;
+    }
+    .stack-item.info {
+      background-color: #0288d1;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Stack Component Test</h1>
+  
+  <div class="demo-section">
+    <h2>Basic Vertical Stack</h2>
+    <mui-stack spacing="2">
+      <div class="stack-item">Item 1</div>
+      <div class="stack-item secondary">Item 2</div>
+      <div class="stack-item success">Item 3</div>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Horizontal Stack</h2>
+    <mui-stack direction="row" spacing="2">
+      <div class="stack-item" style="flex: 1;">Item 1</div>
+      <div class="stack-item secondary" style="flex: 1;">Item 2</div>
+      <div class="stack-item success" style="flex: 1;">Item 3</div>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Different Spacing</h2>
+    
+    <h3>No Spacing</h3>
+    <mui-stack spacing="0">
+      <div class="stack-item">Item 1</div>
+      <div class="stack-item secondary">Item 2</div>
+      <div class="stack-item success">Item 3</div>
+    </mui-stack>
+
+    <h3>Large Spacing</h3>
+    <mui-stack spacing="4">
+      <div class="stack-item">Item 1</div>
+      <div class="stack-item secondary">Item 2</div>
+      <div class="stack-item success">Item 3</div>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Stack Directions</h2>
+    
+    <h3>Row (Left to Right)</h3>
+    <mui-stack direction="row" spacing="2">
+      <div class="stack-item">1</div>
+      <div class="stack-item secondary">2</div>
+      <div class="stack-item success">3</div>
+    </mui-stack>
+
+    <h3>Row Reverse (Right to Left)</h3>
+    <mui-stack direction="row-reverse" spacing="2">
+      <div class="stack-item">1</div>
+      <div class="stack-item secondary">2</div>
+      <div class="stack-item success">3</div>
+    </mui-stack>
+
+    <h3>Column Reverse (Bottom to Top)</h3>
+    <mui-stack direction="column-reverse" spacing="2">
+      <div class="stack-item">1</div>
+      <div class="stack-item secondary">2</div>
+      <div class="stack-item success">3</div>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Stack Alignment</h2>
+    
+    <h3>Justify Content Center</h3>
+    <div style="height: 120px; background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+      <mui-stack direction="row" spacing="2" justifyContent="center" style="height: 100%;">
+        <div class="stack-item">Centered</div>
+        <div class="stack-item secondary">Items</div>
+      </mui-stack>
+    </div>
+
+    <h3>Align Items Center</h3>
+    <div style="height: 120px; background-color: #f5f5f5; border-radius: 4px; padding: 16px;">
+      <mui-stack direction="row" spacing="2" alignItems="center" style="height: 100%;">
+        <div class="stack-item" style="padding: 8px 16px;">Short</div>
+        <div class="stack-item secondary" style="padding: 16px; line-height: 1.2;">Taller content that spans multiple lines</div>
+        <div class="stack-item success" style="padding: 8px 16px;">Short</div>
+      </mui-stack>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Stack with Dividers</h2>
+    
+    <h3>Vertical with Line Dividers</h3>
+    <mui-stack spacing="2" divider="line">
+      <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        Section 1
+      </div>
+      <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        Section 2
+      </div>
+      <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        Section 3
+      </div>
+    </mui-stack>
+
+    <h3>Horizontal with Custom Dividers</h3>
+    <mui-stack direction="row" spacing="2" divider="•">
+      <div class="stack-item" style="flex: 1;">Home</div>
+      <div class="stack-item secondary" style="flex: 1;">Products</div>
+      <div class="stack-item success" style="flex: 1;">Contact</div>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Navigation Bar Example</h2>
+    <div style="background-color: #1976d2; color: white; padding: 16px; border-radius: 4px;">
+      <mui-stack direction="row" spacing="3" alignItems="center" justifyContent="space-between">
+        <div style="font-size: 1.25rem; font-weight: bold;">My App</div>
+        
+        <mui-stack direction="row" spacing="2">
+          <div style="padding: 8px 16px; cursor: pointer; border-radius: 4px;">Home</div>
+          <div style="padding: 8px 16px; cursor: pointer; border-radius: 4px;">About</div>
+          <div style="padding: 8px 16px; cursor: pointer; border-radius: 4px;">Contact</div>
+        </mui-stack>
+        
+        <div style="background-color: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+          Login
+        </div>
+      </mui-stack>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Form Layout Example</h2>
+    <mui-stack spacing="3">
+      <div>
+        <h3 style="margin: 0; color: #333;">Contact Form</h3>
+      </div>
+      
+      <mui-stack spacing="2">
+        <div>
+          <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Name</label>
+          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" placeholder="Enter your name">
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Email</label>
+          <input type="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" placeholder="Enter your email">
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 4px; font-weight: 500; color: #555;">Message</label>
+          <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; min-height: 100px; resize: vertical;" placeholder="Enter your message"></textarea>
+        </div>
+      </mui-stack>
+      
+      <mui-stack direction="row" spacing="2" justifyContent="flex-end">
+        <button style="padding: 12px 24px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">
+          Cancel
+        </button>
+        <button style="padding: 12px 24px; border: none; background: #1976d2; color: white; border-radius: 4px; cursor: pointer;">
+          Send Message
+        </button>
+      </mui-stack>
+    </mui-stack>
+  </div>
+
+  <div class="demo-section">
+    <h2>Nested Stacks Example</h2>
+    <mui-stack spacing="3">
+      <!-- Header -->
+      <div style="background-color: #1976d2; color: white; padding: 20px; text-align: center; border-radius: 8px;">
+        <h3 style="margin: 0;">Dashboard Header</h3>
+      </div>
+      
+      <!-- Content Area -->
+      <mui-stack direction="row" spacing="3">
+        <div style="flex: 2; background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+          <mui-stack spacing="2">
+            <h4 style="margin: 0; color: #333;">Main Content</h4>
+            <div style="background-color: white; padding: 16px; border-radius: 4px;">Content block 1</div>
+            <div style="background-color: white; padding: 16px; border-radius: 4px;">Content block 2</div>
+            <div style="background-color: white; padding: 16px; border-radius: 4px;">Content block 3</div>
+          </mui-stack>
+        </div>
+        
+        <div style="flex: 1; background-color: #e3f2fd; padding: 20px; border-radius: 8px;">
+          <mui-stack spacing="2">
+            <h4 style="margin: 0; color: #333;">Sidebar</h4>
+            <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">Widget 1</div>
+            <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">Widget 2</div>
+            <div style="background-color: white; padding: 12px; border-radius: 4px; font-size: 0.875rem;">Widget 3</div>
+          </mui-stack>
+        </div>
+      </mui-stack>
+      
+      <!-- Footer -->
+      <div style="background-color: #666; color: white; padding: 16px; text-align: center; border-radius: 8px;">
+        Footer Content
+      </div>
+    </mui-stack>
+  </div>
+
+  <script type="module">
+    import { Stack } from './dist/index.js';
+
+    // Register component
+    customElements.define('mui-stack', Stack);
+
+    console.log('Stack component test loaded successfully!');
+  </script>
+</body>
+</html>
