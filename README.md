@@ -69,6 +69,7 @@ Then use them in your HTML:
 - **Skeleton** - Placeholder loading component with multiple variants and animations
 - **Slider** - Range slider
 - **Snackbar** - Brief messages and notifications with actions and auto-hide
+- **SpeedDial** - Floating action button that reveals related actions when activated
 
 ### Data Display
 - **Accordion** - Expandable panels for organizing content with summary and details sections
@@ -949,6 +950,175 @@ Properties:
 - Focus management and visual focus indicators
 - Screen reader compatible with semantic HTML structure
 - High contrast support for expand/collapse icons
+
+### SpeedDial
+```html
+<!-- Basic SpeedDial -->
+<my-speed-dial 
+  id="basic-speed-dial"
+  style="position: fixed; bottom: 16px; right: 16px;"
+  ariaLabel="Speed Dial Actions">
+</my-speed-dial>
+
+<!-- Direction Variants -->
+<my-speed-dial direction="up" style="bottom: 16px; right: 16px;"></my-speed-dial>
+<my-speed-dial direction="down" style="top: 16px; right: 16px;"></my-speed-dial>
+<my-speed-dial direction="left" style="top: 50%; right: 16px;"></my-speed-dial>
+<my-speed-dial direction="right" style="top: 50%; left: 16px;"></my-speed-dial>
+
+<!-- Color Variants -->
+<my-speed-dial color="default"></my-speed-dial>
+<my-speed-dial color="primary"></my-speed-dial>
+<my-speed-dial color="secondary"></my-speed-dial>
+
+<!-- Custom Icons -->
+<my-speed-dial 
+  icon="edit" 
+  openIcon="close" 
+  color="primary">
+</my-speed-dial>
+
+<!-- Controlled SpeedDial -->
+<my-speed-dial id="controlled-dial" open></my-speed-dial>
+
+<!-- Disabled SpeedDial -->
+<my-speed-dial disabled></my-speed-dial>
+
+<!-- JavaScript Setup -->
+<script>
+  const speedDial = document.getElementById('basic-speed-dial');
+  
+  // Set actions
+  speedDial.actions = [
+    { id: 'copy', icon: 'copy', tooltipTitle: 'Copy' },
+    { id: 'save', icon: 'save', tooltipTitle: 'Save' },
+    { id: 'print', icon: 'print', tooltipTitle: 'Print' },
+    { id: 'share', icon: 'share', tooltipTitle: 'Share' }
+  ];
+  
+  // Handle action clicks
+  speedDial.addEventListener('action-click', (e) => {
+    console.log('Action clicked:', e.detail.action.tooltipTitle);
+    // Handle the specific action
+    switch (e.detail.action.id) {
+      case 'copy':
+        // Copy functionality
+        break;
+      case 'save':
+        // Save functionality
+        break;
+      // ... other actions
+    }
+  });
+  
+  // Handle speed dial toggle
+  speedDial.addEventListener('toggle', (e) => {
+    console.log('Speed dial toggled:', e.detail.open);
+  });
+  
+  // Handle speed dial close
+  speedDial.addEventListener('close', (e) => {
+    console.log('Speed dial closed:', e.detail.reason);
+  });
+  
+  // Programmatically control
+  speedDial.open = true;  // Open
+  speedDial.open = false; // Close
+</script>
+```
+
+**SpeedDial Properties:**
+- `open`: boolean - Whether the speed dial is open (default: false)
+- `direction`: 'up' | 'down' | 'left' | 'right' - Direction actions appear (default: 'up')
+- `hidden`: boolean - Hide the speed dial completely
+- `icon`: string - Main FAB icon name (default: 'add')
+- `openIcon`: string - Icon when speed dial is open (optional)
+- `actions`: SpeedDialActionData[] - Array of action configurations
+- `ariaLabel`: string - Accessibility label (default: 'SpeedDial')
+- `color`: 'default' | 'primary' | 'secondary' - FAB color theme (default: 'default')
+- `disabled`: boolean - Disable the speed dial interaction
+- `tooltipTitle`: string - Tooltip for the main FAB
+- `transitionDuration`: number - Animation duration in milliseconds (default: 250)
+
+**SpeedDialActionData Interface:**
+```typescript
+interface SpeedDialActionData {
+  id: string;              // Unique identifier
+  icon: string;            // Icon name for the action
+  tooltipTitle?: string;   // Tooltip text (optional)
+  disabled?: boolean;      // Disable this action (optional)
+  onClick?: () => void;    // Action callback (optional)
+}
+```
+
+**Built-in Icons:**
+- `add`: Plus/add icon (default)
+- `close`: X/close icon
+- `edit`: Pencil/edit icon
+- `share`: Share icon
+- `print`: Printer icon
+- `copy`: Copy/duplicate icon
+- `save`: Save/disk icon
+- `delete`: Trash/delete icon
+- `favorite`: Heart/favorite icon
+
+**Direction Options:**
+- **up**: Actions appear above the FAB (default, most common)
+- **down**: Actions appear below the FAB
+- **left**: Actions appear to the left of the FAB
+- **right**: Actions appear to the right of the FAB
+
+**Color Variants:**
+- **default**: Gray background with dark text
+- **primary**: Primary theme color (blue) with white text
+- **secondary**: Secondary theme color (pink/red) with white text
+
+**Events:**
+- `toggle`: Fired when speed dial opens/closes (detail: { open })
+- `close`: Fired when speed dial closes (detail: { reason })
+- `action-click`: Fired when action is clicked (detail: { action, index })
+
+**Features:**
+- **Smooth Animations**: Staggered action reveal with Material Design timing
+- **Keyboard Navigation**: Full keyboard support with arrow keys and Enter/Space
+- **Accessibility**: Proper ARIA attributes and focus management
+- **Backdrop Click**: Closes when clicking outside the speed dial
+- **Escape Key**: Closes on Escape key press
+- **Tooltips**: Built-in tooltip support for actions
+- **Flexible Positioning**: Can be positioned anywhere with CSS
+- **Responsive Design**: Adapts to different screen sizes
+- **Event System**: Comprehensive event handling for interactions
+- **Controlled State**: Programmatic control of open/close state
+- **Custom Icons**: Support for custom icon sets
+- **Disabled Actions**: Individual actions can be disabled
+
+**Usage Patterns:**
+- Position in bottom-right corner for primary actions (most common)
+- Use for quick access to related actions (copy, save, share, etc.)
+- Keep action count between 3-6 for optimal usability
+- Use descriptive tooltips for all actions
+- Choose appropriate direction based on available space
+- Use primary color for main/important speed dials
+- Consider mobile users when positioning and sizing
+- Group related actions logically
+- Use consistent icons across your application
+- Provide keyboard alternatives for all actions
+
+**Positioning:**
+- Use `position: fixed` for global actions
+- Use `position: absolute` within containers
+- Common positions: `bottom: 16px; right: 16px;`
+- Ensure adequate space for action expansion
+- Consider mobile viewport constraints
+- Avoid overlapping with other UI elements
+
+**Accessibility:**
+- Proper ARIA attributes (aria-label, aria-expanded, aria-haspopup)
+- Keyboard navigation with arrow keys
+- Focus management and visual focus indicators
+- Screen reader compatible with semantic structure
+- High contrast support for icons and tooltips
+- Descriptive tooltips for all actions
 
 ### Menu
 ```html

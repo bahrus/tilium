@@ -2542,6 +2542,146 @@
   </div>
 
   <div class="section">
+    <h2>Speed Dial</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Speed Dial</h3>
+        <div style="position: relative; height: 300px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+          <p style="padding: 20px; margin: 0; color: #666;">
+            Click the floating action button in the bottom-right corner to see the speed dial actions.
+          </p>
+          <mui-speed-dial 
+            id="basic-speed-dial"
+            style="bottom: 16px; right: 16px;"
+            ariaLabel="Basic Speed Dial"
+          ></mui-speed-dial>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Direction Variants</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Up Direction -->
+          <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Direction: Up</p>
+            <mui-speed-dial 
+              id="up-speed-dial"
+              direction="up"
+              style="bottom: 16px; right: 16px;"
+              ariaLabel="Up Speed Dial"
+            ></mui-speed-dial>
+          </div>
+
+          <!-- Down Direction -->
+          <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Direction: Down</p>
+            <mui-speed-dial 
+              id="down-speed-dial"
+              direction="down"
+              style="top: 16px; right: 16px;"
+              ariaLabel="Down Speed Dial"
+            ></mui-speed-dial>
+          </div>
+
+          <!-- Left Direction -->
+          <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Direction: Left</p>
+            <mui-speed-dial 
+              id="left-speed-dial"
+              direction="left"
+              style="top: 50%; right: 16px; transform: translateY(-50%);"
+              ariaLabel="Left Speed Dial"
+            ></mui-speed-dial>
+          </div>
+
+          <!-- Right Direction -->
+          <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Direction: Right</p>
+            <mui-speed-dial 
+              id="right-speed-dial"
+              direction="right"
+              style="top: 50%; left: 16px; transform: translateY(-50%);"
+              ariaLabel="Right Speed Dial"
+            ></mui-speed-dial>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Color Variants</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <div style="position: relative; width: 200px; height: 150px; background-color: #f5f5f5; border-radius: 4px;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Default</p>
+            <mui-speed-dial 
+              id="default-color-speed-dial"
+              color="default"
+              style="bottom: 16px; right: 16px;"
+              ariaLabel="Default Color Speed Dial"
+            ></mui-speed-dial>
+          </div>
+
+          <div style="position: relative; width: 200px; height: 150px; background-color: #f5f5f5; border-radius: 4px;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Primary</p>
+            <mui-speed-dial 
+              id="primary-color-speed-dial"
+              color="primary"
+              style="bottom: 16px; right: 16px;"
+              ariaLabel="Primary Color Speed Dial"
+            ></mui-speed-dial>
+          </div>
+
+          <div style="position: relative; width: 200px; height: 150px; background-color: #f5f5f5; border-radius: 4px;">
+            <p style="padding: 16px; margin: 0; color: #666; font-size: 0.875rem;">Secondary</p>
+            <mui-speed-dial 
+              id="secondary-color-speed-dial"
+              color="secondary"
+              style="bottom: 16px; right: 16px;"
+              ariaLabel="Secondary Color Speed Dial"
+            ></mui-speed-dial>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Custom Icons</h3>
+        <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+          <p style="padding: 20px; margin: 0; color: #666;">
+            Speed dial with custom main icon and open icon.
+          </p>
+          <mui-speed-dial 
+            id="custom-icon-speed-dial"
+            icon="edit"
+            openIcon="close"
+            color="primary"
+            style="bottom: 16px; right: 16px;"
+            ariaLabel="Custom Icon Speed Dial"
+          ></mui-speed-dial>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Controlled Speed Dial</h3>
+        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
+          <mui-button id="open-speed-dial-btn" variant="outlined">Open Speed Dial</mui-button>
+          <mui-button id="close-speed-dial-btn" variant="outlined">Close Speed Dial</mui-button>
+          <mui-button id="toggle-speed-dial-btn" variant="contained" color="primary">Toggle Speed Dial</mui-button>
+        </div>
+        <div style="position: relative; height: 200px; background-color: #f5f5f5; border-radius: 4px; overflow: hidden;">
+          <p style="padding: 20px; margin: 0; color: #666;">
+            This speed dial is controlled by the buttons above.
+          </p>
+          <mui-speed-dial 
+            id="controlled-speed-dial"
+            color="secondary"
+            style="bottom: 16px; right: 16px;"
+            ariaLabel="Controlled Speed Dial"
+          ></mui-speed-dial>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -3470,7 +3610,7 @@
       Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -3527,6 +3667,8 @@
     customElements.define('mui-skeleton', Skeleton);
     customElements.define('mui-slider', Slider);
     customElements.define('mui-snackbar', Snackbar);
+    customElements.define('mui-speed-dial', SpeedDial);
+    customElements.define('mui-speed-dial-action', SpeedDialAction);
     customElements.define('mui-stepper', Stepper);
     customElements.define('mui-step', Step);
     customElements.define('mui-step-label', StepLabel);
@@ -4522,19 +4664,130 @@
       setTimeout(setupMenus, 100);
     };
 
+    // Setup SpeedDial examples
+    const setupSpeedDials = () => {
+      // Common actions for all speed dials
+      const commonActions = [
+        { id: 'copy', icon: 'copy', tooltipTitle: 'Copy' },
+        { id: 'save', icon: 'save', tooltipTitle: 'Save' },
+        { id: 'print', icon: 'print', tooltipTitle: 'Print' },
+        { id: 'share', icon: 'share', tooltipTitle: 'Share' }
+      ];
+
+      // Basic speed dial
+      const basicSpeedDial = document.getElementById('basic-speed-dial');
+      if (basicSpeedDial) {
+        basicSpeedDial.actions = commonActions;
+        basicSpeedDial.addEventListener('action-click', (e) => {
+          console.log('Basic speed dial action clicked:', e.detail.action.tooltipTitle);
+        });
+      }
+
+      // Direction variants
+      const directions = ['up', 'down', 'left', 'right'];
+      directions.forEach(direction => {
+        const speedDial = document.getElementById(`${direction}-speed-dial`);
+        if (speedDial) {
+          speedDial.actions = commonActions.slice(0, 3); // Fewer actions for smaller demos
+          speedDial.addEventListener('action-click', (e) => {
+            console.log(`${direction} speed dial action:`, e.detail.action.tooltipTitle);
+          });
+        }
+      });
+
+      // Color variants
+      const colors = ['default', 'primary', 'secondary'];
+      colors.forEach(color => {
+        const speedDial = document.getElementById(`${color}-color-speed-dial`);
+        if (speedDial) {
+          speedDial.actions = commonActions.slice(0, 3);
+          speedDial.addEventListener('action-click', (e) => {
+            console.log(`${color} color speed dial action:`, e.detail.action.tooltipTitle);
+          });
+        }
+      });
+
+      // Custom icon speed dial
+      const customIconSpeedDial = document.getElementById('custom-icon-speed-dial');
+      if (customIconSpeedDial) {
+        customIconSpeedDial.actions = [
+          { id: 'edit', icon: 'edit', tooltipTitle: 'Edit' },
+          { id: 'delete', icon: 'delete', tooltipTitle: 'Delete' },
+          { id: 'favorite', icon: 'favorite', tooltipTitle: 'Add to Favorites' }
+        ];
+        customIconSpeedDial.addEventListener('action-click', (e) => {
+          console.log('Custom icon speed dial action:', e.detail.action.tooltipTitle);
+        });
+      }
+
+      // Controlled speed dial
+      const controlledSpeedDial = document.getElementById('controlled-speed-dial');
+      const openBtn = document.getElementById('open-speed-dial-btn');
+      const closeBtn = document.getElementById('close-speed-dial-btn');
+      const toggleBtn = document.getElementById('toggle-speed-dial-btn');
+
+      if (controlledSpeedDial) {
+        controlledSpeedDial.actions = commonActions;
+        
+        controlledSpeedDial.addEventListener('action-click', (e) => {
+          console.log('Controlled speed dial action:', e.detail.action.tooltipTitle);
+        });
+
+        controlledSpeedDial.addEventListener('toggle', (e) => {
+          console.log('Controlled speed dial toggled:', e.detail.open);
+        });
+
+        if (openBtn) {
+          openBtn.addEventListener('click', () => {
+            controlledSpeedDial.open = true;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            controlledSpeedDial.open = false;
+          });
+        }
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', () => {
+            controlledSpeedDial.open = !controlledSpeedDial.open;
+          });
+        }
+      }
+
+      // Add global event listeners for all speed dials
+      document.querySelectorAll('mui-speed-dial').forEach((speedDial, index) => {
+        speedDial.addEventListener('toggle', (e) => {
+          console.log(`Speed dial ${index + 1} toggled:`, e.detail.open);
+        });
+
+        speedDial.addEventListener('close', (e) => {
+          console.log(`Speed dial ${index + 1} closed:`, e.detail.reason);
+        });
+      });
+    };
+
     // Initialize accordion handlers
     const initAccordions = () => {
       setTimeout(setupAccordions, 100);
+    };
+
+    // Initialize speed dial handlers
+    const initSpeedDials = () => {
+      setTimeout(setupSpeedDials, 100);
     };
     
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         initMenus();
         initAccordions();
+        initSpeedDials();
       });
     } else {
       initMenus();
       initAccordions();
+      initSpeedDials();
     }
 
     console.log('Link examples loaded successfully!');

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeedDial Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    .container {
+      position: relative;
+      height: 400px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>SpeedDial Component Test</h1>
+  
+  <div class="container">
+    <h2>Basic SpeedDial</h2>
+    <p>Click the floating action button to see the speed dial actions.</p>
+    
+    <mui-speed-dial 
+      id="test-speed-dial"
+      color="primary"
+      style="position: absolute; bottom: 16px; right: 16px;"
+      ariaLabel="Test Speed Dial">
+    </mui-speed-dial>
+  </div>
+
+  <script type="module">
+    import { SpeedDial, SpeedDialAction } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-speed-dial', SpeedDial);
+    customElements.define('mui-speed-dial-action', SpeedDialAction);
+
+    // Setup test speed dial
+    const testSpeedDial = document.getElementById('test-speed-dial');
+    if (testSpeedDial) {
+      testSpeedDial.actions = [
+        { id: 'copy', icon: 'copy', tooltipTitle: 'Copy' },
+        { id: 'save', icon: 'save', tooltipTitle: 'Save' },
+        { id: 'print', icon: 'print', tooltipTitle: 'Print' },
+        { id: 'share', icon: 'share', tooltipTitle: 'Share' }
+      ];
+
+      testSpeedDial.addEventListener('action-click', (e) => {
+        console.log('Action clicked:', e.detail.action.tooltipTitle);
+        alert(`Action clicked: ${e.detail.action.tooltipTitle}`);
+      });
+
+      testSpeedDial.addEventListener('toggle', (e) => {
+        console.log('SpeedDial toggled:', e.detail.open);
+      });
+
+      testSpeedDial.addEventListener('close', (e) => {
+        console.log('SpeedDial closed:', e.detail.reason);
+      });
+    }
+
+    console.log('SpeedDial test loaded successfully!');
+  </script>
+</body>
+</html>
+</html>
