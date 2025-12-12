@@ -563,6 +563,120 @@ Properties:
 - Typically positioned fixed in the bottom-right corner of the screen
 - Primary action should use `color="primary"`
 
+### FormControlLabel
+```html
+<!-- Basic Form Control Label -->
+<my-form-control-label label="Accept terms and conditions">
+  <my-checkbox slot="control" color="primary"></my-checkbox>
+</my-form-control-label>
+
+<!-- With Switch -->
+<my-form-control-label label="Enable notifications">
+  <my-switch slot="control" color="primary" checked></my-switch>
+</my-form-control-label>
+
+<!-- Radio Button Group -->
+<my-form-control-label label="Option 1" name="radio-group" value="option1">
+  <my-radio slot="control" color="primary" name="radio-group" value="option1" checked></my-radio>
+</my-form-control-label>
+
+<my-form-control-label label="Option 2" name="radio-group" value="option2">
+  <my-radio slot="control" color="primary" name="radio-group" value="option2"></my-radio>
+</my-form-control-label>
+
+<!-- Different Label Placements -->
+<my-form-control-label label="Label at start" labelPlacement="start">
+  <my-checkbox slot="control" color="primary"></my-checkbox>
+</my-form-control-label>
+
+<my-form-control-label label="Label at top" labelPlacement="top">
+  <my-checkbox slot="control" color="primary"></my-checkbox>
+</my-form-control-label>
+
+<my-form-control-label label="Label at bottom" labelPlacement="bottom">
+  <my-checkbox slot="control" color="primary"></my-checkbox>
+</my-form-control-label>
+
+<!-- States -->
+<my-form-control-label label="Required field" required>
+  <my-checkbox slot="control" color="primary"></my-checkbox>
+</my-form-control-label>
+
+<my-form-control-label label="Disabled field" disabled>
+  <my-checkbox slot="control" color="primary" disabled></my-checkbox>
+</my-form-control-label>
+
+<!-- Sizes -->
+<my-form-control-label label="Small size" size="small">
+  <my-checkbox slot="control" color="primary" size="small"></my-checkbox>
+</my-form-control-label>
+
+<!-- Colors -->
+<my-form-control-label label="Secondary color" color="secondary">
+  <my-checkbox slot="control" color="secondary"></my-checkbox>
+</my-form-control-label>
+```
+
+Properties:
+- `label`: string - Label text to display
+- `labelPlacement`: 'end' | 'start' | 'top' | 'bottom' - Position of label relative to control (default: 'end')
+- `disabled`: boolean - Disable the entire form control
+- `required`: boolean - Mark the field as required (adds asterisk)
+- `value`: string - Value associated with the form control
+- `name`: string - Name attribute for form submission
+- `id`: string - ID attribute for the form control
+- `size`: 'small' | 'medium' - Size variant (default: 'medium')
+- `color`: 'primary' | 'secondary' | 'default' - Color theme for focus states (default: 'primary')
+
+**Control Slot:**
+- Use `slot="control"` on the form control element (checkbox, radio, switch, etc.)
+- The control element should be placed as a child of the FormControlLabel
+- Supports any form control element including custom components
+
+**Label Placements:**
+- **end**: Label appears after the control (default, most common)
+- **start**: Label appears before the control
+- **top**: Label appears above the control
+- **bottom**: Label appears below the control
+
+**Events:**
+- `click`: Fired when the label or control is clicked (detail: { value, name, originalEvent })
+- `focus`: Fired when the control gains focus (detail: { originalEvent })
+- `blur`: Fired when the control loses focus (detail: { originalEvent })
+- `keydown`: Fired on key press (detail: { key, code, originalEvent })
+
+**Methods:**
+- `focus()`: Programmatically focus the form control
+- `blur()`: Programmatically blur the form control
+- `click()`: Programmatically trigger a click on the form control
+
+**Usage Patterns:**
+- **Checkbox Groups**: Multiple independent selections
+- **Radio Button Groups**: Single selection from multiple options
+- **Switch Controls**: On/off toggles with descriptive labels
+- **Form Validation**: Required field indicators and error states
+- **Accessibility**: Proper label association for screen readers
+
+**Accessibility:**
+- Automatically associates label with form control
+- Supports keyboard navigation (Space, Enter)
+- Proper ARIA attributes for disabled and required states
+- Screen reader compatible with descriptive labels
+- Focus management between label and control
+
+**Form Integration:**
+- Works with native HTML form elements
+- Supports custom form control components
+- Proper form submission with name/value pairs
+- Validation state propagation to child controls
+- Event bubbling for form handling
+
+**Responsive Design:**
+- Adapts label placement for mobile devices
+- Touch-friendly click targets
+- Proper spacing for different screen sizes
+- High contrast mode support
+
 ### NumberField
 ```html
 <my-number-field 

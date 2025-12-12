@@ -1938,6 +1938,213 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
     </div>
   </div>
 
+  <!-- FormControlLabel section temporarily commented out due to build issues
+  <div class="section">
+    <h2>Form Control Labels</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Form Control Labels</h3>
+        <p>Labels for form controls with different placements and controls.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <mui-form-control-label label="Accept terms and conditions">
+            <mui-checkbox slot="control" color="primary"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Subscribe to newsletter">
+            <mui-checkbox slot="control" color="secondary" checked></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Enable notifications">
+            <mui-switch slot="control" color="primary" checked></mui-switch>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Dark mode">
+            <mui-switch slot="control" color="secondary"></mui-switch>
+          </mui-form-control-label>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Radio Button Groups</h3>
+        <p>Radio buttons with labels for single selection.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <mui-form-control-label label="Option 1" name="radio-group-1" value="option1">
+            <mui-radio slot="control" color="primary" checked name="radio-group-1" value="option1"></mui-radio>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Option 2" name="radio-group-1" value="option2">
+            <mui-radio slot="control" color="primary" name="radio-group-1" value="option2"></mui-radio>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Option 3" name="radio-group-1" value="option3">
+            <mui-radio slot="control" color="primary" name="radio-group-1" value="option3"></mui-radio>
+          </mui-form-control-label>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Label Placement</h3>
+        <p>Different label positioning options.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem; color: #666;">End (Default)</h4>
+            <mui-form-control-label label="Label at end" labelPlacement="end">
+              <mui-checkbox slot="control" color="primary"></mui-checkbox>
+            </mui-form-control-label>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem; color: #666;">Start</h4>
+            <mui-form-control-label label="Label at start" labelPlacement="start">
+              <mui-checkbox slot="control" color="primary"></mui-checkbox>
+            </mui-form-control-label>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem; color: #666;">Top</h4>
+            <mui-form-control-label label="Label at top" labelPlacement="top">
+              <mui-checkbox slot="control" color="primary"></mui-checkbox>
+            </mui-form-control-label>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem; color: #666;">Bottom</h4>
+            <mui-form-control-label label="Label at bottom" labelPlacement="bottom">
+              <mui-checkbox slot="control" color="primary"></mui-checkbox>
+            </mui-form-control-label>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Sizes</h3>
+        <p>Different component sizes.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <mui-form-control-label label="Small size checkbox" size="small">
+            <mui-checkbox slot="control" color="primary" size="small"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Medium size checkbox" size="medium">
+            <mui-checkbox slot="control" color="primary" size="medium"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Small size switch" size="small">
+            <mui-switch slot="control" color="primary" size="small"></mui-switch>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Medium size switch" size="medium">
+            <mui-switch slot="control" color="primary" size="medium"></mui-switch>
+          </mui-form-control-label>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">States</h3>
+        <p>Different component states including disabled and required.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <mui-form-control-label label="Required field" required>
+            <mui-checkbox slot="control" color="primary"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Disabled checkbox" disabled>
+            <mui-checkbox slot="control" color="primary" disabled></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Disabled checked" disabled>
+            <mui-checkbox slot="control" color="primary" checked disabled></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Disabled switch" disabled>
+            <mui-switch slot="control" color="primary" disabled></mui-switch>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Disabled switch on" disabled>
+            <mui-switch slot="control" color="primary" checked disabled></mui-switch>
+          </mui-form-control-label>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Colors</h3>
+        <p>Different color variants for focus states.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <mui-form-control-label label="Primary color" color="primary">
+            <mui-checkbox slot="control" color="primary"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Secondary color" color="secondary">
+            <mui-checkbox slot="control" color="secondary"></mui-checkbox>
+          </mui-form-control-label>
+          
+          <mui-form-control-label label="Default color" color="default">
+            <mui-checkbox slot="control" color="default"></mui-checkbox>
+          </mui-form-control-label>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Complex Form Example</h3>
+        <p>A complete form using FormControlLabel components.</p>
+        <form style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; max-width: 400px;">
+          <fieldset style="border: 1px solid #ddd; border-radius: 4px; padding: 16px; margin: 0; width: 100%; box-sizing: border-box;">
+            <legend style="padding: 0 8px; font-weight: 500;">Preferences</legend>
+            
+            <mui-form-control-label label="Email notifications" name="email-notifications" value="email">
+              <mui-checkbox slot="control" color="primary" name="email-notifications" value="email"></mui-checkbox>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="SMS notifications" name="sms-notifications" value="sms">
+              <mui-checkbox slot="control" color="primary" name="sms-notifications" value="sms"></mui-checkbox>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="Push notifications" name="push-notifications" value="push">
+              <mui-checkbox slot="control" color="primary" name="push-notifications" value="push" checked></mui-checkbox>
+            </mui-form-control-label>
+          </fieldset>
+          
+          <fieldset style="border: 1px solid #ddd; border-radius: 4px; padding: 16px; margin: 0; width: 100%; box-sizing: border-box;">
+            <legend style="padding: 0 8px; font-weight: 500;">Theme</legend>
+            
+            <mui-form-control-label label="Light theme" name="theme" value="light">
+              <mui-radio slot="control" color="primary" name="theme" value="light" checked></mui-radio>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="Dark theme" name="theme" value="dark">
+              <mui-radio slot="control" color="primary" name="theme" value="dark"></mui-radio>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="Auto theme" name="theme" value="auto">
+              <mui-radio slot="control" color="primary" name="theme" value="auto"></mui-radio>
+            </mui-form-control-label>
+          </fieldset>
+          
+          <fieldset style="border: 1px solid #ddd; border-radius: 4px; padding: 16px; margin: 0; width: 100%; box-sizing: border-box;">
+            <legend style="padding: 0 8px; font-weight: 500;">Features</legend>
+            
+            <mui-form-control-label label="Enable analytics" name="analytics" value="analytics">
+              <mui-switch slot="control" color="primary" name="analytics" value="analytics"></mui-switch>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="Auto-save" name="autosave" value="autosave">
+              <mui-switch slot="control" color="primary" name="autosave" value="autosave" checked></mui-switch>
+            </mui-form-control-label>
+            
+            <mui-form-control-label label="Offline mode" name="offline" value="offline">
+              <mui-switch slot="control" color="secondary" name="offline" value="offline"></mui-switch>
+            </mui-form-control-label>
+          </fieldset>
+          
+          <div style="margin-top: 16px;">
+            <mui-form-control-label label="I agree to the terms and conditions" required name="terms" value="accepted">
+              <mui-checkbox slot="control" color="primary" name="terms" value="accepted" required></mui-checkbox>
+            </mui-form-control-label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  -->
+
   <div class="section">
     <h2>Progress Indicators</h2>
     <div style="display: flex; flex-direction: column; gap: 30px;">
