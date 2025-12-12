@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .demo-section {
+      margin-bottom: 40px;
+    }
+    .demo-wrapper {
+      background-color: #e3f2fd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .content-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 4px;
+      border: 2px dashed #1976d2;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Container Component Test</h1>
+  
+  <div class="demo-section">
+    <h2>Default Container (lg)</h2>
+    <div class="demo-wrapper">
+      <mui-container>
+        <div class="content-box">
+          Default Container - Max width 1200px on large screens
+        </div>
+      </mui-container>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Container Sizes</h2>
+    
+    <h3>Extra Small (xs) - 444px max</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="xs">
+        <div class="content-box">XS Container</div>
+      </mui-container>
+    </div>
+
+    <h3>Small (sm) - 600px max</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="sm">
+        <div class="content-box">SM Container</div>
+      </mui-container>
+    </div>
+
+    <h3>Medium (md) - 900px max</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="md">
+        <div class="content-box">MD Container</div>
+      </mui-container>
+    </div>
+
+    <h3>Large (lg) - 1200px max</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="lg">
+        <div class="content-box">LG Container</div>
+      </mui-container>
+    </div>
+
+    <h3>Extra Large (xl) - 1536px max</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="xl">
+        <div class="content-box">XL Container</div>
+      </mui-container>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Fluid Container (no max-width)</h2>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="false">
+        <div class="content-box">
+          Fluid Container - Takes full width of parent
+        </div>
+      </mui-container>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Container with vs without Gutters</h2>
+    
+    <h3>With Gutters (default)</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="sm">
+        <div class="content-box">
+          Container with default padding (gutters)
+        </div>
+      </mui-container>
+    </div>
+
+    <h3>Without Gutters</h3>
+    <div class="demo-wrapper">
+      <mui-container maxWidth="sm" disableGutters>
+        <div class="content-box">
+          Container without padding (disableGutters)
+        </div>
+      </mui-container>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Real-world Example</h2>
+    <mui-container maxWidth="md">
+      <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden;">
+        <header style="background-color: #1976d2; color: white; padding: 32px; text-align: center;">
+          <h1 style="margin: 0; font-size: 2.5rem; font-weight: 300;">My Application</h1>
+          <p style="margin: 16px 0 0 0; opacity: 0.9; font-size: 1.1rem;">Built with Material Design Container</p>
+        </header>
+        
+        <main style="padding: 40px;">
+          <section style="margin-bottom: 32px;">
+            <h2 style="color: #333; margin-bottom: 16px;">Welcome</h2>
+            <p style="color: #666; line-height: 1.6; font-size: 1rem;">
+              This is an example of how the Container component provides a consistent, 
+              centered layout that adapts to different screen sizes. The content is 
+              automatically centered and constrained to optimal reading widths.
+            </p>
+          </section>
+          
+          <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+            <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+              <h3 style="color: #1976d2; margin-bottom: 8px;">Responsive</h3>
+              <p style="color: #666; font-size: 0.875rem; margin: 0;">Adapts to screen size</p>
+            </div>
+            <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+              <h3 style="color: #1976d2; margin-bottom: 8px;">Centered</h3>
+              <p style="color: #666; font-size: 0.875rem; margin: 0;">Auto-centered content</p>
+            </div>
+            <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+              <h3 style="color: #1976d2; margin-bottom: 8px;">Consistent</h3>
+              <p style="color: #666; font-size: 0.875rem; margin: 0;">Uniform spacing</p>
+            </div>
+          </section>
+        </main>
+        
+        <footer style="background-color: #f5f5f5; padding: 24px; text-align: center; color: #666;">
+          <p style="margin: 0;">&copy; 2024 Container Component Demo</p>
+        </footer>
+      </div>
+    </mui-container>
+  </div>
+
+  <script type="module">
+    import { Container } from './dist/index.js';
+
+    // Register component
+    customElements.define('mui-container', Container);
+
+    console.log('Container component test loaded successfully!');
+  </script>
+</body>
+</html>

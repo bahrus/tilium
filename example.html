@@ -2936,6 +2936,168 @@
   </div>
 
   <div class="section">
+    <h2>Container Layout</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Container</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-container style="background-color: white; min-height: 100px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #ccc;">
+            <div>Default Container (lg max-width)</div>
+          </mui-container>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Container Sizes</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Extra Small (xs) - 444px max</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-container maxWidth="xs" style="background-color: white; min-height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #1976d2;">
+                <div>XS Container (444px max)</div>
+              </mui-container>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Small (sm) - 600px max</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-container maxWidth="sm" style="background-color: white; min-height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #dc004e;">
+                <div>SM Container (600px max)</div>
+              </mui-container>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Medium (md) - 900px max</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-container maxWidth="md" style="background-color: white; min-height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #2e7d32;">
+                <div>MD Container (900px max)</div>
+              </mui-container>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Large (lg) - 1200px max</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-container maxWidth="lg" style="background-color: white; min-height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #ed6c02;">
+                <div>LG Container (1200px max)</div>
+              </mui-container>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Extra Large (xl) - 1536px max</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+              <mui-container maxWidth="xl" style="background-color: white; min-height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #0288d1;">
+                <div>XL Container (1536px max)</div>
+              </mui-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Fluid Container</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-container maxWidth="false" style="background-color: white; min-height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #7b1fa2;">
+            <div>Fluid Container (no max-width constraint)</div>
+          </mui-container>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Container with Gutters vs No Gutters</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Default (with gutters/padding)</h4>
+            <div style="background-color: #f5f5f5; border-radius: 4px;">
+              <mui-container maxWidth="sm" style="background-color: white; min-height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #1976d2;">
+                <div>Container with default padding (16px mobile, 24px desktop)</div>
+              </mui-container>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 0.875rem;">Disabled gutters (no padding)</h4>
+            <div style="background-color: #f5f5f5; border-radius: 4px;">
+              <mui-container maxWidth="sm" disableGutters style="background-color: white; min-height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #dc004e;">
+                <div>Container without padding (disableGutters)</div>
+              </mui-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Fixed Height Container</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px; height: 200px; overflow: hidden;">
+          <mui-container maxWidth="md" fixed style="background-color: white; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #2e7d32; height: 100%;">
+            <div>Fixed Container (min-height: 100vh when not constrained)</div>
+          </mui-container>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Responsive Behavior</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-container style="background-color: white; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px; border: 2px dashed #ed6c02; text-align: center; gap: 8px;">
+            <div style="font-weight: 600;">Responsive Container</div>
+            <div style="font-size: 0.875rem; color: #666;">
+              Resize your browser to see the container adapt:<br>
+              &lt;600px: Full width | 600px+: 600px max | 900px+: 900px max | 1200px+: 1200px max
+            </div>
+          </mui-container>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Real-world Example</h3>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+          <mui-container maxWidth="lg">
+            <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden;">
+              <!-- Header -->
+              <div style="background-color: #1976d2; color: white; padding: 24px; text-align: center;">
+                <h2 style="margin: 0; font-size: 28px; font-weight: 300;">Welcome to Our App</h2>
+                <p style="margin: 8px 0 0 0; opacity: 0.9;">Built with Material Design Container</p>
+              </div>
+              
+              <!-- Content -->
+              <div style="padding: 32px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px;">
+                  <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+                    <div style="width: 48px; height: 48px; background-color: #1976d2; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+                    <h3 style="margin: 0 0 8px 0; color: #333;">Responsive</h3>
+                    <p style="margin: 0; color: #666; font-size: 0.875rem;">Adapts to different screen sizes automatically</p>
+                  </div>
+                  
+                  <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+                    <div style="width: 48px; height: 48px; background-color: #dc004e; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                    <h3 style="margin: 0 0 8px 0; color: #333;">Centered</h3>
+                    <p style="margin: 0; color: #666; font-size: 0.875rem;">Content is automatically centered with proper margins</p>
+                  </div>
+                  
+                  <div style="text-align: center; padding: 24px; background-color: #f5f5f5; border-radius: 8px;">
+                    <div style="width: 48px; height: 48px; background-color: #2e7d32; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                    <h3 style="margin: 0 0 8px 0; color: #333;">Consistent</h3>
+                    <p style="margin: 0; color: #666; font-size: 0.875rem;">Provides consistent spacing and layout patterns</p>
+                  </div>
+                </div>
+                
+                <div style="text-align: center;">
+                  <button style="background-color: #1976d2; color: white; border: none; padding: 12px 32px; border-radius: 4px; font-size: 14px; font-weight: 500; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            </div>
+          </mui-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -3861,7 +4023,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
+      Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, Container,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -3894,6 +4056,7 @@
     customElements.define('mui-checkbox', Checkbox);
     customElements.define('mui-chip', Chip);
     customElements.define('mui-circular-progress', CircularProgress);
+    customElements.define('mui-container', Container);
     customElements.define('mui-dialog', Dialog);
     customElements.define('mui-dialog-title', DialogTitle);
     customElements.define('mui-dialog-content', DialogContent);

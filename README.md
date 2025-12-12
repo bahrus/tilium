@@ -45,6 +45,7 @@ Then use them in your HTML:
 
 ### Layout
 - **Box** - Flexible layout component with spacing, alignment, and styling utilities
+- **Container** - Responsive container component with centered content and max-width constraints
 
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
@@ -1167,6 +1168,156 @@ You can also provide string values for custom spacing:
   <my-box flex="1" minWidth="200px" p="2" bgcolor="grey-100">Item 3</my-box>
 </my-box>
 ```
+
+### Container
+```html
+<!-- Basic Container -->
+<my-container>
+  <h1>Centered Content</h1>
+  <p>This content is automatically centered and has responsive max-widths.</p>
+</my-container>
+
+<!-- Container Sizes -->
+<my-container maxWidth="xs">Extra Small Container (444px max)</my-container>
+<my-container maxWidth="sm">Small Container (600px max)</my-container>
+<my-container maxWidth="md">Medium Container (900px max)</my-container>
+<my-container maxWidth="lg">Large Container (1200px max)</my-container>
+<my-container maxWidth="xl">Extra Large Container (1536px max)</my-container>
+
+<!-- Fluid Container (no max-width) -->
+<my-container maxWidth="false">
+  Fluid container that takes full width
+</my-container>
+
+<!-- Container without gutters -->
+<my-container disableGutters>
+  Container without default padding
+</my-container>
+
+<!-- Fixed height container -->
+<my-container fixed>
+  Container with min-height: 100vh
+</my-container>
+
+<!-- Real-world example -->
+<my-container maxWidth="lg">
+  <header>
+    <h1>My Application</h1>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>This content is properly contained and centered.</p>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 My Company</p>
+  </footer>
+</my-container>
+```
+
+**Container Properties:**
+- `maxWidth`: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false - Maximum width breakpoint (default: 'lg')
+- `disableGutters`: boolean - Remove default horizontal padding (default: false)
+- `fixed`: boolean - Set min-height to 100vh for full-height layouts (default: false)
+- `component`: string - HTML element to render (default: 'div')
+
+**Breakpoint Sizes:**
+- **xs**: 444px maximum width
+- **sm**: 600px maximum width  
+- **md**: 900px maximum width
+- **lg**: 1200px maximum width (default)
+- **xl**: 1536px maximum width
+- **false**: No maximum width (fluid)
+
+**Responsive Behavior:**
+The Container component automatically adjusts its max-width based on screen size:
+- **Mobile** (&lt;600px): Full width with 16px horizontal padding
+- **Tablet** (600px+): Respects maxWidth prop with 24px horizontal padding
+- **Desktop** (900px+): Continues to respect maxWidth prop
+- **Large screens** (1200px+): Uses larger breakpoints when appropriate
+
+**Gutter System:**
+- **Default gutters**: 16px padding on mobile, 24px on tablet and up
+- **Disabled gutters**: No horizontal padding (useful for full-width content)
+- **Responsive gutters**: Automatically adjust based on screen size
+
+**Features:**
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Centered Content**: Content is horizontally centered with auto margins
+- **Consistent Spacing**: Follows Material Design spacing guidelines
+- **Flexible Sizing**: Multiple breakpoint options for different use cases
+- **Full-height Support**: Optional min-height: 100vh for full-page layouts
+- **Customizable Padding**: Can disable gutters for edge-to-edge content
+- **Semantic HTML**: Configurable component element for proper semantics
+
+**Usage Patterns:**
+- Use as the main content wrapper for pages and sections
+- Choose appropriate maxWidth based on content type:
+  - **xs/sm**: Forms, narrow content, mobile-first designs
+  - **md**: Articles, blog posts, medium-width content
+  - **lg**: Dashboards, general application content (default)
+  - **xl**: Wide layouts, data tables, complex interfaces
+  - **false**: Full-width layouts, hero sections, backgrounds
+- Use `disableGutters` when you need content to touch container edges
+- Use `fixed` for full-height page layouts and landing pages
+- Nest other components inside for consistent layout structure
+
+**Common Layout Patterns:**
+```html
+<!-- Page Layout -->
+<my-container maxWidth="lg">
+  <header>Navigation and branding</header>
+  <main>Primary content area</main>
+  <footer>Footer information</footer>
+</my-container>
+
+<!-- Article Layout -->
+<my-container maxWidth="md">
+  <article>
+    <h1>Article Title</h1>
+    <p>Article content with optimal reading width...</p>
+  </article>
+</my-container>
+
+<!-- Dashboard Layout -->
+<my-container maxWidth="xl">
+  <div class="dashboard-grid">
+    <!-- Wide layout for data visualization -->
+  </div>
+</my-container>
+
+<!-- Full-width Hero Section -->
+<my-container maxWidth="false" disableGutters>
+  <div class="hero-background">
+    <my-container maxWidth="lg">
+      <div class="hero-content">Centered content over full-width background</div>
+    </my-container>
+  </div>
+</my-container>
+
+<!-- Form Layout -->
+<my-container maxWidth="sm">
+  <form>
+    <h2>Sign Up</h2>
+    <!-- Form fields with optimal width for forms -->
+  </form>
+</my-container>
+```
+
+**Accessibility:**
+- Uses semantic HTML elements (configurable via `component` prop)
+- Maintains proper content hierarchy and structure
+- Ensures adequate spacing for touch targets on mobile devices
+- Provides consistent layout patterns for screen readers
+
+**Performance:**
+- Lightweight CSS with efficient media queries
+- No JavaScript required for responsive behavior
+- Minimal DOM overhead with single wrapper element
+- Optimized for different screen sizes and orientations
 
 ### SpeedDial
 ```html
