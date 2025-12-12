@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadcrumbs Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+  <script type="importmap">
+    {
+        "imports": {
+            "@lit/": "/node_modules/@lit/",
+            "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+            "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/",
+            "lit-element/": "/node_modules/lit-element/",
+            "lit-html/": "/node_modules/lit-html/",
+            "lit-html": "/node_modules/lit-html/lit-html.js",
+            "tslib": "/node_modules/tslib/tslib.es6.js",
+            "tslib/": "/node_modules/tslib/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Breadcrumbs Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Breadcrumbs</h2>
+    <mui-breadcrumbs id="basic-breadcrumbs"></mui-breadcrumbs>
+  </div>
+
+  <div class="section">
+    <h2>With Links</h2>
+    <mui-breadcrumbs id="link-breadcrumbs"></mui-breadcrumbs>
+  </div>
+
+  <div class="section">
+    <h2>Custom Separator</h2>
+    <mui-breadcrumbs id="arrow-breadcrumbs" separator="›"></mui-breadcrumbs>
+  </div>
+
+  <div class="section">
+    <h2>With Icons</h2>
+    <mui-breadcrumbs id="icon-breadcrumbs"></mui-breadcrumbs>
+  </div>
+
+  <div class="section">
+    <h2>Collapsed Breadcrumbs</h2>
+    <mui-breadcrumbs id="collapsed-breadcrumbs" maxItems="4"></mui-breadcrumbs>
+  </div>
+
+  <div class="section">
+    <h2>Interactive Breadcrumbs</h2>
+    <mui-breadcrumbs id="interactive-breadcrumbs"></mui-breadcrumbs>
+    <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">
+      Click on any breadcrumb to see the event in console
+    </p>
+  </div>
+
+  <script type="module">
+    import { Breadcrumbs } from './dist/index.js';
+
+    // Register the Breadcrumbs component
+    customElements.define('mui-breadcrumbs', Breadcrumbs);
+
+    // Setup breadcrumbs
+    const basicBreadcrumbs = document.getElementById('basic-breadcrumbs');
+    basicBreadcrumbs.items = [
+      { label: 'Home' },
+      { label: 'Library' },
+      { label: 'Data' }
+    ];
+
+    const linkBreadcrumbs = document.getElementById('link-breadcrumbs');
+    linkBreadcrumbs.items = [
+      { label: 'Home', href: '#home' },
+      { label: 'Products', href: '#products' },
+      { label: 'Laptops', href: '#laptops' },
+      { label: 'MacBook Pro' }
+    ];
+
+    const arrowBreadcrumbs = document.getElementById('arrow-breadcrumbs');
+    arrowBreadcrumbs.items = [
+      { label: 'Dashboard', href: '#dashboard' },
+      { label: 'Analytics', href: '#analytics' },
+      { label: 'Reports' }
+    ];
+
+    const iconBreadcrumbs = document.getElementById('icon-breadcrumbs');
+    iconBreadcrumbs.items = [
+      { label: 'Home', href: '#home', icon: 'home' },
+      { label: 'Documents', href: '#documents', icon: 'folder' },
+      { label: 'Projects', href: '#projects', icon: 'folder' },
+      { label: 'README.md', icon: 'file' }
+    ];
+
+    const collapsedBreadcrumbs = document.getElementById('collapsed-breadcrumbs');
+    collapsedBreadcrumbs.items = [
+      { label: 'Home', href: '#home' },
+      { label: 'Category', href: '#category' },
+      { label: 'Subcategory', href: '#subcategory' },
+      { label: 'Product Type', href: '#product-type' },
+      { label: 'Brand', href: '#brand' },
+      { label: 'Model', href: '#model' },
+      { label: 'Variant' }
+    ];
+
+    const interactiveBreadcrumbs = document.getElementById('interactive-breadcrumbs');
+    interactiveBreadcrumbs.items = [
+      { label: 'Dashboard', href: '#dashboard' },
+      { label: 'Projects', href: '#projects' },
+      { label: 'Web App', href: '#webapp' },
+      { label: 'Components' }
+    ];
+
+    // Add event listener
+    interactiveBreadcrumbs.addEventListener('breadcrumb-click', (e) => {
+      console.log('Breadcrumb clicked:', e.detail);
+      alert(`Clicked: ${e.detail.item.label} (index: ${e.detail.index})`);
+    });
+
+    console.log('Breadcrumbs component registered successfully!');
+  </script>
+</body>
+</html>

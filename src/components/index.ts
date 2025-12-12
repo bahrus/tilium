@@ -6,6 +6,7 @@ export { Avatar } from './Avatar.js';
 export { Backdrop } from './Backdrop.js';
 export { Badge } from './Badge.js';
 export { BottomNavigation, BottomNavigationAction } from './BottomNavigation.js';
+export { Breadcrumbs } from './Breadcrumbs.js';
 export { Button } from './Button.js';
 export { ButtonGroup } from './ButtonGroup.js';
 export { Card, CardHeader, CardMedia, CardContent, CardActions } from './Card.js';

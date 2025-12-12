@@ -2074,6 +2074,83 @@
   </div>
 
   <div class="section">
+    <h2>Breadcrumbs</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Breadcrumbs</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <mui-breadcrumbs id="basic-breadcrumbs"></mui-breadcrumbs>
+          <mui-breadcrumbs id="link-breadcrumbs"></mui-breadcrumbs>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Custom Separators</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <mui-breadcrumbs id="arrow-breadcrumbs" separator="›"></mui-breadcrumbs>
+          <mui-breadcrumbs id="bullet-breadcrumbs" separator="•"></mui-breadcrumbs>
+          <mui-breadcrumbs id="pipe-breadcrumbs" separator="|"></mui-breadcrumbs>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">With Icons</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <mui-breadcrumbs id="icon-breadcrumbs"></mui-breadcrumbs>
+          <mui-breadcrumbs id="mixed-breadcrumbs"></mui-breadcrumbs>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Collapsed Breadcrumbs</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <mui-breadcrumbs id="collapsed-breadcrumbs" maxItems="4"></mui-breadcrumbs>
+          <mui-breadcrumbs id="custom-collapse-breadcrumbs" maxItems="5" itemsBeforeCollapse="2" itemsAfterCollapse="2"></mui-breadcrumbs>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Interactive Examples</h3>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Navigation Breadcrumbs</h4>
+            <mui-breadcrumbs id="nav-breadcrumbs"></mui-breadcrumbs>
+            <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+              Click on any breadcrumb to navigate (simulated)
+            </p>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">File System Breadcrumbs</h4>
+            <mui-breadcrumbs id="file-breadcrumbs"></mui-breadcrumbs>
+            <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+              Simulates file system navigation with folder icons
+            </p>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">E-commerce Breadcrumbs</h4>
+            <mui-breadcrumbs id="ecommerce-breadcrumbs"></mui-breadcrumbs>
+            <p style="margin: 8px 0 0 0; font-size: 0.875rem; color: rgba(0,0,0,0.6);">
+              Product category navigation example
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Disabled Items</h3>
+        <mui-breadcrumbs id="disabled-breadcrumbs"></mui-breadcrumbs>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Long Breadcrumbs</h3>
+        <mui-breadcrumbs id="long-breadcrumbs" maxItems="6"></mui-breadcrumbs>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -2999,7 +3076,7 @@
   <script type="module">
     // Import component classes
     import { 
-      Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
+      Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -3016,6 +3093,7 @@
     customElements.define('mui-badge', Badge);
     customElements.define('mui-bottom-navigation', BottomNavigation);
     customElements.define('mui-bottom-navigation-action', BottomNavigationAction);
+    customElements.define('mui-breadcrumbs', Breadcrumbs);
     customElements.define('mui-button', Button);
     customElements.define('mui-button-group', ButtonGroup);
     customElements.define('mui-card', Card);
@@ -3613,6 +3691,192 @@
     };
 
     console.log('Snackbar examples loaded successfully!');
+
+    // Breadcrumbs setup
+    const setupBreadcrumbs = () => {
+      // Basic breadcrumbs
+      const basicBreadcrumbs = document.getElementById('basic-breadcrumbs');
+      if (basicBreadcrumbs) {
+        basicBreadcrumbs.items = [
+          { label: 'Home' },
+          { label: 'Library' },
+          { label: 'Data' }
+        ];
+      }
+
+      // Link breadcrumbs
+      const linkBreadcrumbs = document.getElementById('link-breadcrumbs');
+      if (linkBreadcrumbs) {
+        linkBreadcrumbs.items = [
+          { label: 'Home', href: '#home' },
+          { label: 'Products', href: '#products' },
+          { label: 'Laptops', href: '#laptops' },
+          { label: 'MacBook Pro' }
+        ];
+      }
+
+      // Custom separators
+      const arrowBreadcrumbs = document.getElementById('arrow-breadcrumbs');
+      if (arrowBreadcrumbs) {
+        arrowBreadcrumbs.items = [
+          { label: 'Dashboard', href: '#dashboard' },
+          { label: 'Analytics', href: '#analytics' },
+          { label: 'Reports' }
+        ];
+      }
+
+      const bulletBreadcrumbs = document.getElementById('bullet-breadcrumbs');
+      if (bulletBreadcrumbs) {
+        bulletBreadcrumbs.items = [
+          { label: 'Settings', href: '#settings' },
+          { label: 'Account', href: '#account' },
+          { label: 'Profile' }
+        ];
+      }
+
+      const pipeBreadcrumbs = document.getElementById('pipe-breadcrumbs');
+      if (pipeBreadcrumbs) {
+        pipeBreadcrumbs.items = [
+          { label: 'Admin', href: '#admin' },
+          { label: 'Users', href: '#users' },
+          { label: 'Permissions' }
+        ];
+      }
+
+      // With icons
+      const iconBreadcrumbs = document.getElementById('icon-breadcrumbs');
+      if (iconBreadcrumbs) {
+        iconBreadcrumbs.items = [
+          { label: 'Home', href: '#home', icon: 'home' },
+          { label: 'Documents', href: '#documents', icon: 'folder' },
+          { label: 'Projects', href: '#projects', icon: 'folder' },
+          { label: 'README.md', icon: 'file' }
+        ];
+      }
+
+      const mixedBreadcrumbs = document.getElementById('mixed-breadcrumbs');
+      if (mixedBreadcrumbs) {
+        mixedBreadcrumbs.items = [
+          { label: 'Home', href: '#home', icon: 'home' },
+          { label: 'Settings', href: '#settings', icon: 'settings' },
+          { label: 'General' }
+        ];
+      }
+
+      // Collapsed breadcrumbs
+      const collapsedBreadcrumbs = document.getElementById('collapsed-breadcrumbs');
+      if (collapsedBreadcrumbs) {
+        collapsedBreadcrumbs.items = [
+          { label: 'Home', href: '#home' },
+          { label: 'Category', href: '#category' },
+          { label: 'Subcategory', href: '#subcategory' },
+          { label: 'Product Type', href: '#product-type' },
+          { label: 'Brand', href: '#brand' },
+          { label: 'Model', href: '#model' },
+          { label: 'Variant' }
+        ];
+      }
+
+      const customCollapseBreadcrumbs = document.getElementById('custom-collapse-breadcrumbs');
+      if (customCollapseBreadcrumbs) {
+        customCollapseBreadcrumbs.items = [
+          { label: 'Root', href: '#root' },
+          { label: 'Level 1', href: '#level1' },
+          { label: 'Level 2', href: '#level2' },
+          { label: 'Level 3', href: '#level3' },
+          { label: 'Level 4', href: '#level4' },
+          { label: 'Level 5', href: '#level5' },
+          { label: 'Level 6', href: '#level6' },
+          { label: 'Current Page' }
+        ];
+      }
+
+      // Navigation breadcrumbs
+      const navBreadcrumbs = document.getElementById('nav-breadcrumbs');
+      if (navBreadcrumbs) {
+        navBreadcrumbs.items = [
+          { label: 'Dashboard', href: '#dashboard' },
+          { label: 'Projects', href: '#projects' },
+          { label: 'Web App', href: '#webapp' },
+          { label: 'Components' }
+        ];
+        
+        navBreadcrumbs.addEventListener('breadcrumb-click', (e) => {
+          console.log('Breadcrumb clicked:', e.detail);
+          // Simulate navigation
+          alert(`Navigating to: ${e.detail.item.label}`);
+        });
+      }
+
+      // File system breadcrumbs
+      const fileBreadcrumbs = document.getElementById('file-breadcrumbs');
+      if (fileBreadcrumbs) {
+        fileBreadcrumbs.items = [
+          { label: 'Computer', href: '#computer', icon: 'home' },
+          { label: 'Documents', href: '#documents', icon: 'folder' },
+          { label: 'Projects', href: '#projects', icon: 'folder' },
+          { label: 'My App', href: '#myapp', icon: 'folder' },
+          { label: 'src', href: '#src', icon: 'folder' },
+          { label: 'components', icon: 'folder' }
+        ];
+        
+        fileBreadcrumbs.addEventListener('breadcrumb-click', (e) => {
+          console.log('File breadcrumb clicked:', e.detail);
+        });
+      }
+
+      // E-commerce breadcrumbs
+      const ecommerceBreadcrumbs = document.getElementById('ecommerce-breadcrumbs');
+      if (ecommerceBreadcrumbs) {
+        ecommerceBreadcrumbs.items = [
+          { label: 'Home', href: '#home', icon: 'home' },
+          { label: 'Electronics', href: '#electronics' },
+          { label: 'Computers', href: '#computers' },
+          { label: 'Laptops', href: '#laptops' },
+          { label: 'Gaming Laptops' }
+        ];
+        
+        ecommerceBreadcrumbs.addEventListener('breadcrumb-click', (e) => {
+          console.log('E-commerce breadcrumb clicked:', e.detail);
+        });
+      }
+
+      // Disabled breadcrumbs
+      const disabledBreadcrumbs = document.getElementById('disabled-breadcrumbs');
+      if (disabledBreadcrumbs) {
+        disabledBreadcrumbs.items = [
+          { label: 'Home', href: '#home' },
+          { label: 'Restricted Area', disabled: true },
+          { label: 'Accessible Page', href: '#accessible' },
+          { label: 'Current Page' }
+        ];
+      }
+
+      // Long breadcrumbs
+      const longBreadcrumbs = document.getElementById('long-breadcrumbs');
+      if (longBreadcrumbs) {
+        longBreadcrumbs.items = [
+          { label: 'Home', href: '#home', icon: 'home' },
+          { label: 'Very Long Category Name', href: '#category' },
+          { label: 'Another Long Subcategory', href: '#subcategory' },
+          { label: 'Product Type with Long Name', href: '#product-type' },
+          { label: 'Brand Name', href: '#brand' },
+          { label: 'Model Number ABC123', href: '#model' },
+          { label: 'Specific Variant XYZ', href: '#variant' },
+          { label: 'Configuration Details', href: '#config' },
+          { label: 'Final Product Page' }
+        ];
+      }
+    };
+
+    // Initialize breadcrumbs when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupBreadcrumbs);
+    } else {
+      setupBreadcrumbs();
+    }
+
+    console.log('Breadcrumbs examples loaded successfully!');
   </script>
 </body>
 </html>

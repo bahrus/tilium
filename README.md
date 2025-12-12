@@ -46,6 +46,7 @@ Then use them in your HTML:
 ### Navigation
 - **AppBar** - Top app bar with title, navigation, and action buttons
 - **BottomNavigation** - Bottom navigation bar for mobile apps with action buttons
+- **Breadcrumbs** - Navigation aid showing the current location within a hierarchy
 - **Drawer** - Side navigation panel with temporary, persistent, and permanent variants
 - **Stepper** - Step-by-step navigation for multi-step processes with horizontal/vertical layouts
 - **Tabs** - Tab navigation with horizontal/vertical orientation and multiple variants
@@ -593,6 +594,108 @@ Properties:
 - Use severity levels to communicate message importance
 - Keep messages concise and actionable
 - Provide manual close option for important messages
+
+### Breadcrumbs
+```html
+<!-- Basic Breadcrumbs -->
+<my-breadcrumbs></my-breadcrumbs>
+
+<!-- With Custom Items -->
+<my-breadcrumbs id="nav-breadcrumbs"></my-breadcrumbs>
+
+<!-- Custom Separator -->
+<my-breadcrumbs separator="›"></my-breadcrumbs>
+<my-breadcrumbs separator="•"></my-breadcrumbs>
+
+<!-- With Icons -->
+<my-breadcrumbs id="icon-breadcrumbs"></my-breadcrumbs>
+
+<!-- Collapsed Breadcrumbs -->
+<my-breadcrumbs 
+  maxItems="4" 
+  itemsBeforeCollapse="1" 
+  itemsAfterCollapse="1">
+</my-breadcrumbs>
+
+<!-- JavaScript Setup -->
+<script>
+  const breadcrumbs = document.getElementById('nav-breadcrumbs');
+  breadcrumbs.items = [
+    { label: 'Home', href: '/home' },
+    { label: 'Products', href: '/products' },
+    { label: 'Laptops', href: '/laptops' },
+    { label: 'MacBook Pro' } // Current page (no href)
+  ];
+
+  const iconBreadcrumbs = document.getElementById('icon-breadcrumbs');
+  iconBreadcrumbs.items = [
+    { label: 'Home', href: '/home', icon: 'home' },
+    { label: 'Documents', href: '/docs', icon: 'folder' },
+    { label: 'Projects', href: '/projects', icon: 'folder' },
+    { label: 'README.md', icon: 'file' }
+  ];
+
+  // Handle breadcrumb clicks
+  breadcrumbs.addEventListener('breadcrumb-click', (e) => {
+    console.log('Clicked:', e.detail.item.label);
+    // Navigate to e.detail.item.href
+  });
+</script>
+```
+
+Properties:
+- `items`: BreadcrumbItem[] - Array of breadcrumb items
+- `separator`: string - Separator character between items (default: '/')
+- `maxItems`: number - Maximum items to show before collapsing (default: 8)
+- `itemsBeforeCollapse`: number - Items to show before collapse button (default: 1)
+- `itemsAfterCollapse`: number - Items to show after collapse button (default: 1)
+- `expandText`: boolean - Show expand text instead of ellipsis (default: false)
+
+**BreadcrumbItem Interface:**
+```typescript
+interface BreadcrumbItem {
+  label: string;        // Display text
+  href?: string;        // Link URL (optional)
+  disabled?: boolean;   // Disable interaction
+  icon?: string;        // Icon name (optional)
+}
+```
+
+**Built-in Icons:**
+- `home`: Home icon
+- `folder`: Folder icon
+- `file`: File icon
+- `settings`: Settings icon
+
+**Collapse Behavior:**
+- When `items.length > maxItems`, breadcrumbs are collapsed
+- Shows first `itemsBeforeCollapse` items
+- Shows collapse button (...) with dropdown menu
+- Shows last `itemsAfterCollapse` items
+- Dropdown shows all collapsed items
+
+**Events:**
+- `breadcrumb-click`: Fired when breadcrumb is clicked (detail: { item, index })
+
+**Features:**
+- Automatic collapsing for long breadcrumb trails
+- Custom separators and icons
+- Dropdown menu for collapsed items
+- Keyboard navigation support
+- Mobile-responsive design
+- Proper semantic HTML with nav and ol elements
+- ARIA attributes for accessibility
+- Click event handling with item details
+- Disabled state support
+
+**Usage Patterns:**
+- Use for hierarchical navigation (file systems, categories)
+- Show current location within deep navigation structures
+- Provide quick access to parent levels
+- Include icons for better visual hierarchy
+- Keep labels concise but descriptive
+- Use href for navigable items, omit for current page
+- Consider collapsing for deep hierarchies (>5 levels)
 
 ### Table
 ```html
