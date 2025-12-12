@@ -24,6 +24,7 @@ export { Paper } from './components/Paper.js';
 export { Progress } from './components/Progress.js';
 export { Radio } from './components/Radio.js';
 export { Select } from './components/Select.js';
+export { Skeleton } from './components/Skeleton.js';
 export { Slider } from './components/Slider.js';
 export { Stepper, Step, StepLabel, StepContent } from './components/Stepper.js';
 export { Switch } from './components/Switch.js';

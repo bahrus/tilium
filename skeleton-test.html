@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+  <script type="importmap">
+    {
+        "imports": {
+            "@lit/": "/node_modules/@lit/",
+            "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+            "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+            "lit": "/node_modules/lit/index.js",
+            "lit/": "/node_modules/lit/",
+            "lit-element/": "/node_modules/lit-element/",
+            "lit-html/": "/node_modules/lit-html/",
+            "lit-html": "/node_modules/lit-html/lit-html.js",
+            "tslib": "/node_modules/tslib/tslib.es6.js",
+            "tslib/": "/node_modules/tslib/"
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Skeleton Component Test</h1>
+
+  <div class="section">
+    <h2>Text Skeletons</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
+      <mui-skeleton variant="text" width="100%"></mui-skeleton>
+      <mui-skeleton variant="text" width="80%"></mui-skeleton>
+      <mui-skeleton variant="text" width="60%"></mui-skeleton>
+      <mui-skeleton variant="text" width="40%"></mui-skeleton>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Shape Skeletons</h2>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+      <mui-skeleton variant="rectangular" width="200px" height="118px"></mui-skeleton>
+      <mui-skeleton variant="rounded" width="150px" height="80px"></mui-skeleton>
+      <mui-skeleton variant="circular" width="60px" height="60px"></mui-skeleton>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Animation Types</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <h3>Pulse Animation (Default)</h3>
+        <mui-skeleton variant="text" width="300px" animation="pulse"></mui-skeleton>
+      </div>
+      
+      <div>
+        <h3>Wave Animation</h3>
+        <mui-skeleton variant="text" width="300px" animation="wave"></mui-skeleton>
+      </div>
+      
+      <div>
+        <h3>No Animation</h3>
+        <mui-skeleton variant="text" width="300px" animation="false"></mui-skeleton>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Card Skeleton Example</h2>
+    <div style="max-width: 400px; padding: 16px; border: 1px solid #e0e0e0; border-radius: 4px;">
+      <div style="display: flex; gap: 15px; margin-bottom: 16px;">
+        <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+        <div style="flex: 1;">
+          <mui-skeleton variant="text" width="60%"></mui-skeleton>
+          <mui-skeleton variant="text" width="40%"></mui-skeleton>
+        </div>
+      </div>
+      <mui-skeleton variant="rectangular" width="100%" height="200px" style="margin-bottom: 16px;"></mui-skeleton>
+      <mui-skeleton variant="text" width="100%"></mui-skeleton>
+      <mui-skeleton variant="text" width="80%"></mui-skeleton>
+      <mui-skeleton variant="text" width="60%"></mui-skeleton>
+    </div>
+  </div>
+
+  <script type="module">
+    import { Skeleton } from './dist/index.js';
+
+    // Register the Skeleton component
+    customElements.define('mui-skeleton', Skeleton);
+
+    console.log('Skeleton component registered successfully!');
+  </script>
+</body>
+</html>

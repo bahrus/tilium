@@ -1837,6 +1837,143 @@
   </div>
 
   <div class="section">
+    <h2>Skeleton</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Text Skeletons</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
+          <mui-skeleton variant="text" width="100%"></mui-skeleton>
+          <mui-skeleton variant="text" width="80%"></mui-skeleton>
+          <mui-skeleton variant="text" width="60%"></mui-skeleton>
+          <mui-skeleton variant="text" width="40%"></mui-skeleton>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Rectangular Skeletons</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-skeleton variant="rectangular" width="200px" height="118px"></mui-skeleton>
+          <mui-skeleton variant="rectangular" width="150px" height="80px"></mui-skeleton>
+          <mui-skeleton variant="rectangular" width="100px" height="60px"></mui-skeleton>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Rounded Skeletons</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <mui-skeleton variant="rounded" width="200px" height="118px"></mui-skeleton>
+          <mui-skeleton variant="rounded" width="150px" height="80px"></mui-skeleton>
+          <mui-skeleton variant="rounded" width="100px" height="60px"></mui-skeleton>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Circular Skeletons</h3>
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+          <mui-skeleton variant="circular" width="60px" height="60px"></mui-skeleton>
+          <mui-skeleton variant="circular" width="80px" height="80px"></mui-skeleton>
+          <mui-skeleton variant="circular" width="100px" height="100px"></mui-skeleton>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Animation Types</h3>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Pulse Animation (Default)</h4>
+            <div style="display: flex; gap: 15px; align-items: center;">
+              <mui-skeleton variant="circular" width="40px" height="40px" animation="pulse"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="100%" animation="pulse"></mui-skeleton>
+                <mui-skeleton variant="text" width="75%" animation="pulse"></mui-skeleton>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">Wave Animation</h4>
+            <div style="display: flex; gap: 15px; align-items: center;">
+              <mui-skeleton variant="circular" width="40px" height="40px" animation="wave"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="100%" animation="wave"></mui-skeleton>
+                <mui-skeleton variant="text" width="75%" animation="wave"></mui-skeleton>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 0.9rem;">No Animation</h4>
+            <div style="display: flex; gap: 15px; align-items: center;">
+              <mui-skeleton variant="circular" width="40px" height="40px" animation="false"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="100%" animation="false"></mui-skeleton>
+                <mui-skeleton variant="text" width="75%" animation="false"></mui-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Card Skeleton Example</h3>
+        <mui-card style="max-width: 400px; padding: 16px;">
+          <div style="display: flex; gap: 15px; margin-bottom: 16px;">
+            <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+            <div style="flex: 1;">
+              <mui-skeleton variant="text" width="60%"></mui-skeleton>
+              <mui-skeleton variant="text" width="40%"></mui-skeleton>
+            </div>
+          </div>
+          <mui-skeleton variant="rectangular" width="100%" height="200px" style="margin-bottom: 16px;"></mui-skeleton>
+          <mui-skeleton variant="text" width="100%"></mui-skeleton>
+          <mui-skeleton variant="text" width="80%"></mui-skeleton>
+          <mui-skeleton variant="text" width="60%"></mui-skeleton>
+        </mui-card>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">List Skeleton Example</h3>
+        <mui-paper style="max-width: 360px;">
+          <div style="padding: 16px;">
+            <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 16px;">
+              <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="70%"></mui-skeleton>
+                <mui-skeleton variant="text" width="50%"></mui-skeleton>
+              </div>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 16px;">
+              <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="80%"></mui-skeleton>
+                <mui-skeleton variant="text" width="45%"></mui-skeleton>
+              </div>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+              <mui-skeleton variant="circular" width="40px" height="40px"></mui-skeleton>
+              <div style="flex: 1;">
+                <mui-skeleton variant="text" width="65%"></mui-skeleton>
+                <mui-skeleton variant="text" width="55%"></mui-skeleton>
+              </div>
+            </div>
+          </div>
+        </mui-paper>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Custom Dimensions</h3>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <mui-skeleton variant="text" width="300px" height="20px"></mui-skeleton>
+          <mui-skeleton variant="rectangular" width="250px" height="150px"></mui-skeleton>
+          <mui-skeleton variant="rounded" width="200px" height="100px"></mui-skeleton>
+          <mui-skeleton variant="circular" width="120px" height="120px"></mui-skeleton>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -2765,7 +2902,7 @@
       Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
-      NumberField, Paper, Progress, Radio, Select, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
+      NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
       TransferList, TextField, Typography
     } from './dist/index.js';
@@ -2811,6 +2948,7 @@
     customElements.define('mui-progress', Progress);
     customElements.define('mui-radio', Radio);
     customElements.define('mui-select', Select);
+    customElements.define('mui-skeleton', Skeleton);
     customElements.define('mui-slider', Slider);
     customElements.define('mui-stepper', Stepper);
     customElements.define('mui-step', Step);

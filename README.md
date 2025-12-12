@@ -63,6 +63,7 @@ Then use them in your HTML:
 - **ToggleButton** - Toggle button for on/off states with grouping support
 - **TransferList** - Move items between two lists with selection controls
 - **Select** - Dropdown select
+- **Skeleton** - Placeholder loading component with multiple variants and animations
 - **Slider** - Range slider
 
 ### Data Display
@@ -436,6 +437,71 @@ Properties:
 - Optional progress labels with custom text
 - Responsive design with proper accessibility
 - Buffer mode for streaming/loading scenarios
+
+### Skeleton
+```html
+<!-- Text Skeletons -->
+<my-skeleton variant="text" width="100%"></my-skeleton>
+<my-skeleton variant="text" width="80%"></my-skeleton>
+<my-skeleton variant="text" width="60%"></my-skeleton>
+
+<!-- Shape Skeletons -->
+<my-skeleton variant="rectangular" width="200px" height="118px"></my-skeleton>
+<my-skeleton variant="rounded" width="150px" height="80px"></my-skeleton>
+<my-skeleton variant="circular" width="40px" height="40px"></my-skeleton>
+
+<!-- Animation Types -->
+<my-skeleton variant="text" animation="pulse"></my-skeleton>
+<my-skeleton variant="text" animation="wave"></my-skeleton>
+<my-skeleton variant="text" animation="false"></my-skeleton>
+
+<!-- Card Skeleton Example -->
+<my-card style="padding: 16px;">
+  <div style="display: flex; gap: 15px; margin-bottom: 16px;">
+    <my-skeleton variant="circular" width="40px" height="40px"></my-skeleton>
+    <div style="flex: 1;">
+      <my-skeleton variant="text" width="60%"></my-skeleton>
+      <my-skeleton variant="text" width="40%"></my-skeleton>
+    </div>
+  </div>
+  <my-skeleton variant="rectangular" width="100%" height="200px"></my-skeleton>
+  <my-skeleton variant="text" width="100%"></my-skeleton>
+  <my-skeleton variant="text" width="80%"></my-skeleton>
+</my-card>
+```
+
+Properties:
+- `variant`: 'text' | 'rectangular' | 'rounded' | 'circular' - Skeleton shape variant
+- `animation`: 'pulse' | 'wave' | false - Animation type (default: 'pulse')
+- `width`: string - Custom width (CSS value like '100%', '200px')
+- `height`: string - Custom height (CSS value like '20px', '100px')
+
+**Skeleton Variants:**
+- **Text**: For text content with automatic height and scaling
+- **Rectangular**: For images, cards, or rectangular content areas
+- **Rounded**: Similar to rectangular but with rounded corners
+- **Circular**: For avatars, profile pictures, or circular elements
+
+**Animation Types:**
+- **Pulse**: Gentle opacity animation (default)
+- **Wave**: Shimmer effect that moves across the skeleton
+- **False**: No animation for static placeholders
+
+**Features:**
+- Multiple shape variants for different content types
+- Customizable animations including pulse, wave, and static
+- Flexible sizing with CSS width and height properties
+- Proper accessibility attributes for screen readers
+- Lightweight and performant animations
+- Material Design styling and proportions
+- Responsive design that adapts to container sizes
+
+**Usage Patterns:**
+- Use text skeletons for loading text content
+- Use rectangular/rounded skeletons for images and media
+- Use circular skeletons for avatars and profile pictures
+- Combine multiple skeletons to create complex loading layouts
+- Match skeleton dimensions to actual content for smooth transitions
 
 ### Table
 ```html
