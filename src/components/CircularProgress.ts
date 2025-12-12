@@ -4,7 +4,7 @@ import { theme } from '../styles/theme.js';
 
 export class CircularProgress extends LitElement {
   @property({ type: String }) color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' = 'primary';
-  @property({ type: String }) size: number = 40;
+  @property({ type: String }) size: 'small' | 'medium' | 'large' | number = 'medium';
   @property({ type: Number }) thickness: number = 3.6;
   @property({ type: String }) variant: 'determinate' | 'indeterminate' = 'indeterminate';
   @property({ type: Number }) value: number = 0;
@@ -60,7 +60,21 @@ export class CircularProgress extends LitElement {
     .success circle { stroke: ${theme.palette.success.main}; }
   `;
 
+  private getSizeValue(): number {
+    if (typeof this.size === 'number') {
+      return this.size;
+    }
+    
+    switch (this.size) {
+      case 'small': return 24;
+      case 'medium': return 40;
+      case 'large': return 56;
+      default: return 40;
+    }
+  }
+
   render() {
+    const sizeValue = this.getSizeValue();
     const circumference = 2 * Math.PI * 20;
     const strokeDashoffset = this.variant === 'determinate' 
       ? circumference - (this.value / 100) * circumference 
@@ -69,7 +83,7 @@ export class CircularProgress extends LitElement {
     return html`
       <div class="progress ${this.variant} ${this.color}">
         ${svg`
-          <svg width="${this.size}" height="${this.size}" viewBox="22 22 44 44">
+          <svg width="${sizeValue}" height="${sizeValue}" viewBox="22 22 44 44">
             <circle
               cx="44"
               cy="44"

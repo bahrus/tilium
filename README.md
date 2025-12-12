@@ -84,6 +84,7 @@ Then use them in your HTML:
 - **Paper** - Elevated surface container
 
 ### Utils
+- **Backdrop** - Semi-transparent overlay for modals and loading states
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
@@ -610,6 +611,59 @@ interface TransferListItem {
 
 **Events:**
 - Tabs: `change` event with `{ value, oldValue }` when tab selection changes
+
+### Backdrop
+```html
+<!-- Basic Backdrop -->
+<my-backdrop open>
+  <my-circular-progress color="primary"></my-circular-progress>
+</my-backdrop>
+
+<!-- Backdrop with Content -->
+<my-backdrop open>
+  <my-card style="max-width: 400px;">
+    <my-card-content>
+      <h3>Modal Content</h3>
+      <p>Any content can be placed on the backdrop.</p>
+      <my-button onclick="closeBackdrop()">Close</my-button>
+    </my-card-content>
+  </my-card>
+</my-backdrop>
+
+<!-- Invisible Backdrop -->
+<my-backdrop open invisible>
+  <my-paper style="padding: 24px;">
+    <p>Backdrop without visual background</p>
+  </my-paper>
+</my-backdrop>
+
+<!-- Custom Transition and Z-Index -->
+<my-backdrop 
+  open 
+  transitionDuration="500ms" 
+  zIndex="2000"
+>
+  <my-circular-progress></my-circular-progress>
+</my-backdrop>
+```
+
+**Backdrop Properties:**
+- `open`: boolean - Whether the backdrop is visible
+- `invisible`: boolean - Hide the background overlay (keeps functionality)
+- `transitionDuration`: string - CSS transition duration (default: "225ms")
+- `zIndex`: number - CSS z-index value (default: 1300)
+
+**Events:**
+- `backdrop-click`: Fired when backdrop area is clicked or Escape key is pressed
+  - `detail.originalEvent`: The original click or keyboard event
+
+**Features:**
+- **Scroll Prevention**: Automatically prevents body scroll when open
+- **Focus Management**: Focuses the backdrop when opened
+- **Escape Key**: Closes on Escape key press
+- **Click Outside**: Detects clicks outside of slotted content
+- **Layering**: Supports multiple backdrop layers with different z-indexes
+- **Accessibility**: Proper ARIA attributes and focus management
 
 ### Dialog
 ```html

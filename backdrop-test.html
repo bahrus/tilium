@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backdrop Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 8px;
+      font-size: 14px;
+    }
+    .demo-button:hover {
+      background: #1565c0;
+    }
+    .demo-button.secondary {
+      background: #9c27b0;
+    }
+    .demo-button.secondary:hover {
+      background: #7b1fa2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Backdrop Component Test</h1>
+  
+  <div class="section">
+    <h2>Basic Backdrop</h2>
+    <p>Click the button to show a basic backdrop with a loading spinner.</p>
+    <button class="demo-button" onclick="showBasicBackdrop()">Show Basic Backdrop</button>
+    
+    <mui-backdrop id="basic-backdrop">
+      <div style="display: flex; flex-direction: column; align-items: center; color: white;">
+        <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <p style="margin-top: 16px;">Loading...</p>
+      </div>
+    </mui-backdrop>
+  </div>
+
+  <div class="section">
+    <h2>Backdrop with Content</h2>
+    <p>Backdrop can contain any content, like cards or forms.</p>
+    <button class="demo-button secondary" onclick="showContentBackdrop()">Show Content Backdrop</button>
+    
+    <mui-backdrop id="content-backdrop">
+      <div style="background: white; padding: 24px; border-radius: 8px; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        <h3 style="margin-top: 0; color: #1976d2;">Modal Content</h3>
+        <p>This is a modal dialog displayed on top of a backdrop. You can put any content here including forms, images, or other components.</p>
+        <div style="margin-top: 20px; text-align: right;">
+          <button class="demo-button" onclick="hideContentBackdrop()">Close</button>
+        </div>
+      </div>
+    </mui-backdrop>
+  </div>
+
+  <div class="section">
+    <h2>Invisible Backdrop</h2>
+    <p>Invisible backdrop provides overlay functionality without the visual background.</p>
+    <button class="demo-button" onclick="showInvisibleBackdrop()">Show Invisible Backdrop</button>
+    
+    <mui-backdrop id="invisible-backdrop" invisible>
+      <div style="background: white; padding: 24px; border-radius: 8px; max-width: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-align: center;">
+        <h3 style="margin-top: 0; color: #1976d2;">Invisible Backdrop</h3>
+        <p>Notice how the background isn't darkened, but the backdrop still captures clicks and prevents interaction with the page.</p>
+        <button class="demo-button" onclick="hideInvisibleBackdrop()">Close</button>
+      </div>
+    </mui-backdrop>
+  </div>
+
+  <div class="section">
+    <h2>Event Handling</h2>
+    <p>Backdrop fires events when clicked or when Escape is pressed. Check the console for logs.</p>
+    <button class="demo-button" onclick="showEventBackdrop()">Show Event Backdrop</button>
+    
+    <mui-backdrop id="event-backdrop">
+      <div style="background: white; padding: 24px; border-radius: 8px; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-align: center;">
+        <h3 style="margin-top: 0; color: #1976d2;">Event Handling</h3>
+        <p>Click outside this card or press Escape to trigger the backdrop-click event. Check the browser console to see the event logs.</p>
+        <button class="demo-button" onclick="hideEventBackdrop()">Close</button>
+      </div>
+    </mui-backdrop>
+  </div>
+
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script type="module">
+    // Import component classes
+    import { Backdrop } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-backdrop', Backdrop);
+
+    // Helper functions
+    window.showBasicBackdrop = () => {
+      const backdrop = document.getElementById('basic-backdrop');
+      backdrop.open = true;
+      
+      // Auto-close after 3 seconds for demo
+      setTimeout(() => {
+        backdrop.open = false;
+      }, 3000);
+    };
+
+    window.showContentBackdrop = () => {
+      const backdrop = document.getElementById('content-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideContentBackdrop = () => {
+      const backdrop = document.getElementById('content-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showInvisibleBackdrop = () => {
+      const backdrop = document.getElementById('invisible-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideInvisibleBackdrop = () => {
+      const backdrop = document.getElementById('invisible-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showEventBackdrop = () => {
+      const backdrop = document.getElementById('event-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideEventBackdrop = () => {
+      const backdrop = document.getElementById('event-backdrop');
+      backdrop.open = false;
+    };
+
+    // Setup event listeners
+    document.querySelectorAll('mui-backdrop').forEach(backdrop => {
+      backdrop.addEventListener('backdrop-click', (e) => {
+        console.log(`Backdrop ${backdrop.id} clicked:`, e.detail);
+        
+        // Auto-close on backdrop click (except for basic backdrop which auto-closes)
+        if (backdrop.id !== 'basic-backdrop') {
+          backdrop.open = false;
+        }
+      });
+    });
+
+    console.log('Backdrop component test loaded successfully!');
+  </script>
+</body>
+</html>

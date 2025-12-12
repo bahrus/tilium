@@ -3,6 +3,7 @@ export { Alert } from './components/Alert.js';
 export { AppBar } from './components/AppBar.js';
 export { Autocomplete } from './components/Autocomplete.js';
 export { Avatar } from './components/Avatar.js';
+export { Backdrop } from './components/Backdrop.js';
 export { Badge } from './components/Badge.js';
 export { BottomNavigation, BottomNavigationAction } from './components/BottomNavigation.js';
 export { Button } from './components/Button.js';

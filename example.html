@@ -2506,10 +2506,167 @@
     </div>
   </div>
 
+  <div class="section">
+    <h2>Backdrop</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Basic Backdrop</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Click the button to show a basic backdrop. Click the backdrop or press Escape to close it.
+        </mui-typography>
+        <mui-button variant="contained" color="primary" onclick="showBasicBackdrop()">Show Backdrop</mui-button>
+        
+        <mui-backdrop id="basic-backdrop">
+          <mui-circular-progress color="primary" size="large"></mui-circular-progress>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Backdrop with Content</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Backdrop can contain any content, not just loading indicators.
+        </mui-typography>
+        <mui-button variant="contained" color="secondary" onclick="showContentBackdrop()">Show Content Backdrop</mui-button>
+        
+        <mui-backdrop id="content-backdrop">
+          <mui-card style="max-width: 400px; margin: 20px;">
+            <mui-card-content>
+              <mui-typography variant="h6" style="margin-bottom: 16px;">Backdrop Content</mui-typography>
+              <mui-typography variant="body2" style="margin-bottom: 16px;">
+                This is a card displayed on top of a backdrop. You can put any content here.
+              </mui-typography>
+              <mui-button variant="contained" color="primary" onclick="hideContentBackdrop()">Close</mui-button>
+            </mui-card-content>
+          </mui-card>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Invisible Backdrop</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Invisible backdrop provides the overlay functionality without the visual background.
+        </mui-typography>
+        <mui-button variant="outlined" color="primary" onclick="showInvisibleBackdrop()">Show Invisible Backdrop</mui-button>
+        
+        <mui-backdrop id="invisible-backdrop" invisible>
+          <mui-paper style="padding: 24px; max-width: 300px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">Invisible Backdrop</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              The backdrop is there but invisible. Notice how the background isn't darkened.
+            </mui-typography>
+            <mui-button variant="contained" onclick="hideInvisibleBackdrop()">Close</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Custom Transition Duration</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Backdrop with slower transition for demonstration purposes.
+        </mui-typography>
+        <mui-button variant="contained" color="info" onclick="showSlowBackdrop()">Show Slow Backdrop</mui-button>
+        
+        <mui-backdrop id="slow-backdrop" transitionDuration="1000ms">
+          <mui-paper style="padding: 24px; max-width: 300px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">Slow Transition</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              This backdrop has a 1-second transition duration.
+            </mui-typography>
+            <mui-button variant="contained" onclick="hideSlowBackdrop()">Close</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">High Z-Index Backdrop</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Backdrop with custom z-index for layering above other elements.
+        </mui-typography>
+        <mui-button variant="contained" color="warning" onclick="showHighZBackdrop()">Show High Z-Index Backdrop</mui-button>
+        
+        <mui-backdrop id="high-z-backdrop" zIndex="2000">
+          <mui-paper style="padding: 24px; max-width: 300px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">High Z-Index</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              This backdrop has z-index: 2000 to appear above other overlays.
+            </mui-typography>
+            <mui-button variant="contained" onclick="hideHighZBackdrop()">Close</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Loading States</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Common use case: showing loading states with different indicators.
+        </mui-typography>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <mui-button variant="outlined" onclick="showLoadingBackdrop('circular')">Circular Loading</mui-button>
+          <mui-button variant="outlined" onclick="showLoadingBackdrop('linear')">Linear Loading</mui-button>
+          <mui-button variant="outlined" onclick="showLoadingBackdrop('text')">Text Loading</mui-button>
+        </div>
+        
+        <mui-backdrop id="loading-backdrop">
+          <div id="loading-content" style="display: flex; flex-direction: column; align-items: center; color: white;">
+            <!-- Content will be dynamically updated -->
+          </div>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Nested Backdrops</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Demonstration of multiple backdrop layers with different z-indexes.
+        </mui-typography>
+        <mui-button variant="contained" color="error" onclick="showNestedBackdrops()">Show Nested Backdrops</mui-button>
+        
+        <mui-backdrop id="backdrop-layer-1" zIndex="1400">
+          <mui-paper style="padding: 24px; max-width: 400px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">First Layer</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              This is the first backdrop layer. Click the button to show another layer on top.
+            </mui-typography>
+            <mui-button variant="contained" color="secondary" onclick="showSecondLayer()" style="margin-right: 8px;">Show Second Layer</mui-button>
+            <mui-button variant="outlined" onclick="hideNestedBackdrops()">Close All</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+        
+        <mui-backdrop id="backdrop-layer-2" zIndex="1500">
+          <mui-paper style="padding: 24px; max-width: 300px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">Second Layer</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              This is the second backdrop layer on top of the first one.
+            </mui-typography>
+            <mui-button variant="contained" onclick="hideSecondLayer()">Close This Layer</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Event Handling</h3>
+        <mui-typography variant="body2" style="margin-bottom: 16px;">
+          Backdrop with custom event handling. Check the console for event logs.
+        </mui-typography>
+        <mui-button variant="contained" color="success" onclick="showEventBackdrop()">Show Event Backdrop</mui-button>
+        
+        <mui-backdrop id="event-backdrop">
+          <mui-paper style="padding: 24px; max-width: 400px; text-align: center;">
+            <mui-typography variant="h6" style="margin-bottom: 16px;">Event Handling</mui-typography>
+            <mui-typography variant="body2" style="margin-bottom: 16px;">
+              Click outside this card or press Escape to trigger the backdrop-click event.
+              Check the browser console to see the event logs.
+            </mui-typography>
+            <mui-button variant="contained" onclick="hideEventBackdrop()">Close</mui-button>
+          </mui-paper>
+        </mui-backdrop>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
     // Import component classes
     import { 
-      Alert, AppBar, Autocomplete, Avatar, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
+      Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip,
       CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, IconButton, LinearProgress, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       NumberField, Paper, Radio, Select, Slider, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
@@ -2522,6 +2679,7 @@
     customElements.define('mui-app-bar', AppBar);
     customElements.define('mui-autocomplete', Autocomplete);
     customElements.define('mui-avatar', Avatar);
+    customElements.define('mui-backdrop', Backdrop);
     customElements.define('mui-badge', Badge);
     customElements.define('mui-bottom-navigation', BottomNavigation);
     customElements.define('mui-bottom-navigation-action', BottomNavigationAction);
@@ -2937,6 +3095,148 @@
         content.activeStep = 0;
       });
     }
+
+    // Backdrop helper functions
+    window.showBasicBackdrop = () => {
+      const backdrop = document.getElementById('basic-backdrop');
+      backdrop.open = true;
+      
+      // Auto-close after 3 seconds for demo
+      setTimeout(() => {
+        backdrop.open = false;
+      }, 3000);
+    };
+
+    window.showContentBackdrop = () => {
+      const backdrop = document.getElementById('content-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideContentBackdrop = () => {
+      const backdrop = document.getElementById('content-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showInvisibleBackdrop = () => {
+      const backdrop = document.getElementById('invisible-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideInvisibleBackdrop = () => {
+      const backdrop = document.getElementById('invisible-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showSlowBackdrop = () => {
+      const backdrop = document.getElementById('slow-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideSlowBackdrop = () => {
+      const backdrop = document.getElementById('slow-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showHighZBackdrop = () => {
+      const backdrop = document.getElementById('high-z-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideHighZBackdrop = () => {
+      const backdrop = document.getElementById('high-z-backdrop');
+      backdrop.open = false;
+    };
+
+    window.showLoadingBackdrop = (type) => {
+      const backdrop = document.getElementById('loading-backdrop');
+      const content = document.getElementById('loading-content');
+      
+      switch (type) {
+        case 'circular':
+          content.innerHTML = `
+            <mui-circular-progress color="primary" size="large"></mui-circular-progress>
+            <mui-typography variant="body1" style="margin-top: 16px; color: white;">Loading...</mui-typography>
+          `;
+          break;
+        case 'linear':
+          content.innerHTML = `
+            <div style="width: 200px; margin-bottom: 16px;">
+              <mui-linear-progress color="primary"></mui-linear-progress>
+            </div>
+            <mui-typography variant="body1" style="color: white;">Processing...</mui-typography>
+          `;
+          break;
+        case 'text':
+          content.innerHTML = `
+            <mui-typography variant="h6" style="color: white;">Please wait...</mui-typography>
+            <mui-typography variant="body2" style="margin-top: 8px; color: rgba(255,255,255,0.7);">
+              This operation may take a few moments
+            </mui-typography>
+          `;
+          break;
+      }
+      
+      backdrop.open = true;
+      
+      // Auto-close after 4 seconds for demo
+      setTimeout(() => {
+        backdrop.open = false;
+      }, 4000);
+    };
+
+    window.showNestedBackdrops = () => {
+      const backdrop1 = document.getElementById('backdrop-layer-1');
+      backdrop1.open = true;
+    };
+
+    window.showSecondLayer = () => {
+      const backdrop2 = document.getElementById('backdrop-layer-2');
+      backdrop2.open = true;
+    };
+
+    window.hideSecondLayer = () => {
+      const backdrop2 = document.getElementById('backdrop-layer-2');
+      backdrop2.open = false;
+    };
+
+    window.hideNestedBackdrops = () => {
+      const backdrop1 = document.getElementById('backdrop-layer-1');
+      const backdrop2 = document.getElementById('backdrop-layer-2');
+      backdrop1.open = false;
+      backdrop2.open = false;
+    };
+
+    window.showEventBackdrop = () => {
+      const backdrop = document.getElementById('event-backdrop');
+      backdrop.open = true;
+    };
+
+    window.hideEventBackdrop = () => {
+      const backdrop = document.getElementById('event-backdrop');
+      backdrop.open = false;
+    };
+
+    // Setup backdrop event listeners
+    document.querySelectorAll('mui-backdrop').forEach(backdrop => {
+      backdrop.addEventListener('backdrop-click', (e) => {
+        console.log(`Backdrop ${backdrop.id} clicked:`, e.detail);
+        
+        // Auto-close on backdrop click for most examples
+        if (backdrop.id !== 'backdrop-layer-1' && backdrop.id !== 'backdrop-layer-2') {
+          backdrop.open = false;
+        } else {
+          // For nested backdrops, close appropriately
+          if (backdrop.id === 'backdrop-layer-2') {
+            backdrop.open = false;
+          } else if (backdrop.id === 'backdrop-layer-1') {
+            // Close both layers
+            hideNestedBackdrops();
+          }
+        }
+      });
+    });
+
+    console.log('Backdrop examples loaded successfully!');
   </script>
 </body>
 </html>
