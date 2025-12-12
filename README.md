@@ -101,6 +101,8 @@ Then use them in your HTML:
 ### Utils
 - **Backdrop** - Semi-transparent overlay for modals and loading states
 - **ClickAwayListener** - Utility component for detecting clicks outside of elements
+- **CssBaseline** - Global CSS reset and normalization for consistent styling
+- **ScopedCssBaseline** - Scoped CSS reset and normalization for specific content areas
 - **IconButton** - Button for icons
 - **Dialog** - Modal dialog with DialogTitle, DialogContent, DialogActions
 
@@ -2674,6 +2676,220 @@ function createClickAwayListener(
 - Automatic cleanup prevents memory leaks
 - Optimized for frequent enable/disable operations
 - Supports multiple simultaneous click-away listeners
+
+### CssBaseline & ScopedCssBaseline
+```html
+<!-- Global CSS Baseline (affects entire document) -->
+<my-css-baseline enableColorScheme></my-css-baseline>
+
+<!-- Scoped CSS Baseline (affects only children) -->
+<my-scoped-css-baseline enableColorScheme>
+  <div>
+    <h1>Normalized Content</h1>
+    <p>This content has baseline styles applied.</p>
+    <button>Styled Button</button>
+  </div>
+</my-scoped-css-baseline>
+
+<!-- Basic Usage -->
+<my-css-baseline></my-css-baseline>
+<my-scoped-css-baseline>
+  <article>
+    <h2>Article Title</h2>
+    <p>Article content with consistent typography.</p>
+  </article>
+</my-scoped-css-baseline>
+
+<!-- Form Normalization -->
+<my-scoped-css-baseline>
+  <form>
+    <fieldset>
+      <legend>Contact Form</legend>
+      <input type="text" placeholder="Name" />
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
+</my-scoped-css-baseline>
+
+<!-- Typography Showcase -->
+<my-scoped-css-baseline>
+  <div>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <p>Paragraph with <strong>bold</strong> and <em>italic</em> text.</p>
+    <p><a href="#">Link example</a></p>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ul>
+    <code>Inline code example</code>
+    <pre>Code block example</pre>
+  </div>
+</my-scoped-css-baseline>
+```
+
+**CssBaseline Properties:**
+- `enableColorScheme`: boolean - Enable automatic dark/light mode detection (default: false)
+
+**ScopedCssBaseline Properties:**
+- `enableColorScheme`: boolean - Enable automatic dark/light mode detection (default: false)
+
+**Key Differences:**
+- **CssBaseline**: Applies styles globally to the entire document via injected `<style>` tag
+- **ScopedCssBaseline**: Applies styles only to slotted children using Shadow DOM and `::slotted()` selectors
+
+**Features:**
+
+**CSS Reset & Normalization:**
+- Removes default browser margins, padding, and inconsistencies
+- Sets consistent box-sizing (border-box) for all elements
+- Normalizes form elements across different browsers
+- Provides consistent focus indicators and accessibility features
+
+**Material Design Typography:**
+- Complete typography scale (h1-h6, body text, code)
+- Roboto font family with proper fallbacks
+- Consistent line heights, letter spacing, and font weights
+- Optimized for readability and Material Design principles
+
+**Color Scheme Support:**
+- Automatic light/dark mode detection with `color-scheme` CSS property
+- Adapts text colors, backgrounds, and focus indicators
+- Respects user's system preferences
+- Smooth transitions between color schemes
+
+**Accessibility Features:**
+- Proper focus indicators with `:focus-visible` support
+- Reduced motion support for users with motion sensitivity
+- High contrast support for better visibility
+- Semantic HTML structure preservation
+
+**Cross-browser Compatibility:**
+- Consistent rendering across modern browsers
+- Webkit scrollbar styling for better UX
+- Print media styles for proper document printing
+- Mobile-optimized text rendering and touch targets
+
+**Usage Patterns:**
+
+**Global Baseline (Recommended):**
+```html
+<!-- Place once at the root of your application -->
+<my-css-baseline enableColorScheme></my-css-baseline>
+
+<!-- Your app content -->
+<div id="app">
+  <header>Navigation</header>
+  <main>Content</main>
+  <footer>Footer</footer>
+</div>
+```
+
+**Scoped Baseline:**
+```html
+<!-- Use for specific content areas -->
+<my-scoped-css-baseline>
+  <article class="blog-post">
+    <h1>Blog Post Title</h1>
+    <p>Blog content with normalized styles...</p>
+  </article>
+</my-scoped-css-baseline>
+
+<!-- Multiple scoped areas -->
+<div class="layout">
+  <my-scoped-css-baseline>
+    <aside class="sidebar">Sidebar content</aside>
+  </my-scoped-css-baseline>
+  
+  <my-scoped-css-baseline>
+    <main class="content">Main content</main>
+  </my-scoped-css-baseline>
+</div>
+```
+
+**Component Integration:**
+```html
+<!-- Works seamlessly with other Material components -->
+<my-css-baseline enableColorScheme></my-css-baseline>
+
+<my-container maxWidth="lg">
+  <my-app-bar position="static">
+    <my-typography variant="h6">My App</my-typography>
+  </my-app-bar>
+  
+  <my-paper elevation="2">
+    <my-scoped-css-baseline>
+      <!-- User-generated content with safe baseline styles -->
+      <div class="user-content">
+        <h2>User Article</h2>
+        <p>Content from CMS or user input...</p>
+      </div>
+    </my-scoped-css-baseline>
+  </my-paper>
+</my-container>
+```
+
+**Typography Scale:**
+The baseline components provide a complete Material Design typography scale:
+
+- **h1**: 6rem (96px) - Display Large
+- **h2**: 3.75rem (60px) - Display Medium  
+- **h3**: 3rem (48px) - Display Small
+- **h4**: 2.125rem (34px) - Headline Large
+- **h5**: 1.5rem (24px) - Headline Medium
+- **h6**: 1.25rem (20px) - Headline Small
+- **body**: 1rem (16px) - Body Large
+- **code**: Roboto Mono - Monospace font family
+
+**Color Scheme Behavior:**
+When `enableColorScheme` is true:
+
+**Light Mode (default):**
+- Background: `#fff` (white)
+- Text: `rgba(0, 0, 0, 0.87)` (dark gray)
+- Links: `#1976d2` (Material Blue)
+- Focus: `#1976d2` outline
+
+**Dark Mode (when `prefers-color-scheme: dark`):**
+- Background: `#121212` (Material Dark)
+- Text: `rgba(255, 255, 255, 0.87)` (light gray)
+- Links: `#90caf9` (Light Blue)
+- Focus: `#90caf9` outline
+
+**Best Practices:**
+
+**Global Baseline:**
+- Use CssBaseline once at the application root
+- Enable color scheme support for modern UX
+- Place before any other content for proper cascade
+- Combine with theme provider for consistent design system
+
+**Scoped Baseline:**
+- Use for user-generated content or third-party widgets
+- Ideal for CMS content, markdown rendering, or isolated components
+- Prevents global style conflicts in micro-frontends
+- Safe for embedding in existing applications
+
+**Performance:**
+- CssBaseline injects styles once and reuses them
+- ScopedCssBaseline uses efficient Shadow DOM styling
+- Minimal runtime overhead with CSS-only implementation
+- Automatic cleanup when components are removed
+
+**Accessibility:**
+- Maintains semantic HTML structure
+- Provides consistent focus indicators across browsers
+- Supports reduced motion preferences
+- Ensures proper color contrast ratios
+- Compatible with screen readers and assistive technologies
+
+**Browser Support:**
+- Modern browsers with CSS custom properties support
+- Graceful degradation for older browsers
+- Progressive enhancement for color scheme detection
+- Consistent behavior across desktop and mobile platforms
 
 ### Dialog
 ```html

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CssBaseline Component Test</title>
+  <style>
+    /* Minimal page styles to show the difference */
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    .comparison {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .comparison > div {
+      flex: 1;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .without-baseline {
+      background-color: #fff8e1;
+    }
+    .with-baseline {
+      background-color: #e3f2fd;
+    }
+    .toggle-button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+    }
+    .toggle-button:hover {
+      background: #1565c0;
+    }
+    .toggle-button.active {
+      background: #0d47a1;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>CssBaseline Component Test</h1>
+
+  <div class="section">
+    <h2>Global CSS Baseline Control</h2>
+    <p>Toggle the global CssBaseline component to see its effects on the entire page.</p>
+    <div>
+      <button id="enable-global" class="toggle-button">Enable Global Baseline</button>
+      <button id="disable-global" class="toggle-button">Disable Global Baseline</button>
+      <button id="toggle-color-scheme" class="toggle-button">Toggle Color Scheme</button>
+    </div>
+    <p id="global-status" style="margin-top: 10px; font-weight: bold;"></p>
+  </div>
+
+  <div class="section">
+    <h2>Typography Comparison</h2>
+    <p>Compare typography with and without baseline styles.</p>
+    
+    <div class="comparison">
+      <div class="without-baseline">
+        <h4>Without Baseline Styles</h4>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <p>This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+        <p><a href="#" onclick="event.preventDefault()">This is a link</a></p>
+        <ul>
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ul>
+      </div>
+      
+      <div class="with-baseline">
+        <mui-scoped-css-baseline>
+          <h4>With Scoped Baseline</h4>
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+          <p>This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+          <p><a href="#" onclick="event.preventDefault()">This is a link</a></p>
+          <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+          </ul>
+        </mui-scoped-css-baseline>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Form Elements</h2>
+    <p>Compare form element styling with and without baseline normalization.</p>
+    
+    <div class="comparison">
+      <div class="without-baseline">
+        <h4>Without Baseline</h4>
+        <form>
+          <fieldset>
+            <legend>Contact Form</legend>
+            <div style="margin-bottom: 10px;">
+              <label>Name:</label><br>
+              <input type="text" placeholder="Enter name">
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label>Email:</label><br>
+              <input type="email" placeholder="Enter email">
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label>Message:</label><br>
+              <textarea rows="3" placeholder="Enter message"></textarea>
+            </div>
+            <button type="button">Submit</button>
+            <button type="button">Cancel</button>
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class="with-baseline">
+        <mui-scoped-css-baseline>
+          <h4>With Scoped Baseline</h4>
+          <form>
+            <fieldset>
+              <legend>Contact Form</legend>
+              <div style="margin-bottom: 10px;">
+                <label>Name:</label><br>
+                <input type="text" placeholder="Enter name">
+              </div>
+              <div style="margin-bottom: 10px;">
+                <label>Email:</label><br>
+                <input type="email" placeholder="Enter email">
+              </div>
+              <div style="margin-bottom: 10px;">
+                <label>Message:</label><br>
+                <textarea rows="3" placeholder="Enter message"></textarea>
+              </div>
+              <button type="button">Submit</button>
+              <button type="button">Cancel</button>
+            </fieldset>
+          </form>
+        </mui-scoped-css-baseline>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Code and Preformatted Text</h2>
+    <p>Compare code styling with baseline normalization.</p>
+    
+    <div class="comparison">
+      <div class="without-baseline">
+        <h4>Without Baseline</h4>
+        <p>Inline code: <code>const x = 42;</code></p>
+        <pre>function example() {
+  return 'Hello World';
+}</pre>
+        <p>Keyboard: <kbd>Ctrl</kbd> + <kbd>C</kbd></p>
+      </div>
+      
+      <div class="with-baseline">
+        <mui-scoped-css-baseline>
+          <h4>With Scoped Baseline</h4>
+          <p>Inline code: <code>const x = 42;</code></p>
+          <pre>function example() {
+  return 'Hello World';
+}</pre>
+          <p>Keyboard: <kbd>Ctrl</kbd> + <kbd>C</kbd></p>
+        </mui-scoped-css-baseline>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Color Scheme Support</h2>
+    <p>Test automatic dark/light mode adaptation.</p>
+    
+    <div style="display: flex; gap: 20px; margin: 20px 0;">
+      <mui-scoped-css-baseline style="flex: 1; padding: 20px; border: 1px solid #ddd; border-radius: 4px;">
+        <h4>Default (No Color Scheme)</h4>
+        <p>This content uses default colors and won't adapt to system preferences.</p>
+        <p><a href="#" onclick="event.preventDefault()">Sample link</a></p>
+        <button style="padding: 8px 16px; margin: 4px;">Button 1</button>
+        <button style="padding: 8px 16px; margin: 4px;">Button 2</button>
+      </mui-scoped-css-baseline>
+      
+      <mui-scoped-css-baseline enableColorScheme style="flex: 1; padding: 20px; border: 1px solid #ddd; border-radius: 4px;">
+        <h4>With Color Scheme Support</h4>
+        <p>This content will adapt to your system's light/dark mode preference.</p>
+        <p><a href="#" onclick="event.preventDefault()">Sample link</a></p>
+        <button style="padding: 8px 16px; margin: 4px;">Button 1</button>
+        <button style="padding: 8px 16px; margin: 4px;">Button 2</button>
+      </mui-scoped-css-baseline>
+    </div>
+    
+    <p style="font-size: 0.875rem; color: #666;">
+      <strong>Note:</strong> To test color scheme adaptation, change your system's dark/light mode setting 
+      or use browser developer tools to simulate different color schemes.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Focus and Accessibility</h2>
+    <p>Test focus indicators and accessibility features.</p>
+    
+    <mui-scoped-css-baseline style="padding: 20px; border: 1px solid #ddd; border-radius: 4px;">
+      <h4>Focus Test Area</h4>
+      <p>Tab through these elements to see consistent focus indicators:</p>
+      
+      <div style="display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap;">
+        <button style="padding: 8px 16px;">Button 1</button>
+        <button style="padding: 8px 16px;">Button 2</button>
+        <a href="#" onclick="event.preventDefault()" style="padding: 8px 16px; background: #f0f0f0; text-decoration: none; border-radius: 4px;">Link</a>
+        <input type="text" placeholder="Text input" style="padding: 8px;">
+        <select style="padding: 8px;">
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </select>
+      </div>
+      
+      <p style="font-size: 0.875rem; color: #666;">
+        Focus indicators are automatically styled and respect user preferences for reduced motion.
+      </p>
+    </mui-scoped-css-baseline>
+  </div>
+
+  <div class="section">
+    <h2>Multiple Scoped Areas</h2>
+    <p>Test multiple ScopedCssBaseline components on the same page.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+      <mui-scoped-css-baseline style="padding: 16px; border: 2px solid #1976d2; border-radius: 4px;">
+        <h4>Scoped Area 1</h4>
+        <p>This is the first scoped baseline area.</p>
+        <ul>
+          <li>Item A</li>
+          <li>Item B</li>
+        </ul>
+        <button>Action 1</button>
+      </mui-scoped-css-baseline>
+      
+      <mui-scoped-css-baseline enableColorScheme style="padding: 16px; border: 2px solid #dc004e; border-radius: 4px;">
+        <h4>Scoped Area 2</h4>
+        <p>This is the second scoped baseline area with color scheme support.</p>
+        <ul>
+          <li>Item X</li>
+          <li>Item Y</li>
+        </ul>
+        <button>Action 2</button>
+      </mui-scoped-css-baseline>
+    </div>
+  </div>
+
+  <!-- Global CssBaseline component (initially disabled) -->
+  <mui-css-baseline id="global-baseline" style="display: none;"></mui-css-baseline>
+
+  <script type="module">
+    // Import component classes
+    import { CssBaseline, ScopedCssBaseline } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-css-baseline', CssBaseline);
+    customElements.define('mui-scoped-css-baseline', ScopedCssBaseline);
+
+    // Global baseline controls
+    const globalBaseline = document.getElementById('global-baseline');
+    const enableGlobalBtn = document.getElementById('enable-global');
+    const disableGlobalBtn = document.getElementById('disable-global');
+    const toggleColorSchemeBtn = document.getElementById('toggle-color-scheme');
+    const globalStatus = document.getElementById('global-status');
+
+    let isGlobalEnabled = false;
+    let colorSchemeEnabled = false;
+
+    function updateGlobalStatus() {
+      if (isGlobalEnabled) {
+        globalStatus.textContent = `Global Baseline: ENABLED${colorSchemeEnabled ? ' (with color scheme)' : ''}`;
+        globalStatus.style.color = '#2e7d32';
+        enableGlobalBtn.classList.add('active');
+        disableGlobalBtn.classList.remove('active');
+      } else {
+        globalStatus.textContent = 'Global Baseline: DISABLED';
+        globalStatus.style.color = '#d32f2f';
+        enableGlobalBtn.classList.remove('active');
+        disableGlobalBtn.classList.add('active');
+      }
+      
+      if (colorSchemeEnabled) {
+        toggleColorSchemeBtn.classList.add('active');
+      } else {
+        toggleColorSchemeBtn.classList.remove('active');
+      }
+    }
+
+    enableGlobalBtn.addEventListener('click', () => {
+      globalBaseline.style.display = '';
+      isGlobalEnabled = true;
+      updateGlobalStatus();
+      console.log('Global CssBaseline enabled');
+    });
+
+    disableGlobalBtn.addEventListener('click', () => {
+      globalBaseline.style.display = 'none';
+      isGlobalEnabled = false;
+      updateGlobalStatus();
+      console.log('Global CssBaseline disabled');
+    });
+
+    toggleColorSchemeBtn.addEventListener('click', () => {
+      colorSchemeEnabled = !colorSchemeEnabled;
+      globalBaseline.enableColorScheme = colorSchemeEnabled;
+      updateGlobalStatus();
+      console.log('Color scheme support:', colorSchemeEnabled ? 'enabled' : 'disabled');
+    });
+
+    // Initialize status
+    updateGlobalStatus();
+
+    // Log when components are ready
+    console.log('CssBaseline test loaded successfully!');
+    console.log('Try enabling/disabling global baseline to see the effects');
+    console.log('Change your system dark/light mode to test color scheme adaptation');
+  </script>
+</body>
+</html>

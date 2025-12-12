@@ -16,6 +16,7 @@ export { Checkbox } from './Checkbox.js';
 export { Chip } from './Chip.js';
 export { CircularProgress } from './CircularProgress.js';
 export { ClickAwayListener } from './ClickAwayListener.js';
+export { CssBaseline, ScopedCssBaseline } from './CssBaseline.js';
 export { Container } from './Container.js';
 export { Dialog, DialogTitle, DialogContent, DialogActions } from './Dialog.js';
 export { Divider } from './Divider.js';

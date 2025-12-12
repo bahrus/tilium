@@ -69,6 +69,9 @@
 </script>
 </head>
 <body>
+  <!-- Global CSS Baseline for consistent styling -->
+  <mui-css-baseline enableColorScheme></mui-css-baseline>
+  
   <h1>Lit Material Components Demo</h1>
 
   <div class="section">
@@ -4052,6 +4055,181 @@
   </div>
 
   <div class="section">
+    <h2>CSS Baseline</h2>
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Global CSS Baseline</h3>
+        <p>CssBaseline provides a consistent CSS reset and normalization for the entire document. It's typically used once at the root of your application.</p>
+        <div style="background-color: #f5f5f5; padding: 16px; border-radius: 4px; margin-bottom: 16px;">
+          <code style="font-family: monospace; font-size: 0.875rem;">
+            &lt;mui-css-baseline enableColorScheme&gt;&lt;/mui-css-baseline&gt;
+          </code>
+        </div>
+        <p style="font-size: 0.875rem; color: #666;">
+          <strong>Note:</strong> The global CssBaseline is already active on this page. 
+          It provides consistent typography, removes default margins/padding, and sets up Material Design defaults.
+        </p>
+        
+        <div style="margin-top: 20px;">
+          <h4 style="margin: 0 0 10px 0; font-size: 1rem;">Typography Examples</h4>
+          <div style="border: 1px solid #e0e0e0; padding: 20px; border-radius: 4px;">
+            <h1 style="margin-bottom: 16px;">Heading 1 (h1)</h1>
+            <h2 style="margin-bottom: 16px;">Heading 2 (h2)</h2>
+            <h3 style="margin-bottom: 16px;">Heading 3 (h3)</h3>
+            <h4 style="margin-bottom: 16px;">Heading 4 (h4)</h4>
+            <h5 style="margin-bottom: 16px;">Heading 5 (h5)</h5>
+            <h6 style="margin-bottom: 16px;">Heading 6 (h6)</h6>
+            <p style="margin-bottom: 16px;">
+              This is a paragraph with <strong>bold text</strong> and <em>italic text</em>. 
+              It demonstrates the default typography styles applied by CssBaseline.
+            </p>
+            <p>
+              <a href="#" onclick="event.preventDefault(); return false;">This is a link</a> 
+              with the default Material Design styling.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Scoped CSS Baseline</h3>
+        <p>ScopedCssBaseline applies baseline styles only to its children, allowing for localized normalization without affecting the global document styles.</p>
+        
+        <div style="display: flex; gap: 20px; margin-top: 20px;">
+          <div style="flex: 1;">
+            <h4 style="margin: 0 0 10px 0; font-size: 0.875rem; color: #666;">Without Scoped Baseline</h4>
+            <div style="border: 1px solid #e0e0e0; padding: 16px; border-radius: 4px; background: #fafafa;">
+              <h3>Sample Heading</h3>
+              <p>This content uses the global baseline styles.</p>
+              <ul>
+                <li>List item 1</li>
+                <li>List item 2</li>
+              </ul>
+              <button style="margin-top: 8px;">Sample Button</button>
+            </div>
+          </div>
+          
+          <div style="flex: 1;">
+            <h4 style="margin: 0 0 10px 0; font-size: 0.875rem; color: #666;">With Scoped Baseline</h4>
+            <mui-scoped-css-baseline style="border: 1px solid #1976d2; border-radius: 4px; background: #e3f2fd; padding: 16px;">
+              <h3>Sample Heading</h3>
+              <p>This content is wrapped in ScopedCssBaseline and inherits its normalized styles.</p>
+              <ul>
+                <li>List item 1</li>
+                <li>List item 2</li>
+              </ul>
+              <button style="margin-top: 8px;">Sample Button</button>
+            </mui-scoped-css-baseline>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Color Scheme Support</h3>
+        <p>Both components support automatic dark mode detection when enableColorScheme is true.</p>
+        
+        <mui-scoped-css-baseline enableColorScheme style="border: 1px solid #333; border-radius: 4px; padding: 20px; margin-top: 16px;">
+          <h4>Color Scheme Aware Content</h4>
+          <p>
+            This content will automatically adapt to the user's preferred color scheme 
+            (light or dark mode) when supported by the browser and operating system.
+          </p>
+          <p>
+            <a href="#" onclick="event.preventDefault(); return false;">Links</a> and 
+            <strong>text emphasis</strong> will also adapt to the color scheme.
+          </p>
+          <div style="margin-top: 16px; padding: 12px; background: rgba(0,0,0,0.05); border-radius: 4px;">
+            <code>color-scheme: light dark;</code> is applied to enable automatic adaptation.
+          </div>
+        </mui-scoped-css-baseline>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Form Elements</h3>
+        <p>CssBaseline normalizes form elements for consistent appearance across browsers.</p>
+        
+        <mui-scoped-css-baseline style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-top: 16px;">
+          <form style="display: flex; flex-direction: column; gap: 16px;">
+            <fieldset style="border: 1px solid #ddd; padding: 16px; border-radius: 4px;">
+              <legend>Contact Information</legend>
+              
+              <div style="margin-bottom: 12px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Name:</label>
+                <input type="text" placeholder="Enter your name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+              
+              <div style="margin-bottom: 12px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Email:</label>
+                <input type="email" placeholder="Enter your email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+              
+              <div style="margin-bottom: 12px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: 500;">Message:</label>
+                <textarea placeholder="Enter your message" rows="3" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+              </div>
+            </fieldset>
+            
+            <div style="display: flex; gap: 8px;">
+              <button type="button" style="padding: 8px 16px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Submit
+              </button>
+              <button type="button" style="padding: 8px 16px; background: transparent; color: #1976d2; border: 1px solid #1976d2; border-radius: 4px; cursor: pointer;">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </mui-scoped-css-baseline>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Code and Preformatted Text</h3>
+        <p>Baseline styles include proper formatting for code elements.</p>
+        
+        <mui-scoped-css-baseline style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-top: 16px;">
+          <p>Inline code: <code>const example = 'Hello World';</code></p>
+          
+          <p>Code block:</p>
+          <pre style="background: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; border: 1px solid #ddd;">
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('World'));
+          </pre>
+          
+          <p>Keyboard input: Press <kbd style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; border: 1px solid #ccc; font-size: 0.875em;">Ctrl</kbd> + <kbd style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; border: 1px solid #ccc; font-size: 0.875em;">C</kbd> to copy</p>
+        </mui-scoped-css-baseline>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem;">Accessibility Features</h3>
+        <p>CssBaseline includes accessibility improvements like focus indicators and reduced motion support.</p>
+        
+        <mui-scoped-css-baseline style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-top: 16px;">
+          <p>Try tabbing through these focusable elements to see the focus indicators:</p>
+          
+          <div style="display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap;">
+            <button style="padding: 8px 16px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Focusable Button 1
+            </button>
+            <button style="padding: 8px 16px; background: #dc004e; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Focusable Button 2
+            </button>
+            <a href="#" onclick="event.preventDefault(); return false;" style="padding: 8px 16px; background: #2e7d32; color: white; border-radius: 4px; text-decoration: none; display: inline-block;">
+              Focusable Link
+            </a>
+          </div>
+          
+          <p style="font-size: 0.875rem; color: #666;">
+            <strong>Note:</strong> Focus indicators automatically adapt to user preferences and 
+            support reduced motion settings for accessibility.
+          </p>
+        </mui-scoped-css-baseline>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Chips</h2>
     <div class="demo-row">
       <mui-chip label="Default"></mui-chip>
@@ -4978,7 +5156,7 @@
     // Import component classes
     import { 
       Accordion, AccordionSummary, AccordionDetails, AccordionActions, Alert, AppBar, Autocomplete, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonGroup, Card, CardHeader, CardMedia, CardContent, CardActions, Checkbox, Chip, ClickAwayListener, Container,
-      CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions,
+      CircularProgress, CssBaseline, ScopedCssBaseline, Dialog, DialogTitle, DialogContent, DialogActions,
       Divider, Drawer, DrawerHeader, Fab, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, LinearProgress, Link, List, ListItem, ListItemButton, ListItemText, ListItemIcon, ListItemAvatar, ListItemSecondaryAction,
       Menu, MenuItem, NumberField, Paper, Progress, Radio, Select, Skeleton, Slider, Snackbar, SpeedDial, SpeedDialAction, Stack, Stepper, Step, StepLabel, StepContent, Switch, Table, TableHead, TableBody, TableFooter, TableRow,
       TableCell, TableContainer, TablePagination, TableSortLabel, Tabs, Tab, TabPanel, ToggleButton, ToggleButtonGroup,
@@ -5011,6 +5189,8 @@
     customElements.define('mui-chip', Chip);
     customElements.define('mui-circular-progress', CircularProgress);
     customElements.define('mui-click-away-listener', ClickAwayListener);
+    customElements.define('mui-css-baseline', CssBaseline);
+    customElements.define('mui-scoped-css-baseline', ScopedCssBaseline);
     customElements.define('mui-container', Container);
     customElements.define('mui-dialog', Dialog);
     customElements.define('mui-dialog-title', DialogTitle);
