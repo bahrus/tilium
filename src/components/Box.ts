@@ -1,4 +1,4 @@
-import { LitElement, html, css, CSSResult } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export class Box extends LitElement {
@@ -189,7 +189,7 @@ export class Box extends LitElement {
     return value;
   }
 
-  private _generateDynamicStyles(): CSSResult {
+  private _generateDynamicStyles(): string {
     const styles: string[] = [];
 
     // Spacing styles
@@ -347,11 +347,7 @@ export class Box extends LitElement {
       styles.push(`background-color: ${this.bgcolor};`);
     }
 
-    return css`
-      .box {
-        ${styles.join(' ')}
-      }
-    `;
+    return styles.join(' ');
   }
 
   private _getClasses(): string {
@@ -420,7 +416,9 @@ export class Box extends LitElement {
     
     return html`
       <style>
-        ${dynamicStyles}
+        .box {
+          ${unsafeCSS(dynamicStyles)}
+        }
       </style>
       <div class="${this._getClasses()}">
         <slot></slot>
