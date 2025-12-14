@@ -37,19 +37,16 @@ export class Select extends LitElement {
       transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);
       pointer-events: none;
       color: rgba(0, 0, 0, 0.6);
-      font-size: 1rem;
+      font-size: 0.75rem;
       background-color: white;
       padding: 0 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-    }
-
-    label.floating,
-    label.has-value {
       top: 0;
       transform: translateY(-50%);
-      font-size: 0.75rem;
+      z-index: 2;
+      max-width: calc(100% - 28px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     label.focused {
@@ -355,17 +352,21 @@ export class Select extends LitElement {
   }
 
   render() {
-    const hasValue = this.value && this.value.length > 0;
+    const hasValue = this.value && this.value.length > 0 && this.value !== '';
+    // Always float the label if there's a label to prevent overlap with placeholder
+    const shouldFloat = this.label ? true : (this.focused || this.open || hasValue);
+    
     const labelClasses = [
-      this.focused || this.open ? 'floating focused' : '',
+      shouldFloat ? 'floating' : '',
+      this.focused || this.open ? 'focused' : '',
       hasValue ? 'has-value' : ''
-    ].join(' ');
+    ].join(' ').trim();
 
     const inputClasses = [
       this.focused || this.open ? 'focused' : '',
       this.disabled ? 'disabled' : '',
       this.error ? 'error' : ''
-    ].join(' ');
+    ].join(' ').trim();
 
     const displayValue = this.getDisplayValue();
 
