@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextField Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      line-height: 1.6;
+      background: #f5f5f5;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #1976d2;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+      border-bottom: 2px solid #e3f2fd;
+      padding-bottom: 10px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .demo-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 280px;
+      flex: 1;
+    }
+    .demo-item > label {
+      font-weight: 500;
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .button:hover {
+      background: #1565c0;
+    }
+    .button.secondary {
+      background: #dc004e;
+    }
+    .button.secondary:hover {
+      background: #c51162;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .status.success {
+      background: #e8f5e8;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+    }
+    .status.info {
+      background: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #2196f3;
+    }
+    .status.error {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #f44336;
+    }
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .form-container {
+      background: #fafafa;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 250px;
+      flex: 1;
+    }
+    .form-group > label {
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+    .value-display {
+      background: #e3f2fd;
+      padding: 12px 15px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 10px;
+      border: 1px solid #2196f3;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>TextField Component Test</h1>
+
+  <div class="section">
+    <h2>Basic TextField Variants</h2>
+    <p>Test the main visual variants of the TextField component.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Outlined Variant (Default)</label>
+        <mui-textfield id="outlined-field" variant="outlined" label="Outlined TextField" placeholder="Enter text..."></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Filled Variant</label>
+        <mui-textfield id="filled-field" variant="filled" label="Filled TextField" placeholder="Enter text..."></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Standard Variant</label>
+        <mui-textfield id="standard-field" variant="standard" label="Standard TextField" placeholder="Enter text..."></mui-textfield>
+      </div>
+    </div>
+    <div id="basic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Input Types</h2>
+    <p>Test different input types and their behaviors.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Text Input</label>
+        <mui-textfield id="text-input" type="text" label="Text Input" placeholder="Enter any text"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Password Input</label>
+        <mui-textfield id="password-input" type="password" label="Password" placeholder="Enter password"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Email Input</label>
+        <mui-textfield id="email-input" type="email" label="Email Address" placeholder="user@example.com"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Number Input</label>
+        <mui-textfield id="number-input" type="number" label="Number" placeholder="Enter a number"></mui-textfield>
+      </div>
+    </div>
+    <div id="types-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Sizes</h2>
+    <p>Test different TextField sizes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Small Size</label>
+        <mui-textfield id="small-field" size="small" label="Small TextField" placeholder="Small size"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Medium Size (Default)</label>
+        <mui-textfield id="medium-field" size="medium" label="Medium TextField" placeholder="Medium size"></mui-textfield>
+      </div>
+    </div>
+    <div id="size-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>States and Validation</h2>
+    <p>Test different TextField states including error, disabled, and required.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Error State</label>
+        <mui-textfield id="error-field" error label="Error Field" helperText="This field has an error" value="Invalid input"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Disabled State</label>
+        <mui-textfield id="disabled-field" disabled label="Disabled Field" value="Cannot edit this" helperText="This field is disabled"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Required Field</label>
+        <mui-textfield id="required-field" required label="Required Field" helperText="This field is required"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>With Helper Text</label>
+        <mui-textfield id="helper-field" label="Helper Text Field" helperText="This is helpful information"></mui-textfield>
+      </div>
+    </div>
+    <div id="states-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Full Width</h2>
+    <p>Test full-width TextField that spans the entire container.</p>
+    <div class="demo-item">
+      <label>Full Width TextField</label>
+      <mui-textfield id="fullwidth-field" fullWidth label="Full Width TextField" placeholder="This field spans the full width" helperText="This TextField takes up the full width of its container"></mui-textfield>
+    </div>
+    <div id="fullwidth-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Pre-filled Values</h2>
+    <p>Test TextFields with pre-filled values and different states.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Pre-filled Text</label>
+        <mui-textfield id="prefilled-field" label="Pre-filled Field" value="This field has a pre-filled value"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Pre-filled with Placeholder</label>
+        <mui-textfield id="prefilled-placeholder" label="Pre-filled with Placeholder" value="Pre-filled value" placeholder="This won't show"></mui-textfield>
+      </div>
+    </div>
+    <div id="prefilled-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Event Testing</h2>
+    <p>Test TextField events and value changes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Event Logger TextField</label>
+        <mui-textfield id="event-field" label="Event Test Field" placeholder="Type to see events" helperText="Check the event log below"></mui-textfield>
+      </div>
+    </div>
+    <div id="event-log" class="code-block">Event log will appear here...</div>
+  </div>
+
+  <div class="section">
+    <h2>Form Integration</h2>
+    <p>Test TextField components within a form context.</p>
+    <form class="form-container" id="test-form">
+      <h3 style="margin-top: 0;">User Registration Form</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <mui-textfield name="firstName" required label="First Name" placeholder="Enter your first name"></mui-textfield>
+        </div>
+        
+        <div class="form-group">
+          <label>Last Name</label>
+          <mui-textfield name="lastName" required label="Last Name" placeholder="Enter your last name"></mui-textfield>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <mui-textfield name="email" type="email" required label="Email Address" placeholder="user@example.com" helperText="We'll never share your email"></mui-textfield>
+        </div>
+        
+        <div class="form-group">
+          <label>Phone</label>
+          <mui-textfield name="phone" type="text" label="Phone Number" placeholder="+1 (555) 123-4567"></mui-textfield>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Password</label>
+          <mui-textfield name="password" type="password" required label="Password" helperText="Must be at least 8 characters"></mui-textfield>
+        </div>
+        
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <mui-textfield name="confirmPassword" type="password" required label="Confirm Password"></mui-textfield>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Age</label>
+          <mui-textfield name="age" type="number" label="Age" placeholder="18"></mui-textfield>
+        </div>
+        
+        <div class="form-group">
+          <label>Website</label>
+          <mui-textfield name="website" type="text" label="Website" placeholder="https://example.com"></mui-textfield>
+        </div>
+      </div>
+      
+      <div style="margin-top: 25px;">
+        <button type="submit" class="button">Submit Form</button>
+        <button type="reset" class="button secondary">Reset Form</button>
+        <button type="button" class="button" onclick="getFormData()">Get Form Data</button>
+      </div>
+    </form>
+    <div id="form-data" class="value-display" style="display: none;"></div>
+    <div id="form-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Programmatic Control</h2>
+    <p>Test programmatic manipulation of TextField properties.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Programmatic TextField</label>
+        <mui-textfield id="programmatic-field" label="Controlled Field" placeholder="Programmatically controlled"></mui-textfield>
+        <div class="controls">
+          <button class="button" onclick="setValue('Hello World!')">Set Value</button>
+          <button class="button" onclick="setValue('')">Clear Value</button>
+          <button class="button" onclick="toggleDisabled()">Toggle Disabled</button>
+          <button class="button" onclick="toggleError()">Toggle Error</button>
+          <button class="button" onclick="toggleRequired()">Toggle Required</button>
+          <button class="button" onclick="changeVariant()">Change Variant</button>
+        </div>
+      </div>
+    </div>
+    <div id="programmatic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Validation Examples</h2>
+    <p>Test real-world validation scenarios.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Email Validation</label>
+        <mui-textfield id="email-validation" type="email" label="Email" placeholder="Enter valid email" helperText="Enter a valid email address"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Password Strength</label>
+        <mui-textfield id="password-validation" type="password" label="Password" placeholder="Strong password" helperText="Password strength will be shown here"></mui-textfield>
+      </div>
+      
+      <div class="demo-item">
+        <label>Character Counter</label>
+        <mui-textfield id="counter-field" label="Limited Text" placeholder="Max 50 characters" helperText="0/50 characters"></mui-textfield>
+      </div>
+    </div>
+    <div id="validation-status" class="status" style="display: none;"></div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { TextField } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-textfield', TextField);
+
+    // Event logging
+    const eventLog = document.getElementById('event-log');
+    let eventCount = 0;
+
+    function logEvent(eventType, detail) {
+      eventCount++;
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = `[${eventCount}] ${timestamp} - ${eventType}: ${JSON.stringify(detail, null, 2)}`;
+      eventLog.textContent = logEntry + '\n' + eventLog.textContent;
+      
+      // Keep only last 10 events
+      const lines = eventLog.textContent.split('\n');
+      if (lines.length > 20) {
+        eventLog.textContent = lines.slice(0, 20).join('\n');
+      }
+    }
+
+    // Add event listeners to test fields
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventField = document.getElementById('event-field');
+      
+      eventField.addEventListener('input', (e) => {
+        logEvent('input', { 
+          value: e.detail.value,
+          length: e.detail.value.length
+        });
+      });
+
+      eventField.addEventListener('change', (e) => {
+        logEvent('change', { 
+          value: e.detail.value,
+          length: e.detail.value.length
+        });
+      });
+
+      eventField.addEventListener('focus', (e) => {
+        logEvent('focus', { value: e.target.value });
+      });
+
+      eventField.addEventListener('blur', (e) => {
+        logEvent('blur', { value: e.target.value });
+      });
+
+      // Add change listeners to all text fields for status updates
+      const textFields = document.querySelectorAll('mui-textfield');
+      textFields.forEach((field, index) => {
+        field.addEventListener('input', (e) => {
+          if (field.id && field.id.includes('-field')) {
+            const statusId = field.id.replace('-field', '-status');
+            const statusEl = document.getElementById(statusId);
+            if (statusEl) {
+              showStatus(statusId, `Value: "${e.detail.value}"`, 'info');
+            }
+          }
+        });
+      });
+
+      // Email validation
+      const emailField = document.getElementById('email-validation');
+      emailField.addEventListener('input', (e) => {
+        const email = e.detail.value;
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        emailField.error = email.length > 0 && !isValid;
+        emailField.helperText = email.length === 0 ? 'Enter a valid email address' :
+                               isValid ? 'Valid email address' : 'Invalid email format';
+      });
+
+      // Password strength validation
+      const passwordField = document.getElementById('password-validation');
+      passwordField.addEventListener('input', (e) => {
+        const password = e.detail.value;
+        let strength = 'Weak';
+        let color = 'error';
+        
+        if (password.length >= 8) {
+          if (/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(password)) {
+            strength = 'Very Strong';
+            color = 'success';
+          } else if (/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)) {
+            strength = 'Strong';
+            color = 'success';
+          } else if (/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+            strength = 'Medium';
+            color = 'info';
+          }
+        }
+        
+        passwordField.error = password.length > 0 && strength === 'Weak';
+        passwordField.helperText = password.length === 0 ? 'Password strength will be shown here' :
+                                  `Password strength: ${strength}`;
+      });
+
+      // Character counter
+      const counterField = document.getElementById('counter-field');
+      counterField.addEventListener('input', (e) => {
+        const value = e.detail.value;
+        const maxLength = 50;
+        const remaining = maxLength - value.length;
+        
+        counterField.error = value.length > maxLength;
+        counterField.helperText = `${value.length}/${maxLength} characters${remaining < 0 ? ` (${Math.abs(remaining)} over limit)` : ''}`;
+      });
+    });
+
+    // Form handling
+    document.getElementById('test-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = {};
+      
+      for (let [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+      
+      document.getElementById('form-data').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('form-data').style.display = 'block';
+      showStatus('form-status', 'Form submitted successfully!', 'success');
+    });
+
+    window.getFormData = function() {
+      const form = document.getElementById('test-form');
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (let [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+      
+      document.getElementById('form-data').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('form-data').style.display = 'block';
+      showStatus('form-status', 'Form data retrieved', 'info');
+    };
+
+    // Programmatic control functions
+    let currentVariant = 'outlined';
+    const variants = ['outlined', 'filled', 'standard'];
+
+    window.setValue = function(value) {
+      const field = document.getElementById('programmatic-field');
+      field.value = value;
+      showStatus('programmatic-status', `Value set to: "${value}"`, 'info');
+    };
+
+    window.toggleDisabled = function() {
+      const field = document.getElementById('programmatic-field');
+      field.disabled = !field.disabled;
+      showStatus('programmatic-status', `Disabled: ${field.disabled}`, 'info');
+    };
+
+    window.toggleError = function() {
+      const field = document.getElementById('programmatic-field');
+      field.error = !field.error;
+      field.helperText = field.error ? 'This field has an error' : 'Field is valid';
+      showStatus('programmatic-status', `Error: ${field.error}`, 'info');
+    };
+
+    window.toggleRequired = function() {
+      const field = document.getElementById('programmatic-field');
+      field.required = !field.required;
+      showStatus('programmatic-status', `Required: ${field.required}`, 'info');
+    };
+
+    window.changeVariant = function() {
+      const field = document.getElementById('programmatic-field');
+      const currentIndex = variants.indexOf(currentVariant);
+      const nextIndex = (currentIndex + 1) % variants.length;
+      currentVariant = variants[nextIndex];
+      field.variant = currentVariant;
+      showStatus('programmatic-status', `Variant changed to: ${currentVariant}`, 'info');
+    };
+
+    // Utility function to show status messages
+    function showStatus(elementId, message, type) {
+      const statusEl = document.getElementById(elementId);
+      if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.className = `status ${type}`;
+        statusEl.style.display = 'block';
+        
+        setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    console.log('TextField test loaded successfully!');
+    console.log('Try typing in different fields to test functionality');
+    console.log('Check the console for event logs and validation feedback');
+  </script>
+</body>
+</html>
