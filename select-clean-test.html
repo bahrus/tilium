@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean Select Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f5f5f5;
+    }
+    .test-section {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #1976d2;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #1976d2;
+      margin-top: 0;
+      border-bottom: 2px solid #e3f2fd;
+      padding-bottom: 10px;
+    }
+    .demo-row {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .demo-item {
+      min-width: 280px;
+      flex: 1;
+    }
+    .demo-item label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 500;
+      color: #333;
+      font-size: 16px;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-size: 14px;
+      background: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #2196f3;
+    }
+    .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .button:hover {
+      background: #1565c0;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Clean Select Component Test</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 40px;">
+    Testing the Select component with clean, property-based options (no native &lt;option&gt; elements)
+  </p>
+
+  <div class="test-section">
+    <h2>Basic Single Selection</h2>
+    <div class="demo-row">
+      <div class="demo-item">
+        <label>Standard Select</label>
+        <mui-select id="basic-select" label="Choose an option"></mui-select>
+        <div id="basic-status" class="status" style="display: none;"></div>
+      </div>
+
+      <div class="demo-item">
+        <label>With Pre-selected Value</label>
+        <mui-select id="preselected-select" label="Pre-selected" value="option2"></mui-select>
+        <div id="preselected-status" class="status" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>Multiple Selection</h2>
+    <div class="demo-row">
+      <div class="demo-item">
+        <label>Multiple Select</label>
+        <mui-select id="multiple-select" label="Choose multiple" multiple></mui-select>
+        <div id="multiple-status" class="status" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>States</h2>
+    <div class="demo-row">
+      <div class="demo-item">
+        <label>Disabled Select</label>
+        <mui-select id="disabled-select" label="Disabled" disabled></mui-select>
+      </div>
+
+      <div class="demo-item">
+        <label>Error State</label>
+        <mui-select id="error-select" label="Error state" error></mui-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>Dynamic Options</h2>
+    <div class="demo-row">
+      <div class="demo-item">
+        <label>Dynamic Select</label>
+        <mui-select id="dynamic-select" label="Dynamic options"></mui-select>
+        <div style="margin-top: 15px;">
+          <button class="button" onclick="loadFruits()">Load Fruits</button>
+          <button class="button" onclick="loadColors()">Load Colors</button>
+          <button class="button" onclick="loadCountries()">Load Countries</button>
+          <button class="button" onclick="clearOptions()">Clear Options</button>
+        </div>
+        <div id="dynamic-status" class="status" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import the Select component
+    import { Select } from './dist/select-test-index.js';
+
+    // Register the component
+    customElements.define('mui-select', Select);
+
+    // Wait for components to be defined
+    await customElements.whenDefined('mui-select');
+
+    // Initialize selects with options
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic select options
+      const basicSelect = document.getElementById('basic-select');
+      basicSelect.options = [
+        { value: '', text: '-- Please select --' },
+        { value: 'option1', text: 'Option 1' },
+        { value: 'option2', text: 'Option 2' },
+        { value: 'option3', text: 'Option 3' },
+        { value: 'option4', text: 'Option 4' }
+      ];
+
+      // Preselected select options
+      const preselectedSelect = document.getElementById('preselected-select');
+      preselectedSelect.options = [
+        { value: '', text: '-- Please select --' },
+        { value: 'option1', text: 'Option 1' },
+        { value: 'option2', text: 'Option 2' },
+        { value: 'option3', text: 'Option 3' }
+      ];
+
+      // Multiple select options
+      const multipleSelect = document.getElementById('multiple-select');
+      multipleSelect.options = [
+        { value: 'apple', text: 'Apple' },
+        { value: 'banana', text: 'Banana' },
+        { value: 'cherry', text: 'Cherry' },
+        { value: 'date', text: 'Date' },
+        { value: 'elderberry', text: 'Elderberry' },
+        { value: 'fig', text: 'Fig' },
+        { value: 'grape', text: 'Grape' }
+      ];
+
+      // Disabled select options
+      const disabledSelect = document.getElementById('disabled-select');
+      disabledSelect.options = [
+        { value: '', text: '-- Please select --' },
+        { value: 'option1', text: 'Option 1' },
+        { value: 'option2', text: 'Option 2' }
+      ];
+
+      // Error select options
+      const errorSelect = document.getElementById('error-select');
+      errorSelect.options = [
+        { value: '', text: '-- Please select --' },
+        { value: 'option1', text: 'Option 1' },
+        { value: 'option2', text: 'Option 2' }
+      ];
+
+      // Add event listeners
+      const selects = document.querySelectorAll('mui-select');
+      selects.forEach(select => {
+        select.addEventListener('change', (e) => {
+          const statusId = select.id.replace('-select', '-status');
+          const statusEl = document.getElementById(statusId);
+          if (statusEl) {
+            statusEl.textContent = `Selected: ${e.detail.value || 'None'}`;
+            statusEl.style.display = 'block';
+            
+            setTimeout(() => {
+              statusEl.style.display = 'none';
+            }, 3000);
+          }
+          
+          console.log(`${select.id} changed:`, e.detail.value);
+        });
+      });
+
+      console.log('Clean Select components loaded successfully!');
+    });
+
+    // Dynamic option functions
+    window.loadFruits = function() {
+      const select = document.getElementById('dynamic-select');
+      select.options = [
+        { value: '', text: '-- Select a fruit --' },
+        { value: 'apple', text: 'Apple' },
+        { value: 'banana', text: 'Banana' },
+        { value: 'cherry', text: 'Cherry' },
+        { value: 'date', text: 'Date' },
+        { value: 'elderberry', text: 'Elderberry' }
+      ];
+      select.value = '';
+      showStatus('dynamic-status', 'Loaded fruit options', 'success');
+    };
+
+    window.loadColors = function() {
+      const select = document.getElementById('dynamic-select');
+      select.options = [
+        { value: '', text: '-- Select a color --' },
+        { value: 'red', text: 'Red' },
+        { value: 'blue', text: 'Blue' },
+        { value: 'green', text: 'Green' },
+        { value: 'yellow', text: 'Yellow' },
+        { value: 'purple', text: 'Purple' }
+      ];
+      select.value = '';
+      showStatus('dynamic-status', 'Loaded color options', 'success');
+    };
+
+    window.loadCountries = function() {
+      const select = document.getElementById('dynamic-select');
+      select.options = [
+        { value: '', text: '-- Select a country --' },
+        { value: 'us', text: 'United States' },
+        { value: 'uk', text: 'United Kingdom' },
+        { value: 'ca', text: 'Canada' },
+        { value: 'au', text: 'Australia' },
+        { value: 'de', text: 'Germany' },
+        { value: 'fr', text: 'France' }
+      ];
+      select.value = '';
+      showStatus('dynamic-status', 'Loaded country options', 'success');
+    };
+
+    window.clearOptions = function() {
+      const select = document.getElementById('dynamic-select');
+      select.options = [];
+      select.value = '';
+      showStatus('dynamic-status', 'Cleared all options', 'info');
+    };
+
+    // Utility function to show status messages
+    function showStatus(elementId, message, type) {
+      const statusEl = document.getElementById(elementId);
+      if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.style.display = 'block';
+        
+        setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+</html>

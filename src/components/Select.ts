@@ -10,9 +10,9 @@ export class Select extends LitElement {
   @property({ type: Boolean }) error = false;
   @property({ type: Boolean }) fullWidth = false;
   @property({ type: Boolean }) multiple = false;
+  @property({ type: Array }) options: Array<{value: string, text: string}> = [];
   @state() private focused = false;
   @state() private open = false;
-  @state() private options: Array<{value: string, text: string, selected: boolean}> = [];
 
   static styles = unsafeCSS`
     :host {
@@ -194,6 +194,16 @@ export class Select extends LitElement {
     .value-chip .remove:hover {
       opacity: 1;
     }
+
+    /* Clean text display */
+    .select-input span {
+      display: block;
+      width: calc(100% - 20px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
   `;
 
   connectedCallback() {
@@ -201,6 +211,11 @@ export class Select extends LitElement {
     this.addEventListener('click', this.handleClick);
     document.addEventListener('click', this.handleDocumentClick);
     this.addEventListener('keydown', this.handleKeydown);
+    
+    // If no options provided via property, try to extract from child option elements
+    if (this.options.length === 0) {
+      this.extractOptionsFromChildren();
+    }
   }
 
   disconnectedCallback() {
@@ -210,19 +225,16 @@ export class Select extends LitElement {
     this.removeEventListener('keydown', this.handleKeydown);
   }
 
-  firstUpdated() {
-    this.updateOptionsFromSlot();
-  }
-
-  private updateOptionsFromSlot() {
-    const slot = this.shadowRoot?.querySelector('slot');
-    if (slot) {
-      const slottedElements = slot.assignedElements() as HTMLOptionElement[];
-      this.options = slottedElements.map(option => ({
+  private extractOptionsFromChildren() {
+    const optionElements = this.querySelectorAll('option');
+    if (optionElements.length > 0) {
+      this.options = Array.from(optionElements).map(option => ({
         value: option.value,
-        text: option.textContent || option.value,
-        selected: option.selected || option.value === this.value
+        text: option.textContent || option.value
       }));
+      
+      // Remove the option elements from DOM to prevent interference
+      optionElements.forEach(option => option.remove());
     }
   }
 
@@ -278,7 +290,7 @@ export class Select extends LitElement {
     }
   };
 
-  private handleOptionClick(option: {value: string, text: string, selected: boolean}) {
+  private handleOptionClick(option: {value: string, text: string}) {
     if (this.multiple) {
       // Handle multiple selection - keep dropdown open
       const currentValues = this.value ? this.value.split(',') : [];
@@ -291,7 +303,6 @@ export class Select extends LitElement {
       }
       
       this.value = currentValues.join(',');
-      this.updateOptionsFromSlot();
     } else {
       // Handle single selection - close dropdown
       this.value = option.value;
@@ -327,19 +338,19 @@ export class Select extends LitElement {
   }
 
   private getDisplayValue() {
-    if (!this.value) {
+    if (!this.value || this.value === '') {
       return '';
     }
 
     if (this.multiple) {
-      const values = this.value.split(',');
+      const values = this.value.split(',').filter(v => v !== '');
       return values.map(val => {
         const option = this.options.find(opt => opt.value === val);
         return option ? option.text : val;
       });
     } else {
       const option = this.options.find(opt => opt.value === this.value);
-      return option ? option.text : this.value;
+      return option ? option.text : '';
     }
   }
 
@@ -407,10 +418,7 @@ export class Select extends LitElement {
           })}
         </div>
 
-        <!-- Hidden slot to capture option elements -->
-        <div style="display: none;">
-          <slot @slotchange="${this.updateOptionsFromSlot}"></slot>
-        </div>
+
       </div>
     `;
   }
