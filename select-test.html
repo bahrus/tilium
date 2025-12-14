@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Component Test</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .demo-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .demo-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 250px;
+    }
+    .demo-item label {
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+    .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+      font-size: 14px;
+    }
+    .button:hover {
+      background: #1565c0;
+    }
+    .button.secondary {
+      background: #dc004e;
+    }
+    .button.secondary:hover {
+      background: #c51162;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .status.success {
+      background: #e8f5e8;
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+    }
+    .status.info {
+      background: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #2196f3;
+    }
+    .status.error {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #f44336;
+    }
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 8px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .form-container {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 200px;
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+    .value-display {
+      background: #e3f2fd;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit/": "/node_modules/@lit/",
+        "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "lit": "/node_modules/lit/index.js",
+        "lit/": "/node_modules/lit/",
+        "lit-element/": "/node_modules/lit-element/",
+        "lit-html/": "/node_modules/lit-html/",
+        "lit-html": "/node_modules/lit-html/lit-html.js",
+        "tslib": "/node_modules/tslib/tslib.es6.js",
+        "tslib/": "/node_modules/tslib/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Select Component Test</h1>
+
+  <div class="section">
+    <h2>Basic Select Variants</h2>
+    <p>Test the main visual variants of the Select component.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Standard Variant</label>
+        <mui-select id="standard-select" variant="standard" label="Choose option">
+          <option value="">-- Select an option --</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Outlined Variant</label>
+        <mui-select id="outlined-select" variant="outlined" label="Choose option">
+          <option value="">-- Select an option --</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Filled Variant</label>
+        <mui-select id="filled-select" variant="filled" label="Choose option">
+          <option value="">-- Select an option --</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="basic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Sizes</h2>
+    <p>Test different select sizes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Small Size</label>
+        <mui-select id="small-select" size="small" label="Small select">
+          <option value="">-- Select --</option>
+          <option value="small1">Small Option 1</option>
+          <option value="small2">Small Option 2</option>
+          <option value="small3">Small Option 3</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Medium Size (Default)</label>
+        <mui-select id="medium-select" size="medium" label="Medium select">
+          <option value="">-- Select --</option>
+          <option value="medium1">Medium Option 1</option>
+          <option value="medium2">Medium Option 2</option>
+          <option value="medium3">Medium Option 3</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="size-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>States and Validation</h2>
+    <p>Test different select states including error, disabled, and required.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Error State</label>
+        <mui-select id="error-select" error helperText="This field is required">
+          <option value="">-- Select an option --</option>
+          <option value="error1">Error Option 1</option>
+          <option value="error2">Error Option 2</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Disabled State</label>
+        <mui-select id="disabled-select" disabled label="Disabled select">
+          <option value="">-- Select an option --</option>
+          <option value="disabled1">Disabled Option 1</option>
+          <option value="disabled2">Disabled Option 2</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Required Field</label>
+        <mui-select id="required-select" required label="Required select" helperText="Please select an option">
+          <option value="">-- Select an option --</option>
+          <option value="required1">Required Option 1</option>
+          <option value="required2">Required Option 2</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="states-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Multiple Selection</h2>
+    <p>Test multiple selection functionality.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Multiple Select</label>
+        <mui-select id="multiple-select" multiple label="Choose multiple options" helperText="Hold Ctrl/Cmd to select multiple">
+          <option value="multi1">Multiple Option 1</option>
+          <option value="multi2">Multiple Option 2</option>
+          <option value="multi3">Multiple Option 3</option>
+          <option value="multi4">Multiple Option 4</option>
+          <option value="multi5">Multiple Option 5</option>
+        </mui-select>
+      </div>
+      
+      <div class="demo-item">
+        <label>Multiple with Pre-selection</label>
+        <mui-select id="preselected-multiple" multiple label="Pre-selected options">
+          <option value="pre1" selected>Pre-selected 1</option>
+          <option value="pre2">Option 2</option>
+          <option value="pre3" selected>Pre-selected 3</option>
+          <option value="pre4">Option 4</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="multiple-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Full Width</h2>
+    <p>Test full-width select that spans the entire container.</p>
+    <div class="demo-item">
+      <label>Full Width Select</label>
+      <mui-select id="fullwidth-select" fullWidth label="Full width select" helperText="This select spans the full width of its container">
+        <option value="">-- Select an option --</option>
+        <option value="full1">Full Width Option 1</option>
+        <option value="full2">Full Width Option 2</option>
+        <option value="full3">Full Width Option 3</option>
+      </mui-select>
+    </div>
+    <div id="fullwidth-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Dynamic Options</h2>
+    <p>Test dynamically adding and removing options.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Dynamic Select</label>
+        <mui-select id="dynamic-select" label="Dynamic options">
+          <option value="">-- Select an option --</option>
+          <option value="dynamic1">Dynamic Option 1</option>
+          <option value="dynamic2">Dynamic Option 2</option>
+        </mui-select>
+        <div style="margin-top: 12px;">
+          <button class="button" onclick="addOption()">Add Option</button>
+          <button class="button secondary" onclick="removeLastOption()">Remove Last</button>
+          <button class="button" onclick="clearOptions()">Clear All</button>
+          <button class="button" onclick="resetOptions()">Reset</button>
+        </div>
+      </div>
+      
+      <div class="demo-item">
+        <label>Category Select</label>
+        <mui-select id="category-select" label="Select category" onchange="updateSubcategories()">
+          <option value="">-- Select category --</option>
+          <option value="electronics">Electronics</option>
+          <option value="clothing">Clothing</option>
+          <option value="books">Books</option>
+        </mui-select>
+        
+        <label style="margin-top: 16px;">Subcategory</label>
+        <mui-select id="subcategory-select" label="Select subcategory" disabled>
+          <option value="">-- Select subcategory --</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="dynamic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Event Testing</h2>
+    <p>Test select events and value changes.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Event Logger Select</label>
+        <mui-select id="event-select" label="Event test select">
+          <option value="">-- Select to test events --</option>
+          <option value="event1">Event Option 1</option>
+          <option value="event2">Event Option 2</option>
+          <option value="event3">Event Option 3</option>
+        </mui-select>
+      </div>
+    </div>
+    <div id="event-log" class="code-block">Event log will appear here...</div>
+  </div>
+
+  <div class="section">
+    <h2>Form Integration</h2>
+    <p>Test select components within a form context.</p>
+    <form class="form-container" id="test-form">
+      <h3 style="margin-top: 0;">User Profile Form</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country</label>
+          <mui-select name="country" required label="Select country">
+            <option value="">-- Select country --</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+            <option value="de">Germany</option>
+            <option value="fr">France</option>
+          </mui-select>
+        </div>
+        
+        <div class="form-group">
+          <label>Language</label>
+          <mui-select name="language" label="Select language">
+            <option value="">-- Select language --</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="zh">Chinese</option>
+          </mui-select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Skills (Multiple)</label>
+          <mui-select name="skills" multiple label="Select skills" size="small">
+            <option value="js">JavaScript</option>
+            <option value="py">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="react">React</option>
+            <option value="vue">Vue.js</option>
+            <option value="angular">Angular</option>
+          </mui-select>
+        </div>
+        
+        <div class="form-group">
+          <label>Experience Level</label>
+          <mui-select name="experience" required label="Experience level">
+            <option value="">-- Select level --</option>
+            <option value="junior">Junior (0-2 years)</option>
+            <option value="mid">Mid-level (2-5 years)</option>
+            <option value="senior">Senior (5+ years)</option>
+            <option value="lead">Lead/Principal</option>
+          </mui-select>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <button type="submit" class="button">Submit Form</button>
+        <button type="reset" class="button secondary">Reset Form</button>
+        <button type="button" class="button" onclick="getFormData()">Get Form Data</button>
+      </div>
+    </form>
+    <div id="form-data" class="value-display" style="display: none;"></div>
+    <div id="form-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Programmatic Control</h2>
+    <p>Test programmatic manipulation of select properties.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Programmatic Select</label>
+        <mui-select id="programmatic-select" label="Controlled select">
+          <option value="">-- Select an option --</option>
+          <option value="prog1">Programmatic Option 1</option>
+          <option value="prog2">Programmatic Option 2</option>
+          <option value="prog3">Programmatic Option 3</option>
+        </mui-select>
+        <div style="margin-top: 12px;">
+          <button class="button" onclick="setValue('prog1')">Set Option 1</button>
+          <button class="button" onclick="setValue('prog2')">Set Option 2</button>
+          <button class="button" onclick="setValue('')">Clear Value</button>
+        </div>
+        <div style="margin-top: 8px;">
+          <button class="button" onclick="toggleDisabled()">Toggle Disabled</button>
+          <button class="button" onclick="toggleError()">Toggle Error</button>
+          <button class="button" onclick="toggleRequired()">Toggle Required</button>
+        </div>
+      </div>
+    </div>
+    <div id="programmatic-status" class="status" style="display: none;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Performance Test</h2>
+    <p>Test performance with many options.</p>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <label>Large Option Set</label>
+        <mui-select id="performance-select" label="Performance test">
+          <option value="">-- Select from many options --</option>
+        </mui-select>
+        <div style="margin-top: 12px;">
+          <button class="button" onclick="createManyOptions(100)">Create 100 Options</button>
+          <button class="button" onclick="createManyOptions(500)">Create 500 Options</button>
+          <button class="button secondary" onclick="clearPerformanceOptions()">Clear Options</button>
+        </div>
+      </div>
+    </div>
+    <div id="performance-status" class="status" style="display: none;"></div>
+  </div>
+
+  <script type="module">
+    // Import component classes
+    import { Select } from './dist/index.js';
+
+    // Register components
+    customElements.define('mui-select', Select);
+
+    // Event logging
+    const eventLog = document.getElementById('event-log');
+    let eventCount = 0;
+
+    function logEvent(eventType, detail) {
+      eventCount++;
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = `[${eventCount}] ${timestamp} - ${eventType}: ${JSON.stringify(detail, null, 2)}`;
+      eventLog.textContent = logEntry + '\n' + eventLog.textContent;
+      
+      // Keep only last 10 events
+      const lines = eventLog.textContent.split('\n');
+      if (lines.length > 20) {
+        eventLog.textContent = lines.slice(0, 20).join('\n');
+      }
+    }
+
+    // Add event listeners to test selects
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventSelect = document.getElementById('event-select');
+      
+      eventSelect.addEventListener('change', (e) => {
+        logEvent('change', { 
+          value: e.target.value, 
+          selectedIndex: e.target.selectedIndex,
+          selectedText: e.target.selectedOptions[0]?.text 
+        });
+      });
+
+      eventSelect.addEventListener('focus', (e) => {
+        logEvent('focus', { value: e.target.value });
+      });
+
+      eventSelect.addEventListener('blur', (e) => {
+        logEvent('blur', { value: e.target.value });
+      });
+
+      // Add change listeners to all selects for status updates
+      const selects = document.querySelectorAll('mui-select');
+      selects.forEach((select, index) => {
+        select.addEventListener('change', (e) => {
+          if (select.id && select.id.includes('-select')) {
+            const statusId = select.id.replace('-select', '-status');
+            const statusEl = document.getElementById(statusId);
+            if (statusEl) {
+              showStatus(statusId, `Selected: ${e.target.value || 'None'}`, 'info');
+            }
+          }
+        });
+      });
+    });
+
+    // Dynamic options functions
+    let optionCounter = 3;
+    
+    window.addOption = function() {
+      const select = document.getElementById('dynamic-select');
+      const option = document.createElement('option');
+      option.value = `dynamic${optionCounter}`;
+      option.textContent = `Dynamic Option ${optionCounter}`;
+      select.appendChild(option);
+      optionCounter++;
+      showStatus('dynamic-status', `Added option ${optionCounter - 1}`, 'success');
+    };
+
+    window.removeLastOption = function() {
+      const select = document.getElementById('dynamic-select');
+      const options = select.querySelectorAll('option:not([value=""])');
+      if (options.length > 0) {
+        const lastOption = options[options.length - 1];
+        lastOption.remove();
+        showStatus('dynamic-status', 'Removed last option', 'info');
+      }
+    };
+
+    window.clearOptions = function() {
+      const select = document.getElementById('dynamic-select');
+      const options = select.querySelectorAll('option:not([value=""])');
+      options.forEach(option => option.remove());
+      showStatus('dynamic-status', 'Cleared all options', 'info');
+    };
+
+    window.resetOptions = function() {
+      const select = document.getElementById('dynamic-select');
+      select.innerHTML = `
+        <option value="">-- Select an option --</option>
+        <option value="dynamic1">Dynamic Option 1</option>
+        <option value="dynamic2">Dynamic Option 2</option>
+      `;
+      optionCounter = 3;
+      showStatus('dynamic-status', 'Reset to default options', 'success');
+    };
+
+    // Subcategory update function
+    window.updateSubcategories = function() {
+      const categorySelect = document.getElementById('category-select');
+      const subcategorySelect = document.getElementById('subcategory-select');
+      
+      const subcategories = {
+        electronics: [
+          { value: 'phones', text: 'Phones' },
+          { value: 'laptops', text: 'Laptops' },
+          { value: 'tablets', text: 'Tablets' },
+          { value: 'accessories', text: 'Accessories' }
+        ],
+        clothing: [
+          { value: 'shirts', text: 'Shirts' },
+          { value: 'pants', text: 'Pants' },
+          { value: 'shoes', text: 'Shoes' },
+          { value: 'accessories', text: 'Accessories' }
+        ],
+        books: [
+          { value: 'fiction', text: 'Fiction' },
+          { value: 'nonfiction', text: 'Non-Fiction' },
+          { value: 'textbooks', text: 'Textbooks' },
+          { value: 'comics', text: 'Comics' }
+        ]
+      };
+
+      subcategorySelect.innerHTML = '<option value="">-- Select subcategory --</option>';
+      
+      if (categorySelect.value && subcategories[categorySelect.value]) {
+        subcategorySelect.disabled = false;
+        subcategories[categorySelect.value].forEach(sub => {
+          const option = document.createElement('option');
+          option.value = sub.value;
+          option.textContent = sub.text;
+          subcategorySelect.appendChild(option);
+        });
+        showStatus('dynamic-status', `Updated subcategories for ${categorySelect.value}`, 'success');
+      } else {
+        subcategorySelect.disabled = true;
+        showStatus('dynamic-status', 'Subcategories cleared', 'info');
+      }
+    };
+
+    // Form handling
+    document.getElementById('test-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = {};
+      
+      for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+          if (Array.isArray(data[key])) {
+            data[key].push(value);
+          } else {
+            data[key] = [data[key], value];
+          }
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      document.getElementById('form-data').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('form-data').style.display = 'block';
+      showStatus('form-status', 'Form submitted successfully!', 'success');
+    });
+
+    window.getFormData = function() {
+      const form = document.getElementById('test-form');
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+          if (Array.isArray(data[key])) {
+            data[key].push(value);
+          } else {
+            data[key] = [data[key], value];
+          }
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      document.getElementById('form-data').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('form-data').style.display = 'block';
+      showStatus('form-status', 'Form data retrieved', 'info');
+    };
+
+    // Programmatic control functions
+    window.setValue = function(value) {
+      const select = document.getElementById('programmatic-select');
+      select.value = value;
+      showStatus('programmatic-status', `Value set to: ${value || 'empty'}`, 'info');
+    };
+
+    window.toggleDisabled = function() {
+      const select = document.getElementById('programmatic-select');
+      select.disabled = !select.disabled;
+      showStatus('programmatic-status', `Disabled: ${select.disabled}`, 'info');
+    };
+
+    window.toggleError = function() {
+      const select = document.getElementById('programmatic-select');
+      select.error = !select.error;
+      select.helperText = select.error ? 'This field has an error' : '';
+      showStatus('programmatic-status', `Error: ${select.error}`, 'info');
+    };
+
+    window.toggleRequired = function() {
+      const select = document.getElementById('programmatic-select');
+      select.required = !select.required;
+      showStatus('programmatic-status', `Required: ${select.required}`, 'info');
+    };
+
+    // Performance test functions
+    window.createManyOptions = function(count) {
+      const select = document.getElementById('performance-select');
+      const startTime = performance.now();
+      
+      // Clear existing options except the first one
+      const firstOption = select.querySelector('option');
+      select.innerHTML = '';
+      select.appendChild(firstOption);
+      
+      for (let i = 1; i <= count; i++) {
+        const option = document.createElement('option');
+        option.value = `option${i}`;
+        option.textContent = `Option ${i}`;
+        select.appendChild(option);
+      }
+      
+      const endTime = performance.now();
+      const duration = Math.round(endTime - startTime);
+      showStatus('performance-status', `Created ${count} options in ${duration}ms`, 'success');
+    };
+
+    window.clearPerformanceOptions = function() {
+      const select = document.getElementById('performance-select');
+      const startTime = performance.now();
+      
+      select.innerHTML = '<option value="">-- Select from many options --</option>';
+      
+      const endTime = performance.now();
+      const duration = Math.round(endTime - startTime);
+      showStatus('performance-status', `Cleared options in ${duration}ms`, 'info');
+    };
+
+    // Utility function to show status messages
+    function showStatus(elementId, message, type) {
+      const statusEl = document.getElementById(elementId);
+      if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.className = `status ${type}`;
+        statusEl.style.display = 'block';
+        
+        setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    console.log('Select test loaded successfully!');
+    console.log('Try selecting different options to test functionality');
+    console.log('Check the console for event logs and performance metrics');
+  </script>
+</body>
+</html>
