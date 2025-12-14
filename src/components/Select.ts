@@ -232,12 +232,14 @@ export class Select extends LitElement {
     
     this.open = !this.open;
     this.focused = this.open;
+    this.requestUpdate();
   };
 
   private handleDocumentClick = (e: Event) => {
     if (!this.contains(e.target as Node)) {
       this.open = false;
       this.focused = false;
+      this.requestUpdate();
     }
   };
 
@@ -250,16 +252,19 @@ export class Select extends LitElement {
         e.preventDefault();
         this.open = !this.open;
         this.focused = this.open;
+        this.requestUpdate();
         break;
       case 'Escape':
         this.open = false;
         this.focused = false;
+        this.requestUpdate();
         break;
       case 'ArrowDown':
         e.preventDefault();
         if (!this.open) {
           this.open = true;
           this.focused = true;
+          this.requestUpdate();
         }
         break;
       case 'ArrowUp':
@@ -267,6 +272,7 @@ export class Select extends LitElement {
         if (!this.open) {
           this.open = true;
           this.focused = true;
+          this.requestUpdate();
         }
         break;
     }
@@ -274,7 +280,7 @@ export class Select extends LitElement {
 
   private handleOptionClick(option: {value: string, text: string, selected: boolean}) {
     if (this.multiple) {
-      // Handle multiple selection
+      // Handle multiple selection - keep dropdown open
       const currentValues = this.value ? this.value.split(',') : [];
       const index = currentValues.indexOf(option.value);
       
@@ -287,12 +293,13 @@ export class Select extends LitElement {
       this.value = currentValues.join(',');
       this.updateOptionsFromSlot();
     } else {
-      // Handle single selection
+      // Handle single selection - close dropdown
       this.value = option.value;
       this.open = false;
       this.focused = false;
     }
 
+    // Dispatch change event
     this.dispatchEvent(new CustomEvent('change', {
       detail: { value: this.value },
       bubbles: true,
@@ -314,6 +321,8 @@ export class Select extends LitElement {
         bubbles: true,
         composed: true
       }));
+
+      this.requestUpdate();
     }
   }
 
@@ -387,7 +396,10 @@ export class Select extends LitElement {
             return html`
               <div 
                 class="option ${isSelected ? 'selected' : ''}"
-                @click="${() => this.handleOptionClick(option)}"
+                @click="${(e: Event) => {
+                  e.stopPropagation();
+                  this.handleOptionClick(option);
+                }}"
               >
                 ${option.text}
               </div>
